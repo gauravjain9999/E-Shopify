@@ -1,0 +1,22 @@
+
+<form action="/action_page.php" method="post">
+  <div class="imgcontainer">
+    <img src="../../assets/images/shopifyApp.png" alt="Avatar" class="avatar"><span class="heading" style="color: seagreen;">
+     Shopify <span style="color: orange">App</span></span>
+  </div>
+  <h3 style="margin-left: 20px;"> Get access to your Orders,<br>Wishlist and Recommendation</h3>
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Username" name="name"  #name="ngModel"  ngModel required >
+
+    <br><br>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Password" minlength="8" name="password" #password="ngModel" ngModel  required>
+
+   <h4 style="color: grey;">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</h4>
+  </div>
+  <button type="submit"  id="myBtn" class="btn btn-sucess" (click)="onLogin()" >Login</button>
+  <span class="psw">New to Shopify?  <button style="padding: 0px; margin: 0px; font-style: bold; color: blue; background-color: white; " (click)="onSubmit()"routerLinkActive="active">SignUp</button></span>
+</form>
+
+<app-footer></app-footer>

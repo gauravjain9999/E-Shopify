@@ -1,0 +1,81 @@
+.container-fluid
+{
+  margin-top: 5px;
+  justify-content: left;
+  display: flex;
+  border-bottom: black;
+  align-items:flex-start
+}
+.float-img
+{
+  font: right;
+  width: 40px;
+}
+.search-bar
+{
+  width: 20%;
+  margin-left: 800px;
+  padding: 3px;
+  color: white;
+  font-size: 17px;
+  border-left: none;
+  cursor: pointer;
+}
+.search-bar .i
+{
+  transform: scale(1.5);
+  position: absolute;
+}
+.search-btn
+{
+  margin-left: 10px;
+  position: relative;
+  color: black;
+  padding: 1px;
+
+}
+/* Add application styles & imports to this file! */
+body {
+  --text-color: #222;
+  --bkg-color: #fff;
+  --btn-txt-color: white;
+  --btn-bg-color: rgb(11, 88, 160);
+}
+body.dark-theme {
+  --text-color: #eee;
+  --bkg-color: #252222;
+  --btn-txt-color: rgb(46, 43, 43);
+  --btn-bg-color: rgb(20, 211, 195);
+}
+.btn-login
+{
+  font-size: medium;
+  color: black;
+  margin-left: 40px;
+}
+.theme-icon
+{
+  color: black;
+  margin-top: 5px;
+}
+
+.btn-register
+{
+  font-size: medium;
+  color: black;
+}
+body {
+  background: var(--bkg-color);
+}
+
+h1,
+p {
+  color: var(--text-color);
+}
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 2px;
+  color: var(--btn-txt-color);
+  background-color: var(--btn-bg-color);
+}

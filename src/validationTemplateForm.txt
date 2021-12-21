@@ -1,0 +1,9 @@
+It maintain state information at the forms at all times
+
+1) ng-touched
+2) ng-untouched
+3) ng-dirty
+4) ng-pristine
+5) ng-valid
+6) ng-invalid
+

@@ -1,0 +1,104 @@
+.container-fluid
+{
+  margin-top: 10px;
+  justify-content: left;
+  display: flex;
+  border-bottom: black;
+  align-items:flex-start
+}
+.float-img
+{
+  font: right;
+  width: 40px;
+}
+.search-bar
+{
+
+  margin-left: 250px;
+  padding: 3px;
+  margin-top: 6px;
+  max-width: 100%;
+  color: white;
+  font-size: 17px;
+  border-left: none;
+  cursor: pointer;
+}
+.searchText
+{
+  width: 300px;
+}
+
+/* DropDown */
+.dropbtn {
+  background-color: #4CAF50;
+  color: black;
+  padding: 14px;
+  margin-left: 300px;
+  background: none;
+  border: none;
+}
+
+.dropdown {
+  position: fixed;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #fff;
+  width: 160px;
+  left: 70%;
+  box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px 12px;
+  text-decoration: none;
+  display: flex;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* For Arrow */
+.arrow {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 2px;
+  margin-bottom: 5px;
+}
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.icon-whishList {
+  padding-right: 25px;
+  background: url("../../assets/images/outline_favorite_black_24dp.png") no-repeat left;
+  background-size: 20px;
+
+}
+.icon-setting
+{
+  padding-right: 25px;
+  background: url("../../assets/images/outline_settings_black_24dp.png") no-repeat left;
+  background-size: 20px;
+
+}
+.icon-about
+{
+  padding-right: 25px;
+  background: url("../../assets/images/outline_info_black_24dp.png") no-repeat left;
+  background-size: 20px;
+}
+.icon-cart
+{
+  background: url("../../assets/images/outline_shopping_cart_black_24dp.png") no-repeat left;
+  background-size: 20px;
+}
