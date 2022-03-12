@@ -1,0 +1,85 @@
+
+<div>
+  <h1>Please Fill Your Details To Proceed</h1>
+</div>
+<mat-divider></mat-divider>
+
+<form class="form-group" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group-class">
+    <label for="name"  class="label-adjust">Name </label>
+    <br>
+    <input class="edit-details" type="text" formControlName="name" placeholder="Enter your name">
+    <ng-container *ngIf="profileForm.controls['name'].invalid && profileForm.controls['name'].touched" >
+      <div class="errorText">*Username is required </div>
+    </ng-container>
+    <br><br>
+
+    <!-- <mat-icon tabindex="-1" class="float-right hand-icon" matRipple>close</mat-icon> -->
+    <label for="email"  class="label-adjust">Email </label>
+    <br>
+    <input class="edit-details" type="text" formControlName="email" email placeholder="Enter your email">
+    <ng-container *ngIf="profileForm.controls['email'].invalid && profileForm.controls['email'].touched" >
+      <div class="errorText">*Email is required</div>
+    </ng-container>
+    <br> <br>
+
+    <label for="phone"  class="label-adjust">Phone Number</label>
+    <br>
+    <input class="edit-details" type="text" formControlName="phoneNumber" (keypress)="keyPressNumbers($event)"  minlength=10 placeholder="Enter PhoneNo"
+    name="phoneNo" required>
+    <ng-container *ngIf="profileForm.controls['phoneNumber'].invalid && profileForm.controls['phoneNumber'].touched" >
+      <div class="errorText">*Phone number is required </div>
+    </ng-container>
+    <br> <br>
+
+
+    <label for="address" class="label-adjust">Address</label>
+    <br>
+    <input class="edit-details" type="text" formControlName="address" placeholder="Enter your address" name="address" required>
+    <ng-container *ngIf="profileForm.controls['address'].invalid && profileForm.controls['address'].touched" >
+      <div class="errorText">*Address is required </div>
+    </ng-container>
+    <br> <br>
+
+    <label for="loaction" class="label-adjust">Location</label>
+    <br>
+    <input class="edit-details" type="text" formControlName="location" placeholder="Enter your location" required>
+    <ng-container *ngIf="profileForm.controls['location'].invalid && profileForm.controls['location'].touched" >
+      <div class="errorText">*Location is required</div>
+    </ng-container>
+    <br> <br>
+
+    <label for="city" class="label-adjust">City</label>
+    <br>
+    <input class="edit-details" type="text" formControlName="city" placeholder="Enter your city" required>
+    <ng-container *ngIf="profileForm.controls['city'].invalid && profileForm.controls['city'].touched" >
+      <div class="errorText">*City is required</div>
+    </ng-container>
+    <br> <br>
+
+    <label for="state" class="label-adjust">State</label>
+    <br>
+    <input class="edit-details" type="text" formControlName="state" placeholder="Enter your state" required>
+    <ng-container *ngIf="profileForm.controls['state'].invalid && profileForm.controls['state'].touched" >
+      <div class="errorText">*State is required</div>
+    </ng-container>
+    <br> <br>
+
+    <label for="payment" class="label-adjust">Payment</label>
+    <select formControlName="payment" [(ngModel)]="defaultValue" placeholder="Select payment mode" aria-placeholder="Select payment mode" name="identification" class="form-control" (change)="changeWebsite($event)">
+      <option >Credit Card</option>
+      <option >UPI</option>
+      <option >Cash on delivery</option>
+      <!-- <option *ngFor="let web of websiteList">{{web}}</option> -->
+  </select>
+  <ng-container *ngIf="profileForm.controls['payment'].invalid && profileForm.controls['payment'].touched" >
+    <div class="errorText">*Payment mode is required</div>
+  </ng-container>
+<br> <br>
+
+    <button type="submit" class="btn btn-primary" (click)="onPayment()" [disabled]="!profileForm.valid">Submit</button> &nbsp;
+    <button type="button" class="btn btn-danger"  (click)="onCancel()">Cancel</button>
+
+  </div>
+</form>

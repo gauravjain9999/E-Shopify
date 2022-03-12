@@ -1,21 +1,43 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <img class="float-img" src="../../assets/./images/shopifyApp.png">&nbsp; &nbsp;
-    <span  style="margin-top: 5px;" class="navbar-brand mb-0 h1">Shopify App</span>
+
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button mat-icon-button class="mat-toolbar-btn"  (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+      <mat-sidenav-container  (backdropClick)="close('backdrop')" class="example-sidenav-container">
+        <mat-sidenav #sidenav disableClose class="mat-sidenav-overlay">
+          <app-my-account></app-my-account>
+        </mat-sidenav>
+      </mat-sidenav-container>
+    </mat-toolbar>
+    <!-- <button mat-icon-button (click)="opened=!opened" #sidenav style="margin-left: 20px;
+      padding: 0; height: auto;">
+      <mat-icon>menu</mat-icon>
+      <mat-sidenav-container (backdropClick)="close('backdrop')">
+        <mat-sidenav class="example-sidenav-container" #sidenav [(opened)]="opened">
+          <app-my-account></app-my-account>
+        </mat-sidenav>
+      </mat-sidenav-container>
+    </button>&nbsp; -->
+
+    <img class="float-img" src="../../assets/./images/shopifyApp.png">&nbsp;&nbsp;
+    <span style="margin-top: 5px;" class="navbar-brand mb-0 h1">Shopify App</span>
     <div class="search-bar">
-      <input type="text" class="searchText" placeholder="Search..." name="search">
+      <input type="text" class="searchText" placeholder="Search..."
+        name="search" [(ngModel)]="searchText">
       <i style="color: black; margin-left: 10px;" class="fa fa-search icon"></i>
     </div>
 
-    <div class="dropdown">
-      <button class="dropbtn">More</button><i class="arrow down"></i>
-      <div class="dropdown-content">
-      <a class="icon-whishList" href="#"> <p style="margin-top: 10px; margin-left: 20px;"> WishList </p></a>
-      <a class="icon-setting"   href="#"> <p style="margin-top: 10px; margin-left: 20px;"> Setting  </p></a>
-      <a class="icon-about"     href="#"> <p style="margin-top: 10px; margin-left: 20px;"> About  </p></a>
-      </div>
+    <div class="notify" matTooltip="Notification" (click)="notification()">
+      <mat-icon>notifications_none</mat-icon>
     </div>
-   <div style="margin-top: 5px; margin-left: 500px;" class="icon-cart"><p style="margin-left: 25px; font-size: large; margin-top: 6px; "> Cart</p></div>
 
+    <button class="icon-cart" matTooltip="Cart" (click)="showNotify()"
+      routerLinkActive="active" routerLink="/addToCart"><p
+        class="icon-cart-text">Cart</p>
+    </button>
+    <div class="badge bg-danger align-badge" matBadgeColor="accent">{{totalItem}}</div>
+    <mat-button class="logout-btn" matTooltipShowDelay="50" matTooltip="Logout">Logout
+      <i class="fa fa-sign-out" aria-hidden="true"></i>
+    </mat-button>
   </div>
 </nav>

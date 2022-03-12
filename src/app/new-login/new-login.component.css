@@ -13,8 +13,13 @@ form {
   margin-bottom: 20px;
   margin-right: 15%;
   margin-top: 120px;
-
 }
+
+.success-message{
+  background-color: #04AA6D;
+  background: #04AA6D;
+}
+
 
 input[type=text], input[type=password] {
   width: 100%;

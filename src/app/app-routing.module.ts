@@ -1,3 +1,8 @@
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { PaymentCheckoutComponent } from './payment-checkout/payment-checkout.component';
+import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
+import { ClothesProductComponent } from './clothes-product/clothes-product.component';
+import { MobileProductsComponent } from './mobile-products/mobile-products.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewRegisterComponent } from './new-register/new-register.component';
@@ -9,15 +14,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 
-  {path:'', redirectTo: '/loginForm', pathMatch: 'full'},
-  {path: 'loginForm', component: LoginFormComponent},
+  {path:'', redirectTo: '/shopifyApp', pathMatch: 'full'},
+  {path: 'shopifyApp', component: LoginFormComponent},
   {path: 'new-login', component:NewLoginComponent },
   {path: 'footer',    component:FooterComponent},
+  {path: 'mobilePage', component:MobileProductsComponent},
   {path: 'new-register', component: NewRegisterComponent},
   {path: 'mainPage', component:MainPageComponent},
+  {path: 'addToCart', component:AddToCartComponent},
+  {path: 'myProfile', component: MyProfileComponent},
+  {path: 'clothProduct', component:ClothesProductComponent},
+  {path: 'payment', component:PaymentCheckoutComponent},
   {path: '**', component: PageNotFoundComponent},
-
-
 ];
 
 @NgModule({

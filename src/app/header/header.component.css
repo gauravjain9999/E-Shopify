@@ -51,7 +51,9 @@ body.dark-theme {
 {
   font-size: medium;
   color: black;
-  margin-left: 40px;
+  cursor: pointer;
+  position: inherit;
+  margin-left: 50px;
 }
 .theme-icon
 {
@@ -61,8 +63,10 @@ body.dark-theme {
 
 .btn-register
 {
+  position:static;
   font-size: medium;
   color: black;
+  cursor: pointer;
 }
 body {
   background: var(--bkg-color);

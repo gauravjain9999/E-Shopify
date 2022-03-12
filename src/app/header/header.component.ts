@@ -24,5 +24,8 @@ export class HeaderComponent implements OnInit {
   {
     this.router.navigate(['new-register']);
   }
-
+  onClick()
+  {
+    this.router.navigate(['shopifyApp'])
+  }
 }

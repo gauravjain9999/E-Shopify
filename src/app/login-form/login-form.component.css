@@ -1,0 +1,121 @@
+.slider
+{
+  width: 840px;
+  height: 500px;
+  text-align:center;
+  padding: 10px;
+  margin-left:300px;
+  margin-top: 30px;
+  margin-right: 300px !important;
+}
+
+/* Card */
+
+.card {
+  width: 100%;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  height: 14%;
+}
+
+.custom-card
+{
+  width: 100%;
+  background-color: rgb(255, 244, 244);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  height: 31%;
+}
+
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+.container-card
+{
+  padding: 20px;
+  width: max-content;
+  height: max-content;
+}
+
+.icon-image1
+{
+  cursor: pointer;
+  margin-top: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.icon-image1:hover{
+  transform: scale(1.30);
+  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+
+.icon-image2:hover{
+  transform: scale(1.30);
+  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+
+.icon-image3:hover{
+  transform: scale(1.30);
+  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+.icon-image4:hover{
+  transform: scale(1.30);
+  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+.icon-image5:hover{
+  transform: scale(1.30);
+  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+.icon-image2
+{
+  cursor: pointer;
+  margin-top: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.icon-image3
+{
+  cursor: pointer;
+  margin-top: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.icon-image4
+{
+  cursor: pointer;
+  margin-top: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.icon-image5
+{
+  cursor: pointer;
+  margin-top: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.content div{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: black;
+  color: white;
+  margin-bottom: 5px;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.5s linear;
+ }

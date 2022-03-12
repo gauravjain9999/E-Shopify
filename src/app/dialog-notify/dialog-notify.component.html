@@ -1,0 +1,39 @@
+<!-- <button mat-button class="close-icon" [mat-dialog-close]="true"> -->
+  <div  class="close-icon" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </div>
+
+
+<div class="content">
+  <img src="../../assets/images/shopifyApp.png" style="width: 45px; height: 45px; padding: 5px;">
+  <h1 style="margin-top: 15px; margin-left: 5px;">Shopify</h1>
+</div>
+
+<div class="content" style="margin-top: 8px;">
+  <h1 style="font-weight: 500;">Be The First To Know :)</h1>
+</div>
+
+<mat-divider></mat-divider>
+
+<br>
+<form class="form-group" [formGroup]="notifyForm" (ngSubmit)="onSubmit()">
+  <div class="form-group-class">
+    <div>
+      <b style="font-size: medium;">Email :</b><input class="edit-details1" type="text" formControlName="email" email placeholder="Enter your email" required>
+    </div>
+    <br>
+
+    <div>
+      <b style="font-size: medium;">Address :</b><input class="edit-details2" type="text" formControlName="address" placeholder="Enter your address" name="address" required>
+    </div>
+
+    <br><br>
+
+    <button type="submit" class="btn btn-warning text-color" style="margin-left: 10px;" [disabled]="!notifyForm.valid">Subscribe</button> &nbsp;
+    <span style="margin-left: 150px;">
+      <button type="button" class="btn btn-outline-warning"  (click)="onCancel()">No Thanks</button>
+    </span>
+
+  </div>
+
+</form>

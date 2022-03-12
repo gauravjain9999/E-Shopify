@@ -1,0 +1,42 @@
+/* Float four columns side by side */
+ .column {
+  float: left;
+  width: 18%;
+  padding: 0 10px;
+  margin-left: 24px;
+}
+
+/* Remove extra left and right margins, due to padding */
+ .row {margin: 0 -5px;} */
+
+/* Clear floats after the columns */
+ .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+ @media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+ .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  cursor: pointer;
+  text-align: center;
+  height: 100%;
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  background-color: #f1f1f1;
+}
+.card:hover
+{
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+}

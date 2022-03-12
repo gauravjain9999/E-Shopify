@@ -1,0 +1,33 @@
+img {
+  border-radius: 25%;
+}
+.card
+{
+  /* background-color: aqua; */
+  align-items: center;
+}
+.card-item
+{
+  margin-top: 8px;
+}
+
+.card-layout-design
+{
+  height: 100px;
+}
+
+.card-layout-design-text
+{
+  cursor: pointer;
+  height: 50px;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.common
+{
+  margin: 0;
+  padding-right: 15px;
+}

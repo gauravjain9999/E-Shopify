@@ -1,0 +1,11 @@
+.card{
+  height: 121vh;
+  margin: 25px;
+  border: 1px solid black;
+  padding: 25px;
+  border-radius: 2px;
+}
+
+.checkBoxedMale input[type="radio"]{
+  margin-right:20px;
+}

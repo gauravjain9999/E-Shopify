@@ -1,0 +1,129 @@
+.card{
+
+  height: 80vh;
+  margin: 25px;
+  font-weight: bold;
+  padding: 25px;
+}
+
+h4, h5{
+  font-weight: 500;
+}
+
+.center img{
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  border: none;
+  height: 162px;
+  width: 250px;
+  margin: 20px 0px;
+}
+
+.center{
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%);
+}
+.card-table{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: none;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+}
+
+
+.content
+{
+  padding: 30px;
+  margin-left: 110px;
+  margin-right: 110px !important;
+  background: rgb(216, 208, 208);
+}
+
+.content-text
+{
+  margin-left: 830px !important;
+  font-weight: 500;
+}
+.confirm-btn
+{
+  margin-left: 60px;
+}
+
+.content-text-main
+{
+  padding: 5px;
+}
+
+
+.center .btn
+{
+  font-size: 14px !important;
+  margin-top: 20px !important;
+  font-weight: 400;
+  padding: 12px 72px;
+  border-radius: 3px !important;
+}
+.dialog-box
+{
+  height: 500px;
+  width:  500px;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .card
+{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 55%;
+  height: 60%;
+  margin-left: 5%;
+  margin-top: 10%;
+}
+
+.card:hover
+{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container
+{
+  padding: 2px 16px;
+}
+.container-card-image
+{
+  height: 300px;
+  width: 200px;
+}
+.container-card-image-text
+{
+  margin-top: 5px;
+  background: chartreuse;
+} */

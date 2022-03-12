@@ -1,0 +1,26 @@
+.edit-details
+{
+  margin-left: 1px;
+  width: 700px;
+  padding: 5px;
+}
+.form-group
+{
+  margin: 5px;
+  width: max-content;
+  padding: 10px;
+}
+.float-right
+{
+  float: right;
+}
+.label-adjust
+{
+  font-weight: 500;
+  font-size: medium;
+}
+
+.errorText
+{
+  color: red;
+}

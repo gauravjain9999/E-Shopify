@@ -40,7 +40,7 @@ hr {
      width: 100%;
   }
 }
-/* 
+/*
 input.ng-touched{
 
   border: 1px solid red;
@@ -50,4 +50,20 @@ input.ng-touched{
 {
   margin-bottom: 15px;
   color: red;
+}
+img.avatar {
+  width: 7%;
+  margin-left: 40%;
+  border-radius: 8%;
+}
+
+.heading{
+  font-weight: 500;
+  font-size:xx-large;
+  font-style: bold;
+  margin-top: 15px;
+}
+.main-header
+{
+  margin-top: 10px;
 }

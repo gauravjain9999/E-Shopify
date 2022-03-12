@@ -1,0 +1,75 @@
+<app-main-header></app-main-header>
+<div class="card">
+  <div class="card-component">
+    <h1>Personal Information</h1>
+    <mat-divider></mat-divider>
+
+    <div class="text-input" style="margin-top: 15px;">
+      <input style=" margin: 0px; width: 250px; height: 40px;"  [readonly]="flagName" autocomplete="true" [(ngModel)]="firstName" #input placeholder="First Name" type="text">&nbsp;&nbsp;&nbsp;
+      <input style="width: 150px; height: 40px;" placeholder="Last Name" [readonly]="flagName" [(ngModel)]="lastName" type="text">&nbsp;&nbsp;&nbsp;
+      <button mat-stroked-button color="primary" (click)="nameChange()">{{editingName === true ? "Save": "Edit"}}</button>
+    </div>
+    <div style="margin-top: 25px;">
+      <h1> Your Gender</h1>
+      <mat-divider></mat-divider>
+      <div style="margin-top: 15px;">
+        <span class="checkBoxedMale"><input type="radio" >Male</span> &nbsp; &nbsp; &nbsp;
+        <span class="checkBoxedMale"><input type="radio" >Female</span>
+      </div>
+    </div>
+
+    <div class="text-input" style="margin-top: 30px;">
+      <h1>Email Address</h1>
+      <mat-divider></mat-divider>
+      <div style="margin-top: 15px;">
+        <input style="width: 250px; height: 40px;" [(ngModel)]="email"  [readOnly]="flagEmail" placeholder="Your Email Address" type="text" email>&nbsp;&nbsp;&nbsp;
+        <button mat-stroked-button color="primary"  (click)="emailChange()">{{editingEmail === true ? "Save": "Edit"}}</button> &nbsp; &nbsp; &nbsp;
+        <button mat-stroked-button color="primary">Change Password</button>
+      </div>
+    </div>
+
+    <div class="text-input" style="margin-top: 30px;">
+      <h1>Mobile Number</h1>
+      <mat-divider></mat-divider>
+      <div style="margin-top: 15px;">
+        <input style="width: 250px; height: 40px;"  [(ngModel)]="phoneNumber" [readOnly]="flagNumber" placeholder="Your Mobile Number" type="number">&nbsp;&nbsp;&nbsp;
+        <button mat-stroked-button color="primary"   (click)="numberChange()">{{editingNumber === true ? "Save": "Edit"}}</button>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <h1 style="font-size: x-large; font-weight: 500;">FAQs</h1>
+
+    <div style="margin-top: 20px; font-weight: 400;">
+      1)  What happens when I update my email address (or mobile number)?
+          Your login email id (or mobile number) changes, likewise. You'll receive all your account related communication on your updated email address (or mobile <span style="margin-left: 16px;">
+            number).
+          </span>
+    </div>
+
+    <div style="margin-top: 20px; font-weight: 400;">
+
+      2) When will my Flipkart account be updated with the new email address (or mobile number)?
+         It happens as soon as you confirm the verification code sent to your email (or mobile) and save the changes.
+    </div>
+
+    <div style="margin-top: 20px; font-weight: 400;">
+
+      3) What happens to my existing Flipkart account when I update my email address (or mobile number)?
+         Updating your email address (or mobile number) doesn't invalidate your account. Your account remains fully functional. You'll <span style="margin-left: 15px;">
+           continue seeing your Order history, saved information and personal details.
+         </span>
+    </div>
+
+    <div  style="margin-top: 20px; font-weight: 400;">
+
+     4) Does my Seller account get affected when I update my email address?
+        Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller account also.
+     </div>
+  </div>
+
+  </div>
+</div>
+
+
+<app-footer></app-footer>

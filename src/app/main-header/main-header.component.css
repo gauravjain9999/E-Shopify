@@ -3,14 +3,28 @@
   margin-top: 10px;
   justify-content: left;
   display: flex;
+  padding: 10px;
   border-bottom: black;
   align-items:flex-start
 }
+
+.mat-toolbar-btn
+{
+  margin-left: 25px;
+}
+
 .float-img
 {
   font: right;
+  margin-left: 15px;
   width: 40px;
 }
+
+.align-badge
+{
+  margin-left: 154px;
+}
+
 .search-bar
 {
 
@@ -23,9 +37,20 @@
   border-left: none;
   cursor: pointer;
 }
+
 .searchText
 {
-  width: 300px;
+  margin-left: 200px;
+  width: 250px;
+}
+
+.notify
+{
+  cursor: pointer;
+  margin-top: 8px;
+  height: 20px;
+  size: 20px;
+  margin-left: 120px;
 }
 
 /* DropDown */
@@ -33,6 +58,7 @@
   background-color: #4CAF50;
   color: black;
   padding: 14px;
+  position: fixed;
   margin-left: 300px;
   background: none;
   border: none;
@@ -99,6 +125,68 @@
 }
 .icon-cart
 {
+  position: absolute;
+  border: none;
   background: url("../../assets/images/outline_shopping_cart_black_24dp.png") no-repeat left;
   background-size: 20px;
+  margin-left: 1200px;
 }
+
+.icon-cart:hover{
+  border-radius: 5px;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+}
+
+.icon-cart-text{
+  position: relative;
+  margin-left: 20px;
+  font-size: 18px;
+  margin-top: 6px;
+}
+.logout-btn{
+
+  position: absolute;
+  margin-left: 1350px;
+  font-size: larger;
+  padding: 8px;
+  background-color: none;
+  text-align: center;
+  align-items: center;
+}
+.logout-btn:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+}
+
+.mat-sidenav-overlay
+{
+  margin-top: 20px;
+}
+
+mat-sidenav-container
+{
+  height: 100%;
+  margin-top: 5px;
+  overflow: visible;
+}
+mat-sidenav, mat-sidenav-content{
+
+  margin-top: 5px;
+  overflow: visible;
+}
+
+mat-sidenav{
+  /* background-color: lightcoral; */
+  width: 300px;
+  margin-top: 5px;
+  height: 900px;
+  /* background-color: white; */
+}
+
+::ng-deep .mat-tooltip {
+  position: relative;
+  top:2px;
+}
+

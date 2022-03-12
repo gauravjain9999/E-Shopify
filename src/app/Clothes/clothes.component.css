@@ -1,0 +1,39 @@
+.column {
+  float: left;
+  width: 18%;
+  margin-left: 30px;
+  padding: 0;
+  margin-top: 15px;
+  border-radius:5px;
+  border-color: aqua;
+  height: 390px;
+}
+
+ .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column:hover
+{
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+  background: red;
+  margin-top: 15px;
+  justify-content: end;
+}
+
+.my-pagination /deep/ .ngx-pagination .current:hover
+{
+  background-color: grey;
+}
+/* .example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+} */
