@@ -21,6 +21,7 @@ export class MainHeaderComponent implements OnInit {
 
   constructor( private dialog: MatDialog,  private cartService: CartService, private notificationService: NotificationService) {
 
+    console.log(this.opened);
    this.cartService.getProduct().subscribe(res =>{
    this.totalItem = res.length;
   })
