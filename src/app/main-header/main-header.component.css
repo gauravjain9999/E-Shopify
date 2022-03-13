@@ -50,7 +50,10 @@
   margin-top: 8px;
   height: 20px;
   size: 20px;
-  margin-left: 120px;
+  margin-left: 115px;
+}
+.notify:hover{
+  transform: scale(1.05);
 }
 
 /* DropDown */
@@ -135,7 +138,6 @@
 .icon-cart:hover{
   border-radius: 5px;
   transform: scale(1.05);
-  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
 }
 
 .icon-cart-text{
@@ -157,8 +159,22 @@
 .logout-btn:hover{
   cursor: pointer;
   transform: scale(1.05);
-  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
 }
+
+.mat-icon-logout
+{
+  margin-left: 125px;
+  margin-top: 5px;
+}
+
+.mat-icon-logout:hover
+{
+  cursor: pointer;
+  margin-left: 125px;
+  margin-top: 5px;
+}
+
+
 
 .mat-sidenav-overlay
 {
