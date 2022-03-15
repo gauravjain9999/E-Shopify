@@ -18,13 +18,14 @@
 <br>
 <form class="form-group" [formGroup]="notifyForm" (ngSubmit)="onSubmit()">
   <div class="form-group-class">
+
     <div>
-      <b style="font-size: medium;">Email :</b><input class="edit-details1" type="text" formControlName="email" email placeholder="Enter your email" required>
+      <b style="font-size: medium;">Name :</b><input class="edit-details2" type="text" formControlName="name" placeholder="Enter your Name" name="name"  required>
     </div>
     <br>
 
     <div>
-      <b style="font-size: medium;">Address :</b><input class="edit-details2" type="text" formControlName="address" placeholder="Enter your address" name="address" required>
+      <b style="font-size: medium;">Email :</b><input class="edit-details1" type="text" formControlName="email"placeholder="Enter your email" name="email" email required>
     </div>
 
     <br><br>

@@ -17,6 +17,7 @@ export class MainHeaderComponent implements OnInit {
 
   searchText: any;
   opened = false;
+  email: string;
   public totalItem: number = 0;
 
   constructor( private dialog: MatDialog,  private cartService: CartService, private notificationService: NotificationService) {

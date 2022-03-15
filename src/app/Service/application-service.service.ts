@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
@@ -6,5 +7,12 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class ApplicationServiceService {
 
   nameEvent = new EventEmitter<any>();
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  notifyUrl = "https://formspree.io/f/mqknlppk";
+
+  getNotify(requestData: string)
+  {
+    return this.httpClient.post(this.notifyUrl, requestData);
+  }
 }

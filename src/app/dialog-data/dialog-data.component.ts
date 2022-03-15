@@ -1,13 +1,16 @@
 import { Router } from '@angular/router';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import * as moment from 'moment';
 
 export class DialogData{
 
   name:string;
   mobileNum:string;
   address:string;
+  state: string;
+  city:string;
   date:string;
   payment:string;
   location:string;
@@ -18,22 +21,25 @@ export class DialogData{
   templateUrl: './dialog-data.component.html',
   styleUrls: ['./dialog-data.component.css']
 })
-export class DialogDataComponent implements OnInit {
+export class DialogDataComponent implements OnInit{
 
   defaultValue = null;
   identification ='Select Default Value';
   isFill= false;
+  currentDate: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public dialogRef: MatDialogRef<DialogDataComponent>,
   private router:Router) {}
 
   ngOnInit(): void {
+    this.currentDate = moment().format('YYYY-MM-DD');
   }
 
   profileForm = new FormGroup({
     name:        new FormControl('',  Validators.required),
     email:       new FormControl('',  [Validators.required, Validators.email]),
     location:    new FormControl('' , [Validators.required]),
+    date:        new FormControl(new Date(),  Validators.required),
     payment:     new FormControl('',  [Validators.required]),
     state:       new FormControl('',  Validators.required),
     city:        new FormControl('',  Validators.required),

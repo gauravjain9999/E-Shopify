@@ -58,6 +58,15 @@
     </ng-container>
     <br> <br>
 
+    <label for="date" class="label-adjust">Date</label>
+    <br>
+    <input  class="edit-details" [(ngModel)]="currentDate" formControlName="date" id="date" type="date" required>
+    <ng-container *ngIf="profileForm.controls['date'].invalid && profileForm.controls['date'].touched" >
+      <div class="errorText">*Date is required</div>
+    </ng-container>
+    <br> <br>
+
+
     <label for="state" class="label-adjust">State</label>
     <br>
     <input class="edit-details" type="text" formControlName="state" placeholder="Enter your state" required>
