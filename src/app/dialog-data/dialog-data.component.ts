@@ -32,6 +32,7 @@ export class DialogDataComponent implements OnInit{
   private router:Router) {}
 
   ngOnInit(): void {
+    //comment date
     this.currentDate = moment().format('YYYY-MM-DD');
   }
 

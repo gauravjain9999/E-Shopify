@@ -46,7 +46,10 @@ export class NewRegisterComponent implements OnInit {
     private router: Router,
     private applicationService: ApplicationServiceService,
     private spinner: NgxSpinnerService
-  ) {}
+  ) {
+    this.email = '';
+    this.pass = ''
+  }
 
   ngOnInit(): void {
     this.spinner.show();

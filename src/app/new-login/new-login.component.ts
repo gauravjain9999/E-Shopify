@@ -1,9 +1,11 @@
+import { NewRegisterComponent } from './../new-register/new-register.component';
 import { NgForm } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from './../Service/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataStorageService } from '../Service/data-storage.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-new-login',
@@ -20,12 +22,16 @@ export class NewLoginComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private dialogRef: MatDialogRef<NewLoginComponent>,
     private spinner: NgxSpinnerService,
+    private dialog: MatDialog,
     private notificationService: NotificationService,
     private authService: DataStorageService
   ) {}
 
   ngOnInit(): void {
+    this.email = '';
+    this.password = '';
     this.spinner.show();
   }
 
@@ -77,6 +83,7 @@ export class NewLoginComponent implements OnInit {
     );
   }
   onLogin() {
+    this.dialogRef.close();
     this.isLoading = true;
     this.router.navigate(['mainPage']);
     this.isLoading = false;
@@ -84,9 +91,17 @@ export class NewLoginComponent implements OnInit {
   }
 
   onSignUp() {
-    setTimeout(() => {
-      this.spinner.show();
-    }, 5000);
-    this.router.navigate(['new-register']);
+    // setTimeout(() => {
+    //   this.spinner.show();
+    // }, 5000);
+    // this.dialogRef.close();
+
+    this.dialog.open(NewRegisterComponent, {
+
+      height: '750px',
+      width: '800px'
+    })
+    this.dialogRef.close()
+    // this.router.navigate(['new-register']);
   }
 }

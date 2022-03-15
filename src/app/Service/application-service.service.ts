@@ -9,7 +9,8 @@ export class ApplicationServiceService {
   nameEvent = new EventEmitter<any>();
   constructor(private httpClient: HttpClient) { }
 
-  notifyUrl = "https://formspree.io/f/mqknlppk";
+  // notifyUrl = "https://formspree.io/f/mqknlppk";
+  notifyUrl = "https://formspree.io/f/xyyopear";
 
   getNotify(requestData: string)
   {

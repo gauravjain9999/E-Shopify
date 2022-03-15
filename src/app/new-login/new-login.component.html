@@ -1,6 +1,5 @@
 
 <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-
   <div class="alert alert-danger" *ngIf="isLoading">
     <p>{{error}}</p>
   </div>
@@ -8,7 +7,8 @@
     <img src="../../assets/images/shopifyApp.png" alt="Avatar" class="avatar"><span class="heading" style="color: seagreen;">
      Shopify <span style="color: orange">App</span></span>
   </div>
-  <h3 style="margin-left: 20px;"> Get access to your Orders,<br>Wishlist and Recommendation</h3>
+  <mat-divider></mat-divider>
+  <h3 style="margin-left: 20px; margin-top: 20px;"> Get access to your Orders,<br>Wishlist and Recommendation and much more !!!</h3>
   <div class="container">
     <label for="uname"><b>Email</b></label><br>
     <input type="text" placeholder="Email" ngModel password class="form-control" email name="email" required>
@@ -19,9 +19,12 @@
 
    <h4 style="color: grey;">By creating an account you agree to our <a href="" style="color:dodgerblue">Terms & Privacy</a>.</h4>
   </div>
-  <button type="submit" id="myBtn" class="btn btn-sucess" >Login</button>
-
-  <span class="psw">New to Shopify?  <button style="padding: 0px; margin: 0px; font-style: bold; color: blue; background-color: white;" (click)="onSignUp()"routerLinkActive="active">SignUp</button></span>
+  <!-- <button   class="btn btn-primary">Shop now</button> -->
+  <button type="submit" id="myBtn" mat-raised-button color="green">Login</button>
+  <br>
+  <div class="psw" style="margin-left: 43%; font-weight: 500;">New to Shopify ?</div>
+  <br>
+  <button type="button" id="myBtn" mat-raised-button color="primary" (click)="onSignUp()">Create Your Account</button>
 </form>
 
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

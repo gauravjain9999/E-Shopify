@@ -5,15 +5,15 @@
   margin-top: 15px;
 }
 
-form {
-  border: 4px solid #8a7979;
-  padding: 40px;
-  margin-left: 20%;
-  /* background: rgb(240, 229, 229); */
+/* form {
+  border: 1px solid #8a7979;
+  padding: 35px;
+  margin-left: 35%;
+  background: rgb(240, 229, 229);
   margin-bottom: 20px;
-  margin-right: 15%;
+  margin-right: 25%;
   margin-top: 120px;
-}
+} */
 
 .success-message{
   background-color: #04AA6D;
@@ -41,7 +41,11 @@ button {
 
 #myBtn
 {
-  margin-left: 45%;
+  width: 94%;
+  justify-content: center;
+  justify-items: center;
+  display: flex;
+  margin-left: 3%;
   margin-right: 50%;
 }
 
@@ -57,7 +61,7 @@ button:hover {
 
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+  margin: 4px 0 12px 0;
 }
 
 img.avatar {
@@ -70,7 +74,10 @@ img.avatar {
 }
 
 span.psw {
-  float: right;
+  /* float: right; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
   padding-top: 16px;
 }
 

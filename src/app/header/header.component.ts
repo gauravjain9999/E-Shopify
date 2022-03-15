@@ -1,3 +1,7 @@
+import { NewRegisterComponent } from './../new-register/new-register.component';
+import { NewLoginComponent } from './../new-login/new-login.component';
+import { LoginFormComponent } from './../login-form/login-form.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor( private dialogBox: MatDialog,  private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,11 +22,23 @@ export class HeaderComponent implements OnInit {
   }
   loginTo()
   {
-   this.router.navigate(['/new-login']);
+   this.dialogBox.open(NewLoginComponent, {
+
+    height: '750px',
+    width: '800px'
+
+   })
+  //  this.router.navigate(['/new-login']);
   }
   newRegister()
   {
-    this.router.navigate(['new-register']);
+    this.dialogBox.open(NewRegisterComponent, {
+
+      height: '750px',
+      width: '800px'
+
+    })
+    // this.router.navigate(['new-register']);
   }
   onClick()
   {
