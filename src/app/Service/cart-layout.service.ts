@@ -6,9 +6,46 @@ import { Injectable } from '@angular/core';
 })
 export class CartLayoutService {
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router) { }
+
+  getCartLayoutCards()
+  {
+    var cardsLayout = [
+      {
+        id:0,
+        src: '../../assets/images/mobilephone.jpeg',
+        title: 'Top Mobile Products',
+        clickItem: 'Click Here ->',
+      },
+      {
+        id:1,
+        src: '../../assets/images/appliances.jpg',
+        title: 'Top Appliances Product',
+        clickItem: 'Click Here ->',
+      },
+      {
+        id:2,
+        src: '../../assets/images/clothes.jpg',
+        clickItem: 'Click Here ->',
+        // click: this.router.navigate(['clothProduct']),
+        title: 'Top Mobile Products',
+      },
+      {
+        id:3,
+        src: '../../assets/images/toys.jpg',
+        title: 'Top Toys and Gift',
+        clickItem: 'Click Here ->',
+      },
+      {
+        id:4,
+        src: '../../assets/images/book4.jpeg',
+        title: 'Top Selling Books',
+        clickItem: 'Click Here ->',
+      },
+    ]
+    return cardsLayout;
+  }
+
 
 
   getCartLayoutDesgin()

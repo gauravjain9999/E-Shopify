@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartLayoutService } from '../Service/cart-layout.service';
 
 @Component({
   selector: 'app-card-layout-product',
@@ -8,13 +9,28 @@ import { Router } from '@angular/router';
 })
 export class CardLayoutProductComponent implements OnInit {
 
-  constructor(private router: Router) { }
+
+  listOfCardsItem :any;
+
+  constructor(private cartService: CartLayoutService,  private router: Router) { }
 
   ngOnInit(): void {
+
+    this.listOfCardsItem = this.cartService.getCartLayoutCards()
+    console.log(this.listOfCardsItem);
   }
-  goToClothPage()
+
+
+  goToClothPage(item: number,  index :number)
   {
-    this.router.navigate(['clothProduct']);
+    if(index === 2)
+    {
+      sessionStorage.setItem('TEMP_ITEM', JSON.stringify(item));
+      this.router.navigate(['clothProduct']);
+    }
+    else{
+      sessionStorage.removeItem('TEMP_ITEM');
+    }
   }
 
 }

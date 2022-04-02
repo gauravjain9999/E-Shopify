@@ -33,6 +33,7 @@
     "ngx-useful-swiper": "^10.0.1",
     "rxjs": "~7.4.0",
     "swiper": "^6.8.4",
+    "typeface-muli": "^1.1.13",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
