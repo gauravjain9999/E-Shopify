@@ -127,16 +127,13 @@ export class NewRegisterComponent implements OnInit {
     this.userEmail.emit(form.value.email);
     this.userPass.emit(form.value.password);
     this.applicationService.nameEvent.emit(this.formStatus);
-
-    console.log(form);
-
     // const email = form.value.email;
     // const pass = form.value.password;
 
   }
 
   onSubmitLoginPage() {
-    this.applicationService.nameEvent.emit(this.formStatus);
+    this.applicationService.nameEvent.emit(this.customer.name);
     this.router.navigate(['mainPage']);
     this.spinner.show();
     this.closeAlertBox();

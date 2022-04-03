@@ -8,52 +8,135 @@
 <app-card-layout-product></app-card-layout-product>
 
 
-<!-- <div class="heading">
-<div class="heading-main">
-  <h1 style="margin-top: 250px;">Our Mission </h1>
-  <div style="margin-top: 10px; margin-right: 40px;">
-    <p>E-commerce is revolutionizing the way we all shop in India. Why do you want to hop from one store to another in search of the latest phone when you can find it on the Internet in a single click? Not only mobiles. Flipkart houses everything you can possibly imagine, from trending electronics like laptops, tablets, smartphones, and mobile accessories to in-vogue fashion staples like shoes, clothing and lifestyle accessories; from modern furniture like sofa sets, dining tables, and wardrobes to appliances that make your life easy like washing machines, TVs, ACs, mixer grinder juicers and other time-saving kitchen and small appliances; from home furnishings like cushion covers, mattresses and bedsheets to toys and musical instruments, we got them all covered. You name it, and you can stay assured about finding them all here. For those of you with erratic working hours, Flipkart is your best bet. Shop in your PJs, at night or in the wee hours of the morning.
-       This e-commerce never shuts down.
-      </p>
-    </div>
-  </div>
-</div> -->
-
-<div style="margin-top: 350px; margin-left: 35px;">
+<div style="margin-top: 300px;">
   <div class="card" style="margin-top: 50px;">
-    <img src="img_avatar.png" alt="Avatar" style="width:100%">
     <div class="container">
-      <h4><b>John Doe</b></h4>
-      <p>Architect & Engineer</p>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  <div style="margin-top: 500px;">
-    <div class="row">
-      <div class="column">
-        <div><mat-icon [inline]="true" style="margin-left: 10px;">mood</mat-icon></div>
-        <h2 style="margin-top: 20px; font-weight: 700;"> Good Mood </h2>
-        <p> Shopify Take care of all Good things that you want. Here you will find multiple varieties of things and makes your mood Happy.
-        Go and Search your favorite product in just one click.
+      <h1 style="justify-content: center; align-items: center; display: flex;">Our Mission</h1>
+      <p style="margin-top: 20px;">
+        E-commerce is revolutionizing the way we all shop in India. Why do you want to hop from one store to another in search of the latest phone when you can find it on the Internet in a single click ? Not only
+        mobiles. Flipkart houses everything you can possibly imagine, from trending electronics like laptops, tablets, smartphones, and mobile accessories to in-vogue fashion staples like shoes, clothing and lifestyle
+        accessories; from modern furniture like sofa sets, dining tables, and wardrobes to appliances that make your life easy like washing machines, TVs, ACs, mixer grinder juicers and other time-saving kitchen and
+        small appliances; from home furnishings like cushion covers, mattresses and bedsheets to toys and musical instruments, we got them allcovered. You name it, and you can stay assured about finding them all here. For those of you with erratic working hours, Flipkart is your best bet. Shop in your PJs, at night or in the wee hours of the morning.
+        This e-commerce never shuts down.
+        <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque ratione, reiciendis deleniti ut ipsa cumque repudiandae suscipit vitae sit, culpa vel commodi libero itaque, illum doloremque quisquam laboriosam tempore similique? -->
       </p>
     </div>
+    <div style="margin-top: 10px;">
+      <div class="row">
+        <div class="column">
+          <div><mat-icon [inline]="true" style="margin-left: 10px;">mood</mat-icon></div>
+          <h3 style="margin-top: 20px; font-size: large;"> <b>Good Mood </b></h3>
+          <p> Shopify Take care of all Good things that you want. Here you will find multiple varieties of things and makes your mood Happy.
+          Go and Search your favorite product in just one click.
+        </p>
+      </div>
 
-    <div class="column">
-      <div><mat-icon [inline]="true" style="margin-left: 10px;">people_outline</mat-icon></div>
-      <h2 style="margin-top: 20px;  font-weight: 700;"> A safe and efficient platform </h2>
-      <p> Millions of users trust Shopify to manage their online stores.<br>Trust me You will never go any other website. </p>
+      <div class="column">
+        <div><mat-icon [inline]="true" style="margin-left: 10px;">people_outline</mat-icon></div>
+        <h3 style="margin-top: 20px; font-size: large"><b>A safe and efficient platform</b>
+        </h3>
+        <p> Millions of users trust Shopify to manage their online stores.Trust me You will never go any other website. </p>
+      </div>
+
+      <div class="column">
+        <div><mat-icon [inline]="true" style="margin-left: 10px;">place</mat-icon></div>
+        <h3 style="margin-top: 20px; font-size: large;"><b>Location Service</b></h3>
+        <p> Our location is all across the world. <br>You can check here in your service area.</p>
+      </div>
     </div>
-
-    <div class="column">
-      <div><mat-icon [inline]="true" style="margin-left: 10px;">place</mat-icon></div>
-      <h2 style="margin-top: 20px;  font-weight: 700;"> Location Service </h2>
-      <p> Our location is all across the world. <br>You can check here in your service area.</p>
     </div>
   </div>
 </div>
+
+
+ <div style="margin-top: 50px; margin-left: 50px; margin-right: 30px;  width: 1400px;">
+   <mat-divider></mat-divider>
+     <div style="margin-top: 30px; width: max-content; height: max-content; margin-left: 50px;" >
+      <span style="margin-left: 80px;" *ngFor="let icon of iconsList">
+        <img src={{icon.src}}>
+      </span>
+    </div>
+   <br>
+   <mat-divider></mat-divider>
+ </div>
+
+ <div class="card-faq">
+  <div class="container-faq">
+    <h4><b style="font-size: x-large; ">FAQ's</b></h4>
+    <!-- <p>Architect & Engineer</p> -->
+  </div>
+
+  <div style="margin-left: 23%; padding: 8px; width: 920px">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header >
+          <mat-panel-title>
+            What is Shopify and how does it work?
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon class="pointer" style="margin-left: 465px;" [inline]="true">add</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I4 am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <mat-divider style="margin-left: 360px; width: 800px;"></mat-divider>
+
+  <div style="margin-left: 23%; padding: 8px; width: 920px">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            How much does Shopify cost?
+          </mat-panel-title>
+          <mat-panel-description style="margin-left: 523px;">
+            <mat-icon class="pointer" [inline]="true">add</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I4 am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <mat-divider style="margin-left: 360px; width: 800px;"></mat-divider>
+
+  <div style="margin-left: 23%; padding: 8px; width: 920px">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Can I use my own domain name with Shopify?
+          </mat-panel-title>
+          <mat-panel-description style="margin-left: 420px;">
+            <mat-icon class="pointer" [inline]="true">add</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I4 am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <mat-divider style="margin-left: 360px; width: 800px;"></mat-divider>
+
+  <div style="margin-left: 23%; padding: 8px; width: 920px">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Do I need to be a designer or developer to use Shopify?
+          </mat-panel-title>
+          <mat-panel-description style="margin-left: 359px;">
+            <mat-icon class="pointer" [inline]="true">add</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I4 am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <mat-divider style="margin-left: 360px; width: 800px;"></mat-divider>
+
+
   <app-footer></app-footer>

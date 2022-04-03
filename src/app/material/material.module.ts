@@ -14,7 +14,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 const customClassModule = [
 
@@ -26,6 +26,7 @@ const customClassModule = [
     MatButtonModule,
     MatFormFieldModule,
     MatDividerModule,
+    MatExpansionModule,
     FlexLayoutModule,
     MatSnackBarModule,
     MatDatepickerModule,

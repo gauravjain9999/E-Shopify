@@ -20,3 +20,8 @@ body {
   text-decoration: none;
   width: 200px;
 }
+
+.pointer
+{
+  cursor: pointer;
+}

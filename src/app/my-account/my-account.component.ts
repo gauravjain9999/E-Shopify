@@ -12,13 +12,20 @@ export class MyAccountComponent implements OnInit {
   name: any;
   constructor(private router:Router,  private applicationService: ApplicationServiceService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-    this.applicationService.nameEvent.subscribe(event =>{
-      console.log(event);
-      this.setUserName(event)
-    })
+  ngAfterContentChecked(): void {
+
+    this.applicationService.nameEvent.subscribe(event=>{
+      this.name = event
+    });
+    console.log(this.name);
   }
+
+  ngAfterViewChecked(): void {
+    // console.log(this.name);
+  }
+
 
   onProfileData()
   {
@@ -28,10 +35,7 @@ export class MyAccountComponent implements OnInit {
 
   setUserName(item: string)
   {
-    this.name = item
-    this.applicationService.nameEvent.subscribe(form=>{
-      console.log(form);
-    });
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {

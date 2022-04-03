@@ -29,7 +29,8 @@ import {NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { DialogNotifyComponent } from './dialog-notify/dialog-notify.component';
 import { PaymentCheckoutComponent } from './payment-checkout/payment-checkout.component';
 import { MyAccountComponent } from './my-account/my-account.component';
-import { MyProfileComponent } from './my-profile/my-profile.component'
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component'
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component'
     DialogNotifyComponent,
     PaymentCheckoutComponent,
     MyAccountComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
