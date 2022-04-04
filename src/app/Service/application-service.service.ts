@@ -7,6 +7,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class ApplicationServiceService {
 
   nameEvent = new EventEmitter<any>();
+  checked = new EventEmitter<any>();
   constructor(private httpClient: HttpClient) { }
 
   // notifyUrl = "https://formspree.io/f/mqknlppk";

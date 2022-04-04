@@ -5,9 +5,9 @@
     <i class="fa fa-heart-o" style="font-size:24px; margin-left: 25px; "></i>
   </h2>
   <span style="margin-left: 15px;">{{itemCloth.brand}}
-   <button mat-raised-button *ngIf="!itemCloth.isCartVisible" #focus style="margin-left: 60px;" (click)="addToCart(itemCloth)">{{itemCloth.addToCloth}} </button>
+   <button mat-raised-button *ngIf="!itemCloth.isCartVisible" #focus style="margin-left: 65px;" (click)="addToCart(itemCloth)">{{itemCloth.addToCloth}} </button>
   </span>
-      <span class="example-button-container" style="margin-left: 60px; position: relative;"  *ngIf="itemCloth.isCartVisible">
+      <span class="example-button-container" style="margin-left: 50px; position: absolute;"  *ngIf="itemCloth.isCartVisible">
       <button mat-mini-fab color="accent" (click)="onAdd(itemCloth, i)" aria-label="Example icon button with a plus one icon">+</button>&nbsp;&nbsp;
       <span style="margin-top: 5px;"> {{itemCloth.itemAdd}} </span>&nbsp;
       &nbsp;

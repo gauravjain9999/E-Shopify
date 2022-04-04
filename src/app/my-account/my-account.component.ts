@@ -14,19 +14,6 @@ export class MyAccountComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  ngAfterContentChecked(): void {
-
-    this.applicationService.nameEvent.subscribe(event=>{
-      this.name = event
-    });
-    console.log(this.name);
-  }
-
-  ngAfterViewChecked(): void {
-    // console.log(this.name);
-  }
-
-
   onProfileData()
   {
     this.router.navigate(['myProfile']);

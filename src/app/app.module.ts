@@ -24,13 +24,13 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 import { FilterSearchPipe } from './Pipe/filter-search.pipe';
-import { DialogDataComponent } from './dialog-data/dialog-data.component';
+import { DialogDataComponent } from './Dialog-Box/dialog-data/dialog-data.component';
 import {NgxUsefulSwiperModule } from 'ngx-useful-swiper';
-import { DialogNotifyComponent } from './dialog-notify/dialog-notify.component';
+import { DialogNotifyComponent } from './Dialog-Box/dialog-notify/dialog-notify.component';
 import { PaymentCheckoutComponent } from './payment-checkout/payment-checkout.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component'
+import { ConfirmDialogComponent } from './Dialog-Box/confirm-dialog/confirm-dialog.component'
 
 
 @NgModule({

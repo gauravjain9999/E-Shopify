@@ -1,4 +1,6 @@
-import { DialogDataComponent } from './../dialog-data/dialog-data.component';
+import { ApplicationServiceService } from './../Service/application-service.service';
+import { ConfirmDialogComponent } from './../Dialog-Box/confirm-dialog/confirm-dialog.component';
+import { DialogDataComponent } from './../Dialog-Box/dialog-data/dialog-data.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CartService } from './../Service/cart.service';
@@ -13,10 +15,11 @@ export class AddToCartComponent implements OnInit {
 
   public products : any = [];
   public totalSum : number = 0;
+  isChecked : boolean;
   found : any;
 
 
-  constructor(private dialog: MatDialog, private cartService: CartService, private router: Router) { }
+  constructor(private applicationService: ApplicationServiceService, private dialog: MatDialog, private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -39,9 +42,28 @@ export class AddToCartComponent implements OnInit {
 
   onEditDetail()
   {
-    this.dialog.open(DialogDataComponent, {
-      height: '600px',
-      width: '800px',
-    });
+     this.dialog.open(ConfirmDialogComponent, {
+      data :{
+        isChecked: 'true',
+        isUnChecked: 'false'
+      },
+      height: '220px',
+      width: '480px',
+    })
+
+    this.applicationService.checked.subscribe(event =>{
+      this.isChecked = event;
+      if(this.isChecked)
+      {
+        // sessionStorage.setItem('CONFIRM', JSON.stringify(confirmDialog));
+        this.dialog.open(DialogDataComponent, {
+          height: '600px',
+          width: '800px',
+        });
+      }
+      else
+      {sessionStorage.removeItem('CONFIRM');}
+    })
+
   }
 }

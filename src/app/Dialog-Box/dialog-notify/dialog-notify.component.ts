@@ -1,9 +1,9 @@
-import { ApplicationServiceService } from './../Service/application-service.service';
+import { ApplicationServiceService } from '../../Service/application-service.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { NotificationService } from '../Service/notification.service';
+import { NotificationService } from '../../Service/notification.service';
 
 @Component({
   selector: 'app-dialog-notify',

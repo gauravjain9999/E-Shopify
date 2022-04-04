@@ -1,0 +1,34 @@
+
+.heading-main
+{
+   font-size: 20px;
+   margin-left: 15px;
+   font-weight: 700;
+}
+
+.heading-main-class-text
+{
+  font-size: 15px;
+  padding: 15px;
+  word-spacing: 1px;
+}
+
+.heading-main-class
+{
+  margin-top: 30px;
+}
+
+.read-more
+{
+    margin-left: 60px;
+    padding: 4px;
+    font-size: small;
+    color: blue;
+    font-weight: 700;
+}
+
+.btn
+{
+  margin-top: 10px;
+ /* background-color: lightcoral; */
+}
