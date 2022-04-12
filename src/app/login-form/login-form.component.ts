@@ -28,8 +28,8 @@ export class LoginFormComponent implements OnInit {
 
   onClothes()
   {
-    alert('Login First')
-    // this.router.navigate(['clothProduct'])
+    // alert('Login First')
+    this.router.navigate(['clothProduct'])
   }
 
 

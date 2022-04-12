@@ -1,3 +1,4 @@
+import { ClothesDetailComponent } from './clothes-detail/clothes-detail.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { PaymentCheckoutComponent } from './payment-checkout/payment-checkout.component';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'myProfile', component: MyProfileComponent},
   {path: 'clothProduct', component:ClothesProductComponent},
   {path: 'payment', component:PaymentCheckoutComponent},
+  {path: 'clothesDetails', component: ClothesDetailComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 

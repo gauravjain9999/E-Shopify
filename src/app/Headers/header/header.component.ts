@@ -1,6 +1,6 @@
-import { NewRegisterComponent } from './../new-register/new-register.component';
-import { NewLoginComponent } from './../new-login/new-login.component';
-import { LoginFormComponent } from './../login-form/login-form.component';
+import { NewRegisterComponent } from '../../new-register/new-register.component';
+import { NewLoginComponent } from '../../new-login/new-login.component';
+import { LoginFormComponent } from '../../login-form/login-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
