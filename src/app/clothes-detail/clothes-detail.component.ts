@@ -1,3 +1,4 @@
+import { ClothService } from './../Service/cloth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClothesDetailComponent implements OnInit {
 
-  constructor() {}
+  listOfItems: any;
+
+  constructor(private clothService: ClothService) {}
 
   ngOnInit(): void {
+
+    this.listOfItems = this.clothService.getListOfCloth();
+    console.log(this.listOfItems);
   }
 
+
+  itemClothList()
+  {
+    
+  }
 }

@@ -2,6 +2,7 @@ import { CartService } from './../Service/cart.service';
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ClothService } from '../Service/cloth.service';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 // import * as _ from 'lodash';
 
 @Component({
@@ -29,7 +30,7 @@ export class ClothesComponent implements OnInit {
   pageEvent: PageEvent;
   show: {[key: number]: boolean} = {};
 
-  constructor(private clothesService: ClothService, private cartService: CartService) { }
+  constructor(private clothesService: ClothService, private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -41,6 +42,12 @@ export class ClothesComponent implements OnInit {
       Object.assign(element, {quantity:1, total:element.price})
     });
   }
+
+  itemClothList(index: any)
+  {
+    this.router.navigate(['clothDetails'], index)
+  }
+
 
 
   addToCart(item: any)
@@ -55,9 +62,10 @@ export class ClothesComponent implements OnInit {
 
   onAdd(item: any, index: any)
   {
-  this.cartService.addToCart(item, index);
-  item.itemAdd++;
+    this.cartService.addToCart(item, index);
+    item.itemAdd++;
   }
+
   onSubtract(item: any, index:any)
   {
     this.cartService.removeCartItem(item, index)
