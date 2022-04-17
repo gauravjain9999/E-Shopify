@@ -18,6 +18,7 @@ import {FlexLayoutModule } from '@angular/flex-layout';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
+import {MatNativeDateModule} from '@angular/material/core';
 
 const customClassModule = [
 
@@ -33,6 +34,7 @@ const customClassModule = [
     MatDividerModule,
     MatSelectModule,
     MatExpansionModule,
+    MatNativeDateModule,
     FlexLayoutModule,
     MatSnackBarModule,
     MatDatepickerModule,

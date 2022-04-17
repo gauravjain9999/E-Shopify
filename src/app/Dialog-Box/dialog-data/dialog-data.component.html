@@ -9,99 +9,134 @@
   <div class="form-group-class">
     <mat-form-field  class="w-100" formLabel="auto" hideRequiredMarker>
       <mat-label>Name</mat-label>
-      <input matInput type="text" formControlName="name" placeholder="Enter your name">
+      <input matInput type="text" formControlName="name"  [errorStateMatcher]="customErrorStateMatcher" placeholder="Enter your name">
+      <mat-icon matSuffix>person</mat-icon>
+
+      <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('name').hasError('required')" [innerHTML]="getErrorMessage('name', 'required')">
+      </mat-error>
+      <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('name').hasError('maxlength')" [innerHTML]="getErrorMessage('name', 'maxlength')">
+      </mat-error>
+      <!-- <mat-error style="font-size: small; margin-top: 2px; padding: 5px;"  *ngIf="getFormControlName('name').hasError('pattern')" [innerHTML]="getErrorMessage('name', 'pattern')">
+      </mat-error> -->
     </mat-form-field>
-    <ng-container *ngIf="profileForm.controls['name'].invalid && profileForm.controls['name'].touched" >
+    <!-- <mat-error *ngIf="profileForm.controls['name'].invalid && profileForm.controls['name'].touched" >
       <div class="errorText">*Username is required </div>
-    </ng-container>
-    <br>
+    </mat-error> -->
+    <br> <br>
     <!-- <mat-icon tabindex="-1" class="float-right hand-icon" matRipple>close</mat-icon> -->
 
     <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker>
       <mat-label>Email</mat-label>
-      <input matInput type="text" formControlName="email" email placeholder="Enter your email">
+      <input matInput type="text"  [errorStateMatcher]="customErrorStateMatcher"  formControlName="email" email placeholder="Enter your email">
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('email').hasError('required')" [innerHTML]="getErrorMessage('email', 'required')">
+      </mat-error>
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('email').hasError('email')" [innerHTML]="getErrorMessage('email', 'email')">
+      </mat-error>
     </mat-form-field>
-    <ng-container *ngIf="profileForm.controls['email'].invalid && profileForm.controls['email'].touched" >
+    <!-- <ng-container *ngIf="profileForm.controls['email'].invalid && profileForm.controls['email'].touched" >
       <div class="errorText">*Email is required</div>
-    </ng-container>
-     <br>
+    </ng-container> -->
+    <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker>
+    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Phone Number</mat-label>
-      <input matInput type="text" formControlName="phoneNumber" (keypress)="keyPressNumbers($event)"
+      <input matInput type="text"  [errorStateMatcher]="customErrorStateMatcher" formControlName="phoneNumber" (keypress)="keyPressNumbers($event)"
       minlength=10 placeholder="Enter PhoneNo"
-    name="phoneNo" required>
-    </mat-form-field>
-    <ng-container *ngIf="profileForm.controls['phoneNumber'].invalid && profileForm.controls['phoneNumber'].touched" >
+      name="phoneNo" required>
+    <mat-hint align="end">Maximum Length should be 10</mat-hint>
+    <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('phoneNumber').hasError('required')" [innerHTML]="getErrorMessage('phoneNumber', 'required')">
+    </mat-error>
+    <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('phoneNumber').hasError('minlength')" [innerHTML]="getErrorMessage('phoneNumber', 'minlength')">
+    </mat-error>
+  </mat-form-field>
+    <!-- <ng-container *ngIf="profileForm.controls['phoneNumber'].invalid && profileForm.controls['phoneNumber'].touched" >
       <div class="errorText">*Phone number is required </div>
     </ng-container>
     <ng-container *ngIf="minLength <10">
     <div class="errorText">*Mobile Number Length should not be less than 10</div>
-    </ng-container>
+    </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker>
+    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Address</mat-label>
-      <input matInput type="text" formControlName="address" placeholder="Enter your address" name="address" required>
+      <input matInput type="text"  [errorStateMatcher]="customErrorStateMatcher"  formControlName="address" placeholder="Enter your address" name="address" required>
+      <mat-icon matSuffix>home</mat-icon>
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('address').hasError('required')" [innerHTML]="getErrorMessage('address', 'required')">
+      </mat-error>
     </mat-form-field>
-    <ng-container *ngIf="profileForm.controls['address'].invalid && profileForm.controls['address'].touched" >
+    <!-- <ng-container *ngIf="profileForm.controls['address'].invalid && profileForm.controls['address'].touched" >
       <div class="errorText">*Address is required </div>
-    </ng-container>
+    </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker>
-      <mat-label>Location</mat-label>
-      <input matInput type="text" formControlName="location" placeholder="Enter your location" required>
+    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
+      <mat-label>Near By Location</mat-label>
+      <input matInput type="text"  [errorStateMatcher]="customErrorStateMatcher" formControlName="location" placeholder="Enter your location" required>
+      <mat-icon matSuffix>place</mat-icon>
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('location').hasError('required')" [innerHTML]="getErrorMessage('location', 'required')">
+      </mat-error>
     </mat-form-field>
-    <ng-container *ngIf="profileForm.controls['location'].invalid && profileForm.controls['location'].touched" >
+    <!-- <ng-container *ngIf="profileForm.controls['location'].invalid && profileForm.controls['location'].touched" >
       <div class="errorText">*Location is required</div>
-    </ng-container>
+    </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker>
+    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>City</mat-label>
-      <input matInput type="text" formControlName="city" placeholder="Enter your city" required>
+      <input matInput (keypress)="keyPressAlphanumeric($event)"  [errorStateMatcher]="customErrorStateMatcher" type="text" formControlName="city" placeholder="Enter your city" required>
+      <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('city').hasError('required')" [innerHTML]="getErrorMessage('city', 'required')">
+      </mat-error>
     </mat-form-field>
-    <ng-container *ngIf="profileForm.controls['city'].invalid && profileForm.controls['city'].touched" >
+    <!-- <ng-container *ngIf="profileForm.controls['city'].invalid && profileForm.controls['city'].touched" >
       <div class="errorText">*City is required</div>
-    </ng-container>
+    </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker>
+    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Date</mat-label>
-      <input matInput [(ngModel)]="currentDate" formControlName="date" id="date" type="date" required>
+      <input matInput [(ngModel)]="currentDate" [errorStateMatcher]="customErrorStateMatcher" [matDatepicker]="picker" formControlName="date" type="text" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker>date_range</mat-datepicker>
+      <mat-hint align="end">Date should be in DD/MM/YYYY</mat-hint>
+      <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('date').hasError('required')" [innerHTML]="getErrorMessage('date', 'required')">
+      </mat-error>
     </mat-form-field>
-    <ng-container *ngIf="profileForm.controls['date'].invalid && profileForm.controls['date'].touched" >
+    <!-- <ng-container *ngIf="profileForm.controls['date'].invalid && profileForm.controls['date'].touched" >
       <div class="errorText">*Date is required</div>
-    </ng-container>
+    </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker>
+    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>State</mat-label>
-      <input matInput [matAutocomplete]="auto" type="text" [(ngModel)]="states" (ngModelChange)="onKeyUp(states)"
-       formControlName="state" placeholder="Enter your state" required>
-    </mat-form-field>
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option [value]="item" *ngFor="let item of myState | filter: states" (click)="onClick(item)">
-        {{item}}
-      </mat-option>
-    </mat-autocomplete>
-    <ng-container *ngIf="profileForm.controls['state'].invalid && profileForm.controls['state'].touched" >
+       <mat-hint align="end">Choose your State</mat-hint>
+       <mat-select  panelClass="my-panel" formControlName="state" [(ngModel)]="states">
+         <mat-option [value]="item" *ngFor="let item of myState" (change)="onClick(item)">
+           {{item}}
+          </mat-option>
+        </mat-select>
+        <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('state').hasError('required')" [innerHTML]="getErrorMessage('state', 'required')">
+        </mat-error>
+      </mat-form-field>
+    <!-- <ng-container *ngIf="profileForm.controls['state'].invalid && profileForm.controls['state'].touched" >
       <div class="errorText">*State is required</div>
-    </ng-container>
+    </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker>
+    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Payment</mat-label>
-      <mat-select panelClass="my-panel"  [(ngModel)]="defaultValuePayment">
+      <mat-hint align="end">Choose payment type</mat-hint>
+      <mat-select panelClass="my-panel"  formControlName="payment"  aria-placeholder="Choose your payment"  [(ngModel)]="defaultValuePayment">
         <mat-option [value]="option" *ngFor="let option of selectedPayment" (change)="onSelectedPayment(option)">
           {{option}}
         </mat-option>
       </mat-select>
+      <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('payment').hasError('required')" [innerHTML]="getErrorMessage('payment', 'required')">
+      </mat-error>
     </mat-form-field>
-    <ng-container *ngIf="profileForm.controls['payment'].invalid && profileForm.controls['payment'].touched" >
+    <!-- <ng-container *ngIf="profileForm.controls['payment'].invalid && profileForm.controls['payment'].touched" >
       <div class="errorText">*Payment mode is required</div>
-    </ng-container>
+    </ng-container> -->
 
     <br> <br>
     <button type="submit" class="btn btn-primary" (click)="onPayment()" [disabled]="!profileForm.valid">Submit</button> &nbsp;
