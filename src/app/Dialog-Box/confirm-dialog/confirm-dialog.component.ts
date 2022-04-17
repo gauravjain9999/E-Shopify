@@ -27,12 +27,13 @@ export class ConfirmDialogComponent implements OnInit {
 
   onClick(check: any)
   {
+    this.dialogRef.close();
     if(check.isChecked)
     {
      this.applicationService.checked.emit(check);
     }
   }
-  
+
   onCancel()
   {
     this.dialogRef.close();

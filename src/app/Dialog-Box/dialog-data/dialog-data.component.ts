@@ -29,12 +29,16 @@ export class DialogDataComponent implements OnInit{
   isFill= false;
   states: any;
   minLength = 10;
+  // newDate = new Date();
   selectedPayment = ['UPI', 'Cash On Delivery', 'Credit Card'];
   myState = ['Mumbai', 'Rajasthan', 'Delhi', 'Bangalore', 'Goa', 'Gujarat', 'Uttar Pradesh', 'Haryana', 'Kolkata', 'Punjab'];
   currentDate: string;
   filterdOptions: any[]=[];
   selectedUser: any;
   flag = false;
+  dateHint= 'Date should be in DD/MM/YYYY';
+  minDate: Date = new Date("1950-01-01");
+  maxDate: Date = new Date("2030-01-01");
 
 
   customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
@@ -49,6 +53,11 @@ export class DialogDataComponent implements OnInit{
     this.currentDate = moment().format('YYYY-MM-DD');
   }
 
+  // dateFilter(date:any)
+  // {
+  //   return date && date.getday()!==0 && date.getDay()!==6;
+  // }
+
   // Validators.pattern('^[A-Za-z]*$') Do not Contain Space or Dot
 
   profileForm = new FormGroup({
@@ -59,7 +68,8 @@ export class DialogDataComponent implements OnInit{
     payment:     new FormControl(null,  [Validators.required]),
     state:       new FormControl(null,  Validators.required),
     city:        new FormControl(null,  Validators.required),
-    phoneNumber: new FormControl(null,  [Validators.required,Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'), Validators.minLength(10)]),
+    phoneNumber: new FormControl(null,  [Validators.required,
+    Validators.maxLength(10), Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'), Validators.minLength(10)]),
     address:     new FormControl(null,  [Validators.required]),
   });
 
@@ -68,9 +78,23 @@ export class DialogDataComponent implements OnInit{
     this.defaultValuePayment = payment;
   }
 
-  onSubmit()
+
+  onDateChange()
   {
-    console.log(this.profileForm);
+    if(this.profileForm.value.date){
+      let date = new Date(this.profileForm.value.date);
+      this.dateHint = `You Selected your Delivery on ${date.toLocaleDateString()}`
+      //getting or return First Word of the Day
+      //this.dateHint = `You Selected your Delivery on ${date.toString().substr(0, date.toString().indexOf(" "))}`
+    }
+    else{
+      this.dateHint = "Date should be in DD/MM/YYYY"
+    }
+  }
+
+  submit()
+  {
+    console.log(this.profileForm.value);
   }
 
   keyPressAlphanumeric(event: any) {
@@ -94,12 +118,10 @@ export class DialogDataComponent implements OnInit{
     this.dialogRef.close();
   }
 
-  onPayment()
+  onSubmit()
   {
-    setTimeout(()=>{
-      this.router.navigate(['payment']);
-      this.dialogRef.close();
-    }, 1000)
+    this.dialogRef.close();
+    this.router.navigate(['payment']);
   }
 
   keyPressNumbers(event: any) {
@@ -194,7 +216,7 @@ export class DialogDataComponent implements OnInit{
         if(errorType === "required"){
           return "*PhoneNumber is required"
         }
-        else if(errorType === "minlength"){
+        else if(errorType === "minlength"|| errorType === "maxlength"){
           return "*Length should be less than or equal to 10"
         }
         else{

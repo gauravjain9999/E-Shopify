@@ -4,6 +4,6 @@ import { ErrorStateMatcher } from '@angular/material/core';
 export class CustomErrorStateMatcherService implements ErrorStateMatcher{
 
   isErrorState(control: FormControl, form: FormGroupDirective){
-    return control.invalid && control.touched;
+    return ((control.invalid && control.dirty));
   }
 }

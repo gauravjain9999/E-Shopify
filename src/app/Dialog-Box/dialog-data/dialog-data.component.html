@@ -4,7 +4,7 @@
 </div>
 <mat-divider></mat-divider>
 
-<form class="form-group" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<form class="form-group" [formGroup]="profileForm" (ngSubmit)="submit()">
 
   <div class="form-group-class">
     <mat-form-field  class="w-100" formLabel="auto" hideRequiredMarker>
@@ -42,12 +42,14 @@
     <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Phone Number</mat-label>
       <input matInput type="text"  [errorStateMatcher]="customErrorStateMatcher" formControlName="phoneNumber" (keypress)="keyPressNumbers($event)"
-      minlength=10 placeholder="Enter PhoneNo"
+      minlength=10  maxlength="10" placeholder="Enter PhoneNo"
       name="phoneNo" required>
     <mat-hint align="end">Maximum Length should be 10</mat-hint>
     <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('phoneNumber').hasError('required')" [innerHTML]="getErrorMessage('phoneNumber', 'required')">
     </mat-error>
     <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('phoneNumber').hasError('minlength')" [innerHTML]="getErrorMessage('phoneNumber', 'minlength')">
+    </mat-error>
+    <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('phoneNumber').hasError('maxlength')" [innerHTML]="getErrorMessage('phoneNumber', 'maxlength')">
     </mat-error>
   </mat-form-field>
     <!-- <ng-container *ngIf="profileForm.controls['phoneNumber'].invalid && profileForm.controls['phoneNumber'].touched" >
@@ -92,13 +94,17 @@
       <div class="errorText">*City is required</div>
     </ng-container> -->
     <br>
-
+    <!-- Some Important Feature or function In Date Picker -->
+    <!-- 1. [matDatepickerFilter]="dateFilter" It will enabled the corresponding date -->
+    <!-- touchUi is also feature in date to popup date in center of UI  -->
+    <!-- [startView]="year" or multi-year and month if user want to start calender or view calender as month so added month in mat date picker -->
+    <!-- Here [startAt]="startDate" and startDate= new Date('1-01-2001') in matDatepicker is added so it start with this date  -->
     <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Date</mat-label>
-      <input matInput [(ngModel)]="currentDate" [errorStateMatcher]="customErrorStateMatcher" [matDatepicker]="picker" formControlName="date" type="text" required>
+      <input matInput   [min]="minDate" (dateChange)="onDateChange()" [max]="maxDate" [(ngModel)]="currentDate" [errorStateMatcher]="customErrorStateMatcher" [matDatepicker]="picker" formControlName="date" type="text" required>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker>date_range</mat-datepicker>
-      <mat-hint align="end">Date should be in DD/MM/YYYY</mat-hint>
+      <mat-hint align="end">{{dateHint}}</mat-hint>
       <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('date').hasError('required')" [innerHTML]="getErrorMessage('date', 'required')">
       </mat-error>
     </mat-form-field>
@@ -139,7 +145,7 @@
     </ng-container> -->
 
     <br> <br>
-    <button type="submit" class="btn btn-primary" (click)="onPayment()" [disabled]="!profileForm.valid">Submit</button> &nbsp;
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!profileForm.valid">Submit</button> &nbsp;
     <button type="button" class="btn btn-danger"  (click)="onCancel()">Cancel</button>
 
   </div>
