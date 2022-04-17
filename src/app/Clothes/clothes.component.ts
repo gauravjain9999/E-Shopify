@@ -1,8 +1,10 @@
+import { ApplicationServiceService } from './../Service/application-service.service';
 import { CartService } from './../Service/cart.service';
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ClothService } from '../Service/cloth.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 // import * as _ from 'lodash';
 
 @Component({
@@ -30,7 +32,7 @@ export class ClothesComponent implements OnInit {
   pageEvent: PageEvent;
   show: {[key: number]: boolean} = {};
 
-  constructor(private clothesService: ClothService, private cartService: CartService, private router: Router) { }
+  constructor(private applicationService: ApplicationServiceService, private clothesService: ClothService, private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -43,12 +45,14 @@ export class ClothesComponent implements OnInit {
     });
   }
 
-  itemClothList(index: any)
+
+  itemClothDetails(item: any, index: any)
   {
-    this.router.navigate(['clothDetails'], index)
+    this.router.navigate(['clothesDetails'])
+    // this.applicationService.applicationData.emit(item);
+    this.applicationService.submitData.next(item);
+
   }
-
-
 
   addToCart(item: any)
   {

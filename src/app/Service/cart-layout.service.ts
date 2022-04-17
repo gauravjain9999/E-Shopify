@@ -67,7 +67,7 @@ export class CartLayoutService {
         src: '../../assets/images/clothes.jpg',
         clickItem: 'Click Here',
         // click: this.router.navigate(['clothProduct']),
-        title: 'Top Mobile Products',
+        title: 'Top Clothes Here',
       },
       {
         id:3,

@@ -1,9 +1,9 @@
-.edit-details
+/* .edit-details
 {
   margin-left: 1px;
   width: 700px;
   padding: 5px;
-}
+} */
 .form-group
 {
   margin: 5px;
@@ -14,10 +14,22 @@
 {
   float: right;
 }
-.label-adjust
+
+/* .label-adjust
 {
+  margin-bottom: 5px !important;
   font-weight: 500;
   font-size: medium;
+} */
+
+.w-100{
+  width: 700px !important;
+}
+
+.my-panel{
+  margin-top: 1% !important;
+  position: bottom;
+  min-width: 400px!important;
 }
 
 .errorText

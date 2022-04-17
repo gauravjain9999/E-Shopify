@@ -23,13 +23,22 @@ export class DialogData{
 })
 export class DialogDataComponent implements OnInit{
 
-  defaultValue = null;
+  defaultValuePayment: any;
   identification ='Select Default Value';
   isFill= false;
+  states: any;
+  minLength = 10;
+  selectedPayment = ['UPI', 'Cash On Delivery', 'Credit Card'];
+  myState = ['Mumbai', 'Rajasthan', 'Delhi', 'Bangalore', 'Goa', 'Gujarat', 'Uttar Pradesh', 'Haryana', 'Kolkata', 'Punjab'];
   currentDate: string;
+  filterdOptions: any[]=[];
+  selectedUser: any;
+  flag = false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public dialogRef: MatDialogRef<DialogDataComponent>,
-  private router:Router) {}
+  private router:Router) {
+
+  }
 
   ngOnInit(): void {
     //comment date
@@ -50,13 +59,28 @@ export class DialogDataComponent implements OnInit{
 
   changeWebsite(e:any)
   {
-    console.log(e.target.value);
+
+  }
+
+  onSelectedPayment(payment: any){
+    this.defaultValuePayment = payment;
   }
 
   onSubmit()
   {
     console.log(this.profileForm);
   }
+
+  onKeyUp(value: any)
+  {
+    console.log(value);
+  }
+
+  onClick(item: any)
+  {
+   this.states = item;
+  }
+
 
   onCancel()
   {
