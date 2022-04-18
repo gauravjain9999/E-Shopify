@@ -36,7 +36,7 @@ export class DialogDataComponent implements OnInit{
   filterdOptions: any[]=[];
   selectedUser: any;
   flag = false;
-  dateHint= 'Date should be in DD/MM/YYYY';
+  dateHint= 'Choose date from Here';
   minDate: Date = new Date("1950-01-01");
   maxDate: Date = new Date("2030-01-01");
 
@@ -88,7 +88,7 @@ export class DialogDataComponent implements OnInit{
       //this.dateHint = `You Selected your Delivery on ${date.toString().substr(0, date.toString().indexOf(" "))}`
     }
     else{
-      this.dateHint = "Date should be in DD/MM/YYYY"
+      this.dateHint = "Choose date from Here"
     }
   }
 

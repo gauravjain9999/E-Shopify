@@ -32,7 +32,18 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ConfirmDialogComponent } from './Dialog-Box/confirm-dialog/confirm-dialog.component';
 import { ClothesDetailComponent } from './clothes-detail/clothes-detail.component'
+import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
+import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
 
+
+export const MY_FORMATS ={
+
+  parse: {dateInput: 'LL'},
+  display : {
+    dateInput: 'LL',
+    monthYearLabel: 'MMMM YYYY'
+  }
+}
 
 @NgModule({
   declarations: [
@@ -73,7 +84,14 @@ import { ClothesDetailComponent } from './clothes-detail/clothes-detail.componen
     BrowserAnimationsModule,
     Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+    { provide: DateAdapter,
+      useClass:MomentDateAdapter,
+      deps: [
+      MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS
+    ]}
+  ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
