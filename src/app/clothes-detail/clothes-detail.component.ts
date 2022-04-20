@@ -10,7 +10,7 @@ import * as _ from 'lodash';
 })
 export class ClothesDetailComponent implements OnInit, AfterViewChecked{
 
-  listOfItems: any[] = [];
+  listOfItems: any = {};
   myList: any[] = [];
   index = 0;
   apiListData: any[] = [];
@@ -21,33 +21,42 @@ export class ClothesDetailComponent implements OnInit, AfterViewChecked{
 
   ngOnInit(): void {
 
-    this.applicationService.submitData.subscribe(data =>{
+    // this.applicationService.submitData.subscribe(data =>{
+    //   console.log(data);
+    //   this.dataItem = data;
+    // });
+
+    this.applicationService.eventData.subscribe(data =>{
       console.log(data);
       this.dataItem = data;
-    });
+    })
+
 
     // this.applicationService.applicationData.subscribe(data =>{
+// console.log('dfdf');
 
-    //     // this.listOfItems = _.castArray(data); // Convert Object into Array directly
-    //     // this.myList =  this.listOfItems[this.index];
-    //     this.listOfItems = Object.values(data)
-    //     console.log(this.listOfItems[0]);
-    //     // this.brandItem = this.listOfItems[1];
+      // setTimeout(()=>{
+      //   this.listOfItems = data;
+      //   console.log(data.brand);
+      // },1000);
+        // this.listOfItems = _.castArray(data); // Convert Object into Array directly
+        // this.myList =  this.listOfItems[this.index];
+        // this.listOfItems = Object.values(data)
+        // console.log(this.listOfItems[0]);
+        // this.brandItem = this.listOfItems[1];
 
-    //     // console.log(this.myList);
-    //    this.updateList(this.listOfItems[0]);
+        // console.log(this.myList);
+      //  this.updateList(this.listOfItems[0]);
     // });
   }
 
 
   ngAfterViewChecked(): void {
 
-    console.log(this.dataItem);
-    this.applicationService.submitData.subscribe(data =>{
+    this.applicationService.eventData.subscribe(data =>{
       console.log(data);
-      this.listOfItems = _.castArray(data);
-      this.updateList(this.listOfItems[0]);
-    });
+      this.dataItem = data;
+    })
   }
 
   updateList(listNumber: any)

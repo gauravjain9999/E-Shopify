@@ -143,10 +143,11 @@
     <!-- <ng-container *ngIf="profileForm.controls['payment'].invalid && profileForm.controls['payment'].touched" >
       <div class="errorText">*Payment mode is required</div>
     </ng-container> -->
-
     <br> <br>
-    <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!profileForm.valid">Submit</button> &nbsp;
-    <button type="button" class="btn btn-danger"  (click)="onCancel()">Cancel</button>
+    <mat-chip-list>
+      <mat-chip color="primary" (click)="onSubmit()" selected [disabled]="!profileForm.valid">Submit</mat-chip>
+      <mat-chip color="warn" (click)="onCancel()" selected >Cancel</mat-chip>
+    </mat-chip-list>
 
   </div>
 </form>

@@ -1,13 +1,28 @@
 <app-main-header></app-main-header>
 
+
+<!-- <div>
+  {{dataItem.brand}}
+</div> -->
+
+
 <div class="row">
   <div class="column">
     <div class="card">
       <div>
-        <h3 style="color: grey;">{{brandItem}}</h3>
-        <h2 style="font-weight: 700;">Men Regular Fit Solid Mandarin Collar Casual Shirt</h2>
-        <h1 style="margin-top: 10px;" >{{3000  | currency: 'Rs '}}</h1>
-        <p> Rating is {{' 4 '}}</p>
+        <h3 style="color: grey;">{{dataItem.brand}}</h3>
+        <h2 style="font-weight: 700;">{{dataItem.title}}</h2>
+        <h1 style="margin-top: 10px;" >{{dataItem.price  | currency: 'Rs '}}</h1>
+        <p> Rating is {{dataItem.rating}}</p>
+        <div>
+          <h3 style="font-weight: 700;">Some More Important Details </h3>
+          <mat-divider></mat-divider>
+          <br>
+          <div style="background-color: aliceblue; border-radius: 5px;text-decoration: wavy; padding: 4px;">
+            <b>1. Category:</b> {{dataItem.category}} <br><br>
+            <b>2. Description: </b> {{dataItem.description}}<br>
+          </div>
+        </div>  
       </div>
 
     </div>
@@ -15,7 +30,7 @@
 
   <div class="column">
     <div class="card">
-    <img src="../../assets/ImageCloth/images (4).jpg" style="border: 1px solid black; border-radius: 5px; height: 500px;" alt=""><br>
+    <img src="{{dataItem.path}}" style="border: 1px solid black; border-radius: 5px; height: 500px;" alt=""><br>
     <button class="btn btn-primary">Add To Cart</button> &nbsp;
     <button class="btn btn-danger">Remove</button>
     </div>

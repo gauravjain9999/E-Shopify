@@ -19,7 +19,7 @@
       </mat-sidenav-container>
     </button>&nbsp; -->
 
-    <img class="float-img" src="../../assets/./images/shopifyApp.png">&nbsp;&nbsp;
+    <img class="float-img pointer" src="../../assets/./images/shopifyApp.png">&nbsp;&nbsp;
     <span style="margin-top: 5px;" class="navbar-brand mb-0 h1">Shopify App</span>
     <div class="search-bar">
       <input type="text" class="searchText" placeholder="Search..."
@@ -36,7 +36,7 @@
         class="icon-cart-text">Cart</p>
     </button>
     <div class="badge bg-danger align-badge" matBadgeColor="accent">{{totalItem}}</div>
-    <mat-button class="logout-btn" matTooltipShowDelay="50" matTooltip="Logout">Logout</mat-button>
+    <mat-button class="logout-btn" (click)="logout()"  matTooltipShowDelay="50" matTooltip="Logout">Logout</mat-button>
     <mat-icon  class="mat-icon-logout">power_settings_new</mat-icon>
   </div>
 </nav>

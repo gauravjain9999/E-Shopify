@@ -19,6 +19,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatChipsModule} from '@angular/material/chips';
 
 const customClassModule = [
 
@@ -27,6 +28,7 @@ const customClassModule = [
     MatDialogModule,
     MatTooltipModule,
     MatInputModule,
+    MatChipsModule,
     MatButtonToggleModule,
     MatButtonModule,
     MatAutocompleteModule,

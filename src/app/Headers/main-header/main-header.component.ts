@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { DialogNotifyComponent } from '../../Dialog-Box/dialog-notify/dialog-notify.component';
 import { DialogDataComponent } from '../../Dialog-Box/dialog-data/dialog-data.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,23 +21,22 @@ export class MainHeaderComponent implements OnInit {
   email: string;
   public totalItem: number = 0;
 
-  constructor( private dialog: MatDialog,  private cartService: CartService, private notificationService: NotificationService) {
+  constructor(private router: Router, private dialog: MatDialog,  private cartService: CartService, private notificationService: NotificationService) {
 
    this.cartService.getProduct().subscribe(res =>{
    this.totalItem = res.length;
   })
 }
+  ngOnInit(): void {}
 
-close(event: any) {
-  this.sidenav.close();
-}
-
-
-
+  close(event: any) {
+    this.sidenav.close();
+  }
 
 
-
-  ngOnInit(): void {
+  logout()
+  {
+    this.router.navigate(['shopifyApp']);
   }
 
   showNotify()

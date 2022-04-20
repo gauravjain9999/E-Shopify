@@ -10,7 +10,9 @@
     </div>
   </div>
 
-    <span class="btn">
-      <button  class="btn btn-danger"  (click)="onCancel()"> Cancel </button> &nbsp;
-      <button  class="btn btn-primary" (click)="onClick(this.dataCheck)"> Click To Continue</button>
-    </span>
+  <span class="btn">
+    <mat-chip-list>
+        <mat-chip color="warn" (click)="onCancel()" selected >Cancel</mat-chip>
+        <mat-chip color="primary" (click)="onClick(this.dataCheck)" selected> Click To Continue</mat-chip>
+    </mat-chip-list>
+  </span>

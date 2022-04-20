@@ -1,6 +1,6 @@
 
-<div *ngFor="let itemCloth of listOfClothesItem | paginate: {itemsPerPage: 10,currentPage: page, totalItems: totalLength }; index as i" class="column">
-  <img src="{{itemCloth.path}}" style="height: 300px; width: 280px; padding: 4px;">
+<div  *ngFor="let itemCloth of listOfClothesItem | paginate: {itemsPerPage: 10,currentPage: page, totalItems: totalLength }; index as i" class="column">
+  <img src="{{itemCloth.path}}" (click)="itemClothDetails(itemCloth, i)" style="height: 300px; width: 280px; padding: 4px;">
   <h2 style="margin-left: 15px;">{{itemCloth.title}}
     <i class="fa fa-heart-o" style="font-size:24px; margin-left: 25px; "></i>
   </h2>
