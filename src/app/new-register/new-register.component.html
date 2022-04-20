@@ -8,7 +8,7 @@
 <div class="alert alert-danger">
 <p>{{error}}</p>
 </div> -->
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+<form [formGroup]="register" (ngSubmit)="onSubmit()">
   <div class="container">
     <div class="alert alert-danger" *ngIf="isAuthorize">
       <p>{{error}}</p>
@@ -17,34 +17,84 @@
     <p>Please fill in this form to create an account.</p>
     <hr>
 
-    <label for="name"><b>Name</b></label>
-    <input type="text" [(ngModel)]="customer.name" placeholder="Enter Name"  #name="ngModel"  name="name" required>
-    <div *ngIf="!name.valid && name.touched" class="errorText">*Name is required</div>
+  <div class="form-group">
+    <div class=form-group-class>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text"  email placeholder="Enter Email" #email="ngModel"  [(ngModel)]="customer.email" name="email" required>
-    <div *ngIf="!email.valid && email.touched" class="errorText">*Email is required</div>
+    <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
+      <input matInput formControlName="name"  [errorStateMatcher]="customErrorStateMatcher" placeholder="Enter Name" required>
+      <mat-label>Name</mat-label>
+      <mat-icon matSuffix>person</mat-icon>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" appPasswordPattern #password="ngModel" minlength="8" [(ngModel)]="customer.password" name="password" required>
-    <div *ngIf="!password.valid && (password.touched && !password.dirty)" class="errorText">*Password is required</div>
+      <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('name').hasError('required')" [innerHTML]="getErrorMessage('name', 'required')">
+      </mat-error>
+
+      <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('name').hasError('maxlength')" [innerHTML]="getErrorMessage('name', 'maxlength')">
+      </mat-error>
+      <br>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
+      <input matInput formControlName="email" placeholder="Enter Email" name="email" required>
+        <mat-label>Email</mat-label>
+        <mat-icon matSuffix>email</mat-icon>
+
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('email').hasError('required')" [innerHTML]="getErrorMessage('email', 'required')">
+        </mat-error>
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('email').hasError('email')" [innerHTML]="getErrorMessage('email', 'email')">
+        </mat-error>
+      </mat-form-field>
+
+      <br>
+
+    <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
+      <input matInput formControlName="password" placeholder="Enter Password" appPasswordPattern password name="password" required>
+        <mat-label>Password</mat-label>
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-hint align="end">Password must be strong</mat-hint>
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('password').hasError('required')" [innerHTML]="getErrorMessage('password', 'required')">
+      </mat-error>
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('password').hasError('minlength')" [innerHTML]="getErrorMessage('password', 'minlength')">
+      </mat-error>
+
+      </mat-form-field>
+
+    <!-- <div *ngIf="!password.valid && (password.touched && !password.dirty)" class="errorText">*Password is required</div>
     <div class="errorText" *ngIf="!password.valid && (password.touched && password.dirty)">
-      *Password should have minimum 8 characters</div>
+      *Password should have minimum 8 characters</div> -->
 
-    <label for="phone"><b>Phone Number</b></label>
-    <input type="text" (keypress)="keyPressNumbers($event)"  minlength=10 [pattern]="mobNumberPattern" placeholder="Enter PhoneNo" #phoneNo="ngModel" [(ngModel)]="customer.phoneNumber" name="phoneNo" required>
-    <div class="errorText" *ngIf="!phoneNo.valid && (phoneNo.touched && !phoneNo.dirty)">*PhoneNumber is required</div>
-    <div class="errorText" *ngIf="phoneNo.errors && (phoneNo.touched && phoneNo.dirty)"> *Phone Number must be than 10 digit</div>
+      <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
+        <input matInput (keypress)="keyPressNumbers($event)"  formControlName="phoneNumber"
+        minlength=10 [pattern]="mobNumberPattern" placeholder="Enter PhoneNo" name="phoneNo" required>
+        <mat-label>Phone Number</mat-label>
+        <mat-icon matSuffix>contact_phone</mat-icon>
+        <mat-hint align="end">Maximum Length should be 10</mat-hint>
+
+        <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('phoneNumber').hasError('required')" [innerHTML]="getErrorMessage('phoneNumber', 'required')">
+        </mat-error>
+        <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('phoneNumber').hasError('minlength')" [innerHTML]="getErrorMessage('phoneNumber', 'minlength')">
+        </mat-error>
+        <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('phoneNumber').hasError('maxlength')" [innerHTML]="getErrorMessage('phoneNumber', 'maxlength')">
+        </mat-error>
+      </mat-form-field>
+
+    <!-- <div class="errorText" *ngIf="!phoneNo.valid && (phoneNo.touched && !phoneNo.dirty)">*PhoneNumber is required</div>
+    <div class="errorText" *ngIf="phoneNo.errors && (phoneNo.touched && phoneNo.dirty)"> *Phone Number must be than 10 digit</div> -->
+
+    <br>
     <label>
-
-    <!-- checked = checked to automatic check the box  -->
-    <input type="checkbox" checked="checked"  name="remember" style="margin-bottom:15px"> Remember me
+      <!-- checked = checked to automatic check the box  -->
+      <input type="checkbox" checked="checked"  name="remember" style="margin-bottom:15px"> Remember me
     </label>
 
     <div class="clearfix">
-      <button type="submit" class="btn btn-primary"  (click)="onSignUp()"  [disabled]="!loginForm.valid">Sign Up</button> &nbsp;
-      <button type="button" class="btn btn-danger" (click)="onReset(loginForm)" >Reset</button>
+      <mat-chip-list>
+        <mat-chip color="primary"  (click)="onSignUp()" selected [disabled]="!register.valid">Sign Up</mat-chip>
+        <mat-chip color="warn" (click)="onReset(register)" selected >Reset</mat-chip>
+      </mat-chip-list>
     </div>
+  </div>
+  </div>
   </div>
 </form>
 
@@ -57,8 +107,10 @@
   <div  class="errorText" style="margin-left: 12px;" *ngIf="!isCheckBoxSelected">*Please check the box </div>
   <mat-dialog-actions align="end">
 
-    <button class="btn btn-danger" matDialogClose >Dismiss</button> &nbsp; &nbsp;
-    <button class="btn btn-success" [disabled]="!isCheckBoxSelected"  (click)="onSubmitLoginPage()">Submit</button>
+    <mat-chip-list>
+      <mat-chip color="warn" matDialogClose selected>Dismiss</mat-chip>
+      <mat-chip color="primary" [disabled]="!isCheckBoxSelected"  (click)="onSubmitLoginPage()" selected >Submit</mat-chip>
+    </mat-chip-list>
 
   </mat-dialog-actions>
 </div>

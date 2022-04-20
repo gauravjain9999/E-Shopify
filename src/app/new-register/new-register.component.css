@@ -15,6 +15,19 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
+.form-group
+{
+  margin-top: 8px;
+  width: max-content;
+  padding: 2px;
+}
+
+.w-70
+{
+  width: 160%;
+}
+
+
 hr {
   margin-bottom: 25px;
 }

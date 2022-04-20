@@ -1,5 +1,5 @@
 import { NewRegisterComponent } from './../new-register/new-register.component';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from './../Service/notification.service';
 import { Component, OnInit } from '@angular/core';
@@ -35,9 +35,19 @@ export class NewLoginComponent implements OnInit {
     this.spinner.show();
   }
 
-  onSubmit(form: NgForm) {
-    this.email = form.value.email;
-    this.pass = form.value.password;
+  login = new FormGroup ({
+
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
+
+  })
+
+  onSubmit() {
+
+    // console.log(this.login.value.email);
+
+    this.email = this.login.value.email;
+    this.pass = this.login.value.password;
 
     console.log(this.email, this.pass);
 

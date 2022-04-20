@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   {
    this.dialogBox.open(NewLoginComponent, {
 
-    height: '750px',
+    height: '650px',
     width: '800px'
 
    })
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   {
     this.dialogBox.open(NewRegisterComponent, {
 
-      height: '750px',
+      height: '650px',
       width: '800px'
 
     })

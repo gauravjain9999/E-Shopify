@@ -14,9 +14,10 @@ import {
   ViewChild,
   Output,
 } from '@angular/core';
-import { Form, NgForm } from '@angular/forms';
+import { Form, FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
 // import {MatDialogRef} from '@angular/material/dialog'
 import { MainPageComponent } from '../main-page/main-page.component';
+import { CustomErrorStateMatcherService } from '../Service/custom-error-state-matcher.service';
 
 @Component({
   selector: 'app-new-register',
@@ -37,7 +38,6 @@ export class NewRegisterComponent implements OnInit {
   isAuthorize: boolean;
   email: any;
   pass: any;
-  customer: CustomerInfo = new CustomerInfo();
 
   constructor(
     private dialog: MatDialog,
@@ -51,17 +51,23 @@ export class NewRegisterComponent implements OnInit {
     this.pass = ''
   }
 
+  customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
+
+  register = new FormGroup({
+
+    name : new FormControl('', [Validators.required,  Validators.maxLength(30)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    phoneNumber :  new FormControl(null,  [Validators.required,
+    Validators.maxLength(10), Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'), Validators.minLength(10)]),
+
+  })
+
   ngOnInit(): void {
     this.spinner.show();
-    this.customer = {
-      name: '',
-      email: '',
-      password: '',
-      phoneNumber: '',
-    };
   }
 
-  onReset(userForm: NgForm) {
+  onReset(userForm: any) {
     userForm.reset();
   }
 
@@ -121,19 +127,16 @@ export class NewRegisterComponent implements OnInit {
       return true;
     }
   }
-  onSubmit(form: NgForm) {
-    console.log(form);
-    this.formStatus = form
-    this.userEmail.emit(form.value.email);
-    this.userPass.emit(form.value.password);
-    this.applicationService.nameEvent.emit(this.formStatus);
-    // const email = form.value.email;
-    // const pass = form.value.password;
+  onSubmit() {
 
+    this.formStatus = this.register.value
+    this.userEmail.emit(this.register.value.email);
+    this.userPass.emit(this.register.value.password);
+    this.applicationService.nameEvent.emit(this.formStatus);
   }
 
   onSubmitLoginPage() {
-    this.applicationService.nameEvent.emit(this.customer.name);
+    // this.applicationService.nameEvent.emit(this.customer.name);
     this.router.navigate(['mainPage']);
     this.spinner.show();
     this.closeAlertBox();
@@ -144,6 +147,67 @@ export class NewRegisterComponent implements OnInit {
   closeAlertBox() {
     this.dialog.closeAll();
     this.notificationService.showNotification('Register Successfully', 'Close');
+  }
+
+  getFormControlName(controlName: string): FormControl
+  {
+    return this.register.get(controlName) as FormControl;
+  }
+
+  getErrorMessage(controlName: string, errorType: string)
+  {
+    switch(controlName)
+  {
+    case "name":
+      if(errorType === "required"){
+        return "*Name is required";
+      }
+      else if(errorType ==="maxlength"){
+        return "*Name can contain up to 30 characters only"
+      }
+      // else if(errorType === "pattern")
+      // {
+      //   return "*Name can contain alphabets or dot(.) or space only"
+      // }
+      else{
+        return "";
+      }
+
+    case "email":
+      if(errorType === "required"){
+        return " *Email is required"
+      }
+      else if(errorType ==="email"){
+        return "*Email should be in Correct Format.Eg: someone@example.com"
+      }
+      else{
+        return "";
+      }
+
+     case "phoneNumber":
+        if(errorType === "required"){
+          return "*PhoneNumber is required"
+        }
+        else if(errorType === "minlength"|| errorType === "maxlength"){
+          return "*Length should be less than or equal to 10"
+        }
+        else{
+          return "";
+        }
+
+      case "password":
+        if(errorType === "required")
+        {
+          return "*Password is required"
+        }
+        else if(errorType === "minlength"){
+          return "*Length should be greater than or equal to 8"
+        }
+        else{
+          return "";
+        }
+        default: return "";
+    }
   }
 }
 
