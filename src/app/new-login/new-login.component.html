@@ -10,21 +10,40 @@
   <mat-divider></mat-divider>
   <h3 style="margin-left: 20px; margin-top: 20px;"> Get access to your Orders,<br>Wishlist and Recommendation and much more !!!</h3>
   <div class="container">
-    <label for="uname"><b>Email</b></label><br>
-    <input type="text" autofocus autocomplete="off" formControlName="email" placeholder="Email" ngModel password class="form-control" email name="email" required>
-    <br><br>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Password"  formControlName="password"  autofocus autocomplete="off" name="password" ngModel minlength="8" class="form-control" required >
+    <mat-form-field appearance="outline" class="w-100" formLabel="auto" hideRequiredMarker>
+      <!-- <input matInput formControlName="name"  [errorStateMatcher]="customErrorStateMatcher" placeholder="Enter Name" required> -->
+      <input matInput autofocus autocomplete="off"  [errorStateMatcher]="customErrorStateMatcher"  formControlName="email" placeholder="Email" required>
+      <mat-label>Email</mat-label>
+      <mat-icon matSuffix>email</mat-icon>
+
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('email').hasError('required')" [innerHTML]="getErrorMessage('email', 'required')">
+      </mat-error>
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('email').hasError('email')" [innerHTML]="getErrorMessage('email', 'email')">
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="w-100" formLabel="auto" hideRequiredMarker>
+      <input  matInput placeholder="Password" [errorStateMatcher]="customErrorStateMatcher" formControlName="password"  autofocus autocomplete="off" minlength="8" required >
+      <mat-label>Password</mat-label>
+      <mat-icon matSuffix>password</mat-icon>
+      <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('password').hasError('required')" [innerHTML]="getErrorMessage('password', 'required')">
+      </mat-error>
+    </mat-form-field>
 
    <h4 style="color: grey;">By creating an account you agree to our <a href="" style="color:dodgerblue">Terms & Privacy</a>.</h4>
   </div>
   <!-- <button   class="btn btn-primary">Shop now</button> -->
-  <button type="submit" id="myBtn" mat-raised-button color="green">Login</button>
-  <br>
-  <div class="psw" style="margin-left: 43%; font-weight: 500;">New to Shopify ?</div>
-  <br>
-  <button type="button" id="myBtn" mat-raised-button color="primary" (click)="onSignUp()">Create Your Account</button>
+  <mat-chip-list>
+    <mat-chip color="primary" (click)="onLogin()" [disabled]="!login.valid"  class="myBtn" type="submit" selected >Login</mat-chip>
+    <!-- <button type="submit"  mat-raised-button ></button> -->
+    <br>
+    <div class="psw" style="margin-left: 41%; padding: 10px; font-weight: 500;">New to Shopify ?</div>
+    <br>
+    <mat-chip color="accent" class="myBtn" type="submit" (click)="onSignUp()"selected >Create Your Account</mat-chip>
+    <!-- <button type="button" id="myBtn" mat-raised-button color="primary" ></button> -->
+  </mat-chip-list>
 </form>
 
 <!-- <app-footer></app-footer> -->

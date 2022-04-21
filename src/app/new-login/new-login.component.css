@@ -39,14 +39,13 @@ button {
   cursor: pointer;
 }
 
-#myBtn
+.myBtn
 {
-  width: 94%;
+  width: 50%;
   justify-content: center;
   justify-items: center;
   display: flex;
-  margin-left: 3%;
-  margin-right: 50%;
+  margin-left: 180px !important;
 }
 
 button:hover {

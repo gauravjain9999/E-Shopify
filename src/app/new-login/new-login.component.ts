@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataStorageService } from '../Service/data-storage.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { CustomErrorStateMatcherService } from '../Service/custom-error-state-matcher.service';
 
 @Component({
   selector: 'app-new-login',
@@ -30,17 +31,17 @@ export class NewLoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.email = '';
-    this.password = '';
     this.spinner.show();
   }
 
   login = new FormGroup ({
 
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+    email: new FormControl('',    [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)])
 
   })
+
+  customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
 
   onSubmit() {
 
@@ -114,4 +115,37 @@ export class NewLoginComponent implements OnInit {
     this.dialogRef.close()
     // this.router.navigate(['new-register']);
   }
+
+  getFormControlName(controlName: string): FormControl
+  {
+    return this.login.get(controlName) as FormControl;
+  }
+
+  getErrorMessage(controlName: string, errorType: string)
+  {
+    switch(controlName)
+  {
+    case "email":
+      if(errorType === "required"){
+        return " *Email is required"
+      }
+      else if(errorType ==="email"){
+        return "*Email should be in Correct Format.Eg: someone@example.com"
+      }
+      else{
+        return "";
+      }
+
+      case "password":
+        if(errorType === "required")
+        {
+          return "*Password is required"
+        }
+        else{
+          return "";
+        }
+        default: return "";
+    }
+  }
+
 }

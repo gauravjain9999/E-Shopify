@@ -27,15 +27,13 @@
 
       <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('name').hasError('required')" [innerHTML]="getErrorMessage('name', 'required')">
       </mat-error>
-
       <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('name').hasError('maxlength')" [innerHTML]="getErrorMessage('name', 'maxlength')">
       </mat-error>
-      <br>
     </mat-form-field>
-    <br>
+    <br> <br>
 
     <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
-      <input matInput formControlName="email" placeholder="Enter Email" name="email" required>
+      <input matInput formControlName="email"   [errorStateMatcher]="customErrorStateMatcher" placeholder="Enter Email" name="email" required>
         <mat-label>Email</mat-label>
         <mat-icon matSuffix>email</mat-icon>
 
@@ -44,11 +42,10 @@
       <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('email').hasError('email')" [innerHTML]="getErrorMessage('email', 'email')">
         </mat-error>
       </mat-form-field>
-
-      <br>
+      <br> <br>
 
     <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
-      <input matInput formControlName="password" placeholder="Enter Password" appPasswordPattern password name="password" required>
+      <input matInput formControlName="password"  [errorStateMatcher]="customErrorStateMatcher"  placeholder="Enter Password" appPasswordPattern password name="password" required>
         <mat-label>Password</mat-label>
         <mat-icon matSuffix>password</mat-icon>
         <mat-hint align="end">Password must be strong</mat-hint>
@@ -56,15 +53,11 @@
       </mat-error>
       <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('password').hasError('minlength')" [innerHTML]="getErrorMessage('password', 'minlength')">
       </mat-error>
+    </mat-form-field>
+    <br> <br>
 
-      </mat-form-field>
-
-    <!-- <div *ngIf="!password.valid && (password.touched && !password.dirty)" class="errorText">*Password is required</div>
-    <div class="errorText" *ngIf="!password.valid && (password.touched && password.dirty)">
-      *Password should have minimum 8 characters</div> -->
-
-      <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
-        <input matInput (keypress)="keyPressNumbers($event)"  formControlName="phoneNumber"
+    <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
+        <input matInput (keypress)="keyPressNumbers($event)"  [errorStateMatcher]="customErrorStateMatcher"  formControlName="phoneNumber"
         minlength=10 [pattern]="mobNumberPattern" placeholder="Enter PhoneNo" name="phoneNo" required>
         <mat-label>Phone Number</mat-label>
         <mat-icon matSuffix>contact_phone</mat-icon>
@@ -76,10 +69,7 @@
         </mat-error>
         <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('phoneNumber').hasError('maxlength')" [innerHTML]="getErrorMessage('phoneNumber', 'maxlength')">
         </mat-error>
-      </mat-form-field>
-
-    <!-- <div class="errorText" *ngIf="!phoneNo.valid && (phoneNo.touched && !phoneNo.dirty)">*PhoneNumber is required</div>
-    <div class="errorText" *ngIf="phoneNo.errors && (phoneNo.touched && phoneNo.dirty)"> *Phone Number must be than 10 digit</div> -->
+    </mat-form-field>
 
     <br>
     <label>
