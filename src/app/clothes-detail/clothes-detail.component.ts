@@ -8,14 +8,12 @@ import * as _ from 'lodash';
   templateUrl: './clothes-detail.component.html',
   styleUrls: ['./clothes-detail.component.css']
 })
-export class ClothesDetailComponent implements OnInit, AfterViewChecked{
+export class ClothesDetailComponent implements OnInit{
 
   listOfItems: any = {};
-  myList: any[] = [];
-  index = 0;
-  apiListData: any[] = [];
   dataItem: any;
-  brandItem: any;
+  star:any;
+  starData: any[] = [];
   constructor(private clothService: ClothService, private applicationService: ApplicationServiceService) {
   }
 
@@ -29,6 +27,14 @@ export class ClothesDetailComponent implements OnInit, AfterViewChecked{
     this.applicationService.eventData.subscribe(data =>{
       console.log(data);
       this.dataItem = data;
+
+      this.star = this.dataItem.rating;
+      for(let i =0; i<this.star; i++)
+      {
+        this.starData.push(this.star);
+      }
+      console.log(this.starData);
+
     })
 
 
@@ -48,32 +54,6 @@ export class ClothesDetailComponent implements OnInit, AfterViewChecked{
         // console.log(this.myList);
       //  this.updateList(this.listOfItems[0]);
     // });
-  }
-
-
-  ngAfterViewChecked(): void {
-
-    this.applicationService.eventData.subscribe(data =>{
-      console.log(data);
-      this.dataItem = data;
-    })
-  }
-
-  updateList(listNumber: any)
-  {
-    this.apiListData = this.clothService.getListOfCloth();
-    for(let i=0; i<this.apiListData.length; i++)
-    {
-      // console.log(this.apiListData[i].id);
-      if(this.apiListData[i].id === listNumber)
-      {
-        this.brandItem = this.apiListData[i].brand;
-        console.log(this.brandItem);
-      }
-      else{
-        this.brandItem = 'dfd'
-      }
-    }
   }
 
 }

@@ -9,7 +9,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDivider, MatDividerModule} from '@angular/material/divider';
-import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -20,13 +19,13 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const customClassModule = [
 
     MatIconModule,
     MatSliderModule,
     MatDialogModule,
-    MatTooltipModule,
     MatInputModule,
     MatChipsModule,
     MatButtonToggleModule,
@@ -38,6 +37,7 @@ const customClassModule = [
     MatExpansionModule,
     MatNativeDateModule,
     FlexLayoutModule,
+    MatTooltipModule,
     MatSnackBarModule,
     MatDatepickerModule,
     MatSidenavModule,
