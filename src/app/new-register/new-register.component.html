@@ -30,7 +30,7 @@
       <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('name').hasError('maxlength')" [innerHTML]="getErrorMessage('name', 'maxlength')">
       </mat-error>
     </mat-form-field>
-    <br> <br>
+    <br>
 
     <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
       <input matInput formControlName="email"   [errorStateMatcher]="customErrorStateMatcher" placeholder="Enter Email" name="email" required>
@@ -42,7 +42,7 @@
       <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('email').hasError('email')" [innerHTML]="getErrorMessage('email', 'email')">
         </mat-error>
       </mat-form-field>
-      <br> <br>
+      <br>
 
     <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
       <input matInput formControlName="password"  [errorStateMatcher]="customErrorStateMatcher"  placeholder="Enter Password" appPasswordPattern password name="password" required>
@@ -54,7 +54,7 @@
       <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('password').hasError('minlength')" [innerHTML]="getErrorMessage('password', 'minlength')">
       </mat-error>
     </mat-form-field>
-    <br> <br>
+    <br>
 
     <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
         <input matInput (keypress)="keyPressNumbers($event)"  [errorStateMatcher]="customErrorStateMatcher"  formControlName="phoneNumber"
@@ -70,8 +70,8 @@
         <mat-error style="font-size: small; margin-top: 2px;" *ngIf="getFormControlName('phoneNumber').hasError('maxlength')" [innerHTML]="getErrorMessage('phoneNumber', 'maxlength')">
         </mat-error>
     </mat-form-field>
-
     <br>
+
     <label>
       <!-- checked = checked to automatic check the box  -->
       <input type="checkbox" checked="checked"  name="remember" style="margin-bottom:15px"> Remember me

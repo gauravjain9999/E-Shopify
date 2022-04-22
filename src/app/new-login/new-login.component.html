@@ -34,15 +34,13 @@
 
    <h4 style="color: grey;">By creating an account you agree to our <a href="" style="color:dodgerblue">Terms & Privacy</a>.</h4>
   </div>
-  <!-- <button   class="btn btn-primary">Shop now</button> -->
+
   <mat-chip-list>
     <mat-chip color="primary" (click)="onLogin()" [disabled]="!login.valid"  class="myBtn" type="submit" selected >Login</mat-chip>
-    <!-- <button type="submit"  mat-raised-button ></button> -->
     <br>
     <div class="psw" style="margin-left: 41%; padding: 10px; font-weight: 500;">New to Shopify ?</div>
     <br>
     <mat-chip color="accent" class="myBtn" type="submit" (click)="onSignUp()"selected >Create Your Account</mat-chip>
-    <!-- <button type="button" id="myBtn" mat-raised-button color="primary" ></button> -->
   </mat-chip-list>
 </form>
 
