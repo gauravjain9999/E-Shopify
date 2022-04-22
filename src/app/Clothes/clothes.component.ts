@@ -27,6 +27,7 @@ export class ClothesComponent implements OnInit {
   length = 100;
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
+  flag= true;
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -57,6 +58,7 @@ export class ClothesComponent implements OnInit {
 
   addToCart(item: any)
   {
+    this.flag=false;
     item.isCartVisible = true;
     // this.input.nativeElement.focus();
     // console.log(index);
@@ -78,5 +80,10 @@ export class ClothesComponent implements OnInit {
     {
       item.itemAdd--;
     }
+    // if(item.itemAdd ==0)
+    // {
+    //   this.flag = true;
+    // }
+    console.log(item.itemAdd);
   }
 }

@@ -102,14 +102,9 @@ export class NewLoginComponent implements OnInit {
   }
 
   onSignUp() {
-    // setTimeout(() => {
-    //   this.spinner.show();
-    // }, 5000);
-    // this.dialogRef.close();
 
     this.dialog.open(NewRegisterComponent, {
-
-      height: '750px',
+      height: '650px',
       width: '800px'
     })
     this.dialogRef.close()

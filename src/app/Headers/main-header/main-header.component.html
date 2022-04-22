@@ -20,23 +20,24 @@
     </button>&nbsp; -->
 
     <img class="float-img pointer" src="../../assets/./images/shopifyApp.png">&nbsp;&nbsp;
-    <span style="margin-top: 5px;" class="navbar-brand mb-0 h1">Shopify App</span>
+    <span style="margin-top: 5px;" class="shopifyApp mr-1rem">Shopify App</span>
     <div class="search-bar">
-      <input type="text" class="searchText" placeholder="Search..."
-        name="search" [(ngModel)]="searchText">
-      <i style="color: black; margin-left: 10px;" class="fa fa-search icon"></i>
+      <input type="text" class="searchText" placeholder="Search..."name="search" [(ngModel)]="searchText">
+        <mat-icon class="search-pos ml-10">search</mat-icon>
     </div>
 
     <div class="notify" matTooltip="Notification" (click)="notification()">
       <mat-icon>notifications_none</mat-icon>
     </div>
 
-    <button class="icon-cart" matTooltip="Cart" (click)="showNotify()"
-      routerLinkActive="active" routerLink="/addToCart"><p
-        class="icon-cart-text">Cart</p>
-    </button>
+    <span class="icon-cart">
+      <mat-icon class="material-symbols-outlined">shopping_cart</mat-icon>
+    </span>
+    <span  class="cart" matTooltip="Cart" (click)="showNotify()"
+      routerLinkActive="active" routerLink="/addToCart">Cart
+    </span>
     <div class="badge bg-danger align-badge" matBadgeColor="accent">{{totalItem}}</div>
     <mat-button class="logout-btn" (click)="logout()"  matTooltipShowDelay="50" matTooltip="Logout">Logout</mat-button>
-    <mat-icon  class="mat-icon-logout">power_settings_new</mat-icon>
+    <mat-icon class="mat-icon-logout">power_settings_new</mat-icon>
   </div>
 </nav>
