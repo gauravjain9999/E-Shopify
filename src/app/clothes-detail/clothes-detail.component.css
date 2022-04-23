@@ -28,7 +28,7 @@
 /* Style the counter cards */
 .card {
   padding: 16px;
-  margin-top: 10%;
+  margin-top: 4%;
   height: 500px;
   outline: none;
   border: none !important;
@@ -51,18 +51,20 @@
   border-radius: 5px;
   text-decoration: wavy;
   padding: 4px;
+  line-height: 2.1 !important;
 }
 
 .img-src
 {
   border: 1px solid black;
   border-radius: 5px;
-  height: 500px;
+  height: 480px !important;
+  width: 480px;
 }
 
 .myBtn
 {
-  width: 100%;
+  width: 88%;
   height: max-content;
   /* margin-left: 150px !important; */
   text-align: center;
@@ -72,5 +74,25 @@
 
 .chips-pos
 {
+  margin-top: 10px;
+}
+
+.review-margin
+{
+  margin-left: 0px;
+  margin-top: 5px;
+}
+
+.margin-top-20
+{
+  margin-left: 5px !important;
+  background-color: aliceblue;
   margin-top: 20px;
+  border-radius: 5px;
+  line-height: 2.1 !important;
+}
+
+li
+{
+  list-style: none;
 }

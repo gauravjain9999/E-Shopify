@@ -2,6 +2,9 @@ import { ApplicationServiceService } from './../Service/application-service.serv
 import { ClothService } from './../Service/cloth.service';
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import {Chart} from "angular-highcharts";
+import {columnChartOptions} from "../../app/dataChart/columnChart"
+
 import { CartService } from '../Service/cart.service';
 
 @Component({
@@ -11,15 +14,15 @@ import { CartService } from '../Service/cart.service';
 })
 export class ClothesDetailComponent implements OnInit{
 
-  listOfItems: any = {};
+  listOfItems: any[]=[];
   dataItem: any;
   star:any;
   starData: any[] = [];
   allDetails: boolean = true;
   aboutBrand: boolean = false;
   customerReview: boolean = false;
-
-  // details 
+  columnChart: Chart = new Chart(columnChartOptions);
+  // details
 
 
   constructor(private cartService: CartService,  private clothService: ClothService, private applicationService: ApplicationServiceService) {
@@ -30,6 +33,8 @@ export class ClothesDetailComponent implements OnInit{
     this.applicationService.eventData.subscribe(data =>{
       console.log(data);
       this.dataItem = data;
+      this.listOfItems.push(data);
+      console.log(this.listOfItems);
       //  this.listOfItems = _.castArray(data); // Convert Object into Array directly
       this.star = this.dataItem.rating;
       for(let i =0; i<this.star; i++){

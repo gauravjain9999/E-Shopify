@@ -22,7 +22,6 @@ import { HeaderComponent } from './Headers/header/header.component';
 import { ClothesProductComponent } from './clothes-product/clothes-product.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
-import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 import { FilterSearchPipe } from './Pipe/filter-search.pipe';
 import { DialogDataComponent } from './Dialog-Box/dialog-data/dialog-data.component';
 import {NgxUsefulSwiperModule } from 'ngx-useful-swiper';
@@ -34,7 +33,7 @@ import { ConfirmDialogComponent } from './Dialog-Box/confirm-dialog/confirm-dial
 import { ClothesDetailComponent } from './clothes-detail/clothes-detail.component'
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
-
+import {ChartModule} from 'angular-highcharts';
 
 export const MY_FORMATS ={
 
@@ -60,7 +59,6 @@ export const MY_FORMATS ={
     ClothesComponent,
     ClothesProductComponent,
     AddToCartComponent,
-    LoadingSpinnerComponent,
     FilterSearchPipe,
     DialogDataComponent,
     DialogNotifyComponent,
@@ -78,6 +76,7 @@ export const MY_FORMATS ={
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ChartModule,
     NgxPaginationModule,
     NgImageSliderModule,
     NgxUsefulSwiperModule,

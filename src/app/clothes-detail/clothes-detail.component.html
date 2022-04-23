@@ -16,20 +16,28 @@
         <star-rating-comp></star-rating-comp>
 
         <div>
-          <h3 style="font-weight: 700;">Some More Important Details </h3>
-          <mat-divider></mat-divider>
-          <br>
-          <div class="item-desc">
-            <b>1. Category:</b> {{dataItem.category}} <br><br>
-            <b>2. Description: </b> {{dataItem.description}}<br>
-          </div>
+          <!-- <h3 style="font-weight: 700;">Some More Important Details </h3> -->
+          <!-- <mat-divider></mat-divider> -->
           <div class="chips-pos">
             <mat-chip-list>
-              <mat-chip color="accent"  (click)="details()"    [selected]="allDetails"  selectable> All Detail</mat-chip>
-              <mat-chip color="accent"  (click)="review()"[selected]="customerReview"  selectable> Customer Review</mat-chip>
+              <mat-chip color="accent"  (click)="details()"  [selected]="allDetails"  selectable> All Detail</mat-chip>
+              <mat-chip color="accent"  (click)="review()"   [selected]="customerReview"  selectable> Customer Review</mat-chip>
               <mat-chip color="accent"  (click)="brand()"    [selected]="aboutBrand"  selectable> About Brand </mat-chip>
             </mat-chip-list>
+            <div class="margin-top-20"  *ngIf="aboutBrand">
+                <li> <b class="ml-10">Founded In : </b> &nbsp; {{dataItem.Founded}}</li>
+                <li> <b class="ml-10">Founders :</b> &nbsp;{{dataItem.Founders}}</li>
+                <li> <b class="ml-10">No. Of Location :</b> &nbsp;{{dataItem.numberOfLocations}}</li>
+                <li> <b class="ml-10">Area Served :</b> &nbsp; {{dataItem.areaServed}}</li>
             </div>
+            <div *ngIf="allDetails" class="item-desc mt-3">
+              <b>1. Category:</b> {{dataItem.category}}<br>
+              <b>2. Description: </b> {{dataItem.description}}
+            </div>
+          </div>
+          <mat-grid-title>
+            <div class="review-margin" *ngIf="customerReview" [chart]="columnChart"></div>
+        </mat-grid-title>
         </div>
       </div>
 
