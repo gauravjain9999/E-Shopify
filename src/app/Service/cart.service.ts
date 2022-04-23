@@ -41,8 +41,20 @@ export class CartService {
 
   removeCartItem(product: any, index:any)
   {
-    console.log(product);
-    this.cartItemList.splice(index, 1);
+    console.log(product, index);
+    this.cartItemList.splice(product, 1);
+    this.productList.next(this.cartItemList);
+  }
+
+  uploadCartItem(product: any)
+  {
+    this.cartItemList.push(product);
+    this.productList.next(this.cartItemList);
+  }
+
+  removeUploadCartItem(product: any)
+  {
+    this.cartItemList.splice(product, 1);
     this.productList.next(this.cartItemList);
   }
 

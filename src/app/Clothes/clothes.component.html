@@ -2,13 +2,12 @@
 <div  *ngFor="let itemCloth of listOfClothesItem | paginate: {itemsPerPage: 10,currentPage: page, totalItems: totalLength }; index as i" class="column">
   <img src="{{itemCloth.path}}" (click)="itemClothDetails(itemCloth, i)" style="height: 300px; width: 280px; padding: 4px;">
   <h2>{{itemCloth.title}}
-    <!-- <i class="fa fa-heart-o"></i> -->
     <mat-icon class="material-symbols-outlined" style="margin-left: 30px; float: inline-end; padding: 5px;" matSuffix>favorite</mat-icon>
   </h2>
   <span style="margin-left: 10px;">{{itemCloth.brand}}</span>
 
   <span style="margin-bottom: 5px !important;">
-    <button mat-raised-button *ngIf="!itemCloth.isCartVisible" #focus style="margin-left: 65px;" (click)="addToCart(itemCloth)">{{itemCloth.addToCloth}} </button>
+    <button mat-raised-button *ngIf="!itemCloth.isCartVisible" #focus style="margin-left: 75px;" (click)="addToCart(itemCloth)">{{itemCloth.addToCloth}} </button>
   </span>
   <span class="example-button-container" *ngIf="itemCloth.isCartVisible">
     <button mat-mini-fab color="accent" (click)="onAdd(itemCloth, i)" aria-label="Example icon button with a plus one icon">+</button>&nbsp;&nbsp;
@@ -16,14 +15,14 @@
     <button mat-mini-fab color="accent" (click)="onSubtract(itemCloth, i)"aria-label="Example icon button with a plus one icon">-</button>
   </span>
 </div>
-  <!-- <app-clothes-detail></app-clothes-detail> -->
-  <div>
-    <pagination-controls class="my-pagination"
-    style="background-color: rgb(151, 68, 68); color: grey; margin-left: 545px;"
-    previousLabel="Previous"
-    nextLabel="Next"
-    screenReaderPaginationLabel="Pagination"
-    screenReaderPageLabel="page"
-    screenReaderCurrentLabel="You're on page"
-    (pageChange)="page= $event"></pagination-controls>
+
+<div>
+  <pagination-controls class="my-pagination"
+  style="background-color: rgb(151, 68, 68); color: grey; margin-left: 545px;"
+  previousLabel="Previous"
+  nextLabel="Next"
+  screenReaderPaginationLabel="Pagination"
+  screenReaderPageLabel="page"
+  screenReaderCurrentLabel="You're on page"
+  (pageChange)="page= $event"></pagination-controls>
 </div>

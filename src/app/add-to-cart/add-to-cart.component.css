@@ -43,19 +43,19 @@ h4, h5{
 .content
 {
   padding: 30px;
-  margin-left: 118px;
-  margin-right: 118px !important;
+  margin-left: 115px;
+  margin-right: 115px !important;
   background: rgb(216, 208, 208);
 }
 
 .content-text
 {
-  margin-left: 600px !important;
+  margin-left: 800px !important;
   font-weight: 500;
 }
 .confirm-btn
 {
-  margin-left: 60px;
+  margin-left: 100px !important;
 }
 
 .content-text-main

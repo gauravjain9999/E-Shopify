@@ -23,6 +23,13 @@
             <b>1. Category:</b> {{dataItem.category}} <br><br>
             <b>2. Description: </b> {{dataItem.description}}<br>
           </div>
+          <div class="chips-pos">
+            <mat-chip-list>
+              <mat-chip color="accent"  (click)="details()"    [selected]="allDetails"  selectable> All Detail</mat-chip>
+              <mat-chip color="accent"  (click)="review()"[selected]="customerReview"  selectable> Customer Review</mat-chip>
+              <mat-chip color="accent"  (click)="brand()"    [selected]="aboutBrand"  selectable> About Brand </mat-chip>
+            </mat-chip-list>
+            </div>
         </div>
       </div>
 
@@ -34,11 +41,11 @@
     <img src="{{dataItem.path}}" class="img-src" alt="source_img"><br>
 
     <mat-chip-list>
-      <mat-chip color="primary" class="myBtn" selected >Add To Cart</mat-chip>
+      <mat-chip color="primary" class="myBtn"  (click)="addToCart(dataItem)" selected >Add To Cart</mat-chip>
     </mat-chip-list> <br>
 
     <mat-chip-list>
-      <mat-chip color="warn" class="myBtn"  selected >Remove</mat-chip>
+      <mat-chip color="warn" class="myBtn"  (click)="remove(dataItem)" selected >Remove</mat-chip>
     </mat-chip-list>
 
     </div>

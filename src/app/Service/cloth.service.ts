@@ -35,7 +35,12 @@ export class ClothService {
         description: "Blend Cotton and best product",
         path:  '../../assets/ImageCloth/cloth2.jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1991 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'350 cities',
+        areaServed:	'India',
+        review: 43
       },
       {
         id: 3,
@@ -102,6 +107,7 @@ export class ClothService {
         path:  '../../assets/ImageCloth/images (4).jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false
+
       },
       {
         id: 8,

@@ -25,6 +25,8 @@ export class MainHeaderComponent implements OnInit {
 
    this.cartService.getProduct().subscribe(res =>{
    this.totalItem = res.length;
+   console.log(res);
+
   })
 }
   ngOnInit(): void {}

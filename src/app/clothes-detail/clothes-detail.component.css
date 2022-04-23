@@ -69,3 +69,8 @@
   justify-content: center;
   display: flex;
 }
+
+.chips-pos
+{
+  margin-top: 20px;
+}
