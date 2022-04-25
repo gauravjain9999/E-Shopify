@@ -26,16 +26,18 @@ export class MyAccountComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-
     console.log(changes);
     console.log(this.name);
-
   }
 
-  getUserName(item: any)
+  myOrder()
   {
-    console.log(item);
+    this.router.navigate(['myOrder']);
+  }
 
+
+  getUserName(item: any){
+    console.log(item);
   }
 
 

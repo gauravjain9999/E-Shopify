@@ -12,6 +12,7 @@ import { NewLoginComponent } from './new-login/new-login.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MyOrderComponent } from './my-order/my-order.component';
 
 const routes: Routes = [
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'mainPage', component:MainPageComponent},
   {path: 'addToCart', component:AddToCartComponent},
   {path: 'myProfile', component: MyProfileComponent},
+  {path: 'myOrder', component: MyOrderComponent},
   {path: 'clothProduct', component:ClothesProductComponent},
   {path: 'payment', component:PaymentCheckoutComponent},
   {path: 'clothesDetails', component: ClothesDetailComponent},

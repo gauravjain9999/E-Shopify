@@ -34,6 +34,7 @@ import { ClothesDetailComponent } from './clothes-detail/clothes-detail.componen
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
 import {ChartModule} from 'angular-highcharts';
+import { MyOrderComponent } from './my-order/my-order.component';
 
 export const MY_FORMATS ={
 
@@ -66,7 +67,8 @@ export const MY_FORMATS ={
     MyAccountComponent,
     MyProfileComponent,
     ConfirmDialogComponent,
-    ClothesDetailComponent
+    ClothesDetailComponent,
+    MyOrderComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatListModule} from '@angular/material/list';
+import {MatRippleModule} from '@angular/material/core';
+import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 const customClassModule = [
@@ -27,6 +30,9 @@ const customClassModule = [
     MatSliderModule,
     MatDialogModule,
     MatInputModule,
+    MatListModule,
+    MatGridListModule,
+    MatRippleModule,
     MatChipsModule,
     MatButtonToggleModule,
     MatButtonModule,
