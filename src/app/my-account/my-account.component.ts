@@ -35,6 +35,11 @@ export class MyAccountComponent implements OnInit {
     this.router.navigate(['myOrder']);
   }
 
+  myPayment()
+  {
+    this.router.navigate(['payment']);
+  }
+
 
   getUserName(item: any){
     console.log(item);

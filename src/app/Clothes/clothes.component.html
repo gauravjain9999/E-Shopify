@@ -1,5 +1,5 @@
 
-<div matRipple *ngFor="let itemCloth of listOfClothesItem | paginate: {itemsPerPage: 10,currentPage: page, totalItems: totalLength }; index as i" class="column">
+<div *ngFor="let itemCloth of listOfClothesItem | paginate: {itemsPerPage: 10,currentPage: page, totalItems: totalLength }; index as i" class="column">
   <img   src="{{itemCloth.path}}" (click)="itemClothDetails(itemCloth, i)" class="img-src" >
   <h2 style="margin-left:5px">{{itemCloth.title}}
     <mat-icon class="material-symbols-outlined" style="margin-left: 30px; float: inline-end; padding: 3px;" matSuffix>favorite</mat-icon>

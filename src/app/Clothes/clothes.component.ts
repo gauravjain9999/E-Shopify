@@ -80,10 +80,5 @@ export class ClothesComponent implements OnInit {
     {
       item.itemAdd--;
     }
-    // if(item.itemAdd ==0)
-    // {
-    //   this.flag = true;
-    // }
-    console.log(item.itemAdd);
   }
 }

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import './app/styleGlobalOverride/_margin.scss';
 @import './app/styleGlobalOverride/_allComponents.scss';
+@import './app/styleGlobalOverride/_colors.scss';
 
 html, body {
   height: 100%;

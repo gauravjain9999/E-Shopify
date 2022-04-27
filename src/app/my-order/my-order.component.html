@@ -23,20 +23,27 @@
 
 
 <mat-grid-list class="dashboard-grid-list-Orders" cols="1" gutterSize="20px" rowHeight="150px">
-<mat-grid-tile style="background-color: aquamarine;">
-One
-</mat-grid-tile>
-
-<mat-grid-tile style="background-color: aquamarine;">
-  One
+  <mat-grid-tile  fxLAyoutAlign="start stretch" class="dashboard-tile colorful-tile" fxLayout="row" *ngFor="let item of products">
+  <div class="column-1"><img src="{{item.path}}" alt="Img" style=" margin-left: 50px; height: 120px; width: 120px;"></div>
+  <div class="column-2">
+    <h4> <b>{{item.title}}</b></h4>
+    <p class="grey-color"> Color: {{item.color}}</p>
+    <p class="grey-color"> Seller:{{item.seller}}</p>
+  </div>
+  <div class="column-3">
+    <p>{{item.price}}</p>
+  </div>
+  <div class="column-4">
+    <h4 style="margin-left: 50px;"><b>Deliver on Mon Apr 25</b></h4>
+    <p  style="margin-left: 50px; font-size: small;">Your Item has been delivered </p>
+    <p  style="margin-left: 50px;" class="blue-color"> Rate & Review Product </p>
+  </div>
+  <div class="column-5">
+    <h4><b>Deliver on Mon Apr 25</b></h4>
+    <p style="font-size: small;">Your Item has been delivered </p>
+    <p class="blue-color"> Rate & Review Product </p>
+  </div>
   </mat-grid-tile>
-
-  <mat-grid-tile style="background-color: aquamarine;">
-    One
-  </mat-grid-tile>
-
-
-
 </mat-grid-list>
 
 <app-footer></app-footer>
