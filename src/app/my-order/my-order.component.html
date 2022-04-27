@@ -1,6 +1,6 @@
 <app-main-header></app-main-header>
-<mat-grid-list class="dashboard-grid-list" cols="2" gutterSize="10px"  rowHeight="100px">
-  <mat-grid-tile matRipple fxLAyoutAlign="start stretch" class="dashboard-tile colorful-tile g1" fxLayout="row" >
+<mat-grid-list class="dashboard-grid-list" [cols]="dashBoardGridCol" gutterSize="10px"  rowHeight="100px">
+  <mat-grid-tile matRipple fxLAyoutAlign="start stretch"  (click)="myOrders()" matTooltip="My Orders" class="dashboard-tile colorful-tile bg-sky" fxLayout="row" >
     <div fxLayout="column" fxLayoutAlign="start center">
       <mat-icon>list_alt</mat-icon>
     </div>&nbsp; &nbsp;
@@ -9,7 +9,7 @@
     </div>
   </mat-grid-tile>
 
-  <mat-grid-tile matRipple class="dashboard-tile colorful-tile g2" fxLAyoutAlign="start stretch"  fxLayout="row">
+  <mat-grid-tile  (click)="myFav()"  matTooltip="My WhishList" matRipple class="dashboard-tile colorful-tile bg-pink" fxLAyoutAlign="start stretch"  fxLayout="row">
 
     <div class="ml-10" fxLayout="column" fxLayoutAlign="start center">
       <mat-icon>favorite</mat-icon>
@@ -21,9 +21,18 @@
   </mat-grid-tile>
 </mat-grid-list>
 
+<div *ngIf="defaultFlag">
+  <div class="center">
+    <img style="height: 300px; width: 300px;" src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+    <h4> Check Your Orders and Your WhishList Here !</h4>
+    <button routerLinkActive="active" (click)="myOrders()" class="btn btn-primary">My Orders</button>
+  </div>
+</div>
 
-<mat-grid-list class="dashboard-grid-list-Orders" cols="1" gutterSize="20px" rowHeight="150px">
-  <mat-grid-tile  fxLAyoutAlign="start stretch" class="dashboard-tile colorful-tile" fxLayout="row" *ngFor="let item of products">
+
+<div *ngIf="flag">
+  <mat-grid-list class="dashboard-grid-list-Orders" cols="1" gutterSize="20px" rowHeight="150px">
+    <mat-grid-tile  fxLAyoutAlign="start stretch" class="dashboard-tile colorful-tile" fxLayout="row" *ngFor="let item of products">
   <div class="column-1"><img src="{{item.path}}" alt="Img" style=" margin-left: 50px; height: 120px; width: 120px;"></div>
   <div class="column-2">
     <h4> <b>{{item.title}}</b></h4>
@@ -34,16 +43,55 @@
     <p>{{item.price}}</p>
   </div>
   <div class="column-4">
-    <h4 style="margin-left: 50px;"><b>Deliver on Mon Apr 25</b></h4>
-    <p  style="margin-left: 50px; font-size: small;">Your Item has been delivered </p>
-    <p  style="margin-left: 50px;" class="blue-color"> Rate & Review Product </p>
-  </div>
-  <div class="column-5">
     <h4><b>Deliver on Mon Apr 25</b></h4>
     <p style="font-size: small;">Your Item has been delivered </p>
     <p class="blue-color"> Rate & Review Product </p>
   </div>
   </mat-grid-tile>
 </mat-grid-list>
+</div>
+
+<div *ngIf="myWhishList && products.length !==0  else elseBlock">
+  <div class="container">
+    <div class="card-table">
+    <div class="cart-product">
+      <table class="table table-responsive">
+        <!-- <thead>
+          <tr>
+            <th>Sr.No</th>
+            <th>Product Name</th>
+            <th>Product Image</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead> -->
+        <tbody>
+          <tr *ngFor="let item of products; let i=index" tabindex="0">
+            <!-- <td>{{i+1}}</td> -->
+            <td>{{item.title}}</td>
+            <td><img style="width: 120px;" src="{{item.path}}" alt=""></td>
+            <td>{{item.description}}</td>
+            <td>{{item.price}}</td>
+            <td>
+            <button class="btn btn-danger" (click)="removeItem(item, i)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </td>
+          </tr>
+        </tbody>
+     </table>
+    </div>
+  </div>
+ </div>
+</div>
+
+<ng-template #elseBlock>
+  <div *ngIf="myWhishList">
+    <div class="center">
+      <img style="height: 300px; width: 300px;" src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+      <h4> No Item in WhishList ! Add Now</h4>
+      <button routerLinkActive="active" (click)="myOrders()" class="btn btn-primary">My Orders</button>
+    </div>
+  </div>
+</ng-template>
 
 <app-footer></app-footer>
