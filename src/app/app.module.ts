@@ -32,6 +32,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ConfirmDialogComponent } from './Dialog-Box/confirm-dialog/confirm-dialog.component';
 import { ClothesDetailComponent } from './clothes-detail/clothes-detail.component'
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
+import {QuillModule} from 'ngx-quill';
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
 import {ChartModule} from 'angular-highcharts';
 import { MyOrderComponent } from './my-order/my-order.component';
@@ -76,6 +77,7 @@ export const MY_FORMATS ={
     MaterialModule,
     NgxSpinnerModule,
     FormsModule,
+    QuillModule.forRoot() ,
     ReactiveFormsModule,
     HttpClientModule,
     ChartModule,

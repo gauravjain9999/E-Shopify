@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApplicationServiceService } from '../Service/application-service.service';
 import { CartService } from '../Service/cart.service';
 import {MediaChange, MediaObserver} from "@angular/flex-layout";
+import { NotificationService } from '../Service/notification.service';
 
 @Component({
   selector: 'app-my-order',
@@ -18,7 +19,7 @@ export class MyOrderComponent implements OnInit {
   defaultFlag: boolean = true;
   myWhishList: boolean = false;
 
-  constructor( private mediaObserver: MediaObserver,  private applicationService: ApplicationServiceService, private cartService: CartService, private router: Router) { }
+  constructor( private mediaObserver: MediaObserver, private notificationService: NotificationService,  private applicationService: ApplicationServiceService, private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -40,9 +41,14 @@ export class MyOrderComponent implements OnInit {
   }
 
   myOrders(){
+
     this.flag = true;
     this.defaultFlag = false;
     this.myWhishList = false;
+
+    if(this.products.length ==0){
+      this.notificationService.showNotification('No Data Found', 'Close');
+    }
   }
 
   myFav(){
