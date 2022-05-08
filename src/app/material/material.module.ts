@@ -17,16 +17,19 @@ import {FlexLayoutModule } from '@angular/flex-layout';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
+import {MatSortModule} from '@angular/material/sort';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
 import {MatRippleModule} from '@angular/material/core';
+import {MatTableModule} from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 const customClassModule = [
 
     MatIconModule,
+    MatSortModule,
     MatSliderModule,
     MatDialogModule,
     MatInputModule,
@@ -34,6 +37,7 @@ const customClassModule = [
     MatGridListModule,
     MatRippleModule,
     MatChipsModule,
+    MatTableModule,
     MatButtonToggleModule,
     MatButtonModule,
     MatAutocompleteModule,
@@ -49,7 +53,6 @@ const customClassModule = [
     MatSidenavModule,
     MatPaginatorModule,
     MatProgressSpinnerModule
-
 ];
 
 @NgModule({
@@ -57,7 +60,6 @@ const customClassModule = [
   imports: [
     CommonModule,
     customClassModule
-
   ],
   exports: [
     customClassModule

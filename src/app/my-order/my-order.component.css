@@ -77,6 +77,15 @@
   padding: 25px;
 }
 
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.w-25{
+  width: 25%;
+}
+
 .card-table{
   position: relative;
   display: flex;
@@ -88,4 +97,10 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.25rem;
   margin-top: 30px;
+}
+
+th.mat-header-cell {
+  font-weight: 700;
+  font-size: 13px;
+  background-color: rgb(220, 217, 217);
 }
