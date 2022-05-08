@@ -1,4 +1,4 @@
-import { CartLayoutService } from './../Service/cart-layout.service';
+import { CartLayoutService } from '../core/Pipe/Service/cart-layout.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SwiperOptions } from 'swiper';

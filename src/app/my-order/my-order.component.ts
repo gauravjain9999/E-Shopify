@@ -1,9 +1,9 @@
 import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApplicationServiceService } from '../Service/application-service.service';
-import { CartService } from '../Service/cart.service';
+import { ApplicationServiceService } from '../core/Pipe/Service/application-service.service';
+import { CartService } from '../core/Pipe/Service/cart.service';
 import {MediaChange, MediaObserver} from "@angular/flex-layout";
-import { NotificationService } from '../Service/notification.service';
+import { NotificationService } from '../core/Pipe/Service/notification.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';

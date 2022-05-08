@@ -2,9 +2,9 @@ import { Router } from '@angular/router';
 import { DialogNotifyComponent } from '../../Dialog-Box/dialog-notify/dialog-notify.component';
 import { DialogDataComponent } from '../../Dialog-Box/dialog-data/dialog-data.component';
 import { MatDialog } from '@angular/material/dialog';
-import { CartService } from '../../Service/cart.service';
+import { CartService } from '../../core/Pipe/Service/cart.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NotificationService } from '../../Service/notification.service';
+import { NotificationService } from '../../core/Pipe/Service/notification.service';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({

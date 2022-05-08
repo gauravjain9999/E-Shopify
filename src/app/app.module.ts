@@ -22,7 +22,7 @@ import { HeaderComponent } from './Headers/header/header.component';
 import { ClothesProductComponent } from './clothes-product/clothes-product.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
-import { FilterSearchPipe } from './Pipe/filter-search.pipe';
+import { FilterSearchPipe } from './core/Pipe/filter-search.pipe';
 import { DialogDataComponent } from './Dialog-Box/dialog-data/dialog-data.component';
 import {NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { DialogNotifyComponent } from './Dialog-Box/dialog-notify/dialog-notify.component';

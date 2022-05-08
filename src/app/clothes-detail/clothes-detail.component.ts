@@ -1,11 +1,11 @@
-import { ApplicationServiceService } from './../Service/application-service.service';
-import { ClothService } from './../Service/cloth.service';
+import { ApplicationServiceService } from '../core/Pipe/Service/application-service.service';
+import { ClothService } from '../core/Pipe/Service/cloth.service';
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import {Chart} from "angular-highcharts";
 import {columnChartOptions} from "../../app/dataChart/columnChart"
 
-import { CartService } from '../Service/cart.service';
+import { CartService } from '../core/Pipe/Service/cart.service';
 
 @Component({
   selector: 'app-clothes-detail',
