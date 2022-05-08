@@ -1,0 +1,65 @@
+<div class="stripe-checkout">
+  <span class="stripe-text"> Angular Stripe Checkout Page</span>
+</div>
+<mat-divider></mat-divider>
+
+<div class="card">
+  <div class="container">
+    <span style="font-size: 20px; color: grey;"> PRICE  DETAILS</span><br>
+  </div>
+  <mat-divider></mat-divider>
+
+  <mat-grid-list cols="2" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
+    <mat-grid-tile fxLayout="row" fxLayoutAlign="start" fxFlex="1125%">Price ({{totalLength}})</mat-grid-tile>
+    <mat-grid-tile>
+      {{totalSum | currency : 'Rs  '}}
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="2" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
+
+    <mat-grid-tile>
+      Discount
+    </mat-grid-tile>
+    <mat-grid-tile style="color: green;">
+       - {{discountItem | currency: 'Rs '}}
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="2" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
+
+    <mat-grid-tile>
+      Delivery Charges
+    </mat-grid-tile>
+    <mat-grid-tile style="color: green;">
+       {{'FREE'}}
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-divider></mat-divider>
+
+  <mat-grid-list cols="2" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
+
+    <mat-grid-tile>
+      <b>{{'Total Amount'}}</b>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <b>{{totalSum | currency : 'Rs  '}}</b>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-divider></mat-divider>
+
+  <mat-grid-list cols="1" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
+
+    <mat-grid-tile>
+      <mat-chip-list>
+        <mat-chip  class="payment-btn" color="accent" (click)="checkout(20)">Payment of {{totalSum | currency : 'Rs '}}</mat-chip>
+      </mat-chip-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+  </div>
+

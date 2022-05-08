@@ -1,6 +1,6 @@
 import { ClothesDetailComponent } from './clothes-detail/clothes-detail.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { PaymentCheckoutComponent } from './payment-checkout/payment-checkout.component';
+import { PaymentCheckoutComponent } from './Dialog-Box/payment-checkout/payment-checkout.component';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { ClothesProductComponent } from './clothes-product/clothes-product.component';
 import { MobileProductsComponent } from './mobile-products/mobile-products.component';

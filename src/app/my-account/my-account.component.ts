@@ -14,14 +14,12 @@ export class MyAccountComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onProfileData()
-  {
+  onProfileData(){
     this.router.navigate(['myProfile']);
     console.log('router navigation');
   }
 
-  setUserName(item: string)
-  {
+  setUserName(item: string){
 
   }
 
@@ -30,8 +28,7 @@ export class MyAccountComponent implements OnInit {
     console.log(this.name);
   }
 
-  myOrder()
-  {
+  myOrder(){
     this.router.navigate(['myOrder']);
   }
 

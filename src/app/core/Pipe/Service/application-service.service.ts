@@ -11,7 +11,7 @@ export class ApplicationServiceService {
   checked = new EventEmitter<any>();
   applicationData = new EventEmitter<any>();
   eventData = new BehaviorSubject<any>('');
-  // submitData = new Subject();
+  totalDiscount = new BehaviorSubject<any>('');
 
   constructor(private httpClient: HttpClient) { }
 

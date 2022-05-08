@@ -26,7 +26,7 @@ import { FilterSearchPipe } from './core/Pipe/filter-search.pipe';
 import { DialogDataComponent } from './Dialog-Box/dialog-data/dialog-data.component';
 import {NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { DialogNotifyComponent } from './Dialog-Box/dialog-notify/dialog-notify.component';
-import { PaymentCheckoutComponent } from './payment-checkout/payment-checkout.component';
+import { PaymentCheckoutComponent } from './Dialog-Box/payment-checkout/payment-checkout.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ConfirmDialogComponent } from './Dialog-Box/confirm-dialog/confirm-dialog.component';

@@ -6,6 +6,7 @@ import { CartService } from '../../core/Pipe/Service/cart.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NotificationService } from '../../core/Pipe/Service/notification.service';
 import { MatSidenav } from '@angular/material/sidenav';
+import { ApplicationServiceService } from 'src/app/core/Pipe/Service/application-service.service';
 
 @Component({
   selector: 'app-main-header',
@@ -21,12 +22,12 @@ export class MainHeaderComponent implements OnInit {
   email: string;
   public totalItem: number = 0;
 
-  constructor(private router: Router, private dialog: MatDialog,  private cartService: CartService, private notificationService: NotificationService) {
+  constructor(private router: Router, private dialog: MatDialog, private applicationService: ApplicationServiceService,
+  private cartService: CartService, private notificationService: NotificationService) {
 
    this.cartService.getProduct().subscribe(res =>{
    this.totalItem = res.length;
-   console.log(res);
-
+   console.log(this.totalItem);
   })
 }
   ngOnInit(): void {}

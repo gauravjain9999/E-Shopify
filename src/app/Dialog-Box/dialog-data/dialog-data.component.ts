@@ -4,6 +4,7 @@ import { Component, Inject, OnChanges, OnInit, SimpleChanges } from '@angular/co
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
+import { PaymentCheckoutComponent } from 'src/app/Dialog-Box/payment-checkout/payment-checkout.component';
 
 export class DialogData{
 
@@ -44,7 +45,7 @@ export class DialogDataComponent implements OnInit{
   customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public dialogRef: MatDialogRef<DialogDataComponent>,
-  private router:Router) {
+  private router:Router, private paymentDialog: MatDialog) {
 
   }
 
@@ -107,21 +108,32 @@ export class DialogDataComponent implements OnInit{
     }
   }
 
-
-  onClick(item: any)
-  {
+  onClick(item: any){
    this.states = item;
   }
 
-  onCancel()
-  {
+  onCancel(){
     this.dialogRef.close();
   }
 
-  onSubmit()
-  {
-    this.dialogRef.close();
-    this.router.navigate(['payment']);
+  onSubmit(){
+
+    if(!this.profileForm.valid)
+    {
+      this.flag = true;
+      this.dialogRef.close();
+      this.paymentDialog.open(PaymentCheckoutComponent, {
+
+        height: '800px',
+        width: '800px'
+      })
+      // this.router.navigate(['payment'])
+    }
+    else{
+      this.flag = false;
+    }
+    console.log(this.profileForm.valid);
+    // this.router.navigate(['payment']);
   }
 
   keyPressNumbers(event: any) {
@@ -134,8 +146,7 @@ export class DialogDataComponent implements OnInit{
     }
   }
 
-  getFormControlName(controlName: string): FormControl
-  {
+  getFormControlName(controlName: string): FormControl{
     return this.profileForm.get(controlName) as FormControl;
   }
 
