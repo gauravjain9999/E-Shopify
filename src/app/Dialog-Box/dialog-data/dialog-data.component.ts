@@ -118,12 +118,11 @@ export class DialogDataComponent implements OnInit{
 
   onSubmit(){
 
-    if(!this.profileForm.valid)
+    if(this.profileForm.valid)
     {
       this.flag = true;
       this.dialogRef.close();
       this.paymentDialog.open(PaymentCheckoutComponent, {
-
         height: '800px',
         width: '800px'
       })
@@ -132,8 +131,6 @@ export class DialogDataComponent implements OnInit{
     else{
       this.flag = false;
     }
-    console.log(this.profileForm.valid);
-    // this.router.navigate(['payment']);
   }
 
   keyPressNumbers(event: any) {
