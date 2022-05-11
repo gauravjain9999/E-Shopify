@@ -129,6 +129,7 @@ export class DialogDataComponent implements OnInit{
       // this.router.navigate(['payment'])
     }
     else{
+      alert('Please fill your details');
       this.flag = false;
     }
   }
