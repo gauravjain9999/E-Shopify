@@ -4,7 +4,7 @@
   <div class="container">
     <div class="card-table">
       <div class="cart-product">
-        <table class="table table-responsive">
+        <table class="table table-responsive" style="padding:20px;">
           <thead>
             <tr>
               <th>Sr.No</th>
@@ -33,13 +33,22 @@
               </td>
             </tr>
           </tbody>
+
         </table>
+        <div class="content">
+          <span class="content-text">
+            <span class="content-text-main"></span>
+            <span class="confirm-btn">
+              <mat-chip class="btn btn-primary check" (click)="onEditDetail()" selected>Proceed to Payment</mat-chip>
+            </span>
+          </span>
+        </div>
       </div>
     </div>
   </div>
 </ng-container>
 
-<ng-container *ngIf="products.length !==0">
+<!-- <ng-container *ngIf="products.length !==0">
 <div class="content">
 <span class="content-text">{{'Total Amount:'}}
   <span class="content-text-main">
@@ -50,7 +59,7 @@
   </span>
 </span>
 </div>
-</ng-container>
+</ng-container> -->
 
 
 
