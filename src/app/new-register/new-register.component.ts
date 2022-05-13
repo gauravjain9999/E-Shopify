@@ -1,3 +1,4 @@
+import { NewLoginComponent } from './../new-login/new-login.component';
 import { ApplicationServiceService } from '../core/Pipe/Service/application-service.service';
 import { DataStorageService } from '../core/Pipe/Service/data-storage.service';
 import { NotificationService } from '../core/Pipe/Service/notification.service';
@@ -71,8 +72,14 @@ export class NewRegisterComponent implements OnInit {
     userForm.reset();
   }
 
-  onSignUp() {
+  back(){
+    this.dialog.open(NewLoginComponent, {
+      height: '650px',
+      width: '800px'
+   });
+  }
 
+  onSignUp() {
     this.userEmail.subscribe(email =>{
       this.email = email;
     })

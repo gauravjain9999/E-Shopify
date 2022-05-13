@@ -94,11 +94,19 @@ export class NewLoginComponent implements OnInit {
     );
   }
   onLogin() {
-    this.dialogRef.close();
-    this.isLoading = true;
-    this.router.navigate(['mainPage']);
-    this.isLoading = false;
-    this.notificationService.showNotification('Successfully Login', 'Close');
+
+    console.log(this.login.valid);
+    if(this.login.valid)
+    {
+      this.dialogRef.close();
+      this.isLoading = true;
+      this.router.navigate(['mainPage']);
+      this.isLoading = false;
+      this.notificationService.showNotification('Successfully Login', 'Close');
+    }
+    else{
+      alert('Please Fill your Details');
+    }
   }
 
   onSignUp() {

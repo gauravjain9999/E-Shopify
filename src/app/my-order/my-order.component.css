@@ -104,3 +104,36 @@ th.mat-header-cell {
   font-size: 13px;
   background-color: rgb(220, 217, 217);
 }
+
+.search-box{
+ padding: 5px;
+}
+
+.unit {
+  position: absolute;
+  display: block;
+  left: 5px;
+  top: 10px;
+  margin-top: 18px;
+  margin-left: 400px !important;
+  z-index: 12;
+}
+
+.input-box {
+  position: relative;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+
+input {
+  display: block;
+  border: 1px solid #d7d6d6;
+  background: #fff;
+  padding: 10px 10px 10px 20px;
+  border-radius: 20px;
+  width: 30%;
+  outline: none;
+  box-shadow: 5px 5px 5px darkgrey;
+  text-align: left;
+}
