@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartLayoutService } from '../core/Pipe/Service/cart-layout.service';
+import { CartLayoutService } from '../core/Service/cart-layout.service';
 
 @Component({
   selector: 'app-card-layout-product',

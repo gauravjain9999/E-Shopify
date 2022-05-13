@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/core/Pipe/Service/cart.service';
+import { CartService } from 'src/app/core/Service/cart.service';
 
 @Component({
   selector: 'app-payment-checkout',

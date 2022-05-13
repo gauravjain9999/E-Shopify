@@ -1,7 +1,7 @@
-import { ApplicationServiceService } from '../core/Pipe/Service/application-service.service';
-import { CartService } from '../core/Pipe/Service/cart.service';
+import { ApplicationServiceService } from '../core/Service/application-service.service';
+import { CartService } from '../core/Service/cart.service';
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { ClothService } from '../core/Pipe/Service/cloth.service';
+import { ClothService } from '../core/Service/cloth.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';

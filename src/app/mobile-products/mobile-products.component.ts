@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../core/Pipe/Service/user.service';
+import { UserService } from '../core/Service/user.service';
 
 @Component({
   selector: 'app-mobile-products',

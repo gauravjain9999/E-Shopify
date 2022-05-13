@@ -1,9 +1,9 @@
-import { ApplicationServiceService } from '../core/Pipe/Service/application-service.service';
+import { ApplicationServiceService } from '../core/Service/application-service.service';
 import { ConfirmDialogComponent } from './../Dialog-Box/confirm-dialog/confirm-dialog.component';
 import { DialogDataComponent } from './../Dialog-Box/dialog-data/dialog-data.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CartService } from '../core/Pipe/Service/cart.service';
+import { CartService } from '../core/Service/cart.service';
 import { Component, OnInit, ViewChild, ElementRef, TemplateRef } from '@angular/core';
 
 @Component({

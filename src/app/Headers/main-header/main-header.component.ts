@@ -2,11 +2,11 @@ import { Router } from '@angular/router';
 import { DialogNotifyComponent } from '../../Dialog-Box/dialog-notify/dialog-notify.component';
 import { DialogDataComponent } from '../../Dialog-Box/dialog-data/dialog-data.component';
 import { MatDialog } from '@angular/material/dialog';
-import { CartService } from '../../core/Pipe/Service/cart.service';
+import { CartService } from '../../core/Service/cart.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NotificationService } from '../../core/Pipe/Service/notification.service';
+import { NotificationService } from '../../core/Service/notification.service';
 import { MatSidenav } from '@angular/material/sidenav';
-import { ApplicationServiceService } from 'src/app/core/Pipe/Service/application-service.service';
+import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
 
 @Component({
   selector: 'app-main-header',

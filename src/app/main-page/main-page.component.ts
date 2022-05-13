@@ -1,6 +1,6 @@
-import { ApplicationServiceService } from '../core/Pipe/Service/application-service.service';
+import { ApplicationServiceService } from '../core/Service/application-service.service';
 import { Component, OnInit } from '@angular/core';
-import { CartLayoutService } from '../core/Pipe/Service/cart-layout.service';
+import { CartLayoutService } from '../core/Service/cart-layout.service';
 
 @Component({
   selector: 'app-main-page',

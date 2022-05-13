@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { ApplicationServiceService } from '../core/Pipe/Service/application-service.service';
+import { ApplicationServiceService } from '../core/Service/application-service.service';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({

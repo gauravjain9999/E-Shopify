@@ -1,4 +1,4 @@
-import { ApplicationServiceService } from '../../core/Pipe/Service/application-service.service';
+import { ApplicationServiceService } from '../../core/Service/application-service.service';
 import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';

@@ -1,7 +1,7 @@
 import { NewLoginComponent } from './../new-login/new-login.component';
-import { ApplicationServiceService } from '../core/Pipe/Service/application-service.service';
-import { DataStorageService } from '../core/Pipe/Service/data-storage.service';
-import { NotificationService } from '../core/Pipe/Service/notification.service';
+import { ApplicationServiceService } from '../core/Service/application-service.service';
+import { DataStorageService } from '../core/Service/data-storage.service';
+import { NotificationService } from '../core/Service/notification.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,7 +18,7 @@ import {
 import { Form, FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
 // import {MatDialogRef} from '@angular/material/dialog'
 import { MainPageComponent } from '../main-page/main-page.component';
-import { CustomErrorStateMatcherService } from '../core/Pipe/Service/custom-error-state-matcher.service';
+import { CustomErrorStateMatcherService } from '../core/Service/custom-error-state-matcher.service';
 
 @Component({
   selector: 'app-new-register',
