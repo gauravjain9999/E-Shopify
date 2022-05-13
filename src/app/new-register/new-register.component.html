@@ -16,9 +16,6 @@
 </div> -->
 <form [formGroup]="register" (ngSubmit)="onSubmit()">
   <div class="container">
-    <div class="alert alert-danger" *ngIf="isAuthorize">
-      <p>{{error}}</p>
-    </div>
     <h1 style="font-weight: 500;">Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
@@ -83,9 +80,11 @@
       <input type="checkbox" checked="checked"  name="remember" style="margin-bottom:15px"> Remember me
     </label>
 
+    <!-- <button type="submit" (click)="onSubmit()"> Submit</button> -->
+
     <div class="clearfix">
       <mat-chip-list>
-        <mat-chip color="primary"  (click)="onSignUp()" selected [disabled]="!register.valid">Sign Up</mat-chip>
+        <mat-chip color="primary" type="submit" (click)="onSubmit()" selected>Sign Up</mat-chip>
         <mat-chip color="warn" (click)="onReset(register)" selected >Reset</mat-chip>
       </mat-chip-list>
     </div>

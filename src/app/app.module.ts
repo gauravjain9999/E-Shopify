@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewLoginComponent } from './new-login/new-login.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgImageSliderModule } from 'ng-image-slider';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NewRegisterComponent } from './new-register/new-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,6 +36,7 @@ import {QuillModule} from 'ngx-quill';
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
 import {ChartModule} from 'angular-highcharts';
 import { MyOrderComponent } from './my-order/my-order.component';
+import { HeadersInterceptor } from './core/interceptor/headers.interceptor';
 
 export const MY_FORMATS ={
 
@@ -89,6 +90,7 @@ export const MY_FORMATS ={
   ],
   providers: [
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
     { provide: DateAdapter,
       useClass:MomentDateAdapter,
       deps: [

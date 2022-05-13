@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { NewLoginComponent } from './../new-login/new-login.component';
 import { ApplicationServiceService } from '../core/Service/application-service.service';
 import { DataStorageService } from '../core/Service/data-storage.service';
@@ -27,10 +28,6 @@ import { CustomErrorStateMatcherService } from '../core/Service/custom-error-sta
 })
 export class NewRegisterComponent implements OnInit {
   @ViewChild('secondDialog') secondDialog: TemplateRef<any>;
-
-  @Output() userEmail =  new EventEmitter<string>()
-  @Output() userPass =  new EventEmitter<string>()
-
   submittedError: any;
   formStatus: Form;
   mobNumberPattern = '^((\\+91-?)|0)?[0-9]{10}$';
@@ -79,52 +76,6 @@ export class NewRegisterComponent implements OnInit {
    });
   }
 
-  onSignUp() {
-    this.userEmail.subscribe(email =>{
-      this.email = email;
-    })
-
-    this.userPass.subscribe(pass =>{
-      this.pass = pass;
-    })
-
-    // this.dialog.open(this.secondDialog);
-    this.authService.signUp(this.email, this.pass).subscribe(
-      (value) => {
-        console.log(value);
-          this.dialog.open(this.secondDialog);
-
-      },
-      (errorRes) => {
-
-        this.isAuthorize = true;
-          switch (errorRes.error.error.message) {
-          case 'EMAIL_EXISTS':
-            this.error =
-              'The email address is already in use by another account.';
-            break;
-
-          case 'ADMIN_ONLY_OPERATION':
-            this.error =
-              'Some functions are managed by Admin.';
-            break;
-
-          case 'OPERATION_NOT_ALLOWED':
-            this.error = 'Password sign-in is disabled for this project.';
-            break;
-
-          case 'MISSING_PASSWORD':
-            this.error = 'Password Missing or Used by another account';
-            break;
-
-          case 'TOO_MANY_ATTEMPTS_TRY_LATER':
-            this.error =
-              'We have blocked all requests from this device due to unusual activity. Try again later';
-          }
-        }
-    );
-  }
-
   keyPressNumbers(event: any) {
     var charCode = event.which ? event.which : event.keyCode;
     if (charCode < 48 || charCode > 57) {
@@ -136,9 +87,51 @@ export class NewRegisterComponent implements OnInit {
   }
   onSubmit() {
 
-    this.formStatus = this.register.value
-    this.userEmail.emit(this.register.value.email);
-    this.userPass.emit(this.register.value.password);
+  this.formStatus = this.register.value
+  this.email = this.register.value.email;
+  this.pass = this.register.value.password;
+
+  if(this.register.valid)
+  {
+    this.authService.signUp(this.email, this.pass).subscribe(
+      (value) => {
+        this.dialog.open(this.secondDialog);
+      },
+      (errorRes) => {
+
+        this.isAuthorize = true;
+
+        switch (errorRes.error.error.message) {
+
+          case 'EMAIL_EXISTS':
+           this.notificationService.showNotification('The email address is already in use by another account', 'close')
+           break;
+
+          case 'ADMIN_ONLY_OPERATION':
+            this.notificationService.showNotification('Some functions are managed by Admin', 'close')
+            break;
+
+          case 'OPERATION_NOT_ALLOWED':
+            this.notificationService.showNotification('Password sign-in is disabled for this project', 'close')
+            break;
+
+          case 'MISSING_PASSWORD':
+            this.notificationService.showNotification('Password Missing or Used by another account', 'close')
+            break;
+
+          case 'TOO_MANY_ATTEMPTS_TRY_LATER':
+            this.notificationService.showNotification('We have blocked all requests from this device due to unusual activity. Try again later', 'close')
+            break;
+          }
+        });
+     }
+     else{
+      alert("Please complete your Detail")
+     }
+
+    // console.log(this.formStatus);
+
+
     this.applicationService.nameEvent.emit(this.formStatus);
   }
 
