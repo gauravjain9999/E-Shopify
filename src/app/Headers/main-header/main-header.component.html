@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light" style="background-color: rgb(215, 221, 221);">
   <div class="container-fluid">
 
     <mat-toolbar color="primary" class="example-toolbar">
@@ -20,15 +20,31 @@
     </button>&nbsp; -->
 
     <img class="float-img pointer" src="../../assets/./images/shopifyApp.png">&nbsp;&nbsp;
-    <span style="margin-top: 5px;" class="shopifyApp mr-1rem">Shopify App</span>
+    <span class="shopifyApp mr-1rem">Shopify App</span>
     <div class="search-bar">
       <input type="text" class="searchText" placeholder="Search..."name="search" [(ngModel)]="searchText">
-        <mat-icon class="search-pos ml-10">search</mat-icon>
     </div>
+    <span style="margin-top: 8px; margin-left: 70px;">
+      <mat-icon class="search-pos ml-10">search</mat-icon>
+    </span>
 
     <div class="notify" matTooltip="Notification" (click)="notification()">
       <mat-icon>notifications_none</mat-icon>
     </div>
+
+     <span style="margin-top: 10px; margin-left: 460px; font-size: medium;">More</span>
+      <span style="margin-top: 8px">
+        <!-- <mat-icon>expand_more</mat-icon> -->
+        <mat-select panelClass="my-panel" class="select-dropDown">
+          <mat-option  [value]="option" *ngFor="let option of items" (click)="openComponent(option)">
+            {{option}}
+          </mat-option>
+        </mat-select>
+      </span>
+
+
+    <span class="material-symbols-outlined">
+      </span>
 
     <span class="icon-cart">
       <mat-icon class="material-symbols-outlined">shopping_cart</mat-icon>

@@ -28,8 +28,7 @@
 
 .search-bar
 {
-  margin-left: 250px;
-  margin-top: 6px;
+  margin-left: 40px;
   max-width: 100%;
   color: white;
   font-size: 17px;
@@ -39,8 +38,21 @@
 
 .searchText
 {
-  margin-left: 200px;
-  width: 250px;
+  border: 1px solid #d7d6d6;
+  background: #fff;
+  padding: 10px 10px 10px 20px;
+  border-radius: 25px;
+  width: 150%;
+  outline: none;
+  box-shadow: 5px 5px 5px darkgrey;
+  text-align: left;
+  /* margin-left: 100px;
+  width: 270px;
+  padding: 2px;
+  border-radius: 5px;
+  outline: none;
+  text-decoration: none;
+  box-shadow: 5px 5px 5px lightgrey; */
 }
 
 .notify
@@ -50,7 +62,7 @@
   height: 20px;
   position: absolute;
   size: 20px;
-  margin-left: 1075px;
+  margin-left: 930px;
 }
 .notify:hover{
   transform: scale(1.05);
@@ -91,7 +103,8 @@
 {
   margin-top: 5px;
   cursor: pointer;
-  margin-left: 250px;
+  position: absolute;
+  margin-left: 1195px;
 }
 
 
@@ -167,12 +180,37 @@ mat-sidenav{
 
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
-
+  margin-top: 5px;
+  font-family:Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
+  /* font-weight/: 700; */
   text-decoration: none;
   white-space: nowrap;
   margin-bottom: 0px !important;
 }
+
+.select-dropDown{
+  /* position: absolute; */
+  top: 150vh;
+  left: 30vw;
+}
+
+/*
+.mat-select-panel{
+  position: absolute;
+  top: 32px;
+  left: 4px;
+  min-width: calc(100% + 22px) !important;
+  border-radius: 0px !important;
+  border: 1px solid blue;
+  border-top-style: none;
+}
+
+
+.mat-select-panel ng-animating {
+  visibility: hidden;
+}
+ */
 
 /* .example-toolbar
 {

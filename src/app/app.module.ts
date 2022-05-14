@@ -1,3 +1,4 @@
+import { ResponseInterceptor } from '../app/core/interceptor/response.interceptor';
 import { ClothesComponent } from './Clothes/clothes.component';
 import { CardLayoutProductComponent } from './card-layout-product/card-layout-product.component';
 import { MainHeaderComponent } from './Headers/main-header/main-header.component';
@@ -90,7 +91,8 @@ export const MY_FORMATS ={
   ],
   providers: [
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor,  multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
     { provide: DateAdapter,
       useClass:MomentDateAdapter,
       deps: [

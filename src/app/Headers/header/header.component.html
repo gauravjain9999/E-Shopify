@@ -1,12 +1,14 @@
-<nav class="navbar navbar-light bg-light border-bottom border-grey">
+<nav class="navbar navbar-light" style="background-color: rgb(215, 221, 221)">
   <div class="container-fluid">
     <img class="float-img" src="../../assets/./images/shopifyApp.png">&nbsp; &nbsp;
     <span class="navbar-brand mb-0 h1" style="margin-top: 3px;">Shopify App</span>
     <div class="search-bar">
-      <input type="text" placeholder="Search..." name="search">
-      <mat-icon class="search-pos ml-10">search</mat-icon>
-     <!-- < i style="color: black; margin-left: 10px;" class="fa fa-search icon"></> -->
+      <input type="text" class="search-text" placeholder="Search..." name="search">
+      <!-- < i style="color: black; margin-left: 10px;" class="fa fa-search icon"></> -->
     </div>
+    <span style="margin-top: 10px; margin-left: 350px;">
+      <mat-icon class="search-pos ml-10">search</mat-icon>
+    </span>
     <mat-icon class="theme-icon dark-theme-2" (click)="toggleDarkTheme()"aria-hidden="false"
     aria-label="Example home icon">brightness_6</mat-icon>
     <button class="btn-login" (click)="loginTo()">Login</button>

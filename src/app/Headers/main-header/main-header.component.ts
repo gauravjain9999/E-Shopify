@@ -21,6 +21,7 @@ export class MainHeaderComponent implements OnInit {
   opened = false;
   email: string;
   public totalItem: number = 0;
+  items: any[] = [];
 
   constructor(private router: Router, private dialog: MatDialog, private applicationService: ApplicationServiceService,
   private cartService: CartService, private notificationService: NotificationService) {
@@ -30,10 +31,27 @@ export class MainHeaderComponent implements OnInit {
    console.log(this.totalItem);
   })
 }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.items = ['My Profile', 'My Orders', 'My Wallet'];
+  }
 
   close(event: any) {
     this.sidenav.close();
+  }
+
+  openComponent(component: any){
+
+    let openComponent = component;
+    if(openComponent === 'My Profile'){
+      this.router.navigate(['myProfile'])
+    }
+    else if(openComponent === 'My Orders'){
+      this.router.navigate(['myOrder'])
+    }
+    else if (openComponent === 'My Wallet'){
+      this.router.navigate(['payment'])
+    }
+
   }
 
 
