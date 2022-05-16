@@ -20,7 +20,7 @@
 .custom-card
 {
   width: 100%;
-  background-color: rgb(255, 244, 244);
+  background-color: white;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   height: 31%;
 }

@@ -24,7 +24,12 @@ export class ClothService {
         path:     '../../assets/ImageCloth/cloth1.jpeg',
         addToCloth: 'Add To Cart',
         rating: 4,
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1993 in Chandni Chowk, India',
+        Founders:	'Gaurav and Nikhil Mohan',
+        numberOfLocations:	'380 cities',
+        areaServed:	'India',
+        review: 45
       },
       {
         id: 2,
@@ -62,7 +67,12 @@ export class ClothService {
         description:  "Nice Cotton this will be the best cotton",
         path:  '../../assets/ImageCloth/images (3).jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1998 in Chandni Chowk, India',
+        Founders:	'Mohan and Nikhil Mohan',
+        numberOfLocations:	'390 cities',
+        areaServed:	'India',
+        review: 50
       },
       {
         id: 4,
@@ -78,7 +88,12 @@ export class ClothService {
         description: "Good Cotton Fabric",
         path:  '../../assets/ImageCloth/New-Autumn-Fashion-Brand-Men-Clothes-Slim-Fit-Men-Long-Sleeve-Shirt-Men-Plaid-Cotton-Casual__15044.1569933891.jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1990 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'310 cities',
+        areaServed:	'India',
+        review: 60
       },
       {
         id: 5,
@@ -94,7 +109,12 @@ export class ClothService {
         description: "Mixture Cotton and Nylon",
         path:  '../../assets/ImageCloth/New-Autumn-Fashion-Brand-Men-Clothes-Slim-Fit-Men-Long-Sleeve-Shirt-Men-Plaid-Cotton-Casual__62864.1549258439.jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'2001 in Chandni Chowk, India',
+        Founders:	'Brijesh and Kirti Mohan',
+        numberOfLocations:	'500 cities',
+        areaServed:	'India',
+        review: 43
       },
       {
         id: 6,
@@ -110,7 +130,12 @@ export class ClothService {
         description: "Perfect Slim Trim, Good Cotton Fabric",
         path:  '../../assets/ImageCloth/xs-t322-blwh-seven-rocks-original-imafxhagtyj2xvpn.jpeg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1992 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'350 cities',
+        areaServed:	'India',
+        review: 44
       },
       {
         id: 7,
@@ -126,8 +151,12 @@ export class ClothService {
         description: "Slim Trim Perfect Style Cotton",
         path:  '../../assets/ImageCloth/images (4).jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
-
+        isCartVisible: false,
+        Founded:	'1931 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'350 cities',
+        areaServed:	'India',
+        review: 46
       },
       {
         id: 8,
@@ -143,7 +172,12 @@ export class ClothService {
         description: "Your perfect pack for everyday",
         path:  '../../assets//ImageCloth/download.jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1990 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'350 cities',
+        areaServed:	'India',
+        review: 55
       },
       {
         id: 9,
@@ -159,7 +193,12 @@ export class ClothService {
         description: "fitting style, contrast long sleeve",
         path:  '../../assets/ImageCloth/shirt3.jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1993 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'350 cities',
+        areaServed:	'India',
+        review: 41
       },
       {
         id: 10,
@@ -175,7 +214,12 @@ export class ClothService {
         seller: 'Royalty Retail And Export',
         rating: 2,
         color: 'White and Blue',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1991 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'350 cities',
+        areaServed:	'India',
+        review: 42
       },
       {
         id: 11,
@@ -191,7 +235,12 @@ export class ClothService {
         description: "Blend Cotton",
         path:  '../../assets/ImageCloth/image20.jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1992 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'350 cities',
+        areaServed:	'India',
+        review: 44
       },
       {
         id: 12,
@@ -207,7 +256,12 @@ export class ClothService {
         description: "Fancy Jacket, Pure Cotton",
         path:  '../../assets/ImageCloth/images.jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1991 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'350 cities',
+        areaServed:	'India',
+        review: 50
       },
       {
         id: 13,
@@ -223,7 +277,12 @@ export class ClothService {
         description:"Cotton Jacket",
         path: '../../assets/ImageCloth/images (5).jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1991 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'350 cities',
+        areaServed:	'India',
+        review: 60
       },
       {
         id: 14,
@@ -239,7 +298,12 @@ export class ClothService {
         description: "Men's Casual Premium Slim Fit T-shirt",
         path:  '../../assets/ImageCloth/main-qimg-73b1fbf2943ff22b34ba08b2bbf3959e-lq.jpg',
         addToCloth: 'Add To Cart',
-        isCartVisible: false
+        isCartVisible: false,
+        Founded:	'1991 in Chandni Chowk, India',
+        Founders:	'Nitin Mohan and Nikhil Mohan',
+        numberOfLocations:	'350 cities',
+        areaServed:	'India',
+        review: 42
       },
     ];
     return Object.values(clothesList);
