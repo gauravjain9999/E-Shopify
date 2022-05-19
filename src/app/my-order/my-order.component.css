@@ -78,7 +78,6 @@
 }
 
 table {
-  width: 100%;
   margin-top: 20px;
 }
 
@@ -136,4 +135,16 @@ input {
   outline: none;
   box-shadow: 5px 5px 5px darkgrey;
   text-align: left;
+}
+
+table.mat-table {
+  display: table;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  width: 96%;
+  margin-left: 2%;
+  background-color: rgb(220, 217, 217);
 }

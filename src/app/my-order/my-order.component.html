@@ -1,5 +1,7 @@
 <app-main-header></app-main-header>
-<mat-grid-list class="dashboard-grid-list" [cols]="dashBoardGridCol" gutterSize="10px"  rowHeight="100px">
+<mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner>
+
+<mat-grid-list class="dashboard-grid-list" [cols]="dashBoardGridCol" gutterSize="10px"  rowHeight="100px" *ngIf="!showFlagSpinner">
   <mat-grid-tile matRipple fxLAyoutAlign="start stretch"  (click)="myOrders()" matTooltip="My Orders" class="dashboard-tile colorful-tile bg-sky" fxLayout="row" >
     <div fxLayout="column" fxLayoutAlign="start center">
       <mat-icon>list_alt</mat-icon>
@@ -9,23 +11,25 @@
     </div>
   </mat-grid-tile>
 
-  <mat-grid-tile  (click)="myFav()"  matTooltip="My WhishList" matRipple class="dashboard-tile colorful-tile bg-pink" fxLAyoutAlign="start stretch"  fxLayout="row">
-
+  <mat-grid-tile (click)="myFav()"  matTooltip="My WhishList" matRipple class="dashboard-tile colorful-tile bg-pink" fxLAyoutAlign="start stretch"  fxLayout="row">
     <div class="ml-10" fxLayout="column" fxLayoutAlign="start center">
       <mat-icon>favorite</mat-icon>
     </div>&nbsp; &nbsp;
-
+    
+    <!-- <mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner> -->
     <div fxLayoutAlign="start">
      <b>My WishList</b>
     </div>
   </mat-grid-tile>
 </mat-grid-list>
 
-<div *ngIf="defaultFlag">
-  <div class="center">
-    <img style="height: 300px; width: 300px;" src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
-    <h4> Check Your Orders and Your WhishList Here !</h4>
-    <button routerLinkActive="active" (click)="myOrders()" class="btn btn-primary">My Orders</button>
+<div *ngIf="!showFlagSpinner">
+  <div *ngIf="defaultFlag">
+    <div class="center">
+      <img style="height: 300px; width: 300px;" src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+      <h4> Check Your Orders and Your WhishList Here !</h4>
+      <button routerLinkActive="active" (click)="myOrders()" class="btn btn-primary">My Orders</button>
+    </div>
   </div>
 </div>
 
@@ -57,12 +61,12 @@
 </div>
 
 
-<div class="mat-elevation-z8" *ngIf="myWhishList && products.length !==0  else elseBlock">
-  <table [matSortDirection]="sortDirection"  [matSortActive]="sortColumn" mat-table matSort mat-table  (matSortChange)="sortChange($event)" [dataSource]="dataSource" tabindex="0">
+<div class="example-container mat-elevation-z8" *ngIf="myWhishList && products.length !==0  else elseBlock">
+  <table [matSortDirection]="sortDirection"  [matSortActive]="sortColumn" mat-table matSort (matSortChange)="sortChange($event)" [dataSource]="dataSource" tabindex="0">
     <!-- Title Column-->
     <ng-container matColumnDef="title">
       <th mat-header-cell mat-sort-header *matHeaderCellDef> Title </th>
-      <td mat-cell *matCellDef="let item of products" class="w-25"> {{item.title}} </td>
+      <td #td mat-cell *matCellDef="let item of products" class="w-25"> {{item.title}} </td>
     </ng-container>
 
     <!-- Image Column -->
@@ -95,12 +99,12 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</div>
-
-<!-- <div *ngIf="myWhishList && products.length !==0  else elseBlock"> -->
+  
+  <!-- <div *ngIf="myWhishList && products.length !==0  else elseBlock"> -->
   <mat-paginator class="pagination-btn" *ngIf="myWhishList && products.length !==0" showFirstLastButtons [length]="pageLength" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"
-  aria-label="Select page">
-</mat-paginator>
+    aria-label="Select page">
+  </mat-paginator>
+</div>
 <!-- </div> -->
 
 <!-- <div *ngIf="myWhishList && products.length !==0  else elseBlock">

@@ -1,5 +1,6 @@
 <app-main-header></app-main-header>
-<div class="card">
+<mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner>
+<div class="card" *ngIf="!showFlagSpinner">
   <div class="card-component">
     <h1>Personal Information</h1>
     <mat-divider></mat-divider>
@@ -65,14 +66,14 @@
     </div>
   </div>
 
-   <div style="margin-top: 20px;">
+   <div style="margin-top: 15px;">
     <h1 style="font-weight: 500;">Comment</h1>
     <!-- <textarea matInput rows="20" cols="90" cdkTextareaAutosize  cdkAutosizeMinRows="5"  cdkAutosizeMaxRows="10"
       placeholder="Type Your Comment..."></textarea> -->
       <quill-editor  style="font-family:Roboto;" data-font-fetch="Roboto" placeholder="Insert Your Text Here..."
-      aria-placeholder="Insert Your Text..."  (onEditorCreated)="addBindingCreated($event)" [modules]="module" trackChanges="all" [style]="{height: '200px'}"></quill-editor>
+      aria-placeholder="Insert Your Text..."  (onEditorCreated)="addBindingCreated($event)" [modules]="module" trackChanges="all" [style]="{height: '80px'}"></quill-editor>
     </div>
   </div>
 </div>
 
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

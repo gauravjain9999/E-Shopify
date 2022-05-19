@@ -1,10 +1,12 @@
 
-<div class="stripe-checkout">
+<mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner>
+
+<div class="stripe-checkout" *ngIf="!showFlagSpinner">
   <span class="stripe-text"> Angular Stripe Checkout Page</span>
 </div>
 <mat-divider></mat-divider>
 
-<div class="card">
+<div class="card" *ngIf="!showFlagSpinner">
   <div class="container">
     <span style="font-size: 20px; color: grey;"> PRICE  DETAILS</span><br>
   </div>
@@ -56,7 +58,7 @@
 
     <mat-grid-tile>
       <mat-chip-list>
-        <mat-chip  class="payment-btn" color="accent" (click)="checkout(20)">Payment of {{totalSum | currency : 'Rs '}}</mat-chip>
+        <mat-chip  class="payment-btn" color="accent" (click)="checkout(totalSum)">Payment of {{totalSum | currency : 'Rs '}}</mat-chip>
       </mat-chip-list>
     </mat-grid-tile>
   </mat-grid-list>

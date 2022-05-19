@@ -1,10 +1,13 @@
+import { NotificationService } from './../core/Service/notification.service';
 import { ApplicationServiceService } from '../core/Service/application-service.service';
 import { CartService } from '../core/Service/cart.service';
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { ClothService } from '../core/Service/cloth.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 // import * as _ from 'lodash';
 
 @Component({
@@ -12,7 +15,7 @@ import { Subject } from 'rxjs';
   templateUrl: './clothes.component.html',
   styleUrls: ['./clothes.component.css']
 })
-export class ClothesComponent implements OnInit {
+export class ClothesComponent implements OnInit, AfterViewInit {
 
   @ViewChild('focus', {static: false}) input: ElementRef;
   @Output() searchData = new EventEmitter();
@@ -25,25 +28,42 @@ export class ClothesComponent implements OnInit {
   count = 0;
   showMe: boolean = true;
   length = 100;
+  value = 50;
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   flag= true;
+  showFlagSpinner: boolean = true;
 
   // MatPaginator Output
   pageEvent: PageEvent;
   show: {[key: number]: boolean} = {};
 
-  constructor(private applicationService: ApplicationServiceService, private clothesService: ClothService, private cartService: CartService, private router: Router) { }
-
+  constructor(private applicationService: ApplicationServiceService,  private spinner: NgxSpinnerService, 
+    private clothesService: ClothService, private cartService: CartService, private router: Router) { }
+  
+  
+  ngAfterViewInit(): void {
+    // throw new Error('Method not implemented.');
+  }
+  
   ngOnInit(): void {
+    
+
+    setTimeout(() =>{
+
+      this.showFlagSpinner = false;
+    }, 3000)
+
+    this.showFlagSpinner = true;
 
     this.listOfClothesItem = this.clothesService.getListOfCloth();
     this.totalLength = this.listOfClothesItem.length;
-    // console.log(this.listOfClothesItem);
-    // console.log('Length is ', this.totalLength);
-    this.listOfClothesItem.forEach((element:any) => {
-      Object.assign(element, {quantity:1, total:element.price})
-    });
+     // console.log(this.listOfClothesItem);
+     // console.log('Length is ', this.totalLength);
+     this.listOfClothesItem.forEach((element:any) => {
+       Object.assign(element, {quantity:1, total:element.price})
+      });
+    // this.showFlagSpinner = false;
   }
 
 

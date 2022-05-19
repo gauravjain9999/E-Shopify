@@ -18,6 +18,7 @@ export class MyProfileComponent implements OnInit {
   flagNumber: boolean;
   email: string;
   module: {};
+  showFlagSpinner: boolean = true;
   phoneNumber: number;
 
   constructor() {
@@ -53,6 +54,12 @@ export class MyProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    setTimeout(() =>{
+      this.showFlagSpinner = false;
+    }, 3000)
+
+    this.showFlagSpinner = true;
   }
 
   nameChange()

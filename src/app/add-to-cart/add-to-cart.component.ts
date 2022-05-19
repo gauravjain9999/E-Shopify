@@ -17,12 +17,17 @@ export class AddToCartComponent implements OnInit {
   public totalSum : number = 0;
   isChecked : boolean;
   found : any;
-
+  showFlagSpinner: boolean = true;
 
   constructor(private applicationService: ApplicationServiceService, private dialog: MatDialog, private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
 
+    setTimeout(() =>{
+      this.showFlagSpinner = false;
+    },3000);
+
+    this.showFlagSpinner = true;
     this.cartService.getProduct().subscribe(res=>{
     this.products = res;
     this.totalSum = this.cartService.getTotalPrice();

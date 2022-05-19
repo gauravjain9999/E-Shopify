@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationServiceService } from '../core/Service/application-service.service';
 import { CartService } from '../core/Service/cart.service';
@@ -17,24 +17,33 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChildren('td') cells: QueryList<ElementRef>;
 
   public products : any = [];
   dashBoardGridCol: number = 2;
   public totalSum : number = 0;
   flag:boolean;
+  showFlagSpinner : boolean = true;
   sortColumn: string;
   sortDirection: 'asc' | 'desc';
   pageLength: number;
   defaultFlag: boolean = true;
   myWhishList: boolean = false;
+  showCards: boolean = true;
   displayedColumns: string[] = ['title', 'description', 'price', 'image', 'remove'];
   dataSource = new MatTableDataSource<any>();
 
   constructor(private mediaObserver: MediaObserver, private notificationService: NotificationService,
-  private cdr: ChangeDetectorRef, private cartService: CartService, private router: Router) { }
+  private cdr: ChangeDetectorRef, private cartService: CartService, private router: Router) {
+   }
 
   ngOnInit(): void {
 
+    setTimeout(() =>{
+      this.showFlagSpinner = false;
+    }, 3000)
+
+    this.showFlagSpinner = true;
     this.cartService.getProduct().subscribe(res=>{
     this.products = res;
     this.totalSum = this.cartService.getTotalPrice();
@@ -85,7 +94,14 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
     }
   }
 
+  onKeydown(e: any) {
+    let cellsArray= this.cells.toArray();
+    const idx = cellsArray.findIndex(z => z.nativeElement === e.target);
+    cellsArray[idx+1].nativeElement.focus();
+  }
+
   myFav(){
+
     this.myWhishList = true;
     this.flag = false;
     this.defaultFlag = false;
