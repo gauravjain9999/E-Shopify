@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Inject, NgZone, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationServiceService } from '../core/Service/application-service.service';
 import { CartService } from '../core/Service/cart.service';
@@ -33,16 +33,19 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['title', 'description', 'price', 'image', 'remove'];
   dataSource = new MatTableDataSource<any>();
 
-  constructor(private mediaObserver: MediaObserver, private notificationService: NotificationService,
+  constructor(@Inject(NgZone) private zone: NgZone, private mediaObserver: MediaObserver, private notificationService: NotificationService,
   private cdr: ChangeDetectorRef, private cartService: CartService, private router: Router) {
    }
 
   ngOnInit(): void {
 
+    this.zone.runOutsideAngular(() =>{
+    })
+     
     setTimeout(() =>{
       this.showFlagSpinner = false;
     }, 3000)
-
+      
     this.showFlagSpinner = true;
     this.cartService.getProduct().subscribe(res=>{
     this.products = res;
