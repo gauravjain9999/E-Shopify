@@ -22,13 +22,13 @@ export class CardLayoutProductComponent implements OnInit {
 
   goToClothPage(item: number,  index :number)
   {
-    if(index === 2)
-    {
-      sessionStorage.setItem('TEMP_ITEM', JSON.stringify(item));
+    if(index === 2){
+      sessionStorage.setItem('TEMP_ITEM_CLOTH', JSON.stringify(item));
+      // console.log(sessionStorage.getItem(JSON.parse('TEMP_ITEM_CLOTH')));
       this.router.navigate(['clothProduct']);
     }
     else{
-      sessionStorage.removeItem('TEMP_ITEM');
+      sessionStorage.removeItem('TEMP_ITEM_CLOTH');
     }
   }
 

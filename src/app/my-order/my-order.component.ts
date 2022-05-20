@@ -15,7 +15,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class MyOrderComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator,  {static:false}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChildren('td') cells: QueryList<ElementRef>;
 
@@ -69,6 +69,7 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     console.log(this.dataSource.sort);
+    this.dataSource.paginator = this.paginator;
     console.log(this.dataSource.paginator);
   }
 

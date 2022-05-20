@@ -99,9 +99,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
-  <!-- <div *ngIf="myWhishList && products.length !==0  else elseBlock"> -->
-  <mat-paginator class="pagination-btn" *ngIf="myWhishList && products.length !==0" showFirstLastButtons [length]="pageLength" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"
+
+
+  <mat-paginator class="pagination-btn" showFirstLastButtons [length]="pageLength" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"
     aria-label="Select page">
   </mat-paginator>
 </div>

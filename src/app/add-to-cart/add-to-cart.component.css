@@ -40,17 +40,17 @@ h4, h5{
   text-align: center;
   transform: translate(-50%);
 }
-
+.w-15{
+  width: 15%;
+}
 
 .content{
-  padding: 30px;
-  /* margin-left: 115px; */
-  /* margin-right: 115px !important; */
+  padding: 15px;
   background: rgb(216, 208, 208);
 }
 
+
 .content-text{
-  /* margin-left: 800px !important; */
   font-weight: 500;
 }
 
@@ -60,7 +60,6 @@ h4, h5{
 
 .confirm-btn{
   float: right;
-  /* margin-left: 80px !important; */
 }
 
 .center .btn
@@ -75,26 +74,27 @@ h4, h5{
 {
   height: 500px;
   width:  500px;
+}
 
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+.word-break{
+  word-break: break-all;
+}
 
+.table{
+  width: 100%;
 }
 
 
+.text-row{
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  font-size: small;
+  font-weight: 700;
+  background-color:  rgb(220, 217, 217);
+}
 
 
 /* .card
