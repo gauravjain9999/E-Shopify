@@ -15,8 +15,8 @@ export class ApplicationServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // notifyUrl = "https://formspree.io/f/mqknlppk";
-  notifyUrl = "https://formspree.io/f/xyyopear";
+  notifyUrl = "https://formspree.io/f/mqknlppk";
+  // notifyUrl = "https://formspree.io/f/xyyopear";
 
   getNotify(requestData: string)
   {
