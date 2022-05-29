@@ -5,7 +5,7 @@ import { DataStorageService } from '../core/Service/data-storage.service';
 import { NotificationService } from '../core/Service/notification.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CustomerInfo } from './../ModelDataClass/customer.model';
 import {
   Component,
@@ -42,6 +42,7 @@ export class NewRegisterComponent implements OnInit {
     private notificationService: NotificationService,
     private authService: DataStorageService,
     private router: Router,
+    public dialogRef: MatDialogRef<NewRegisterComponent>,
     private applicationService: ApplicationServiceService,
     private spinner: NgxSpinnerService
   ) {
@@ -74,6 +75,7 @@ export class NewRegisterComponent implements OnInit {
       height: '650px',
       width: '800px'
    });
+   this.dialogRef.close();
   }
 
   keyPressNumbers(event: any) {

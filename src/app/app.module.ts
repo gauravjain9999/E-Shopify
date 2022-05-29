@@ -34,10 +34,14 @@ import { ConfirmDialogComponent } from './Dialog-Box/confirm-dialog/confirm-dial
 import { ClothesDetailComponent } from './clothes-detail/clothes-detail.component'
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 import {QuillModule} from 'ngx-quill';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
 import {ChartModule} from 'angular-highcharts';
 import { MyOrderComponent } from './my-order/my-order.component';
 import { HeadersInterceptor } from './core/interceptor/headers.interceptor';
+
+export const httpTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http);
 
 export const MY_FORMATS ={
 
@@ -82,6 +86,13 @@ export const MY_FORMATS ={
     QuillModule.forRoot() ,
     ReactiveFormsModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
     ChartModule,
     NgxPaginationModule,
     NgImageSliderModule,

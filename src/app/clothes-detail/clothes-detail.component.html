@@ -1,6 +1,8 @@
 <app-main-header></app-main-header>
 
-<div class="row">
+<mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner>
+
+<div class="row" *ngIf="!showFlagSpinner">
   <div class="column">
     <div class="card">
       <div>

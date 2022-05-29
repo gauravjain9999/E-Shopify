@@ -19,6 +19,7 @@ export class ClothesDetailComponent implements OnInit{
   star:any;
   starData: any[] = [];
   allDetails: boolean = true;
+  showFlagSpinner: boolean = true;
   aboutBrand: boolean = false;
   customerReview: boolean = false;
   columnChart: Chart = new Chart(columnChartOptions);
@@ -26,6 +27,11 @@ export class ClothesDetailComponent implements OnInit{
 
 
   constructor(private cartService: CartService,  private clothService: ClothService, private applicationService: ApplicationServiceService) {
+
+    setTimeout(() =>{
+      this.showFlagSpinner = false;
+    }, 3000)
+    this.showFlagSpinner = true;
   }
 
   ngOnInit(): void {

@@ -20,9 +20,9 @@
     </button>&nbsp; -->
 
     <img class="float-img pointer" src="../../assets/./images/shopifyApp.png">&nbsp;&nbsp;
-    <span class="shopifyApp mr-1rem">Shopify App</span>
+    <span class="shopifyApp mr-1rem">{{'SHOPIFY_APP' | translate}}</span>
     <div class="search-bar">
-      <input type="text" class="searchText" placeholder="Search..."name="search" [(ngModel)]="searchText">
+      <input type="text" class="searchText" placeholder="{{'SEARCH' | translate}}..."name="search" [(ngModel)]="searchText">
     </div>
     <span style="margin-top: 8px; margin-left: 70px;">
       <mat-icon class="search-pos ml-10">search</mat-icon>
@@ -32,7 +32,15 @@
       <mat-icon>notifications_none</mat-icon>
     </div>
 
-     <span style="margin-top: 10px; margin-left: 460px; font-size: medium;">More</span>
+
+    <mat-icon class="lang-select head-icn-align">language</mat-icon>
+    <span style="margin-left: 820px; margin-top: 10px; position: absolute;">
+      <select class="select-lang" [(ngModel)]="selectedOption" (change)="onChange($event)">
+        <option style="color: black;" *ngFor="let lang of languages">{{ lang.viewValue}}</option>
+      </select>
+    </span>
+
+     <span style="margin-top: 10px; margin-left: 500px; font-size: medium;">{{'MORE' | translate}}</span>
       <span style="margin-top: 8px">
         <!-- <mat-icon>expand_more</mat-icon> -->
         <mat-select panelClass="my-panel" class="select-dropDown">
@@ -50,10 +58,10 @@
       <mat-icon class="material-symbols-outlined">shopping_cart</mat-icon>
     </span>
     <span  class="cart" matTooltip="Cart" (click)="showNotify()"
-      routerLinkActive="active" routerLink="/addToCart">Cart
+      routerLinkActive="active" routerLink="/addToCart">{{'CART' | translate}}
     </span>
     <div class="badge bg-danger align-badge" matBadgeColor="accent">{{totalItem}}</div>
-    <mat-button class="logout-btn" (click)="logout()"  matTooltipShowDelay="50" matTooltip="Logout">Logout</mat-button>
+    <mat-button class="logout-btn" (click)="logout()"  matTooltipShowDelay="50" matTooltip="Logout">{{'LOGOUT' | translate}}</mat-button>
     <mat-icon class="mat-icon-logout">power_settings_new</mat-icon>
   </div>
 </nav>
