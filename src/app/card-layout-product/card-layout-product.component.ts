@@ -15,6 +15,7 @@ export class CardLayoutProductComponent implements OnInit {
   constructor(private spinner: NgxSpinnerService,  private cartService: CartLayoutService,  private router: Router) { }
 
   ngOnInit(): void {
+    console.log('ddfdf');
     this.listOfCardsItem = this.cartService.getCartLayoutCards()
     console.log(this.listOfCardsItem);
   }
