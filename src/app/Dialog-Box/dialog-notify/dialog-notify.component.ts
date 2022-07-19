@@ -1,7 +1,7 @@
 import { ApplicationServiceService } from '../../core/Service/application-service.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from '../../core/Service/notification.service';
 
@@ -26,10 +26,10 @@ export class DialogNotifyComponent implements OnInit {
     this.message = 'You subscribed to get our newly data feed'
   }
 
-  notifyForm = new FormGroup({
+  notifyForm = new UntypedFormGroup({
 
-    email: new FormControl('', Validators.required),
-    name: new FormControl('', Validators.required),
+    email: new UntypedFormControl('', Validators.required),
+    name: new UntypedFormControl('', Validators.required),
   });
 
 

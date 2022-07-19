@@ -1,7 +1,7 @@
 import { CustomErrorStateMatcherService } from '../../core/Service/custom-error-state-matcher.service';
 import { Router } from '@angular/router';
 import { Component, Inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { PaymentCheckoutComponent } from 'src/app/Dialog-Box/payment-checkout/payment-checkout.component';
@@ -61,17 +61,17 @@ export class DialogDataComponent implements OnInit{
 
   // Validators.pattern('^[A-Za-z]*$') Do not Contain Space or Dot
 
-  profileForm = new FormGroup({
-    name:        new FormControl(null,  [Validators.required, Validators.maxLength(30)]),
-    email:       new FormControl(null,  [Validators.required, Validators.email]),
-    location:    new FormControl('' ,   [Validators.required]),
-    date:        new FormControl(null,  Validators.required),
-    payment:     new FormControl(null,  [Validators.required]),
-    state:       new FormControl(null,  Validators.required),
-    city:        new FormControl(null,  Validators.required),
-    phoneNumber: new FormControl(null,  [Validators.required,
+  profileForm = new UntypedFormGroup({
+    name:        new UntypedFormControl(null,  [Validators.required, Validators.maxLength(30)]),
+    email:       new UntypedFormControl(null,  [Validators.required, Validators.email]),
+    location:    new UntypedFormControl('' ,   [Validators.required]),
+    date:        new UntypedFormControl(null,  Validators.required),
+    payment:     new UntypedFormControl(null,  [Validators.required]),
+    state:       new UntypedFormControl(null,  Validators.required),
+    city:        new UntypedFormControl(null,  Validators.required),
+    phoneNumber: new UntypedFormControl(null,  [Validators.required,
     Validators.maxLength(10), Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'), Validators.minLength(10)]),
-    address:     new FormControl(null,  [Validators.required]),
+    address:     new UntypedFormControl(null,  [Validators.required]),
   });
 
 
@@ -144,8 +144,8 @@ export class DialogDataComponent implements OnInit{
     }
   }
 
-  getFormControlName(controlName: string): FormControl{
-    return this.profileForm.get(controlName) as FormControl;
+  getFormControlName(controlName: string): UntypedFormControl{
+    return this.profileForm.get(controlName) as UntypedFormControl;
   }
 
 

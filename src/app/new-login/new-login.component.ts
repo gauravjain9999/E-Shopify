@@ -1,5 +1,5 @@
 import { NewRegisterComponent } from './../new-register/new-register.component';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgForm, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from '../core/Service/notification.service';
 import { Component, OnInit } from '@angular/core';
@@ -34,10 +34,10 @@ export class NewLoginComponent implements OnInit {
     this.spinner.show();
   }
 
-  login = new FormGroup ({
+  login = new UntypedFormGroup ({
 
-    email: new FormControl('',    [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)])
+    email: new UntypedFormControl('',    [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)])
 
   })
 
@@ -119,9 +119,9 @@ export class NewLoginComponent implements OnInit {
     // this.router.navigate(['new-register']);
   }
 
-  getFormControlName(controlName: string): FormControl
+  getFormControlName(controlName: string): UntypedFormControl
   {
-    return this.login.get(controlName) as FormControl;
+    return this.login.get(controlName) as UntypedFormControl;
   }
 
   getErrorMessage(controlName: string, errorType: string)
