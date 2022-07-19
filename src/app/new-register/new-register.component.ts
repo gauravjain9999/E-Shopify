@@ -16,7 +16,7 @@ import {
   ViewChild,
   Output,
 } from '@angular/core';
-import { Form, FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
+import { Form, UntypedFormGroup, NgForm, UntypedFormControl, Validators } from '@angular/forms';
 // import {MatDialogRef} from '@angular/material/dialog'
 import { MainPageComponent } from '../main-page/main-page.component';
 import { CustomErrorStateMatcherService } from '../core/Service/custom-error-state-matcher.service';
@@ -52,12 +52,12 @@ export class NewRegisterComponent implements OnInit {
 
   customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
 
-  register = new FormGroup({
+  register = new UntypedFormGroup({
 
-    name : new FormControl('', [Validators.required,  Validators.maxLength(30)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    phoneNumber :  new FormControl(null,  [Validators.required,
+    name : new UntypedFormControl('', [Validators.required,  Validators.maxLength(30)]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
+    phoneNumber :  new UntypedFormControl(null,  [Validators.required,
     Validators.maxLength(10), Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'), Validators.minLength(10)]),
 
   })
@@ -151,9 +151,9 @@ export class NewRegisterComponent implements OnInit {
     this.notificationService.showNotification('Register Successfully', 'Close');
   }
 
-  getFormControlName(controlName: string): FormControl
+  getFormControlName(controlName: string): UntypedFormControl
   {
-    return this.register.get(controlName) as FormControl;
+    return this.register.get(controlName) as UntypedFormControl;
   }
 
   getErrorMessage(controlName: string, errorType: string)

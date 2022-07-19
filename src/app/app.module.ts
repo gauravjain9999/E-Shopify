@@ -7,12 +7,10 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter'
 import { LoginFormComponent } from './login-form/login-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewLoginComponent } from './new-login/new-login.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { NgImageSliderModule } from 'ng-image-slider';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NewRegisterComponent } from './new-register/new-register.component';
@@ -39,15 +37,9 @@ import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTI
 import { ChartModule} from 'angular-highcharts';
 import { MyOrderComponent } from './my-order/my-order.component';
 import { HeadersInterceptor } from './core/interceptor/headers.interceptor';
-import { environment } from 'src/environments/environment';
-
-
 
 
 export const httpTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http);
-
-
-
 
 export const MY_FORMATS ={
 
