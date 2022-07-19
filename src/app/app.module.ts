@@ -37,15 +37,9 @@ import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTI
 import { ChartModule} from 'angular-highcharts';
 import { MyOrderComponent } from './my-order/my-order.component';
 import { HeadersInterceptor } from './core/interceptor/headers.interceptor';
-import { environment } from 'src/environments/environment';
-
-
 
 
 export const httpTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http);
-
-
-
 
 export const MY_FORMATS ={
 
