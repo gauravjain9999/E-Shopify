@@ -100,10 +100,10 @@ export const MY_FORMATS ={
     }),
     ChartModule,
     NgxPaginationModule,
-    NgImageSliderModule,
+    // NgImageSliderModule,
     NgxUsefulSwiperModule,
     BrowserAnimationsModule,
-    Ng2SearchPipeModule
+    // Ng2SearchPipeModule
   ],
   providers: [
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
