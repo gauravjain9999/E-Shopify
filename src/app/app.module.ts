@@ -37,7 +37,7 @@ import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTI
 import { ChartModule} from 'angular-highcharts';
 import { MyOrderComponent } from './my-order/my-order.component';
 import { HeadersInterceptor } from './core/interceptor/headers.interceptor';
-
+import { NgImageSliderModule } from 'ng-image-slider';
 
 export const httpTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http);
 
@@ -92,7 +92,7 @@ export const MY_FORMATS ={
     }),
     ChartModule,
     NgxPaginationModule,
-    // NgImageSliderModule,
+    NgImageSliderModule,
     NgxUsefulSwiperModule,
     BrowserAnimationsModule,
     // Ng2SearchPipeModule

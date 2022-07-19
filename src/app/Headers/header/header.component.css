@@ -67,10 +67,18 @@ body.dark-theme {
 {
   font-size: medium;
   color: black;
+  border: 1px solid black;
   cursor: pointer;
   position: absolute;
-  margin-left: 1340px;
+  margin-left: 1330px;
 }
+
+.btn-login:hover
+{
+  background-color: lightslategray;
+  color: white;
+}
+
 .theme-icon
 {
   position: absolute;
@@ -86,7 +94,16 @@ body.dark-theme {
   color: black;
   margin-left: 1400px;
   cursor: pointer;
+  border: 1px solid black;
 }
+
+
+.btn-register:hover
+{
+  background-color: lightslategrey;
+  color: white;
+}
+
 body {
   background: var(--bkg-color);
 }
