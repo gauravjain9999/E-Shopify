@@ -7,7 +7,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {Ng2SearchPipeModule} from 'ng2-search-filter'
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
 import { LoginFormComponent } from './login-form/login-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewLoginComponent } from './new-login/new-login.component';
@@ -21,11 +21,11 @@ import { FooterComponent } from './footer/footer.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './Headers/header/header.component';
 import { ClothesProductComponent } from './clothes-product/clothes-product.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule} from 'ngx-pagination';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { FilterSearchPipe } from './core/Pipe/filter-search.pipe';
 import { DialogDataComponent } from './Dialog-Box/dialog-data/dialog-data.component';
-import {NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { DialogNotifyComponent } from './Dialog-Box/dialog-notify/dialog-notify.component';
 import { PaymentCheckoutComponent } from './Dialog-Box/payment-checkout/payment-checkout.component';
 import { MyAccountComponent } from './my-account/my-account.component';
@@ -33,15 +33,21 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ConfirmDialogComponent } from './Dialog-Box/confirm-dialog/confirm-dialog.component';
 import { ClothesDetailComponent } from './clothes-detail/clothes-detail.component'
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
-import {QuillModule} from 'ngx-quill';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
-import {ChartModule} from 'angular-highcharts';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
+import { ChartModule} from 'angular-highcharts';
 import { MyOrderComponent } from './my-order/my-order.component';
 import { HeadersInterceptor } from './core/interceptor/headers.interceptor';
+import { environment } from 'src/environments/environment';
+
+
+
 
 export const httpTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http);
+
+
+
 
 export const MY_FORMATS ={
 
@@ -83,7 +89,6 @@ export const MY_FORMATS ={
     MaterialModule,
     NgxSpinnerModule,
     FormsModule,
-    QuillModule.forRoot() ,
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
