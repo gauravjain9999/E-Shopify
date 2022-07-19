@@ -12,7 +12,6 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewLoginComponent } from './new-login/new-login.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { NgImageSliderModule } from 'ng-image-slider';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NewRegisterComponent } from './new-register/new-register.component';
