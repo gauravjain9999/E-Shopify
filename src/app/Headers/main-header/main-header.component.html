@@ -40,16 +40,15 @@
       </select>
     </span>
 
-     <span style="margin-top: 10px; margin-left: 500px; font-size: medium;">{{'MORE' | translate}}</span>
+     <span style="margin-top: 10px; margin-left: 500px; font-size: medium;" *ngIf="selectedValue">{{'MORE' | translate}}</span>
       <span style="margin-top: 8px">
         <!-- <mat-icon>expand_more</mat-icon> -->
-        <mat-select panelClass="my-panel" class="select-dropDown">
+        <mat-select panelClass="dropDownListRoute">
           <mat-option  [value]="option" *ngFor="let option of items" (click)="openComponent(option)">
             {{option}}
           </mat-option>
         </mat-select>
       </span>
-
 
     <span class="material-symbols-outlined">
       </span>
@@ -65,3 +64,4 @@
     <mat-icon class="mat-icon-logout">power_settings_new</mat-icon>
   </div>
 </nav>
+

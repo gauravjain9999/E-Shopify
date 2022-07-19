@@ -1,6 +1,5 @@
 import { Router } from '@angular/router';
 import { DialogNotifyComponent } from '../../Dialog-Box/dialog-notify/dialog-notify.component';
-import { DialogDataComponent } from '../../Dialog-Box/dialog-data/dialog-data.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CartService } from '../../core/Service/cart.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -18,6 +17,7 @@ import { LanguageService } from 'src/app/core/Service/lang.service';
 export class MainHeaderComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
+  selectedValue: boolean = true;
 
   languages = [
     {value: 'en', viewValue: 'English'},
@@ -71,15 +71,19 @@ export class MainHeaderComponent implements OnInit {
 
   openComponent(component: any){
 
+    this.selectedValue = false;
     let openComponent = component;
     if(openComponent === 'My Profile'){
       this.router.navigate(['myProfile'])
+      this.notificationService.showNotification('My Profile Section', 'close');
     }
     else if(openComponent === 'My Orders'){
-      this.router.navigate(['myOrder'])
+      this.router.navigate(['myOrder']);
+      this.notificationService.showNotification('My Order Section', 'close');
     }
     else if (openComponent === 'My Wallet'){
-      this.router.navigate(['payment'])
+      this.router.navigate(['payment']);
+      this.notificationService.showNotification('My Payment Section', 'close');
     }
 
   }

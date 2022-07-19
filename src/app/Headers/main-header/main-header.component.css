@@ -46,13 +46,6 @@
   outline: none;
   box-shadow: 5px 5px 5px darkgrey;
   text-align: left;
-  /* margin-left: 100px;
-  width: 270px;
-  padding: 2px;
-  border-radius: 5px;
-  outline: none;
-  text-decoration: none;
-  box-shadow: 5px 5px 5px lightgrey; */
 }
 
 .notify
@@ -71,21 +64,17 @@
 
 .icon-whishList {
   padding-right: 25px;
-  /* background: url("../../../assets/images/outline_favorite_black_24dp.png") no-repeat left; */
   background-size: 20px;
 
 }
 .icon-setting
 {
   padding-right: 25px;
-  /* background: url("../../../assets/images/outline_settings_black_24dp.png") no-repeat left; */
   background-size: 20px;
 
 }
-.icon-about
-{
+.icon-about{
   padding-right: 25px;
-  /* background: url("../../../assets/images/outline_info_black_24dp.png") no-repeat left; */
   background-size: 20px;
 }
 .cart
@@ -95,8 +84,6 @@
   margin-left: 1220px;
   cursor: pointer;
   margin-top: 7px !important;
-  /* background: url("../../../assets/images/outline_shopping_cart_black_24dp.png") no-repeat left; */
-  /* background-size: 20px; */
 }
 
 .icon-cart
@@ -194,13 +181,12 @@ mat-sidenav{
   line-height: .7;
 }
 
-select{
-  outline: 0px;
-  background-color: #fff;
+
+select {
   border: 0px;
-  width: 100px;
+  outline: 0px;
+  background-color: rgb(215, 221, 221);
   font-size: medium;
-  text-decoration: none;
 }
 
 .lang-select{
@@ -209,11 +195,6 @@ select{
   margin-left: 790px;
 }
 
-.select-dropDown{
-  /* position: absolute; */
-  top: 150vh;
-  left: 30vw;
-}
 
 /*
 .mat-select-panel{
@@ -241,7 +222,6 @@ select{
 
 /* DropDown */
 /* .dropbtn {
-  background-color: #4CAF50;
   color: black;
   padding: 14px;
   position: fixed;

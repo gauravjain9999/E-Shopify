@@ -1,9 +1,8 @@
 .container-fluid
 {
-  margin-top: 5px;
   justify-content: left;
   display: flex;
-  padding: 15px;
+  padding: 12px;
   border-bottom: black;
   align-items:flex-start
 }
@@ -36,7 +35,6 @@
   text-align: left;
 }
 
-
 .search-bar .i
 {
   transform: scale(1.5);
@@ -57,36 +55,53 @@ body {
   --btn-txt-color: white;
   --btn-bg-color: rgb(11, 88, 160);
 }
+
 body.dark-theme {
   --text-color: #eee;
   --bkg-color: #252222;
   --btn-txt-color: rgb(46, 43, 43);
   --btn-bg-color: rgb(20, 211, 195);
 }
-.btn-login
-{
+
+.btn-login{
   font-size: medium;
   color: black;
   cursor: pointer;
+  border: 1px solid black;
   position: absolute;
   margin-left: 1340px;
 }
+
+.btn-login:hover{
+  background-color: lightslategrey;
+  color: white;
+}
+
 .theme-icon
 {
+  cursor: pointer;
   position: absolute;
   color: black;
   margin-top: 7px;
   margin-left: 1170px;
 }
 
-.btn-register
-{
+.btn-register{
   position:absolute;
   font-size: medium;
   color: black;
-  margin-left: 1400px;
+  border: 1px solid black;
+  margin-left: 1410px;
   cursor: pointer;
 }
+
+.btn-register:hover{
+  background-color: lightslategrey;
+  color: white;
+}
+
+
+
 body {
   background: var(--bkg-color);
 }

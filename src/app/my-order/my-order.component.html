@@ -15,7 +15,7 @@
     <div class="ml-10" fxLayout="column" fxLayoutAlign="start center">
       <mat-icon>favorite</mat-icon>
     </div>&nbsp; &nbsp;
-    
+
     <!-- <mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner> -->
     <div fxLayoutAlign="start">
      <b>My WishList</b>
@@ -99,32 +99,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+
   <mat-paginator class="pagination-btn" showFirstLastButtons [length]="pageLength" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
 </div>
-<!-- </div> -->
-
-<!-- <div *ngIf="myWhishList && products.length !==0  else elseBlock">
-  <div class="container">
-    <div class="card-table">
-    <div class="cart-product">
-      <table class="table table-responsive">
-        <tbody>
-          <tr *ngFor="let item of products; let i=index" tabindex="0">
-            <td>{{i+1}}</td>
-            <td>{{item.title}}</td>
-            <td><img style="width: 120px;" src="{{item.path}}" alt=""></td>
-            <td>{{item.description}}</td>
-            <td>{{item.price}}</td>
-            <td>
-            </td>
-          </tr>
-        </tbody>
-     </table>
-    </div>
-  </div>
- </div>
-</div> -->
 
 <ng-template #elseBlock>
   <div *ngIf="myWhishList">
