@@ -20,7 +20,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100" formLabel="auto" hideRequiredMarker>
-      <input  matInput placeholder="Password" [errorStateMatcher]="customErrorStateMatcher" formControlName="password"  autofocus autocomplete="off" minlength="8" required >
+      <input  matInput placeholder="Password" autocomplete="off" [errorStateMatcher]="customErrorStateMatcher" formControlName="password"  autofocus autocomplete="off" minlength="8" required >
       <mat-label>Password</mat-label>
       <mat-icon matSuffix>password</mat-icon>
       <mat-error class="error-pos" *ngIf="getFormControlName('password').hasError('required')" [innerHTML]="getErrorMessage('password', 'required')"></mat-error>

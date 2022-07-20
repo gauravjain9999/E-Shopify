@@ -17,8 +17,6 @@ import {
   Output,
 } from '@angular/core';
 import { Form, UntypedFormGroup, NgForm, UntypedFormControl, Validators } from '@angular/forms';
-// import {MatDialogRef} from '@angular/material/dialog'
-import { MainPageComponent } from '../main-page/main-page.component';
 import { CustomErrorStateMatcherService } from '../core/Service/custom-error-state-matcher.service';
 
 @Component({
@@ -130,36 +128,31 @@ export class NewRegisterComponent implements OnInit {
      else{
       alert("Please complete your Detail")
      }
-
-    // console.log(this.formStatus);
-
-
     this.applicationService.nameEvent.emit(this.formStatus);
   }
 
   onSubmitLoginPage() {
-    // this.applicationService.nameEvent.emit(this.customer.name);
     this.router.navigate(['mainPage']);
     this.spinner.show();
     this.closeAlertBox();
   }
+
   checkboxChanged() {
     this.isCheckBoxSelected = !this.isCheckBoxSelected;
   }
+
   closeAlertBox() {
     this.dialog.closeAll();
     this.notificationService.showNotification('Register Successfully', 'Close');
   }
 
-  getFormControlName(controlName: string): UntypedFormControl
-  {
+  getFormControlName(controlName: string): UntypedFormControl{
     return this.register.get(controlName) as UntypedFormControl;
   }
 
-  getErrorMessage(controlName: string, errorType: string)
-  {
-    switch(controlName)
-  {
+  getErrorMessage(controlName: string, errorType: string){
+
+    switch(controlName){
     case "name":
       if(errorType === "required"){
         return "*Name is required";

@@ -10,10 +10,7 @@
 </div>
 <br>
 <mat-divider></mat-divider>
-<!--
-<div class="alert alert-danger">
-<p>{{error}}</p>
-</div> -->
+
 <form [formGroup]="register" (ngSubmit)="onSubmit()">
   <div class="container">
     <h1 style="font-weight: 500;">Sign Up</h1>
@@ -24,7 +21,7 @@
     <div class=form-group-class>
 
     <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
-      <input matInput formControlName="name"  [errorStateMatcher]="customErrorStateMatcher" placeholder="Enter Name" required>
+      <input matInput  autocomplete="off"  formControlName="name"  [errorStateMatcher]="customErrorStateMatcher" placeholder="Enter Name" required>
       <mat-label>Name</mat-label>
       <mat-icon matSuffix>person</mat-icon>
 
@@ -36,7 +33,7 @@
     <br>
 
     <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
-      <input matInput formControlName="email"   [errorStateMatcher]="customErrorStateMatcher" placeholder="Enter Email" name="email" required>
+      <input matInput  autocomplete="off" formControlName="email"   [errorStateMatcher]="customErrorStateMatcher" placeholder="Enter Email" name="email" required>
         <mat-label>Email</mat-label>
         <mat-icon matSuffix>email</mat-icon>
 
@@ -48,7 +45,7 @@
       <br>
 
     <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
-      <input matInput formControlName="password"  [errorStateMatcher]="customErrorStateMatcher"  placeholder="Enter Password" appPasswordPattern password name="password" required>
+      <input matInput autocomplete="off" formControlName="password"  [errorStateMatcher]="customErrorStateMatcher"  placeholder="Enter Password" appPasswordPattern password name="password" required>
         <mat-label>Password</mat-label>
         <mat-icon matSuffix>password</mat-icon>
         <mat-hint align="end">Password must be strong</mat-hint>
@@ -60,7 +57,7 @@
     <br>
 
     <mat-form-field appearance="outline" class="w-70" formLabel="auto" hideRequiredMarker>
-        <input matInput (keypress)="keyPressNumbers($event)"  [errorStateMatcher]="customErrorStateMatcher"  formControlName="phoneNumber"
+        <input matInput autocomplete="off" (keypress)="keyPressNumbers($event)"  [errorStateMatcher]="customErrorStateMatcher"  formControlName="phoneNumber"
         minlength=10 [pattern]="mobNumberPattern" placeholder="Enter PhoneNo" name="phoneNo" required>
         <mat-label>Phone Number</mat-label>
         <mat-icon matSuffix>contact_phone</mat-icon>
@@ -76,11 +73,8 @@
     <br>
 
     <label>
-      <!-- checked = checked to automatic check the box  -->
       <input type="checkbox" checked="checked"  name="remember" style="margin-bottom:15px"> Remember me
     </label>
-
-    <!-- <button type="submit" (click)="onSubmit()"> Submit</button> -->
 
     <div class="clearfix">
       <mat-chip-list>

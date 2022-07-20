@@ -14,8 +14,7 @@ export class HeaderComponent implements OnInit {
 
   constructor( private dialogBox: MatDialog,  private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   toggleDarkTheme(): void {
     document.body.classList.toggle('dark-theme');
@@ -30,18 +29,14 @@ export class HeaderComponent implements OnInit {
    })
   //  this.router.navigate(['/new-login']);
   }
-  newRegister()
-  {
+  newRegister(){
     this.dialogBox.open(NewRegisterComponent, {
-
       height: '650px',
       width: '800px'
-
-    })
-    // this.router.navigate(['new-register']);
-  }
-  onClick()
-  {
+  })
+  // this.router.navigate(['new-register']);
+}
+  onClick(){
     this.router.navigate(['shopifyApp'])
   }
 }
