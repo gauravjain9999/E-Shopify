@@ -48,15 +48,15 @@
   <div class="column">
     <div class="card">
     <img src="{{dataItem.path}}" class="img-src" alt="source_img"><br>
-
-    <mat-chip-list>
-      <mat-chip matRipple color="primary" class="myBtn"  (click)="addToCart(dataItem)" selected >Add To Cart</mat-chip>
-    </mat-chip-list> <br>
-
-    <mat-chip-list>
-      <mat-chip matRipple color="warn" class="myBtn"  (click)="remove(dataItem)" selected >Remove</mat-chip>
-    </mat-chip-list>
-
-    </div>
+  </div>
+  <br>
+  <div>
+    <mat-chip matRipple color="primary" class="myBtn" (click)="addToCart(dataItem)"selected>
+      <span style="margin-left: 170px; font-size: medium;">
+        Add To Cart
+      </span>
+      <mat-icon style="margin-left: 160px"matSuffix>shopping_cart</mat-icon>
+    </mat-chip>
+  </div>
   </div>
 </div>
