@@ -4,7 +4,7 @@
     <mat-toolbar color="primary" class="example-toolbar">
       <button mat-icon-button class="mat-toolbar-btn"  (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
       <mat-sidenav-container  (backdropClick)="close('backdrop')" class="example-sidenav-container">
-        <mat-sidenav #sidenav disableClose class="mat-sidenav-overlay">
+        <mat-sidenav position="end" #sidenav disableClose class="mat-sidenav-overlay">
           <app-my-account></app-my-account>
         </mat-sidenav>
       </mat-sidenav-container>
@@ -43,7 +43,7 @@
      <span style="margin-top: 10px; margin-left: 500px; font-size: medium;">{{'MORE' | translate}}</span>
       <span style="margin-top: 8px">
         <!-- <mat-icon>expand_more</mat-icon> -->
-        <mat-select panelClass="my-panel" class="select-dropDown">
+        <mat-select panelClass="select-dropDown">
           <mat-option  [value]="option" *ngFor="let option of items" (click)="openComponent(option)">
             {{option}}
           </mat-option>
@@ -54,14 +54,20 @@
     <span class="material-symbols-outlined">
       </span>
 
-    <span class="icon-cart">
-      <mat-icon class="material-symbols-outlined">shopping_cart</mat-icon>
+    <span class="cart mt-5">
+        <mat-icon style="height: 30px; width: 30px;" class="material-symbols-outlined">shopping_cart</mat-icon>
     </span>
-    <span  class="cart" matTooltip="Cart" (click)="showNotify()"
+
+    <span class="cart mt-8 ml-1245 align-badge" matTooltip="Cart" (click)="showNotify()"
       routerLinkActive="active" routerLink="/addToCart">{{'CART' | translate}}
     </span>
-    <div class="badge bg-danger align-badge" matBadgeColor="accent">{{totalItem}}</div>
-    <mat-chip class="logout-btn" (click)="logout()"  matTooltipShowDelay="50" matTooltip="Logout">{{'LOGOUT' | translate}}</mat-chip>
-    <mat-icon class="mat-icon-logout">power_settings_new</mat-icon>
+
+    <span class="badge bg-danger align-badge ml-1285" *ngIf="totalItem > 0" matBadgeColor="accent">{{totalItem}}</span>
+
+    <span class="res-circle">
+      <span class="circle-txt">GJ</span>
+    </span>
+    <!-- <mat-chip class="logout-btn" (click)="logout()"  matTooltipShowDelay="50" matTooltip="Logout">{{'LOGOUT' | translate}}</mat-chip> -->
+    <!-- <mat-icon class="mat-icon-logout">power_settings_new</mat-icon> -->
   </div>
 </nav>

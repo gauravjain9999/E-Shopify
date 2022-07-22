@@ -13,17 +13,14 @@
   margin-left: 25px;
 }
 
-.float-img
-{
+.float-img{
   font: right;
   margin-left: 15px;
   width: 40px;
 }
 
-.align-badge
-{
+.align-badge{
   position: absolute;
-  margin-left: 1260px;
 }
 
 .search-bar
@@ -94,7 +91,7 @@
   position: absolute;
   margin-left: 1220px;
   cursor: pointer;
-  margin-top: 7px !important;
+  /* margin-top: 2px !important; */
   /* background: url("../../../assets/images/outline_shopping_cart_black_24dp.png") no-repeat left; */
   /* background-size: 20px; */
 }
@@ -209,11 +206,31 @@ select{
   margin-left: 790px;
 }
 
-.select-dropDown{
-  /* position: absolute; */
-  top: 150vh;
-  left: 30vw;
+.res-circle {
+  width: 3%;
+  border-radius: 50%;
+  background: white;
+  line-height: 0;
+  left: 200px;
+  box-shadow: #d7d6d6;
+  bottom: 10px;
+  position: relative;
 }
+
+.res-circle::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.circle-txt {
+  position: absolute;
+  bottom: 50%;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
 
 /*
 .mat-select-panel{
