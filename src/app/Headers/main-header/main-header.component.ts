@@ -39,7 +39,7 @@ export class MainHeaderComponent implements OnInit {
 
    this.cartService.getProduct().subscribe(res =>{
    this.totalItem = res.length;
-   console.log(this.totalItem);
+   console.log(res);
   })
 }
   ngOnInit(): void {
@@ -81,12 +81,10 @@ export class MainHeaderComponent implements OnInit {
     else if (openComponent === 'My Wallet'){
       this.router.navigate(['payment'])
     }
-
   }
 
 
-  logout()
-  {
+  logout(){
     this.router.navigate(['shopifyApp']);
   }
 

@@ -75,12 +75,6 @@ h1
   clear: both;
 }
 
-/* FAQ */
-.card-faq {
-  /* background-color: aqua; */
-  transition: 0.3s;
-  height: 500px;
-}
 
 /* .card-faq:hover { */
   /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
@@ -95,12 +89,22 @@ h1
   height: auto;
 }
 
+.accordion-style{
+  border: 1px solid lightgrey;
+}
+/* .mat-expanded .mat-expansion-panel-header-title .material-icons{
+  transform: rotate(180deg);
+} */
+
+/*
 .mat-expansion-panel:hover,
 .mat-expansion-panel:focus{
   background-color: rgb(254, 254, 254);
-}
+} */
 
+/*
 .mat-expansion-panel:not([class*='mat-elevation-z']) {
   width: max-content;
   box-shadow: none;
-}
+} */
+

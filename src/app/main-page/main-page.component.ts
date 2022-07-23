@@ -12,6 +12,12 @@ export class MainPageComponent implements OnInit {
   panelOpenState = false;
   iconsList : any[] = [];
   name : any;
+  faqList = [
+    {key: 'What is Shopify and how does it work?',                  value: 'I m visible because I4 am open'},
+    {key: 'How much does Shopify cost?',                            value: 'I m visible because I4 am open'},
+    {key: 'Can I use my own domain name with Shopify?',             value: 'I m visible because I4 am open'},
+    {key: 'Do I need to be a designer or developer to use Shopify?',value: 'I m visible because I4 am open'}
+];
   constructor(private cardLayout: CartLayoutService, private applicationService: ApplicationServiceService) { }
 
   ngOnInit(): void {

@@ -60,82 +60,35 @@
    <mat-divider></mat-divider>
  </div>
 
- <div class="card-faq">
-  <div class="container-faq">
-    <h4><b style="font-size: x-large; ">FAQ's</b></h4>
-    <!-- <p>Architect & Engineer</p> -->
-  </div>
+    <div class="container-faq">
+      <h4><b style="font-size: x-large; ">FAQ's</b></h4>
+      <!-- <p>Architect & Engineer</p> -->
+    </div>
 
-  <div style="margin-left: 23%; padding: 8px; width: 920px">
+  <div style="margin-left: 20%; width: 920px">
     <mat-accordion>
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header >
-          <mat-panel-title>
-            What is Shopify and how does it work?
-          </mat-panel-title>
-          <mat-panel-description>
-            <mat-icon class="pointer" style="margin-left: 465px;" [inline]="true">add</mat-icon>
-          </mat-panel-description>
+      <mat-expansion-panel autoFocus class="accordion-style"
+      *ngFor="let item of faqList">
+        <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*">
+         <div class="w-100" fxLayout="row" fxLayoutAlign="space-between start"
+          fxLayout.lt-md="column">
+            <mat-panel-title fxFlex="1160%" fxFlex="11100%"
+            fxLayout="row" fxLayoutAlign="start center">
+            <!-- <mat-checkbox checked="checked" disabled></mat-checkbox> -->
+            <div style="margin-left: 10px">
+              {{item.key}}
+            </div>
+            </mat-panel-title>
+            <mat-panel-description fxFlex="11140%" fxFlex="11100%">
+             <!-- <mat-icon matSuffix class="pointer"[inline]="true">add</mat-icon> -->
+            </mat-panel-description>
+          </div>
         </mat-expansion-panel-header>
-        <p>I'm visible because I4 am open</p>
+        <mat-divider></mat-divider>
+        <p style="margin-left:10px; margin-top: 15px;">{{item.value}}</p>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
 
-  <mat-divider style="margin-left: 360px; width: 800px;"></mat-divider>
-
-  <div style="margin-left: 23%; padding: 8px; width: 920px">
-    <mat-accordion>
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            How much does Shopify cost?
-          </mat-panel-title>
-          <mat-panel-description style="margin-left: 523px;">
-            <mat-icon class="pointer" [inline]="true">add</mat-icon>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>I'm visible because I4 am open</p>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div>
-
-  <mat-divider style="margin-left: 360px; width: 800px;"></mat-divider>
-
-  <div style="margin-left: 23%; padding: 8px; width: 920px">
-    <mat-accordion>
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Can I use my own domain name with Shopify?
-          </mat-panel-title>
-          <mat-panel-description style="margin-left: 420px;">
-            <mat-icon class="pointer" [inline]="true">add</mat-icon>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>I'm visible because I4 am open</p>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div>
-
-  <mat-divider style="margin-left: 360px; width: 800px;"></mat-divider>
-
-  <div style="margin-left: 23%; padding: 8px; width: 920px">
-    <mat-accordion>
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Do I need to be a designer or developer to use Shopify?
-          </mat-panel-title>
-          <mat-panel-description style="margin-left: 359px;">
-            <mat-icon class="pointer" [inline]="true">add</mat-icon>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>I'm visible because I4 am open</p>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div>
-
-  <mat-divider style="margin-left: 360px; width: 800px;"></mat-divider>
-
+  
   <app-footer></app-footer>

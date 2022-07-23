@@ -1,5 +1,6 @@
 import {NgModule } from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
@@ -23,10 +24,11 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
 import {MatRippleModule} from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
-const customClassModule = [
+const materialTheme = [
 
     MatIconModule,
     MatSortModule,
@@ -34,7 +36,9 @@ const customClassModule = [
     MatDialogModule,
     MatInputModule,
     MatListModule,
+    MatMenuModule,
     MatGridListModule,
+    MatCheckboxModule,
     MatRippleModule,
     MatChipsModule,
     MatTableModule,
@@ -59,10 +63,10 @@ const customClassModule = [
 
   imports: [
     CommonModule,
-    customClassModule
+    materialTheme
   ],
   exports: [
-    customClassModule
+    materialTheme
   ]
 })
 export class MaterialModule { }
