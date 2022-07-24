@@ -51,18 +51,16 @@
       </span>
 
 
-    <span class="material-symbols-outlined">
-      </span>
-
+    <span class="material-symbols-outlined"></span>
     <span class="cart mt-5">
-        <mat-icon style="height: 30px; width: 30px;" class="material-symbols-outlined">shopping_cart</mat-icon>
+      <mat-icon style="height: 30px; width: 30px;" class="material-symbols-outlined">shopping_cart</mat-icon>
     </span>
 
     <span class="cart mt-8 ml-1245 align-badge" matTooltip="Cart" (click)="showNotify()"
       routerLinkActive="active" routerLink="/addToCart">{{'CART' | translate}}
     </span>
-
     <span class="badge bg-danger align-badge ml-1285" *ngIf="(totalItem > 0)" matBadgeColor="accent">{{totalItem}}</span>
+
 
     <span class="res-circle mt-5">
       <span class="circle-txt pointer" [matMenuTriggerFor]="menu">GJ</span>

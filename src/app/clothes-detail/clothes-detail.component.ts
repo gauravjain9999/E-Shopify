@@ -23,8 +23,6 @@ export class ClothesDetailComponent implements OnInit{
   aboutBrand: boolean = false;
   customerReview: boolean = false;
   columnChart: Chart = new Chart(columnChartOptions);
-  // details
-
 
   constructor(private cartService: CartService,  private clothService: ClothService, private applicationService: ApplicationServiceService) {
 
@@ -49,33 +47,29 @@ export class ClothesDetailComponent implements OnInit{
     });
   }
 
-  addToCart(item: any)
-  {
+  addToCart(item: any){
+    console.log(item);
     this.cartService.uploadCartItem(item);
   }
 
-  remove(item: any)
-  {
+  remove(item: any){
     this.cartService.removeUploadCartItem(item)
   }
 
   //chips
-  details()
-  {
+  details(){
     this.allDetails= true;
     this.aboutBrand= false;
     this.customerReview= false;
   }
 
-  review()
-  {
+  review(){
     this.aboutBrand= false;
     this.allDetails= false;
     this.customerReview= true;
   }
 
-  brand()
-  {
+  brand(){
     this.aboutBrand= true;
     this.allDetails= false;
     this.customerReview= false;
