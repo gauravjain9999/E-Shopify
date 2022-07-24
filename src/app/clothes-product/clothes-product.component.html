@@ -1,2 +1,37 @@
 <app-main-header></app-main-header>
-<app-clothes></app-clothes>
+
+<mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner>
+<div *ngIf="!showFlagSpinner">
+  <div *ngFor="let itemCloth of listOfClothesItem | paginate: {itemsPerPage: 10,currentPage: page, totalItems: totalLength }; index as i" class="column">
+    <img  src="{{itemCloth.path}}" (click)="itemClothDetails(itemCloth, i)" class="img-src" >
+  <h2 style="margin-left:5px">{{itemCloth.title}}
+    <mat-icon class="material-symbols-outlined" style="margin-left: 30px; float: inline-end; padding: 3px;" matSuffix>favorite</mat-icon>
+  </h2>
+
+  <span style="margin-left: 10px; margin-top: 13px !important">{{itemCloth.brand}}</span>
+
+  <span style="margin-bottom: 15px !important;">
+    <button mat-raised-button *ngIf="!itemCloth.isCartVisible" #focus style=" float: right; margin-left: 75px;" (click)="addToCart(itemCloth)">{{itemCloth.addToCloth}} </button>
+  </span>
+  <span class="example-button-container" *ngIf="itemCloth.isCartVisible">
+    <button mat-mini-fab color="accent" (click)="onAdd(itemCloth, i)" aria-label="Example icon button with a plus one icon">+</button>&nbsp;&nbsp;
+    <span style="margin-top: 3px;">{{itemCloth.itemAdd}} </span>&nbsp;&nbsp;
+    <button mat-mini-fab color="accent" (click)="onSubtract(itemCloth, i)"aria-label="Example icon button with a plus one icon">-</button>
+  </span>
+</div>
+</div>
+
+<!-- <mat-paginator class="pagination-btn" showFirstLastButtons [length]="pageLength" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+aria-label="Select page">
+</mat-paginator> -->
+
+<div *ngIf="!showFlagSpinner">
+  <pagination-controls class="my-pagination"
+  style="background-color: rgb(151, 68, 68); margin-left: 545px;"
+  previousLabel="Previous"
+  nextLabel="Next"
+  screenReaderPaginationLabel="Pagination"
+  screenReaderPageLabel="page"
+  screenReaderCurrentLabel="You're on page"
+  (pageChange)="page= $event"></pagination-controls>
+</div>

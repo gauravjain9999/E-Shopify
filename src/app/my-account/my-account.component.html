@@ -7,9 +7,20 @@
   </div>
 </div>
 
+<!-- 
+<label class="hoverable" for="fileInput">
+  <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"> 
+  <div class="hover-text">Choose file</div>
+  <div class="background"></div>
+</label>
+<br/>
+<input id="fileInput" type='file' (change)="onSelectFile($event)">
+<button *ngIf="url" (click)="delete()" >delete</button>
+ -->
+
 <div class="card-layout-design" >
   <div class="card-layout-design-text" (click)="onProfileData()">
-  <span class="material-icons common">person</span>
+  <span class="material-icons common" type="file" (click)="onSelectFile($event)">person</span>
     My Profile
   <span class="material-icons">arrow_right</span>
   </div>

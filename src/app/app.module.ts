@@ -1,5 +1,4 @@
 import { ResponseInterceptor } from '../app/core/interceptor/response.interceptor';
-import { ClothesComponent } from './Clothes/clothes.component';
 import { CardLayoutProductComponent } from './card-layout-product/card-layout-product.component';
 import { MainHeaderComponent } from './Headers/main-header/main-header.component';
 import { MaterialModule } from './material/material.module';
@@ -62,7 +61,6 @@ export const MY_FORMATS ={
     HeaderComponent,
     CardLayoutProductComponent,
     MainHeaderComponent,
-    ClothesComponent,
     ClothesProductComponent,
     AddToCartComponent,
     FilterSearchPipe,

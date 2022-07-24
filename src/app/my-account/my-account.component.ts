@@ -10,9 +10,19 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 export class MyAccountComponent implements OnInit {
 
   name: any;
+  url = '';
   constructor(private router:Router,  private applicationService: ApplicationServiceService) { }
 
   ngOnInit(): void {}
+
+
+  onSelectFile(event: any) {
+    console.log('====================================');
+    console.log(event);
+    console.log('====================================');
+  }
+
+
 
   onProfileData(){
     this.router.navigate(['myProfile']);

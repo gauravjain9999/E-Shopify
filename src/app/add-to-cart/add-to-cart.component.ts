@@ -59,7 +59,7 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   }
   
   ngOnInit(): void {
-    this.setPagination();
+    // this.setPagination();
   }
 
   sortChange(event: any){

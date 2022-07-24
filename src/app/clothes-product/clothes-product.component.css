@@ -1,0 +1,57 @@
+.column {
+  float: left;
+  width: 18%;
+  margin-left: 25px;
+  padding: 0;
+  margin-top: 15px;
+  overflow: none;
+  border-radius:3px;
+  border-color: aqua;
+  height: 390px;
+}
+
+ .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.img-src{
+
+  height: 300px;
+  width: 278px;
+  padding: 5px;
+  margin-right: 15px !important;
+  position: static
+}
+
+/* .img-src:hover{
+  /* transform: scale(1.05); */
+  /* box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05); */
+/* }  */
+
+
+.column:hover
+{
+  cursor: pointer;
+  /* transform: scale(1.05); */
+  box-shadow: 0 10px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+  margin-top: 15px;
+  background-color: aqua;
+}
+
+.my-pagination /deep/ .ngx-pagination .current:hover{
+  background-color: red;
+}
+
+.example-button-container {
+  /* display: flex;
+  justify-content: flex-end; */
+  /* width: 120px; */
+  margin-left: 60px;
+  margin-bottom: 25px !important;
+  position: static;
+}
