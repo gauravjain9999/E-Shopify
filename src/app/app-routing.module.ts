@@ -3,7 +3,6 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { PaymentCheckoutComponent } from './Dialog-Box/payment-checkout/payment-checkout.component';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { ClothesProductComponent } from './clothes-product/clothes-product.component';
-import { MobileProductsComponent } from './mobile-products/mobile-products.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewRegisterComponent } from './new-register/new-register.component';
@@ -20,7 +19,6 @@ const routes: Routes = [
   {path: 'shopifyApp', component: LoginFormComponent},
   {path: 'new-login', component:NewLoginComponent },
   {path: 'footer',    component:FooterComponent},
-  {path: 'mobilePage', component:MobileProductsComponent},
   {path: 'new-register', component: NewRegisterComponent},
   {path: 'mainPage', component:MainPageComponent},
   {path: 'addToCart', component:AddToCartComponent},

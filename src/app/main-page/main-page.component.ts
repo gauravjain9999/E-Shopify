@@ -16,8 +16,26 @@ export class MainPageComponent implements OnInit {
     {key: 'What is Shopify and how does it work?',                  value: 'I m visible because I4 am open'},
     {key: 'How much does Shopify cost?',                            value: 'I m visible because I4 am open'},
     {key: 'Can I use my own domain name with Shopify?',             value: 'I m visible because I4 am open'},
-    {key: 'Do I need to be a designer or developer to use Shopify?',value: 'I m visible because I4 am open'}
-];
+    {key: 'Do I need to be a designer or developer to use Shopify?',value: 'I m visible because I4 am open'}];
+
+  content = [
+
+    { icon: 'mood', text: 'Good Mood', 
+      value:`Shopify Take care of all Good things that you want. Here you will find multiple varieties of things and 
+      makes your mood Happy.Go and Search your favorite product in just one click.`
+    },
+    { icon: 'people_outline', text: 'A safe and efficient platform',
+      value: ` Millions of users trust Shopify to manage their online stores.Trust me You will never go any other website.`
+    },
+    {
+      icon: 'place', text: 'Location Service',
+      value: 'Our location is all across the world. You can check here in your service area.'
+    }
+
+  ]  
+
+
+
   constructor(private cardLayout: CartLayoutService, private applicationService: ApplicationServiceService) { }
 
   ngOnInit(): void {

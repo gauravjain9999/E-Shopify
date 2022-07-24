@@ -7,7 +7,6 @@
 <br>
 <app-card-layout-product></app-card-layout-product>
 
-
 <div style="margin-top: 300px;">
   <div class="card" style="margin-top: 50px;">
     <div class="container">
@@ -23,26 +22,11 @@
     </div>
     <div style="margin-top: 20px;">
       <div class="row">
-        <div class="column">
-          <div><mat-icon [inline]="true" style="margin-left: 10px;">mood</mat-icon></div>
-          <h3 style="margin-top: 10px; font-size: large;"> <b>Good Mood </b></h3>
-          <p> Shopify Take care of all Good things that you want. Here you will find multiple varieties of things and makes your mood Happy.
-          Go and Search your favorite product in just one click.
-        </p>
-      </div>
-
-      <div class="column">
-        <div><mat-icon [inline]="true" style="margin-left: 10px;">people_outline</mat-icon></div>
-        <h3 style="margin-top: 10px; font-size: large"><b>A safe and efficient platform</b>
-        </h3>
-        <p> Millions of users trust Shopify to manage their online stores.Trust me You will never go any other website. </p>
-      </div>
-
-      <div class="column">
-        <div><mat-icon [inline]="true" style="margin-left: 10px;">place</mat-icon></div>
-        <h3 style="margin-top: 10px; font-size: large;"><b>Location Service</b></h3>
-        <p> Our location is all across the world. <br>You can check here in your service area.</p>
-      </div>
+        <div class="column" *ngFor="let item of content">
+          <div><mat-icon [inline]="true" style="margin-left: 10px;">{{item.icon}}</mat-icon></div>
+          <h3 style="margin-top: 10px; font-size: large;"> <b>{{item.text}}</b></h3>
+          <p> {{item.value}}</p>
+        </div>
     </div>
     </div>
   </div>
@@ -62,7 +46,6 @@
 
     <div class="container-faq">
       <h4><b style="font-size: x-large; ">FAQ's</b></h4>
-      <!-- <p>Architect & Engineer</p> -->
     </div>
 
   <div style="margin-left: 20%; width: 920px">
@@ -89,6 +72,5 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-
   
-  <app-footer></app-footer>
+<app-footer></app-footer>
