@@ -4,7 +4,7 @@
 
 <div *ngIf="!showFlagSpinner">
   <div class="example-container mat-elevation-z8" *ngIf="products.length !==0">
-    <table  [matSortDirection]="sortDirection"  [matSortActive]="sortColumn" 
+    <table  [matSortDirection]="sortDirection" #paginator [matSortActive]="sortColumn" 
     mat-table matSort (matSortChange)="sortChange($event)" [dataSource]="dataSource" tabindex="0">
     
     <!-- Title Column-->
@@ -54,29 +54,26 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-  
-  <div class="content">
-    <span class="content-text">
-      <span class="content-text-main"></span>
-      <span class="confirm-btn">
-        <mat-chip class="btn btn-primary check" (click)="onEditDetail()" selected>Proceed to Payment</mat-chip>
-      </span>
-    </span>
+   </table>
   </div>
 </div>
+
+<div *ngIf="products.length !==0">
+  <mat-paginator [length]="pageLength" [pageSize]="5" showFirstLastButtons [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  </mat-paginator>
+</div>
+
+<div class="content" *ngIf="products.length !==0">
+  <mat-chip class="btn btn-primary" (click)="onEditDetail()" selected>Proceed to Payment</mat-chip>
 </div>
 
 <ng-container *ngIf="products.length === 0">
-  <div class="container" *ngIf="!showFlagSpinner">
-  <div class="card"></div>
-
-  <div class="center">
-    <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
-    alt="">
-    <h4> Your cart is empty!</h4>
-    <h5>Add item to it now</h5>
-    <button routerLinkActive="active" (click)="onMainPage()" class="btn btn-primary">Shop now</button>
+  <div class="center" *ngIf="!showFlagSpinner">
+    <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+    <h3 style="font-size: 16px; font-weight: 500;"> Your cart is empty!</h3>
+    <h5 style="font-size: 13px; font-weight: 500;">Add item to it now</h5>
+    <mat-chip matRipple routerLinkActive="active" (click)="onMainPage()" class="btn btn-primary">
+      Shop now
+    </mat-chip>
   </div>
-</div>
 </ng-container>
