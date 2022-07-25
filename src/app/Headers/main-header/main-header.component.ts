@@ -27,6 +27,7 @@ export class MainHeaderComponent implements OnInit {
   opened = false;
   selectedLang: any;
   email: string;
+  dataSource: any;
   public totalItem: number = 0;
   items: any[] = [];
   supportLanguages = ['en', 'fr'];
@@ -38,6 +39,7 @@ export class MainHeaderComponent implements OnInit {
   private cartService: CartService, private notificationService: NotificationService) {
 
    this.cartService.getProduct().subscribe(res =>{
+   this.dataSource = res;
    this.totalItem = res.length;
    console.log(res);
   })

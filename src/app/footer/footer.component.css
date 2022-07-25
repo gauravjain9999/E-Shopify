@@ -54,7 +54,7 @@ footer{
 	text-align: left;
 	font: bold 16px Arial;
 	padding: 20px 20px 25px 80px;
-	margin-top: 580px;
+	margin-top: 500px;
 }
 
 .footer-distributed .footer-left,
@@ -198,7 +198,7 @@ footer{
 /* Here is the code for Responsive Footer */
 /* You can remove below code if you don't want Footer to be responsive */
 
-/*
+
 @media (max-width: 880px) {
 
 	.footer-distributed .footer-left,
@@ -214,5 +214,5 @@ footer{
 		margin-left: 0;
 	}
 
-} */
+}
 

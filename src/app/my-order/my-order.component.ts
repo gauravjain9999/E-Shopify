@@ -15,7 +15,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class MyOrderComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(MatPaginator,  {static:false}) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChildren('td') cells: QueryList<ElementRef>;
 
@@ -32,6 +32,7 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   showCards: boolean = true;
   displayedColumns: string[] = ['title', 'description', 'price', 'image', 'remove'];
   dataSource = new MatTableDataSource<any>();
+  applicationData: any = [];
 
   constructor(@Inject(NgZone) private zone: NgZone, private mediaObserver: MediaObserver, private notificationService: NotificationService,
   private cdr: ChangeDetectorRef, private cartService: CartService, private router: Router) {
@@ -42,22 +43,21 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
     this.zone.runOutsideAngular(() =>{
     })
      
+    // sessionStorage.getItem()
     setTimeout(() =>{
       this.showFlagSpinner = false;
     }, 3000)
-      
+    
     this.showFlagSpinner = true;
-    this.cartService.getProduct().subscribe(res=>{
+    this.cartService.getProduct().subscribe(res=>{  
     this.products = res;
+    console.log(this.products);  
     this.totalSum = this.cartService.getTotalPrice();
     this.dataSource =  new MatTableDataSource<any>(this.products);
     console.log(this.dataSource.filteredData);
-    this.pageLength = this.dataSource.filteredData.length;
     this.cdr.detectChanges();
-    this.dataSource.paginator = this.paginator;
   });
 
-    this.dataSource.sort = this.sort;
     this.mediaObserver.asObservable().subscribe((media: MediaChange[])=>{
       if(media.some(mediaChange => mediaChange.mqAlias="Gt-m")){
         this.dashBoardGridCol = 2;

@@ -26,13 +26,11 @@
   width: 730px !important;
 }
 
-.my-panel{
-  margin-top: 1% !important;
-  position: bottom;
-  min-width: 400px!important;
-}
-
 .errorText
 {
   color: red;
+}
+
+input:focus {
+  outline: none !important;
 }

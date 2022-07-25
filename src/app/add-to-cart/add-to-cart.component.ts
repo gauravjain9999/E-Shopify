@@ -34,11 +34,10 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   constructor(private applicationService: ApplicationServiceService, 
     private dialog: MatDialog, private cartService: CartService, private router: Router) { 
 
-      setTimeout(() =>{
-        this.showFlagSpinner = false;
-      },3000);
-  
-      this.showFlagSpinner = true;
+      // setTimeout(() =>{
+      //   this.showFlagSpinner = false;
+      // },3000);
+      // this.showFlagSpinner = true;
       this.cartService.getProduct().subscribe(res=>{
       this.products = res;
       this.dataSource = new MatTableDataSource<any>(this.products);
@@ -51,11 +50,9 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
 }
   
   ngAfterViewInit(): void {
-    setTimeout(() =>{
-      this.matFlag = true;
-      this.dataSource.paginator = this.paginator;
-      this.pageLength = this.dataSource.filteredData.length;
-    },2000);
+    this.matFlag = true;
+    this.dataSource.paginator = this.paginator;
+    this.pageLength = this.dataSource.filteredData.length;
   }
   
   ngOnInit(): void {
