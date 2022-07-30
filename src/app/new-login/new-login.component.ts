@@ -105,7 +105,7 @@ export class NewLoginComponent implements OnInit {
       this.notificationService.showNotification('Successfully Login', 'Close');
     }
     else{
-      alert('Please Fill your Details');
+      this.notificationService.showNotification('Please Fill your Details', 'close');
     }
   }
 

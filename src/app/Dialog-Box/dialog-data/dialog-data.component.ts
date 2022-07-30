@@ -5,6 +5,7 @@ import { UntypedFormControl, UntypedFormGroup, NgForm, Validators } from '@angul
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { PaymentCheckoutComponent } from 'src/app/Dialog-Box/payment-checkout/payment-checkout.component';
+import { NotificationService } from 'src/app/core/Service/notification.service';
 
 export class DialogData{
 
@@ -45,9 +46,7 @@ export class DialogDataComponent implements OnInit{
   customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public dialogRef: MatDialogRef<DialogDataComponent>,
-  private router:Router, private paymentDialog: MatDialog) {
-
-  }
+  private router:Router, private paymentDialog: MatDialog,  public notificationService: NotificationService) {}
 
   ngOnInit(): void {
     //comment date
@@ -129,7 +128,7 @@ export class DialogDataComponent implements OnInit{
       // this.router.navigate(['payment'])
     }
     else{
-      alert('Please fill your details');
+      this.notificationService.showNotification('Please fill your details', 'close');
       this.flag = false;
     }
   }

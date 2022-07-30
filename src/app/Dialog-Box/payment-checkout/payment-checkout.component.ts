@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/Service/cart.service';
+import { NotificationService } from 'src/app/core/Service/notification.service';
 
 @Component({
   selector: 'app-payment-checkout',
@@ -15,10 +16,10 @@ export class PaymentCheckoutComponent implements OnInit {
   totalLength: any;
   strikeCheckout:any = null;
 
-  constructor( private router: Router, private cartService: CartService) {
+  constructor( private router: Router, private cartService: CartService,  public notificationService: NotificationService) {
 
     this.cartService.getProduct().subscribe(res=>{
-      console.log(res.discount);
+    console.log(res.discount);
     this.discountItem = res.discount;
     console.log(this.discountItem);
     this.totalLength = res.length;
@@ -49,7 +50,7 @@ export class PaymentCheckoutComponent implements OnInit {
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log(stripeToken);
-        alert('Successfully Placed  ! Go To My Orders')
+        this.notificationService.showNotification('Successfully Placed  ! Go To My Orders', 'Close');
       }
   });
   
@@ -60,7 +61,7 @@ export class PaymentCheckoutComponent implements OnInit {
     });
   }
   else{
-    alert('Please Select One Item At Least')
+    this.notificationService.showNotification('Please Select One Item At Least in Cart.', 'Close');
   }
 }
 
@@ -77,7 +78,7 @@ export class PaymentCheckoutComponent implements OnInit {
           locale: 'auto',
           token: function (token: any) {
             console.log(token)
-            alert('Payment via stripe sucessfull!');
+            this.notificationService.showNotification('Payment via stripe successfully Done', 'Close');
           }
         });
       }

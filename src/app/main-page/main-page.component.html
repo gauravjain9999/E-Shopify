@@ -17,7 +17,6 @@
         accessories; from modern furniture like sofa sets, dining tables, and wardrobes to appliances that make your life easy like washing machines, TVs, ACs, mixer grinder juicers and other time-saving kitchen and
         small appliances; from home furnishings like cushion covers, mattresses and bedsheets to toys and musical instruments, we got them allcovered. You name it, and you can stay assured about finding them all here. For those of you with erratic working hours, Flipkart is your best bet. Shop in your PJs, at night or in the wee hours of the morning.
         This e-commerce never shuts down.
-        <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque ratione, reiciendis deleniti ut ipsa cumque repudiandae suscipit vitae sit, culpa vel commodi libero itaque, illum doloremque quisquam laboriosam tempore similique? -->
       </p>
     </div>
     <div style="margin-top: 20px;">
@@ -33,26 +32,29 @@
 </div>
 
 
- <div style="margin-top: 50px; margin-left: 50px; margin-right: 30px;  width: 1400px;">
+  <div style="margin-top: 50px; margin-left: 50px; margin-right: 30px;  width: 1400px;">
    <mat-divider></mat-divider>
      <div style="margin-top: 30px; width: max-content; height: max-content; margin-left: 50px;" >
       <span style="margin-left: 80px;" *ngFor="let icon of iconsList">
         <img src={{icon.src}}>
       </span>
     </div>
-   <br>
-   <mat-divider></mat-divider>
- </div>
+     <br>
+    <mat-divider></mat-divider>
+  </div>
 
     <div class="container-faq">
       <h4><b style="font-size: x-large; ">FAQ's</b></h4>
     </div>
 
+    <!-- #panelH (click)="panelH._toggle()" -->
   <div style="margin-left: 20%; width: 920px">
-    <mat-accordion>
+    <mat-accordion #accordion="matAccordion">
       <mat-expansion-panel autoFocus class="accordion-style"
       *ngFor="let item of faqList">
-        <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*">
+        <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*"
+        (afterCollapse)="afterPanelClosed($event)"
+        (afterExpand)="afterPanelOpened($event)">
          <div class="w-100" fxLayout="row" fxLayoutAlign="space-between start"
           fxLayout.lt-md="column">
             <mat-panel-title fxFlex="1160%" fxFlex="11100%"
@@ -61,6 +63,12 @@
             <div style="margin-left: 10px">
               {{item.key}}
             </div>
+             <!-- <div>
+              <mat-icon matPrefix class="text-align-left mat-expansion-panel-arrow-icons"
+                *ngIf="item.includes(globalConstant.ProposedDenomination)"
+                (click)="panelH._toggle()">keyboard_arrow_down
+              </mat-icon>
+            </div> -->
             </mat-panel-title>
             <mat-panel-description fxFlex="11140%" fxFlex="11100%">
              <!-- <mat-icon matSuffix class="pointer"[inline]="true">add</mat-icon> -->
@@ -72,5 +80,5 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-  
+
 <app-footer></app-footer>

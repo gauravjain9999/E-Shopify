@@ -126,7 +126,7 @@ export class NewRegisterComponent implements OnInit {
         });
      }
      else{
-      alert("Please complete your Detail")
+      this.notificationService.showNotification('Please complete your Details First before Proceed', 'Close');
      }
     this.applicationService.nameEvent.emit(this.formStatus);
   }
