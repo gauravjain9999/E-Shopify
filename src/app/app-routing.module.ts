@@ -1,17 +1,17 @@
-import { ClothesDetailComponent } from './clothes-detail/clothes-detail.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ClothesDetailComponent } from './component/clothes-detail/clothes-detail.component';
+import { MyProfileComponent } from './component/my-profile/my-profile.component';
 import { PaymentCheckoutComponent } from './Dialog-Box/payment-checkout/payment-checkout.component';
-import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
-import { ClothesProductComponent } from './clothes-product/clothes-product.component';
-import { MainPageComponent } from './main-page/main-page.component';
+import { AddToCartComponent } from './component/add-to-cart/add-to-cart.component';
+import { ClothesProductComponent } from './component/clothes-product/clothes-product.component';
+import { MainPageComponent } from './component/main-page/main-page.component';
 import { FooterComponent } from './footer/footer.component';
-import { NewRegisterComponent } from './new-register/new-register.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { NewLoginComponent } from './new-login/new-login.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { NewRegisterComponent } from './component/new-register/new-register.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { NewLoginComponent } from './component/new-login/new-login.component';
+import { LoginFormComponent } from './component/login-form/login-form.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MyOrderComponent } from './my-order/my-order.component';
+import { MyOrderComponent } from './component/my-order/my-order.component';
 
 const routes: Routes = [
 

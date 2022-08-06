@@ -3,9 +3,10 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ApplicationServiceService } from '../core/Service/application-service.service';
-import { CartService } from '../core/Service/cart.service';
-import { ClothService } from '../core/Service/cloth.service';
+import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
+import { CartService } from 'src/app/core/Service/cart.service';
+import { ClothService } from 'src/app/core/Service/cloth.service';
+
 
 @Component({
   selector: 'app-clothes-product',
@@ -38,17 +39,17 @@ export class ClothesProductComponent implements OnInit {
   pageEvent: PageEvent;
   show: {[key: number]: boolean} = {};
 
-  constructor(private applicationService: ApplicationServiceService,  private spinner: NgxSpinnerService, 
+  constructor(private applicationService: ApplicationServiceService,  private spinner: NgxSpinnerService,
     private clothesService: ClothService, private cartService: CartService, public router: Router) { }
-  
-  
+
+
   ngAfterViewInit(): void {
 
     this.dataSource.paginator = this.paginator;
     this.pageLength = this.dataSource.filteredData.length;
     // throw new Error('Method not implemented.');
   }
-  
+
   ngOnInit(): void {
 
     setTimeout(() =>{

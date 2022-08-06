@@ -1,7 +1,7 @@
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartLayoutService } from '../core/Service/cart-layout.service';
+import { CartLayoutService } from 'src/app/core/Service/cart-layout.service';
 
 @Component({
   selector: 'app-card-layout-product',

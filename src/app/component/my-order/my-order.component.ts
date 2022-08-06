@@ -1,12 +1,11 @@
 import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Inject, NgZone, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApplicationServiceService } from '../core/Service/application-service.service';
-import { CartService } from '../core/Service/cart.service';
 import {MediaChange, MediaObserver} from "@angular/flex-layout";
-import { NotificationService } from '../core/Service/notification.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { CartService } from 'src/app/core/Service/cart.service';
+import { NotificationService } from 'src/app/core/Service/notification.service';
 
 @Component({
   selector: 'app-my-order',
@@ -42,16 +41,16 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
 
     this.zone.runOutsideAngular(() =>{
     })
-     
+
     // sessionStorage.getItem()
     setTimeout(() =>{
       this.showFlagSpinner = false;
     }, 3000)
-    
+
     this.showFlagSpinner = true;
-    this.cartService.getProduct().subscribe(res=>{  
+    this.cartService.getProduct().subscribe(res=>{
     this.products = res;
-    console.log(this.products);  
+    console.log(this.products);
     this.totalSum = this.cartService.getTotalPrice();
     this.dataSource =  new MatTableDataSource<any>(this.products);
     console.log(this.dataSource.filteredData);

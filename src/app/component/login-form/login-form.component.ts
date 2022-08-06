@@ -1,8 +1,9 @@
-import { CartLayoutService } from '../core/Service/cart-layout.service';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SwiperOptions } from 'swiper';
 import { indexOf } from 'lodash';
+import { CartLayoutService } from 'src/app/core/Service/cart-layout.service';
 
 @Component({
   selector: 'app-login-form',

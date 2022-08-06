@@ -1,7 +1,9 @@
-import { ApplicationServiceService } from '../core/Service/application-service.service';
+
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CartLayoutService } from '../core/Service/cart-layout.service';
+
 import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
+import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
+import { CartLayoutService } from 'src/app/core/Service/cart-layout.service';
 
 @Component({
   selector: 'app-main-page',
@@ -57,7 +59,7 @@ export class MainPageComponent implements OnInit {
   }
 
   closeAccordion(){
-    //This is called when we close expansion panel on the basis of viewChild or reference of Mat Expansion Panel  
+    //This is called when we close expansion panel on the basis of viewChild or reference of Mat Expansion Panel
     this.mPanel.accordion.closeAll();
   }
 

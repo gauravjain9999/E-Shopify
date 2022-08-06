@@ -1,9 +1,9 @@
-import { NewRegisterComponent } from '../../new-register/new-register.component';
-import { NewLoginComponent } from '../../new-login/new-login.component';
-import { LoginFormComponent } from '../../login-form/login-form.component';
+
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NewLoginComponent } from 'src/app/component/new-login/new-login.component';
+import { NewRegisterComponent } from 'src/app/component/new-register/new-register.component';
 
 @Component({
   selector: 'app-header',

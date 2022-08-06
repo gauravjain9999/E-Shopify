@@ -1,13 +1,13 @@
 import { MatTableDataSource } from '@angular/material/table';
-import { ApplicationServiceService } from '../core/Service/application-service.service';
-import { ConfirmDialogComponent } from './../Dialog-Box/confirm-dialog/confirm-dialog.component';
-import { DialogDataComponent } from './../Dialog-Box/dialog-data/dialog-data.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CartService } from '../core/Service/cart.service';
 import { Component, OnInit, ViewChild, ElementRef, TemplateRef, AfterViewInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
+import { CartService } from 'src/app/core/Service/cart.service';
+import { ConfirmDialogComponent } from 'src/app/Dialog-Box/confirm-dialog/confirm-dialog.component';
+import { DialogDataComponent } from 'src/app/Dialog-Box/dialog-data/dialog-data.component';
 
 @Component({
   selector: 'app-add-to-cart',
@@ -31,8 +31,8 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   showFlagSpinner: boolean = true;
   displayedColumns: any = ['title', 'productImage', 'description', 'price', 'quantity', 'total', 'remove'];
 
-  constructor(private applicationService: ApplicationServiceService, 
-    private dialog: MatDialog, private cartService: CartService, private router: Router) { 
+  constructor(private applicationService: ApplicationServiceService,
+    private dialog: MatDialog, private cartService: CartService, private router: Router) {
 
       // setTimeout(() =>{
       //   this.showFlagSpinner = false;
@@ -45,16 +45,16 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
       this.totalSum = this.cartService.getTotalPrice();
       if(this.products.length === 0){
         sessionStorage.clear();
-      }  
+      }
     })
 }
-  
+
   ngAfterViewInit(): void {
     this.matFlag = true;
     this.dataSource.paginator = this.paginator;
     this.pageLength = this.dataSource.filteredData.length;
   }
-  
+
   ngOnInit(): void {
     // this.setPagination();
   }

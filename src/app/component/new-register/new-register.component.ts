@@ -1,12 +1,8 @@
 import { BehaviorSubject } from 'rxjs';
 import { NewLoginComponent } from './../new-login/new-login.component';
-import { ApplicationServiceService } from '../core/Service/application-service.service';
-import { DataStorageService } from '../core/Service/data-storage.service';
-import { NotificationService } from '../core/Service/notification.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { CustomerInfo } from './../ModelDataClass/customer.model';
 import {
   Component,
   ElementRef,
@@ -17,7 +13,11 @@ import {
   Output,
 } from '@angular/core';
 import { Form, UntypedFormGroup, NgForm, UntypedFormControl, Validators } from '@angular/forms';
-import { CustomErrorStateMatcherService } from '../core/Service/custom-error-state-matcher.service';
+import { NotificationService } from 'src/app/core/Service/notification.service';
+import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
+import { DataStorageService } from 'src/app/core/Service/data-storage.service';
+import { CustomErrorStateMatcherService } from 'src/app/core/Service/custom-error-state-matcher.service';
+
 
 @Component({
   selector: 'app-new-register',
