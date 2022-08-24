@@ -30,7 +30,7 @@
   </div>
 
   <mat-chip-list>
-    <mat-chip color="primary" (click)="onLogin()" class="myBtn" type="submit" selected >Login</mat-chip><br>
+    <mat-chip color="primary" (keydown.enter)="onLogin()" (click)="onLogin()" class="myBtn" type="submit" selected >Login</mat-chip><br>
     <div class="psw" style="margin-left: 41%; padding: 10px; font-weight: 500;">New to Shopify ?</div><br>
     <mat-chip color="accent" class="myBtn" type="submit" (click)="onSignUp()"selected >Create Your Account</mat-chip>
   </mat-chip-list>

@@ -1,7 +1,7 @@
 import { NewRegisterComponent } from './../new-register/new-register.component';
 import { NgForm, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CustomErrorStateMatcherService } from 'src/app/core/Service/custom-error-state-matcher.service';
@@ -14,6 +14,13 @@ import { DataStorageService } from 'src/app/core/Service/data-storage.service';
   styleUrls: ['./new-login.component.css'],
 })
 export class NewLoginComponent implements OnInit {
+
+  @HostListener('document:keypress', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+  if (event.key === 'Enter') {
+        this.onLogin();
+  }
+}
   name: string;
   password: string;
   isLoading: boolean;
