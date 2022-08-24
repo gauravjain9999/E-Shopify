@@ -28,10 +28,12 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatCardModule} from '@angular/material/card'
 
 const materialTheme = [
 
     MatIconModule,
+    MatCardModule,
     MatSortModule,
     MatSliderModule,
     MatDialogModule,

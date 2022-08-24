@@ -1,10 +1,17 @@
 
-  <div *ngFor="let item of listOfCardsItem; let i = index">
-    <div class="column">
-      <div class="card" (click)="goToClothPage(item , i)">
-        <img src="{{item.src}}">
-        <p style="font-weight: 500; margin-top: 25px;">{{item.title}}</p>
-        <a routerLinkActive="active" class="clickText" >{{item.clickItem}}</a>
-      </div>
-    </div>
-  </div>
+<div fxLayout="row" fxLayoutAlign="start space-between" fxLayoutGap="20px"
+ fxLayout.lt-md="column">
+ <mat-card  (click)="goToClothPage(item , i)" fxFlex="1120%" class="card" fxFlex.lt-md="11100%"
+  *ngFor="let item of listOfCardsItem; let i = index">
+  <mat-card-header></mat-card-header>
+  <img src="{{item.src}}" style="width: 255px; height:230px;">
+  <mat-card-actions fxLayout="column" fxLayoutAlign="center">
+    <span>{{item.title}}</span>
+    <span class="mt-5">
+      <a routerLinkActive="active" class="clickText">
+        {{item.clickItem}}
+      </a>
+    </span>
+  </mat-card-actions>
+</mat-card>
+</div>
