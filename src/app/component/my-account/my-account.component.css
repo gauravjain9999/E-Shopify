@@ -3,6 +3,7 @@ img {
 }
 .card
 {
+  /* width: 100%; */
   /* background-color: aqua; */
   align-items: center;
 }

@@ -1,76 +1,59 @@
-<nav class="navbar navbar-light header-bg">
-  <div class="container-fluid">
+<mat-toolbar class="nav header-bg" fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+   <button mat-icon-button (click)="drawer.toggle()">
+     <mat-icon>menu</mat-icon>
+    <mat-sidenav-container  (backdropClick)="close('backdrop')" class="example-sidenav-container">
+      <mat-sidenav mode="push" #drawer disableClose class="mat-sidenav-overlay">
+        <app-my-account></app-my-account>
+      </mat-sidenav>
+    </mat-sidenav-container>
+  </button>
+   <img class="float-img pointer" style="width: 40px; height:40px;" src="../../assets/./images/shopifyApp.png">&nbsp;
+   <span class="shopifyApp mr-1rem" >{{'SHOPIFY_APP' | translate}}</span>
+  </div>
 
-    <mat-toolbar color="primary" class="example-toolbar">
-      <button mat-icon-button class="mat-toolbar-btn"  (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-      <mat-sidenav-container  (backdropClick)="close('backdrop')" class="example-sidenav-container">
-        <mat-sidenav mode="push" #sidenav disableClose class="mat-sidenav-overlay">
-          <app-my-account></app-my-account>
-        </mat-sidenav>
-      </mat-sidenav-container>
-    </mat-toolbar>
-    <!-- <button mat-icon-button (click)="opened=!opened" #sidenav style="margin-left: 20px;
-      padding: 0; height: auto;">
-      <mat-icon>menu</mat-icon>
-      <mat-sidenav-container (backdropClick)="close('backdrop')">
-        <mat-sidenav class="example-sidenav-container" #sidenav [(opened)]="opened">
-          <app-my-account></app-my-account>
-        </mat-sidenav>
-      </mat-sidenav-container>
-    </button>&nbsp; -->
-
-    <img class="float-img pointer" src="../../assets/./images/shopifyApp.png">&nbsp;&nbsp;
-    <span class="shopifyApp mr-1rem">{{'SHOPIFY_APP' | translate}}</span>
-    <div class="search-bar">
-      <input type="text" autocomplete="off" class="searchText" placeholder="{{'SEARCH' | translate}}..."name="search" [(ngModel)]="searchText">
-    </div>
-    <span class="mt-8 ml-70">
-      <mat-icon class="search-pos ml-10">search</mat-icon>
-    </span>
-
-    <div class="notify" matTooltip="Notification" (click)="notification()">
-      <mat-icon>notifications_none</mat-icon>
-    </div>
-
-
+  <div fxLayout="row" fxLayoutAlign="space-between center">
     <mat-icon class="lang-select head-icn-align">language</mat-icon>
-    <span style="margin-left: 820px; margin-top: 10px; position: absolute;">
+    <span class="ml-5" style="font-size: 14px;">
       <select class="select-lang" [(ngModel)]="selectedOption" (change)="onChange($event)">
         <option style="color: black;" *ngFor="let lang of languages">{{ lang.viewValue}}</option>
       </select>
     </span>
+  </div>
 
-     <span style="margin-top: 10px; margin-left: 500px; font-size: medium;">{{'MORE' | translate}}</span>
-      <span class="mt-8">
-        <!-- <mat-icon>expand_more</mat-icon> -->
-        <mat-select panelClass="select-dropDown">
-          <mat-option  [value]="option" *ngFor="let option of items" (click)="openComponent(option)">
-            {{option}}
-          </mat-option>
-        </mat-select>
-      </span>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <button class="pointer notify" fxLayoutAlign="space-between center" matTooltip="Notification" (click)="notification()">
+      <mat-icon>notifications_none</mat-icon>
+    </button>
 
+    <button class="cart ml-50" fxLayoutAlign="space-between center">
+      <mat-icon style="height: 20px; width: 20px;">shopping_cart</mat-icon>
+    </button>
 
-    <span class="material-symbols-outlined"></span>
-    <span class="cart mt-5">
-      <mat-icon style="height: 30px; width: 30px;" class="material-symbols-outlined">shopping_cart</mat-icon>
-    </span>
+    <span style="font-size:18px; margin-top: 5px;" fxLayoutAlign="center" class=" cart pointer" matTooltip="Cart" (click)="showNotify()" routerLinkActive="active"
+      routerLink="/addToCart">{{'CART' | translate}}
+    </span> &nbsp;
+    <span class="badge bg-danger mb-20 pointer" style="font-size: 12px" *ngIf="(totalItem > 0)" matBadgeColor="accent">{{totalItem}}</span>
+  </div>
 
-    <span class="cart mt-8 ml-1245 align-badge" matTooltip="Cart" (click)="showNotify()"
-      routerLinkActive="active" routerLink="/addToCart">{{'CART' | translate}}
-    </span>
-    <span class="badge bg-danger align-badge ml-1285" *ngIf="(totalItem > 0)" matBadgeColor="accent">{{totalItem}}</span>
-
-
-    <span class="res-circle mt-5">
-      <span class="circle-txt pointer" [matMenuTriggerFor]="menu">GJ</span>
-    </span>
-
-    <mat-menu #menu="matMenu" class="mt-20">
+  <!-- fxHide.lt-md="true" -->
+  <div fxLayout="row">
+    <span class="res-circle" [matMenuTriggerFor]="menu" style="margin-right: 50px; font-size: 14px;">GJ</span>
+    <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="logout()">Logout
         <mat-icon matSuffix class="ml-10">logout</mat-icon>
       </button>
     </mat-menu>
 
   </div>
-</nav>
+</mat-toolbar>
+
+ <!-- <span style="margin-top: 10px; margin-left: 500px; font-size: medium;">{{'MORE' | translate}}</span>
+  <span class="mt-8">
+    <mat-icon>expand_more</mat-icon>
+      <mat-select panelClass="select-dropDown">
+        <mat-option  [value]="option" *ngFor="let option of items" (click)="openComponent(option)">
+          {{option}}
+        </mat-option>
+      </mat-select>
+  </span> -->

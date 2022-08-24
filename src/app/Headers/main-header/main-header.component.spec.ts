@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MainHeaderComponent } from './main-header.component';
 
 describe('MainHeaderComponent', () => {

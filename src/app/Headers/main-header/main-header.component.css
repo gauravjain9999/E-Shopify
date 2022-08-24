@@ -1,311 +1,90 @@
-.container-fluid
+
+/*.mat-sidenav-overlay
 {
+  background-color: rgb(238, 236, 236);
+} */
+
+.example-sidenav-container{
   margin-top: 10px;
-  justify-content: left;
-  display: flex;
-  padding: 10px;
-  border-bottom: black;
-  align-items:flex-start
-}
-
-.mat-toolbar-btn
-{
-  margin-left: 25px;
-}
-
-.float-img{
-  font: right;
-  margin-left: 15px;
-  width: 40px;
-}
-
-.align-badge{
-  position: absolute;
-}
-
-.search-bar
-{
-  margin-left: 40px;
-  max-width: 100%;
-  color: white;
-  font-size: 17px;
-  border-left: none;
-  cursor: pointer;
-}
-
-.searchText
-{
-  border: 1px solid #d7d6d6;
-  background: #fff;
-  padding: 10px 10px 10px 20px;
-  border-radius: 25px;
-  width: 150%;
-  outline: none;
-  box-shadow: 5px 5px 5px darkgrey;
-  text-align: left;
-  /* margin-left: 100px;
-  width: 270px;
-  padding: 2px;
-  border-radius: 5px;
-  outline: none;
-  text-decoration: none;
-  box-shadow: 5px 5px 5px lightgrey; */
-}
-
-.notify
-{
-  cursor: pointer;
-  margin-top: 8px;
-  height: 20px;
-  position: absolute;
-  size: 20px;
-  margin-left: 1000px;
-}
-.notify:hover{
-  transform: scale(1.05);
-}
-
-
-.icon-whishList {
-  padding-right: 25px;
-  /* background: url("../../../assets/images/outline_favorite_black_24dp.png") no-repeat left; */
-  background-size: 20px;
-
-}
-.icon-setting
-{
-  padding-right: 25px;
-  /* background: url("../../../assets/images/outline_settings_black_24dp.png") no-repeat left; */
-  background-size: 20px;
-
-}
-.icon-about
-{
-  padding-right: 25px;
-  /* background: url("../../../assets/images/outline_info_black_24dp.png") no-repeat left; */
-  background-size: 20px;
-}
-.cart
-{
-  font-size: large;
-  position: absolute;
-  margin-left: 1220px;
-  cursor: pointer;
-  /* margin-top: 2px !important; */
-  /* background: url("../../../assets/images/outline_shopping_cart_black_24dp.png") no-repeat left; */
-  /* background-size: 20px; */
-}
-
-.icon-cart
-{
-  margin-top: 5px;
-  cursor: pointer;
-  position: absolute;
-  margin-left: 1195px;
-}
-
-
-.cart:hover{
-  transform: scale(1.10);
-}
-
-.icon-cart-text{
-  position: relative;
-  margin-left: 20px;
-  font-size: 18px;
-  margin-top: 6px;
-}
-.logout-btn{
-
-  position: absolute;
-  margin-left: 1350px;
-  font-size: larger;
-  background-color: none;
-  margin-top: 7px;
-
-}
-.logout-btn:hover{
-  cursor: pointer;
-  transform: scale(1.05);
-}
-
-.mat-icon-logout
-{
-  position: absolute;
-  margin-left: 1405px;
-  margin-top: 5px;
-}
-
-.mat-icon-logout:hover
-{
-  cursor: pointer;
-}
-
-.mat-sidenav-overlay
-{
-  /* background-color: rgb(238, 236, 236); */
-  margin-top: 20px;
-}
-
-mat-sidenav-container
-{
-  height: 100%;
-  margin-top: 5px;
-  /* background-color: rgb(238, 236, 236); */
+  background-color: #fff;
   overflow: visible;
 }
-mat-sidenav, mat-sidenav-content{
 
-  /* background-color: lightcoral; */
+/* mat-sidenav, mat-sidenav-content{
+
+  background-color: lightcoral;
   margin-top: 5px;
   overflow: visible;
-}
+} */
 
 mat-sidenav{
   width: 300px;
-  margin-top: 5px;
   height: 900px;
-  /* background-color: rgb(238, 236, 236); */
-}
-
-::ng-deep .mat-tooltip {
-  position: relative;
-  top:2px;
-}
-
-.shopifyApp{
-
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
-  margin-top: 5px;
-  font-family:Arial, Helvetica, sans-serif;
-  font-size: 1.25rem;
-  /* font-weight/: 700; */
-  text-decoration: none;
-  white-space: nowrap;
-  margin-bottom: 0px !important;
-}
-
-.head-icn-align{
-  font-size: 20px;
-  line-height: .7;
-}
-
-select{
-  outline: 0px;
-  background-color: #fff;
-  border: 0px;
-  width: 100px;
-  font-size: medium;
-  text-decoration: none;
-}
-
-.lang-select{
-  margin-top: 12px;
-  position: absolute;
-  margin-left: 790px;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgb(238, 236, 236);
 }
 
 .res-circle {
-  width: 3%;
+
   border-radius: 50%;
-  background: white;
-  line-height: 0;
-  left: 200px;
-  box-shadow: #d7d6d6;
-  bottom: 10px;
-  position: relative;
-}
-
-.res-circle::after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
-
-.circle-txt {
-  position: absolute;
-  bottom: 50%;
-  width: 100%;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid white;
+  color: #000;
   text-align: center;
-  font-weight: bold;
+  font: 32px Arial, sans-serif;
+
 }
 
-
-/*
-.mat-select-panel{
-  position: absolute;
-  top: 32px;
-  left: 4px;
-  min-width: calc(100% + 22px) !important;
-  border-radius: 0px !important;
-  border: 1px solid blue;
-  border-top-style: none;
-}
-
-
-.mat-select-panel ng-animating {
-  visibility: hidden;
-}
- */
-
-/* .example-toolbar
-{
-  background-color: rgb(238, 236, 236);
-}
- */
-
-
-/* DropDown */
-/* .dropbtn {
-  background-color: #4CAF50;
-  color: black;
-  padding: 14px;
-  position: fixed;
-  margin-left: 300px;
-  background: none;
+.notify{
+  background-color: rgb(215, 221, 221);
+  outline: none;
   border: none;
 }
 
-.dropdown {
-  position: fixed;
-  display: inline-block;
+.cart{
+  border: none;
+  background-color: rgb(215, 221, 221);
 }
 
-.dropdown-content {
-  display: none;
-  position: relative;
-  background-color: #fff;
-  width: 160px;
-  left: 70%;
-  box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+.cart:hover{
+  border: none;
+  outline: 0 !important;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 10px 12px;
-  text-decoration: none;
-  display: flex;
+.nav
+{
+  background-color: rgb(215, 221, 221);
+  box-shadow: 0px 0px 7px 0px #000000;
+  z-index: 99;
+  /* margin-bottom: 2px; */
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-} */
-
-/* For Arrow */
-/* .arrow {
-  border: solid black;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 2px;
-  margin-bottom: 5px;
+.drawer a
+{
+  transition: border 0.3s;
 }
-.down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-} */
 
+.main
+{
+  /* background-color:#f5f5f5; */
+  background-color: #edf0f8;
+  padding: 12px;
+  min-height: 90vh !important;
+  width: 100%;
+  /* /* max-height: 90vh !important; */
+  /* overflow: scroll-y; */
+}
+.drawer-container
+{
+  margin-top: 3px;
+}
 
+.drawer
+{
+  width: 200px;
+  background-color: #d6d4d4;
+}

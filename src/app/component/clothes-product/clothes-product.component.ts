@@ -60,9 +60,7 @@ export class ClothesProductComponent implements OnInit {
     this.listOfClothesItem = this.clothesService.getListOfCloth();
     this.dataSource = new MatTableDataSource<any>(this.listOfClothesItem);
     this.totalLength = this.listOfClothesItem.length;
-     // console.log(this.listOfClothesItem);
-     // console.log('Length is ', this.totalLength);
-     this.listOfClothesItem.forEach((element:any) => {
+    this.listOfClothesItem.forEach((element:any) => {
        Object.assign(element, {quantity:1, total:element.price})
       });
     // this.showFlagSpinner = false;
