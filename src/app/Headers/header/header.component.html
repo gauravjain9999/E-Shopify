@@ -1,17 +1,33 @@
-<nav class="navbar navbar-light" style="background-color: rgb(215, 221, 221)">
-  <div class="container-fluid">
-    <img class="float-img" src="../../assets/./images/shopifyApp.png">&nbsp; &nbsp;
-    <span class="navbar-brand mb-0 h1" style="margin-top: 3px;">Shopify App</span>
-    <div class="search-bar">
-      <input type="text" autocomplete="off" class="search-text" placeholder="Search..." name="search">
-      <!-- < i style="color: black; margin-left: 10px;" class="fa fa-search icon"></> -->
-    </div>
-    <span style="margin-top: 10px; margin-left: 350px;">
-      <mat-icon class="search-pos ml-10">search</mat-icon>
+<mat-toolbar class="nav header-bg" fxLayout="row" fxLayoutAlign="space-between center">
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+
+    <img class="float-img pointer" style="width: 40px; height:40px;" src="../../assets/./images/shopifyApp.png">&nbsp;
+    <span type="button">
+      <span class="shopifyApp">{{'SHOPIFY_APP' | translate}}</span>
     </span>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <span class="mr-245">
+      <mat-form-field appearance="legacy" [style.width]="50" class="header-bg">
+        <span>Search</span>
+        <i style="color: black; margin-left: 10px;" class="fa fa-search icon"></i> &nbsp;
+        <input matInput type="text" autocomplete="off" name="search">
+      </mat-form-field>
+    </span>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
     <mat-icon class="theme-icon dark-theme-2" (click)="toggleDarkTheme()"aria-hidden="false"
     aria-label="Example home icon">brightness_6</mat-icon>
-    <button class="btn-login" (click)="loginTo()">Login</button>
-    <button class="btn-register" (click)="newRegister()">Register</button>
   </div>
-</nav>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center" style="margin-right: 50px">
+    <button mat-stroked-button class="btn-login  header-bg" (click)="loginTo()">Login</button> &nbsp;
+    <button mat-stroked-button class="btn-register header-bg" (click)="newRegister()">Register</button>
+  </div>
+
+</mat-toolbar>
+
+

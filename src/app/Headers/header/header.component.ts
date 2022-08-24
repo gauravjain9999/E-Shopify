@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewLoginComponent } from 'src/app/component/new-login/new-login.component';
 import { NewRegisterComponent } from 'src/app/component/new-register/new-register.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +13,14 @@ import { NewRegisterComponent } from 'src/app/component/new-register/new-registe
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private dialogBox: MatDialog,  private router: Router) { }
+  supportLanguages = ['en'];
+  constructor( public translate: TranslateService, private dialogBox: MatDialog,  private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.translate.addLangs(this.supportLanguages);
+    this.translate.setDefaultLang('en');
+  }
 
   toggleDarkTheme(): void {
     document.body.classList.toggle('dark-theme');
