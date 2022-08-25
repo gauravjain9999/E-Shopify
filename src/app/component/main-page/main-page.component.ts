@@ -30,11 +30,13 @@ export class MainPageComponent implements OnInit {
       makes your mood Happy.Go and Search your favorite product in just one click.`
     },
     { icon: 'people_outline', text: 'A safe and efficient platform',
-      value: ` Millions of users trust Shopify to manage their online stores.Trust me You will never go any other website.`
+      value: ` Millions of users trust Shopify to manage their online stores.Trust me you will never go any other website.
+      We give best qualities of product of our customers`
     },
     {
       icon: 'place', text: 'Location Service',
-      value: 'Our location is all across the world. You can check here in your service area.'
+      value: `Our location is all across the world. More than 70+ service center across the world.
+      You can check here in your service area.`
     }
 
   ]
