@@ -39,7 +39,9 @@ export class MainPageComponent implements OnInit {
 
   ]
 
-  constructor(private cardLayout: CartLayoutService, private applicationService: ApplicationServiceService) { }
+  constructor(private cardLayout: CartLayoutService, private applicationService: ApplicationServiceService) {
+    this.iconsList = this.cardLayout.getIcons();
+  }
 
   ngOnInit(): void {
 
@@ -47,7 +49,6 @@ export class MainPageComponent implements OnInit {
     this.applicationService.nameEvent.subscribe(event =>{
       this.name = event;
     })
-    this.iconsList = this.cardLayout.getIcons();
   }
 
   ngAfterViewChecked(): void {
