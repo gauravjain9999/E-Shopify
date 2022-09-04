@@ -22,7 +22,7 @@ import { ConfirmDialogComponent } from './Dialog-Box/confirm-dialog/confirm-dial
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
+import { MomentDateAdapter,MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
 import { ChartModule} from 'angular-highcharts';
 import { HeadersInterceptor } from './core/interceptor/headers.interceptor';
 import { NgImageSliderModule } from 'ng-image-slider';

@@ -2,9 +2,9 @@
 <app-main-header></app-main-header>
 <!-- <mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner> -->
 
-<div style="margin-top: 6px;">
+<div style="margin-top: 1px;">
   <div class="example-container mat-elevation-z8" *ngIf="products.length !==0">
-    <table  [matSortDirection]="sortDirection" #paginator [matSortActive]="sortColumn"
+    <table  @fade [matSortDirection]="sortDirection" #paginator [matSortActive]="sortColumn"
     mat-table matSort (matSortChange)="sortChange($event)" [dataSource]="dataSource" tabindex="0">
 
     <!-- Title Column-->

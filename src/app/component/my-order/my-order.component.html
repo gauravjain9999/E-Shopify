@@ -15,7 +15,7 @@
     <div class="ml-10" fxLayout="column" fxLayoutAlign="start center">
       <mat-icon>favorite</mat-icon>
     </div>&nbsp; &nbsp;
-    
+
     <!-- <mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner> -->
     <div fxLayoutAlign="start">
      <b>My WishList</b>
@@ -35,7 +35,7 @@
 
 <div *ngIf="flag">
   <mat-grid-list class="dashboard-grid-list-Orders" cols="1" gutterSize="20px" rowHeight="150px">
-    <mat-grid-tile  fxLAyoutAlign="start stretch" class="dashboard-tile colorful-tile" fxLayout="row" *ngFor="let item of products">
+    <mat-grid-tile @fade fxLAyoutAlign="start stretch" class="dashboard-tile colorful-tile" fxLayout="row" *ngFor="let item of products">
   <div class="column-1"><img src="{{item.path}}" alt="Img" style=" margin-left: 50px; height: 120px; width: 120px;"></div>
   <div class="column-2">
     <h4> <b>{{item.title}}</b></h4>
@@ -61,7 +61,7 @@
 
 
 <div class="example-container mat-elevation-z8" *ngIf="myWhishList && products.length !==0  else elseBlock">
-  <table [matSortDirection]="sortDirection"  [matSortActive]="sortColumn" mat-table matSort (matSortChange)="sortChange($event)" [dataSource]="dataSource" tabindex="0">
+  <table [matSortDirection]="sortDirection" @fade [matSortActive]="sortColumn" mat-table matSort (matSortChange)="sortChange($event)" [dataSource]="dataSource" tabindex="0">
     <!-- Title Column-->
     <ng-container matColumnDef="title">
       <th mat-header-cell mat-sort-header *matHeaderCellDef> Title </th>
@@ -98,8 +98,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
-  
-  <div> 
+
+  <div>
     <!-- <mat-paginator [length]="100"
               [pageSize]="5"
               [pageSizeOptions]="[5, 10, 25, 100]"

@@ -40,29 +40,10 @@
 
   <div style="margin-top: 40px;">
       <h1 style="font-size: x-large; font-weight: 500;">FAQs</h1>
-
-    <div style="margin-top: 20px; font-weight: 400;">
-      1)  What happens when I update my email address (or mobile number)?
-          Your login email id (or mobile number) changes, likewise. You'll receive all your account related communication on your updated email address (or mobile <span style="margin-left: 16px;">
-            number).
-          </span>
-    </div>
-
-    <div style="margin-top: 20px; font-weight: 400;">
-      2) When will my Flipkart account be updated with the new email address (or mobile number)?
-         It happens as soon as you confirm the verification code sent to your email (or mobile) and save the changes.
-    </div>
-
-    <div style="margin-top: 20px; font-weight: 400;">
-      3) What happens to my existing Flipkart account when I update my email address (or mobile number)?
-         Updating your email address (or mobile number) doesn't invalidate your account. Your account remains fully functional. You'll <span style="margin-left: 15px;">
-           continue seeing your Order history, saved information and personal details.
-         </span>
-    </div>
-
-    <div  style="margin-top: 20px; font-weight: 400;">
-     4) Does my Seller account get affected when I update my email address?
-        Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller account also.
+    <div style="margin-top: 20px; font-weight: 400; word-wrap: break-word;">
+      <span *ngFor="let item of faqList">
+       {{item}}<br><br>
+      </span>
     </div>
   </div>
 

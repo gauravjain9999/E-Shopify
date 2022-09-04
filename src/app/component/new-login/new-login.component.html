@@ -29,11 +29,16 @@
    <h4 style="color: grey;">By creating an account you agree to our <a href="" style="color:dodgerblue">Terms & Privacy</a>.</h4>
   </div>
 
-  <mat-chip-list>
-    <mat-chip color="primary" (keydown.enter)="onLogin()" (click)="onLogin()" class="myBtn" type="submit" selected >Login</mat-chip><br>
-    <div class="psw" style="margin-left: 41%; padding: 10px; font-weight: 500;">New to Shopify ?</div><br>
-    <mat-chip color="accent" class="myBtn" type="submit" (click)="onSignUp()"selected >Create Your Account</mat-chip>
-  </mat-chip-list>
+
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <button mat-raised-button style="margin: auto; width: 200px; background-color: green;" (keydown.enter)="onLogin()" (click)="onLogin()">Login</button>
+    <!-- <mat-chip color="accent" class="myBtn" type="submit" (click)="onSignUp()"selected >Create Your Account</mat-chip> -->
+    <div class="psw">Or</div>
+    <button mat-raised-button style="margin: auto; width: 200px; background-color: darkgrey;" (click)="onGoogleSignIn()">
+      <img src="./../../../assets/Icons/LoginIcons/googleIcon.png" style="width: 20px; height: 20px;">&nbsp;
+    SignIn via Google
+  </button>
+</div>
 </form>
 
 <!-- <app-footer></app-footer> -->

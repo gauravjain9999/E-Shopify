@@ -8,11 +8,13 @@ import { ApplicationServiceService } from 'src/app/core/Service/application-serv
 import { CartService } from 'src/app/core/Service/cart.service';
 import { ConfirmDialogComponent } from 'src/app/Dialog-Box/confirm-dialog/confirm-dialog.component';
 import { DialogDataComponent } from 'src/app/Dialog-Box/dialog-data/dialog-data.component';
+import { fade } from '../animationModule/animation.module';
 
 @Component({
   selector: 'app-add-to-cart',
   templateUrl: './add-to-cart.component.html',
-  styleUrls: ['./add-to-cart.component.css']
+  styleUrls: ['./add-to-cart.component.css'],
+  animations: [fade]
 })
 export class AddToCartComponent implements OnInit, AfterViewInit {
 
@@ -37,7 +39,7 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
       // setTimeout(() =>{
       //   this.showFlagSpinner = false;
       // },3000);
-      // this.showFlagSpinner = true;
+      this.showFlagSpinner = true;
       this.cartService.getProduct().subscribe(res=>{
       this.products = res;
       this.dataSource = new MatTableDataSource<any>(this.products);

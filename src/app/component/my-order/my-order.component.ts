@@ -6,11 +6,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { CartService } from 'src/app/core/Service/cart.service';
 import { NotificationService } from 'src/app/core/Service/notification.service';
+import { fade } from '../animationModule/animation.module';
 
 @Component({
   selector: 'app-my-order',
   templateUrl: './my-order.component.html',
-  styleUrls: ['./my-order.component.css']
+  styleUrls: ['./my-order.component.css'],
+  animations: [fade]
 })
 export class MyOrderComponent implements OnInit, AfterViewInit {
 

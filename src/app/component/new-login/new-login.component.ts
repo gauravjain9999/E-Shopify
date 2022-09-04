@@ -52,8 +52,6 @@ export class NewLoginComponent implements OnInit {
 
   onSubmit() {
 
-    // console.log(this.login.value.email);
-
     this.email = this.login.value.email;
     this.pass = this.login.value.password;
 
@@ -117,12 +115,11 @@ export class NewLoginComponent implements OnInit {
   }
 
   onSignUp() {
-
-    this.dialog.open(NewRegisterComponent, {
-      height: '650px',
-      width: '800px'
-    })
-    this.dialogRef.close()
+    // this.dialog.open(NewRegisterComponent, {
+    //   height: '650px',
+    //   width: '800px'
+    // })
+    // this.dialogRef.close()
     // this.router.navigate(['new-register']);
   }
 
@@ -157,5 +154,11 @@ export class NewLoginComponent implements OnInit {
         default: return "";
     }
   }
+
+
+  onGoogleSignIn(){
+
+  }
+
 
 }
