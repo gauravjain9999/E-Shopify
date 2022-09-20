@@ -57,9 +57,7 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
     this.pageLength = this.dataSource.filteredData.length;
   }
 
-  ngOnInit(): void {
-    // this.setPagination();
-  }
+  ngOnInit(): void {}
 
   sortChange(event: any){
     this.dataSource.sort = this.sort;

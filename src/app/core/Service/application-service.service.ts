@@ -10,6 +10,7 @@ export class ApplicationServiceService {
   nameEvent = new EventEmitter<any>();
   checked = new EventEmitter<any>();
   applicationData = new EventEmitter<any>();
+  authRedirectData = new EventEmitter<boolean>();
   eventData = new BehaviorSubject<any>('');
   totalDiscount = new BehaviorSubject<any>('');
 

@@ -1,16 +1,12 @@
-import { BehaviorSubject } from 'rxjs';
 import { NewLoginComponent } from './../new-login/new-login.component';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import {
   Component,
-  ElementRef,
   OnInit,
   TemplateRef,
-  EventEmitter,
   ViewChild,
-  Output,
 } from '@angular/core';
 import { Form, UntypedFormGroup, NgForm, UntypedFormControl, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/core/Service/notification.service';
@@ -132,6 +128,7 @@ export class NewRegisterComponent implements OnInit {
   }
 
   onSubmitLoginPage() {
+    this.applicationService.authRedirectData.emit(true);
     this.router.navigate(['mainPage']);
     this.spinner.show();
     this.closeAlertBox();

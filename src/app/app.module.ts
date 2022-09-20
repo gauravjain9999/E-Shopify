@@ -37,6 +37,8 @@ import { MyProfileComponent } from './component/my-profile/my-profile.component'
 import { NewLoginComponent } from './component/new-login/new-login.component';
 import { NewRegisterComponent } from './component/new-register/new-register.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+// import { SocialLoginModule, SocialAuthServiceConfig } from 'angular-social-login';
 
 export const httpTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http);
 
@@ -78,6 +80,7 @@ export const MY_FORMATS ={
     AppRoutingModule,
     MaterialModule,
     NgxSpinnerModule,
+    SocialLoginModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -99,7 +102,24 @@ export const MY_FORMATS ={
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
     { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor,  multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
-    { provide: DateAdapter,
+    {
+        provide: 'SocialAuthServiceConfig',
+        useValue: {
+          autoLogin: false,
+          providers: [
+          {
+              id: GoogleLoginProvider.PROVIDER_ID,
+              provider: new GoogleLoginProvider(
+                '796077373246-i09amroleqkg2qe0t297vee1l6e00g9b.apps.googleusercontent.com'
+              )
+          }],
+          onError: (err) => {
+            console.error(err);
+          }
+        } as SocialAuthServiceConfig,
+    },
+    {
+      provide: DateAdapter,
       useClass:MomentDateAdapter,
       deps: [
       MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS

@@ -23,9 +23,10 @@ export class CartService {
    this.productList.next(product);
   }
 
-  addToCart(product: any, index:any)
-  {
+  addToCart(product: any, index:any){
+
     this.cartItemList.push(product);
+    sessionStorage.setItem('Item Added', JSON.stringify(this.cartItemList));
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
   }
@@ -36,6 +37,7 @@ export class CartService {
     this.cartItemList.map((value:any)=>{
       grantTotal += value.total;
     });
+
     return grantTotal;
   }
 

@@ -16,7 +16,7 @@ export class HeadersInterceptor implements HttpInterceptor {
   console.log(request);
 
    const API_KEY = 'Test-123';
-   const req= request.clone({
+   const req = request.clone({
     setHeaders: {API_KEY}
    })
     return next.handle(req);

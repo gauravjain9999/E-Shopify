@@ -12,6 +12,7 @@ import { LoginFormComponent } from './component/login-form/login-form.component'
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MyOrderComponent } from './component/my-order/my-order.component';
+import { AuthGuard } from './core/guard/auth.guard';
 
 const routes: Routes = [
 
@@ -20,13 +21,13 @@ const routes: Routes = [
   {path: 'new-login', component:NewLoginComponent },
   {path: 'footer',    component:FooterComponent},
   {path: 'new-register', component: NewRegisterComponent},
-  {path: 'mainPage', component:MainPageComponent},
-  {path: 'addToCart', component:AddToCartComponent},
-  {path: 'myProfile', component: MyProfileComponent},
-  {path: 'myOrder', component: MyOrderComponent},
-  {path: 'clothProduct', component:ClothesProductComponent},
-  {path: 'payment', component:PaymentCheckoutComponent},
-  {path: 'clothesDetails', component: ClothesDetailComponent},
+  {path: 'mainPage', component:MainPageComponent, canActivate: [AuthGuard]},
+  {path: 'addToCart', component:AddToCartComponent, canActivate: [AuthGuard] },
+  {path: 'myProfile', component: MyProfileComponent, canActivate: [AuthGuard] },
+  {path: 'myOrder', component: MyOrderComponent, canActivate: [AuthGuard] },
+  {path: 'clothProduct', component:ClothesProductComponent, canActivate: [AuthGuard] },
+  {path: 'payment', component:PaymentCheckoutComponent, canActivate: [AuthGuard] },
+  {path: 'clothesDetails', component: ClothesDetailComponent, canActivate: [AuthGuard] },
   {path: '**', component: PageNotFoundComponent},
 ];
 
