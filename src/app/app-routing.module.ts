@@ -8,7 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NewRegisterComponent } from './component/new-register/new-register.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { NewLoginComponent } from './component/new-login/new-login.component';
-import { LoginFormComponent } from './component/login-form/login-form.component';
+import { LoginFormComponent } from './component/main-Dashboard/main-Dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MyOrderComponent } from './component/my-order/my-order.component';

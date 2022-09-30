@@ -3,7 +3,7 @@ import { DialogNotifyComponent } from '../../Dialog-Box/dialog-notify/dialog-not
 import { DialogDataComponent } from '../../Dialog-Box/dialog-data/dialog-data.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CartService } from '../../core/Service/cart.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { NotificationService } from '../../core/Service/notification.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
@@ -15,17 +15,21 @@ import { LanguageService } from 'src/app/core/Service/lang.service';
   templateUrl: './main-header.component.html',
   styleUrls: ['./main-header.component.css']
 })
-export class MainHeaderComponent implements OnInit {
+export class MainHeaderComponent implements OnInit, OnChanges {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
+  @Input() userName: any;
 
   languages = [
     {value: 'en', viewValue: 'English'},
     {value: 'fr', viewValue: 'Français'}
   ];
+  fullName: any;
   searchText: any;
+  loginUserName:any;
   opened = false;
   selectedLang: any;
+  name:any;
   email: string;
   dataSource: any;
   public totalItem: number = 0;
@@ -41,9 +45,23 @@ export class MainHeaderComponent implements OnInit {
    this.cartService.getProduct().subscribe(res =>{
    this.dataSource = res;
    this.totalItem = res.length;
-   console.log(res);
   })
 }
+
+
+  ngOnChanges(changes: SimpleChanges){
+
+    if(changes['userName']){
+      this.fullName = changes['userName'].currentValue;
+      console.log(this.fullName);
+      this.name = this.fullName.shift().charAt(0) + this.fullName.pop().charAt(0);
+      console.log('====================================');
+      console.log('====================================');
+      this.loginUserName = this.name.toUpperCase();
+    }
+  }
+
+
   ngOnInit(): void {
 
     this.translate.addLangs(this.supportLanguages);

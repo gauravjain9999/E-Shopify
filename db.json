@@ -1,0 +1,25 @@
+{
+  "signUp": [
+    {
+      "name": "Gaurav Jain",
+      "email": "gauravjain0931@gmail.com",
+      "phoneNumber": "9773754778",
+      "password": "12345678",
+      "id": 1
+    },
+    {
+      "name": "Ritik ",
+      "email": "ritikjain12@gmail.com",
+      "password": "22323132",
+      "phoneNumber": "9773754778",
+      "id": 3
+    },
+    {
+      "name": "ritik Jain",
+      "email": "ritikjain0931@gmail.com",
+      "password": "78963214",
+      "phoneNumber": "9773754778",
+      "id": 4
+    }
+  ]
+}

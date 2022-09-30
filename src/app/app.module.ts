@@ -30,7 +30,7 @@ import { AddToCartComponent } from './component/add-to-cart/add-to-cart.componen
 import { CardLayoutProductComponent } from './component/card-layout-product/card-layout-product.component';
 import { ClothesDetailComponent } from './component/clothes-detail/clothes-detail.component';
 import { ClothesProductComponent } from './component/clothes-product/clothes-product.component';
-import { LoginFormComponent } from './component/login-form/login-form.component';
+import { LoginFormComponent } from './component/main-Dashboard/main-Dashboard.component';
 import { MainPageComponent } from './component/main-page/main-page.component';
 import { MyOrderComponent } from './component/my-order/my-order.component';
 import { MyProfileComponent } from './component/my-profile/my-profile.component';

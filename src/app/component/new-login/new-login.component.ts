@@ -1,3 +1,4 @@
+import { UserDataStorageService } from 'src/app/core/Service/userDataStore.service';
 import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
 import { NewRegisterComponent } from './../new-register/new-register.component';
 import { NgForm, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
@@ -7,7 +8,6 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CustomErrorStateMatcherService } from 'src/app/core/Service/custom-error-state-matcher.service';
 import { NotificationService } from 'src/app/core/Service/notification.service';
-import { DataStorageService } from 'src/app/core/Service/data-storage.service';
 import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
@@ -36,9 +36,9 @@ export class NewLoginComponent implements OnInit {
     private dialogRef: MatDialogRef<NewLoginComponent>,
     private spinner: NgxSpinnerService,
     private dialog: MatDialog,
+    private loginService: UserDataStorageService,
     private applicationService: ApplicationServiceService,
     private notificationService: NotificationService,
-    private authService: DataStorageService
   ) {}
 
   ngOnInit(): void {
@@ -58,8 +58,6 @@ export class NewLoginComponent implements OnInit {
 
     this.email = this.login.value.email;
     this.pass = this.login.value.password;
-    console.log(this.email, this.pass);
-
     // this.authService.loginIn(this.email, this.pass).subscribe(
     //   (res) => {
     //     localStorage.setItem('userData', JSON.stringify(this.email));
@@ -105,14 +103,22 @@ export class NewLoginComponent implements OnInit {
 
     if(this.login.valid)
     {
-      this.dialogRef.close();
-      this.isLoading = true;
-      this.applicationService.authRedirectData.emit(true);
-      console.log('dd');
-
-      this.router.navigate(['mainPage']);
-      this.isLoading = false;
-      this.notificationService.showNotification('Successfully Login', 'Close');
+      this.loginService.loginUser(this.login.value).subscribe((data:any) =>{
+        console.log(data);
+        if(data && data.length > 0){
+          this.dialogRef.close();
+          localStorage.setItem('loginUser', JSON.stringify(data));
+          this.isLoading = true;
+          this.applicationService.authRedirectData.emit(true);
+          this.router.navigate(['mainPage']);
+          this.isLoading = false;
+          this.notificationService.showNotification('Successfully Login', 'Close');
+        }
+        else{
+          this.notificationService.showNotification('Please Create Your Account First ', 'close');
+          this.dialogRef.close();
+        }
+      })
     }
     else{
       this.notificationService.showNotification('Please Fill your Details', 'close');
@@ -128,13 +134,11 @@ export class NewLoginComponent implements OnInit {
     // this.router.navigate(['new-register']);
   }
 
-  getFormControlName(controlName: string): UntypedFormControl
-  {
+  getFormControlName(controlName: string): UntypedFormControl{
     return this.login.get(controlName) as UntypedFormControl;
   }
 
-  getErrorMessage(controlName: string, errorType: string)
-  {
+  getErrorMessage(controlName: string, errorType: string){
     switch(controlName)
   {
     case "email":
@@ -161,10 +165,10 @@ export class NewLoginComponent implements OnInit {
   }
 
   onGoogleSignIn(){
-  this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
-    (res)=>{
-      console.log(res);
+  // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+  //   (res)=>{
+  //     console.log(res);
 
-    }
-  )}
+    // }
+  }
 }

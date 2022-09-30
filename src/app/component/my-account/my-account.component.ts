@@ -1,28 +1,33 @@
 import { Router } from '@angular/router';
 import { ApplicationServiceService } from '../../core/Service/application-service.service';
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.css']
 })
-export class MyAccountComponent implements OnInit {
+export class MyAccountComponent implements OnInit, OnChanges{
 
-  name: any;
+  @Input() userName: any;
+  accountHolderName: any;
+  accountHolder: any;
+  name:any;
   url = '';
   constructor(private router:Router,  private applicationService: ApplicationServiceService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
-
-  onSelectFile(event: any) {
-    console.log('====================================');
-    console.log(event);
-    console.log('====================================');
+    if(localStorage.getItem('loginUser')){
+      this.accountHolder = JSON.parse(localStorage.getItem('loginUser') as string);
+      this.name = this.accountHolder[0].name.split(' ');
+      this.accountHolderName = this.name[0];
+    }
   }
 
 
+  onSelectFile(event: any) {
+  }
 
   onProfileData(){
     this.router.navigate(['myProfile']);
@@ -34,8 +39,6 @@ export class MyAccountComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    console.log(this.name);
   }
 
   myOrder(){

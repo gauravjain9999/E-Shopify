@@ -13,3 +13,8 @@ export class CustomerInfo
     this.phoneNumber= ''
   }
 }
+
+export interface LoginUser {
+  email: String;
+  password: String;
+}

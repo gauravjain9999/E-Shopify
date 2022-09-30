@@ -6,9 +6,9 @@ import { indexOf } from 'lodash';
 import { CartLayoutService } from 'src/app/core/Service/cart-layout.service';
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  selector: 'app-main-form',
+  templateUrl: './main-Dashboard.component.html',
+  styleUrls: ['./main-Dashboard.component.css']
 })
 export class LoginFormComponent implements OnInit {
 

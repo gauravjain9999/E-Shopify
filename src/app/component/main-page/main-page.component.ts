@@ -1,6 +1,5 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
-
 import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
 import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
 import { CartLayoutService } from 'src/app/core/Service/cart-layout.service';
@@ -15,8 +14,12 @@ export class MainPageComponent implements OnInit {
   @ViewChild('mapanel', {static: false}) mPanel!: MatExpansionPanel;
 
   panelOpenState = false;
+  user: any[]=[];
+  userName: string;
+  fullName:any;
   iconsList : any[] = [];
   name : any;
+
   faqList = [
     {key: 'What is Shopify and how does it work?',                  value: 'This is an Example of Mat Expansion Panel'},
     {key: 'How much does Shopify cost?',                            value: 'This is an Example of Mat Expansion Panel'},
@@ -43,18 +46,21 @@ export class MainPageComponent implements OnInit {
 
   constructor(private cardLayout: CartLayoutService, private applicationService: ApplicationServiceService) {
     this.iconsList = this.cardLayout.getIcons();
+    if(localStorage.getItem('loginUser')){
+      this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
+      this.fullName = this.user[0].name.split(' ');
+    }
   }
 
   ngOnInit(): void {
-
     this.closeAllPanels();
     this.applicationService.nameEvent.subscribe(event =>{
       this.name = event;
-    })
+    });
   }
 
   ngAfterViewChecked(): void {
-    console.log(this.name);
+    console.log(this.userName);
   }
 
   closeAllPanels(){

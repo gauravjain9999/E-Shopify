@@ -1,7 +1,8 @@
+import { LoginUser} from './../../ModelDataClass/customer.model';
+import { UrlEndPoint } from './../../constant/urlEndPoint';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators'
+import { Environment } from 'src/environments/environment.prod';
 
  interface AuthResponse {
 
@@ -16,7 +17,8 @@ import { catchError } from 'rxjs/operators'
 @Injectable({
   providedIn: 'root',
 })
-export class DataStorageService {
+export class UserDataStorageService {
+
   constructor(private http: HttpClient) {}
 
   signUp(email: string, password: string) {
@@ -55,5 +57,16 @@ export class DataStorageService {
           returnSecureToken: true,
         }
       )
+  }
+
+  signUpUser(data: any){
+    const url = Environment.mockUrl + UrlEndPoint.signUp;
+    return this.http.post(url, data);
+  }
+
+
+  loginUser(data: LoginUser){
+    const url = Environment.mockUrl + UrlEndPoint.signUp + `?email=${data.email}&password=${data.password}`;
+    return this.http.get(url);
   }
 }

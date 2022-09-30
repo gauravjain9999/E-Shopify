@@ -1,3 +1,4 @@
+import { UserDataStorageService } from 'src/app/core/Service/userDataStore.service';
 import { NewLoginComponent } from './../new-login/new-login.component';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -11,7 +12,6 @@ import {
 import { Form, UntypedFormGroup, NgForm, UntypedFormControl, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/core/Service/notification.service';
 import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
-import { DataStorageService } from 'src/app/core/Service/data-storage.service';
 import { CustomErrorStateMatcherService } from 'src/app/core/Service/custom-error-state-matcher.service';
 
 
@@ -28,17 +28,20 @@ export class NewRegisterComponent implements OnInit {
   isCheckBoxSelected: boolean;
   error: any;
   isAuthorize: boolean;
+
   email: any;
   pass: any;
+  userName: string;
+  phoneNumber: number;
 
   constructor(
     private dialog: MatDialog,
     private notificationService: NotificationService,
-    private authService: DataStorageService,
     private router: Router,
     public dialogRef: MatDialogRef<NewRegisterComponent>,
     private applicationService: ApplicationServiceService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private userDataStore: UserDataStorageService
   ) {
     this.email = '';
     this.pass = ''
@@ -46,7 +49,7 @@ export class NewRegisterComponent implements OnInit {
 
   customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
 
-  register = new UntypedFormGroup({
+  registerUser = new UntypedFormGroup({
 
     name : new UntypedFormControl('', [Validators.required,  Validators.maxLength(30)]),
     email: new UntypedFormControl('', [Validators.required, Validators.email]),
@@ -81,45 +84,54 @@ export class NewRegisterComponent implements OnInit {
       return true;
     }
   }
+
   onSubmit() {
 
-  this.formStatus = this.register.value
-  this.email = this.register.value.email;
-  this.pass = this.register.value.password;
+  this.formStatus = this.registerUser.value
+  this.email = this.registerUser.value.email;
+  this.pass = this.registerUser.value.password;
+  this.phoneNumber = this.registerUser.value.phoneNumber;
+  this.userName = this.registerUser.value.name;
 
-  if(this.register.valid)
-  {
-    this.authService.signUp(this.email, this.pass).subscribe(
-      (value) => {
-        this.dialog.open(this.secondDialog);
-      },
-      (errorRes) => {
+  if(this.registerUser.valid){
+    this.userDataStore.signUpUser(this.formStatus).subscribe(res =>{
+      if(res){
+        this.notificationService.showNotification('New User Register', 'Close');
+        this.back();
+      }
+    })
 
-        this.isAuthorize = true;
+    // this.userDataStore.signUp(this.email, this.pass).subscribe(
+    //   (value) => {
+    //     this.dialog.open(this.secondDialog);
+    //   },
+    //   (errorRes) => {
 
-        switch (errorRes.error.error.message) {
+    //     this.isAuthorize = true;
 
-          case 'EMAIL_EXISTS':
-           this.notificationService.showNotification('The email address is already in use by another account', 'close')
-           break;
+    //     switch (errorRes.error.error.message) {
 
-          case 'ADMIN_ONLY_OPERATION':
-            this.notificationService.showNotification('Some functions are managed by Admin', 'close')
-            break;
+    //       case 'EMAIL_EXISTS':
+    //        this.notificationService.showNotification('The email address is already in use by another account', 'close')
+    //        break;
 
-          case 'OPERATION_NOT_ALLOWED':
-            this.notificationService.showNotification('Password sign-in is disabled for this project', 'close')
-            break;
+    //       case 'ADMIN_ONLY_OPERATION':
+    //         this.notificationService.showNotification('Some functions are managed by Admin', 'close')
+    //         break;
 
-          case 'MISSING_PASSWORD':
-            this.notificationService.showNotification('Password Missing or Used by another account', 'close')
-            break;
+    //       case 'OPERATION_NOT_ALLOWED':
+    //         this.notificationService.showNotification('Password sign-in is disabled for this project', 'close')
+    //         break;
 
-          case 'TOO_MANY_ATTEMPTS_TRY_LATER':
-            this.notificationService.showNotification('We have blocked all requests from this device due to unusual activity. Try again later', 'close')
-            break;
-          }
-        });
+    //       case 'MISSING_PASSWORD':
+    //         this.notificationService.showNotification('Password Missing or Used by another account', 'close')
+    //         break;
+
+    //       case 'TOO_MANY_ATTEMPTS_TRY_LATER':
+    //         this.notificationService.showNotification('We have blocked all requests from this device due to unusual activity. Try again later', 'close')
+    //         break;
+    //       }
+    //     });
      }
      else{
       this.notificationService.showNotification('Please complete your Details First before Proceed', 'Close');
@@ -144,7 +156,7 @@ export class NewRegisterComponent implements OnInit {
   }
 
   getFormControlName(controlName: string): UntypedFormControl{
-    return this.register.get(controlName) as UntypedFormControl;
+    return this.registerUser.get(controlName) as UntypedFormControl;
   }
 
   getErrorMessage(controlName: string, errorType: string){

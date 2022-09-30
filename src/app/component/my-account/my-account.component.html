@@ -2,21 +2,21 @@
 <div class="card">
   <img src="../../assets/Icons/user.png" alt="Avatar" style="width:100px; height: 100px;">
   <div class="card-item"    >
-    <h3>Hello, {{'Gaurav'}}</h3>
+    <h3>Hello, {{accountHolderName | titlecase}}</h3>
     <mat-divider [inset]="true"></mat-divider>
   </div>
 </div>
 
-<!--
-<label class="hoverable" for="fileInput">
+
+<!-- <label class="hoverable" for="fileInput">
   <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
   <div class="hover-text">Choose file</div>
   <div class="background"></div>
 </label>
 <br/>
 <input id="fileInput" type='file' (change)="onSelectFile($event)">
-<button *ngIf="url" (click)="delete()" >delete</button>
- -->
+<button *ngIf="url" (click)="delete()" >delete</button> -->
+
 
 <div class="card-layout-design" >
   <div class="card-layout-design-text" (click)="onProfileData()">

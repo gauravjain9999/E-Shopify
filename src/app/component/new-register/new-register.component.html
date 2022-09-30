@@ -3,15 +3,15 @@
   <span class="heading" style="color: seagreen;">
     Shopify
     <span style="color: orange">App</span>
-    <span style="margin-left: 200px; color:blue; cursor: pointer;" (click)="back()">
+    <!-- <span style="margin-left: 200px; color:blue; cursor: pointer;" (click)="back()">
       <mat-icon matSuffix>arrow_back</mat-icon>
-    </span>
+    </span> -->
   </span>
 </div>
 <br>
 <mat-divider></mat-divider>
 
-<form [formGroup]="register" (ngSubmit)="onSubmit()">
+<form [formGroup]="registerUser" (ngSubmit)="onSubmit()">
   <div class="container">
     <h1 style="font-weight: 500;">Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
@@ -79,7 +79,7 @@
     <div class="clearfix">
       <mat-chip-list>
         <mat-chip color="primary" type="submit" (click)="onSubmit()" selected>Sign Up</mat-chip>
-        <mat-chip color="warn" (click)="onReset(register)" selected >Reset</mat-chip>
+        <mat-chip color="warn" (click)="onReset(registerUser)" selected >Reset</mat-chip>
       </mat-chip-list>
     </div>
   </div>

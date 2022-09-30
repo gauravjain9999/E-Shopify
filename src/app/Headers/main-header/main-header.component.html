@@ -38,7 +38,7 @@
 
   <!-- fxHide.lt-md="true" -->
   <div fxLayout="row">
-    <span class="res-circle" [matMenuTriggerFor]="menu" style="margin-right: 50px; font-size: 14px;">GJ</span>
+    <span class="res-circle" [matMenuTriggerFor]="menu" style="margin-right: 50px; font-size: 14px;">{{loginUserName}}</span>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="logout()">Logout
         <mat-icon matSuffix class="ml-10">logout</mat-icon>
