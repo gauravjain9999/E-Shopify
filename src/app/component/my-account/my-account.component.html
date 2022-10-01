@@ -1,7 +1,12 @@
 <!-- <p>my-account works!</p> -->
 <div class="card">
-  <img src="../../assets/Icons/user.png" alt="Avatar" style="width:100px; height: 100px;">
-  <div class="card-item"    >
+  <img [src]="url" alt="Avatar" style="width:100px; height: 100px; margin-top: 10px;">
+  <button mat-button class="font-size-12 file-upload" style="margin-top:10px !important" onclick="document.getElementById('getFile').click()">
+    {{'Upload Image' | translate}}
+  </button>
+
+<input type="file" id="getFile" style="display:none" accept="image/jpeg, image/png"  (change)="onSelectFile($event)" />
+  <div class="card-item">
     <h3>Hello, {{accountHolderName | titlecase}}</h3>
     <mat-divider [inset]="true"></mat-divider>
   </div>

@@ -34,10 +34,18 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['title', 'description', 'price', 'image', 'remove'];
   dataSource = new MatTableDataSource<any>();
   applicationData: any = [];
+  user:any;
+  fullName:any;
 
   constructor(@Inject(NgZone) private zone: NgZone, private mediaObserver: MediaObserver, private notificationService: NotificationService,
   private cdr: ChangeDetectorRef, private cartService: CartService, private router: Router) {
-   }
+
+
+    if(localStorage.getItem('loginUser')){
+      this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
+      this.fullName = this.user[0].name.split(' ');
+    }
+  }
 
   ngOnInit(): void {
 

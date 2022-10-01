@@ -49,16 +49,26 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 }
 
 
+  redirectMainPage(){
+   this.notificationService.showNotification('You Just Redirect To the Main Page', 'Close');
+   this.router.navigate(['mainPage']);
+  }
+
   ngOnChanges(changes: SimpleChanges){
 
     if(changes['userName']){
       this.fullName = changes['userName'].currentValue;
       console.log(this.fullName);
       this.name = this.fullName.shift().charAt(0) + this.fullName.pop().charAt(0);
-      console.log('====================================');
-      console.log('====================================');
+      console.log(this.name);
       this.loginUserName = this.name.toUpperCase();
     }
+  }
+
+  ngAfterContentChecked(): void {
+    //Called after every check of the component's or directive's content.
+    //Add 'implements AfterContentChecked' to the class.
+    console.log(this.name);
   }
 
 

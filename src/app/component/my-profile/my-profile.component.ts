@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class MyProfileComponent implements OnInit {
 
   firstName:string;
+  user:any;
+  fullName:any;
   lastName: string;
   editingName=false;
   flagName: boolean;
@@ -78,6 +80,12 @@ export class MyProfileComponent implements OnInit {
     }, 3000)
 
     this.showFlagSpinner = true;
+
+    if(localStorage.getItem('loginUser')){
+      this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
+      this.fullName = this.user[0].name.split(' ');
+    }
+
   }
 
   nameChange()

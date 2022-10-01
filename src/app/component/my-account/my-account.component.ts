@@ -13,7 +13,7 @@ export class MyAccountComponent implements OnInit, OnChanges{
   accountHolderName: any;
   accountHolder: any;
   name:any;
-  url = '';
+  url = '../../assets/Icons/user.png';
   constructor(private router:Router,  private applicationService: ApplicationServiceService) { }
 
   ngOnInit(): void {
@@ -27,6 +27,14 @@ export class MyAccountComponent implements OnInit, OnChanges{
 
 
   onSelectFile(event: any) {
+
+    if(event.target.files){
+     var reader = new FileReader();
+     reader.readAsDataURL(event.target.files[0]);
+     reader.onload = (e:any) =>{
+      this.url = e.target.result;
+     }
+    }
   }
 
   onProfileData(){

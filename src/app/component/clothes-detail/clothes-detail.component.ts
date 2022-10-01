@@ -20,6 +20,8 @@ export class ClothesDetailComponent implements OnInit{
   allDetails: boolean = true;
   showFlagSpinner: boolean = true;
   aboutBrand: boolean = false;
+  user:any;
+  fullName:any;
   customerReview: boolean = false;
   columnChart: Chart = new Chart(columnChartOptions);
 
@@ -29,6 +31,11 @@ export class ClothesDetailComponent implements OnInit{
       this.showFlagSpinner = false;
     }, 3000)
     this.showFlagSpinner = true;
+
+    if(localStorage.getItem('loginUser')){
+      this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
+      this.fullName = this.user[0].name.split(' ');
+    }
   }
 
   ngOnInit(): void {

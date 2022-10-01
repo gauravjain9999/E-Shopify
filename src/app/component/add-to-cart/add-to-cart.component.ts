@@ -28,6 +28,8 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   sortColumn: string;
   sortDirection: 'asc' | 'desc';
   found : any;
+  user:any;
+  fullName:any
   matFlag: boolean = false;
   dataSource : MatTableDataSource<any>;
   showFlagSpinner: boolean = true;
@@ -57,7 +59,13 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
     this.pageLength = this.dataSource.filteredData.length;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    if(localStorage.getItem('loginUser')){
+      this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
+      this.fullName = this.user[0].name.split(' ');
+    }
+  }
 
   sortChange(event: any){
     this.dataSource.sort = this.sort;

@@ -34,13 +34,21 @@ export class ClothesProductComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   flag= true;
   showFlagSpinner: boolean = true;
+  user:any;
+  fullName:any;
 
   // MatPaginator Output
   pageEvent: PageEvent;
   show: {[key: number]: boolean} = {};
 
   constructor(private applicationService: ApplicationServiceService,  private spinner: NgxSpinnerService,
-    private clothesService: ClothService, private cartService: CartService, public router: Router) { }
+    private clothesService: ClothService, private cartService: CartService, public router: Router) {
+
+      if(localStorage.getItem('loginUser')){
+        this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
+        this.fullName = this.user[0].name.split(' ');
+      }
+    }
 
 
   ngAfterViewInit(): void {
