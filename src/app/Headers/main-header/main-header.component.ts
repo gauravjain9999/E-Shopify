@@ -65,13 +65,6 @@ export class MainHeaderComponent implements OnInit, OnChanges {
     }
   }
 
-  ngAfterContentChecked(): void {
-    //Called after every check of the component's or directive's content.
-    //Add 'implements AfterContentChecked' to the class.
-    console.log(this.name);
-  }
-
-
   ngOnInit(): void {
 
     this.translate.addLangs(this.supportLanguages);

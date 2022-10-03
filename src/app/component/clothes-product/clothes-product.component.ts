@@ -36,6 +36,9 @@ export class ClothesProductComponent implements OnInit {
   showFlagSpinner: boolean = true;
   user:any;
   fullName:any;
+  colorHeartRed: boolean = false;
+  colorHeartBlack: boolean = true;
+  menuButtonItems: any[] =[];
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -48,6 +51,13 @@ export class ClothesProductComponent implements OnInit {
         this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
         this.fullName = this.user[0].name.split(' ');
       }
+
+      this.menuButtonItems = [
+        { bgColor: 'green',   iconsName: 'WhatsApp', icon: 'fa fa-whatsapp', marginLeft: '22px' },
+        { bgColor: 'blue',    iconsName: 'FaceBook', icon: 'fa fa-facebook', marginLeft: '30px' },
+        { bgColor: 'skyBlue', iconsName: 'Telegram', icon: 'fa fa-telegram', marginLeft: '20px'  },
+      ]
+
     }
 
 
@@ -72,6 +82,20 @@ export class ClothesProductComponent implements OnInit {
        Object.assign(element, {quantity:1, total:element.price})
       });
     // this.showFlagSpinner = false;
+  }
+
+
+  favoriteItem(item: any, index: any){
+
+
+    // if(index === 4){
+    //   this.colorHeartRed = true;
+    //   this.colorHeartBlack = false;
+    // }
+    // else{
+    //   this.colorHeartRed = false;
+    //   this.colorHeartBlack = true;
+    // }
   }
 
 
