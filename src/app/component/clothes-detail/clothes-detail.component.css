@@ -1,65 +1,61 @@
 /* Float four columns side by side */
-.column {
+/* .column {
   float: left;
   width: 50%;
   padding: 0 100px;
-}
+} */
 
 /* Remove extra left and right margins, due to padding */
-.row {margin: 0 -5px;
-}
+/* .row {margin: 0 -5px;
+} */
 
 /* Clear floats after the columns */
-.row:after {
+/* .row:after {
   content: "";
   display: table;
   clear: both;
-}
+} */
 
 /* Responsive columns */
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .column {
     width: 100%;
     display: block;
     margin-bottom: 20px;
   }
-}
+} */
 
 /* Style the counter cards */
-.card {
-  padding: 16px;
-  margin-top: 4%;
-  height: 500px;
+.mat-card{
   outline: none;
-  border: none !important;
+  border-radius: 5px !important;
   text-decoration: none;
 }
 
-.buttons {
+/* .buttons {
   width: 200px;
   margin: 0 auto;
   display: inline;}
 
-      .action_btn {
+  .action_btn {
   width: 200px;
   margin: 0 auto;
-  display: inline;}
+  display: inline;} */
 
 .item-desc
 {
   background-color: aliceblue;
   border-radius: 5px;
   text-decoration: wavy;
-  padding: 4px;
+  /* padding: 4px; */
   line-height: 2.1 !important;
 }
 
 .img-src
 {
-  border: 1px solid black;
-  border-radius: 5px;
-  height: 480px !important;
-  width: 480px;
+  /* border-radius: 5px; */
+  height: 420px !important;
+  width: 400px;
 }
 
 .myBtn
@@ -80,22 +76,16 @@
   margin-top: 10px;
 }
 
-.review-margin
-{
-  margin-left: 0px;
-  margin-top: 5px;
-}
-
-.margin-top-20
+/* .margin-top-20
 {
   margin-left: 5px !important;
   background-color: aliceblue;
   margin-top: 20px;
   border-radius: 5px;
   line-height: 2.1 !important;
-}
+} */
 
-li
+/* li
 {
   list-style: none;
-}
+} */

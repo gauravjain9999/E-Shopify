@@ -5,6 +5,7 @@ import { columnChartOptions } from 'src/app/dataChart/columnChart';
 import { CartService } from 'src/app/core/Service/cart.service';
 import { ClothService } from 'src/app/core/Service/cloth.service';
 import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
+import { NotificationService } from 'src/app/core/Service/notification.service';
 
 @Component({
   selector: 'app-clothes-detail',
@@ -25,7 +26,7 @@ export class ClothesDetailComponent implements OnInit{
   customerReview: boolean = false;
   columnChart: Chart = new Chart(columnChartOptions);
 
-  constructor(private cartService: CartService,  private clothService: ClothService, private applicationService: ApplicationServiceService) {
+  constructor(private notificationService: NotificationService,  private cartService: CartService,  private clothService: ClothService, private applicationService: ApplicationServiceService) {
 
     setTimeout(() =>{
       this.showFlagSpinner = false;
@@ -36,26 +37,27 @@ export class ClothesDetailComponent implements OnInit{
       this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
       this.fullName = this.user[0].name.split(' ');
     }
+
   }
 
   ngOnInit(): void {
 
-    this.applicationService.eventData.subscribe(data =>{
+    if(sessionStorage.getItem('SELECTED_DATA')){
+      let data = JSON.parse(sessionStorage.getItem(('SELECTED_DATA')) as string);
       console.log(data);
       this.dataItem = data;
       this.listOfItems.push(data);
-      console.log(this.listOfItems);
-      //  this.listOfItems = _.castArray(data); // Convert Object into Array directly
+      this.listOfItems = _.castArray(data); // Convert Object into Array directly
       this.star = this.dataItem.rating;
       for(let i =0; i<this.star; i++){
         this.starData.push(this.star);
       }
-    });
+    }
   }
 
   addToCart(item: any){
-    console.log(item);
     this.cartService.uploadCartItem(item);
+    this.notificationService.showNotification('Item Added In Cart', 'Close');
   }
 
   remove(item: any){

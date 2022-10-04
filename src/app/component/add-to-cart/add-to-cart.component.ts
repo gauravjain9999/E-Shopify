@@ -21,15 +21,15 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  public products : any = [];
+  public products: any = [];
   pageLength:any;
-  public totalSum : number = 0;
+  public totalSum: number = 0;
   isChecked : boolean;
   sortColumn: string;
   sortDirection: 'asc' | 'desc';
-  found : any;
+  found: any;
   user:any;
-  fullName:any
+  fullName:any;
   matFlag: boolean = false;
   dataSource : MatTableDataSource<any>;
   showFlagSpinner: boolean = true;

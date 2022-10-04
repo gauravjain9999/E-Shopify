@@ -101,11 +101,8 @@ export class ClothesProductComponent implements OnInit {
 
   itemClothDetails(item: any, index: any)
   {
-    // let currItemData = sessionStorage.setItem('TEMP_DATA', JSON.stringify(item));
+    sessionStorage.setItem('SELECTED_DATA', JSON.stringify(item));
     this.router.navigate(['clothesDetails'])
-    // this.applicationService.applicationData.emit(item);
-    this.applicationService.eventData.next(item);
-    // this.applicationService.submitData.next(item);
   }
 
   addToCart(item: any)
