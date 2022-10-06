@@ -16,9 +16,15 @@ export class ResponseInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     const startTime = new Date().getTime();
-    return next.handle(request).pipe(map(event =>{
 
-      // if(event instanceof HttpResponse){}
+    return next.handle(request).pipe(map(event =>{
+      if(event instanceof HttpResponse){
+        if(event && !request.url.includes('en.json')){
+          console.log('====================================');
+          console.log('Not Translation');
+          console.log('====================================');
+        }
+      }
         const endTime = new Date().getTime();
         const difference = endTime - startTime;
         console.log('Difference in Time is'+ difference);

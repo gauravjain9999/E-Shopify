@@ -99,9 +99,8 @@ export class ClothesProductComponent implements OnInit {
   }
 
 
-  itemClothDetails(item: any, index: any)
-  {
-    sessionStorage.setItem('SELECTED_DATA', JSON.stringify(item));
+  itemClothDetails(item: any, index: any){
+    localStorage.setItem('SELECTED_DATA', JSON.stringify(item));
     this.router.navigate(['clothesDetails'])
   }
 

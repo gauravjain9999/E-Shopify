@@ -26,7 +26,6 @@ export class CartService {
   addToCart(product: any, index:any){
 
     this.cartItemList.push(product);
-    sessionStorage.setItem('Item Added', JSON.stringify(this.cartItemList));
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
   }
@@ -51,6 +50,7 @@ export class CartService {
   uploadCartItem(product: any)
   {
     this.cartItemList.push(product);
+    localStorage.setItem('ITEM_ADDED', JSON.stringify(this.cartItemList));
     this.productList.next(this.cartItemList);
   }
 

@@ -19,6 +19,7 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
   @Input() userName: any;
+  @Input() notifyUpdate: any;
 
   languages = [
     {value: 'en', viewValue: 'English'},
@@ -31,7 +32,7 @@ export class MainHeaderComponent implements OnInit, OnChanges {
   selectedLang: any;
   name:any;
   email: string;
-  dataSource: any;
+  dataSource: any[]= [];
   public totalItem: number = 0;
   items: any[] = [];
   supportLanguages = ['en', 'fr'];
@@ -42,11 +43,22 @@ export class MainHeaderComponent implements OnInit, OnChanges {
   private dialog: MatDialog, private applicationService: ApplicationServiceService,
   private cartService: CartService, private notificationService: NotificationService) {
 
-   this.cartService.getProduct().subscribe(res =>{
-   this.dataSource = res;
-   this.totalItem = res.length;
-  })
+   this.isCartItemPresent();
+  //  this.cartService.getProduct().subscribe(res =>{
+  //  this.dataSource = res;
+  //  this.totalItem = res.length;
+  // })
 }
+
+  isCartItemPresent(){
+
+  //  if(sessionStorage.getItem('DATA_SOURCE')){
+  //   let data: any[] = JSON.parse(sessionStorage.getItem('DATA_SOURCE') as any);
+  //   this.dataSource = data;
+  //   this.totalItem = this.dataSource.length;
+  //  }
+
+  }
 
 
   redirectMainPage(){
@@ -58,10 +70,13 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 
     if(changes['userName']){
       this.fullName = changes['userName'].currentValue;
-      console.log(this.fullName);
       this.name = this.fullName.shift().charAt(0) + this.fullName.pop().charAt(0);
-      console.log(this.name);
       this.loginUserName = this.name.toUpperCase();
+    }
+
+    if(changes['notifyUpdate']){
+      this.totalItem = changes['notifyUpdate'].currentValue;
+      console.log(this.totalItem);
     }
   }
 

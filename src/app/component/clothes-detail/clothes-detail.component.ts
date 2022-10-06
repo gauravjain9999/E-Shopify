@@ -23,6 +23,7 @@ export class ClothesDetailComponent implements OnInit{
   aboutBrand: boolean = false;
   user:any;
   fullName:any;
+  updateCount: number = 0;
   customerReview: boolean = false;
   columnChart: Chart = new Chart(columnChartOptions);
 
@@ -42,9 +43,8 @@ export class ClothesDetailComponent implements OnInit{
 
   ngOnInit(): void {
 
-    if(sessionStorage.getItem('SELECTED_DATA')){
-      let data = JSON.parse(sessionStorage.getItem(('SELECTED_DATA')) as string);
-      console.log(data);
+    if(localStorage.getItem('SELECTED_DATA')){
+      let data = JSON.parse(localStorage.getItem(('SELECTED_DATA')) as string);
       this.dataItem = data;
       this.listOfItems.push(data);
       this.listOfItems = _.castArray(data); // Convert Object into Array directly
@@ -56,6 +56,7 @@ export class ClothesDetailComponent implements OnInit{
   }
 
   addToCart(item: any){
+    this.updateCount = this.updateCount + 1;
     this.cartService.uploadCartItem(item);
     this.notificationService.showNotification('Item Added In Cart', 'Close');
   }
