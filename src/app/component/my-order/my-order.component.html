@@ -1,4 +1,4 @@
-<app-main-header [userName]="fullName"></app-main-header>
+<app-main-header [userName]="fullName"  [notifyUpdate]="updateOrderCount"></app-main-header>
 <mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner>
 
 <mat-grid-list class="dashboard-grid-list" [cols]="dashBoardGridCol" gutterSize="10px"  rowHeight="100px" *ngIf="!showFlagSpinner">
@@ -34,9 +34,10 @@
 </div>
 
 <div *ngIf="flag">
-  <mat-grid-list class="dashboard-grid-list-Orders" cols="1" gutterSize="20px" rowHeight="150px">
+  <mat-grid-list class="dashboard-grid-list-Orders" cols="1" gutterSize="20px" rowHeight="180px">
     <mat-grid-tile @fade fxLAyoutAlign="start stretch" class="dashboard-tile colorful-tile" fxLayout="row" *ngFor="let item of products">
-  <div class="column-1"><img src="{{item.path}}" alt="Img" style=" margin-left: 50px; height: 120px; width: 120px;"></div>
+  <div class="column-1">
+    <img  mat-card-image src="{{item.path}}" alt="Img" style="margin-left: 5px; height: 120px; width: 120px;"></div>
   <div class="column-2">
     <h4> <b>{{item.title}}</b></h4>
     <p class="grey-color"> Color: {{item.color}}</p>

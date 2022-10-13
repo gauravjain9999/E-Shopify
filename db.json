@@ -27,6 +27,20 @@
       "password": "JEDOFJEKLEDNFIWENDDDDDDDDDDDDDDDDD",
       "phoneNumber": "7877130398",
       "id": 5
+    },
+    {
+      "name": "Ashwin Gupta",
+      "email": "ashwinGupta0933@gmail.com",
+      "password": "12345678",
+      "phoneNumber": "9774577821",
+      "id": 6
+    },
+    {
+      "name": "mukul Sharma ",
+      "email": "mukulsharma12@gmail.com",
+      "password": "12345678",
+      "phoneNumber": "9878987654",
+      "id": 7
     }
   ]
 }

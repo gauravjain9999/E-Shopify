@@ -1,11 +1,116 @@
-<mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner>
+<!-- <app-main-header></app-main-header> -->
+<!-- <mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner> -->
 
-<div class="stripe-checkout" *ngIf="!showFlagSpinner">
-  <span class="stripe-text"> Angular Stripe Checkout Page</span>
+<div class="stripe-checkout header-bg">
+  <span class="stripe-text">
+    <img (click)="redirectMainPage()" class="float-img pointer" style="width: 40px; height:40px;" src="../../assets/./images/shopifyApp.png">&nbsp;
+    <span class="mr-1rem">{{'Shopify App'}}</span>
+  </span>
 </div>
-<mat-divider></mat-divider>
 
-<div class="card" *ngIf="!showFlagSpinner">
+
+ <div class="row">
+    <div class="column1">
+      <div class="content">
+        <div fxLayout="row" fxLayoutGap="16px">
+          <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
+
+            <mat-card class="mat-elevation-z4 card">
+              <mat-card-header>
+                <mat-card-title>
+                 1. <span>LOGIN</span>
+                 <span [hidden]="showBtn">
+                    <button (click)="toggleHide('login')" style="position:absolute; top:0; right: 0; margin-right: 10px; margin-top: 10px;" mat-button class="primary">
+                      EDIT
+                    </button>
+                  </span>
+                </mat-card-title>
+                <mat-card-subtitle>
+                  <span style="margin-left: 20px;">{{fullName}}</span>&nbsp; {{emailId}}
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-actions>
+
+              <div *ngIf="showContent" style="margin-left: 45px">
+                <span><b>Name</b></span> &nbsp; {{fullName}}<br><br>
+                <span><b>Email</b></span> &nbsp; {{emailId}}<br><br>
+                <div style="color:blue">Logout & Sign in to another Account</div>
+                <div style="margin-top: 15px">
+                  <button mat-button style="height: 48px; text-transform: uppercase; background-color: #fb641b; color:#fff">
+                    Continue Checkout
+                  </button>
+                </div>
+              </div>
+              </mat-card-actions>
+            </mat-card> <br>
+
+
+            <mat-card class="mat-elevation-z4 card">
+              <mat-card-header>
+                <mat-card-title>
+                 2. <span>DELIVERY ADDRESS</span>
+                 <span [hidden]="showBtn">
+                   <button (click)="toggleHide('Address')" style="position:absolute; top:0; right: 0; margin-right: 10px; margin-top: 10px;" mat-button class="primary">
+                    EDIT
+                  </button>
+                  </span>
+                </mat-card-title>
+                <mat-card-subtitle>
+                  <span style="margin-left: 20px;"> {{fullName}}</span>&nbsp; {{address}}
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-actions>
+
+              <div *ngIf="showContent" style="margin-left: 45px">
+                <mat-radio-button value="1" [checked]="true">{{fullName}}</mat-radio-button>&nbsp; {{phoneNum}}
+                <br><br>
+                <span><b>Confirm Address :- &nbsp;</b>{{address}}</span>
+                <div style="margin-top: 15px">
+                  <button mat-button style="height: 48px; text-transform: uppercase; background-color: #fb641b; color: white">
+                    Delivery Here
+                  </button>
+                </div>
+              </div>
+             </mat-card-actions>
+            </mat-card><br>
+
+
+            <mat-card class="mat-elevation-z4 card">
+                <mat-card-header>
+                  <mat-card-title>
+                   3. <span>PAYMENT OPTION</span>
+                   <span [hidden]="showBtn">
+                     <button (click)="toggleHide('payment')" style="position:absolute; top:0; right: 0; margin-right: 10px; margin-top: 10px;"
+                     mat-button class="primary">EDIT</button>
+                    </span>
+                  </mat-card-title>
+                  <mat-card-subtitle>
+                    <!-- <span style="margin-left: 20px;"> Gaurav Jain</span>&nbsp; A - 305 Malviya Nagar Alwar - 301002 -->
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+
+              <div *ngIf="showContent" style="margin-left: 45px">
+                <mat-radio-button value="1" [checked]="true">&nbsp;
+                  <img src="../../../assets/Icons/paymentLogo/gPay.png" style="height:25px; width: 25px;"  alt="Loading"> &nbsp;
+                </mat-radio-button>&nbsp; UPI
+                <br><br>
+                <div style="margin-top: 15px">
+                <button  mat-button style="height: 48px; text-transform: uppercase; background-color: #fb641b; color: white"
+                  (click)="checkout(totalSum)">Payment of {{totalSum | currency : 'Rs '}}
+                </button>
+                </div>
+              </div>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="column2">
+  <div class="card" *ngIf="!showFlagSpinner">
   <div class="container">
     <span style="font-size: 20px; color: grey;"> PRICE  DETAILS</span><br>
   </div>
@@ -14,11 +119,11 @@
   <mat-grid-list cols="2" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
     <mat-grid-tile fxLayout="row" fxLayoutAlign="start" fxFlex="1125%">Price ({{totalLength}})</mat-grid-tile>
     <mat-grid-tile>
-      {{totalSum | currency : 'Rs  '}}
+      {{totalSum | currency : 'Rs'}}
     </mat-grid-tile>
   </mat-grid-list>
 
-  <mat-grid-list cols="2" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
+  <mat-grid-list cols="2" style="margin-top: 10px;" gutterSize="10px" rowHeight="50px">
     <mat-grid-tile>
       Discount
     </mat-grid-tile>
@@ -26,7 +131,7 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <mat-grid-list cols="2" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
+  <mat-grid-list cols="2" style="margin-top: 10px;" gutterSize="10px" rowHeight="50px">
     <mat-grid-tile>Delivery Charges</mat-grid-tile>
     <mat-grid-tile style="color: green;">
        {{'FREE'}}
@@ -35,7 +140,7 @@
 
   <mat-divider></mat-divider>
 
-  <mat-grid-list cols="2" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
+  <mat-grid-list cols="2" style="margin-top: 10px;" gutterSize="10px" rowHeight="50px">
 
     <mat-grid-tile>
       <b>{{'Total Amount'}}</b>
@@ -46,15 +151,17 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <mat-divider></mat-divider>
+  <!-- <mat-divider></mat-divider> -->
 
-  <mat-grid-list cols="1" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
+  <!-- <mat-grid-list cols="1" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
 
     <mat-grid-tile>
       <mat-chip-list>
         <mat-chip  class="payment-btn" color="accent" (click)="checkout(totalSum)">Payment of {{totalSum | currency : 'Rs '}}</mat-chip>
       </mat-chip-list>
     </mat-grid-tile>
-  </mat-grid-list>
-  </div>
+   </mat-grid-list> -->
+   </div>
+</div>
+</div>
 

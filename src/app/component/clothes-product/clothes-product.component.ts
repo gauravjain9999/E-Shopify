@@ -65,7 +65,6 @@ export class ClothesProductComponent implements OnInit {
 
     this.dataSource.paginator = this.paginator;
     this.pageLength = this.dataSource.filteredData.length;
-    // throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
@@ -80,13 +79,16 @@ export class ClothesProductComponent implements OnInit {
     this.totalLength = this.listOfClothesItem.length;
     this.listOfClothesItem.forEach((element:any) => {
        Object.assign(element, {quantity:1, total:element.price})
-      });
+    });
     // this.showFlagSpinner = false;
   }
 
 
   favoriteItem(item: any, index: any){
 
+    console.log(item,index);
+
+    this.cartService.favoriteItem(item, index);
 
     // if(index === 4){
     //   this.colorHeartRed = true;

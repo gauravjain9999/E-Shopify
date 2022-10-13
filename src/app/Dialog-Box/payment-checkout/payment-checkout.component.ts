@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/Service/cart.service';
 import { NotificationService } from 'src/app/core/Service/notification.service';
@@ -15,35 +16,76 @@ export class PaymentCheckoutComponent implements OnInit {
   showFlagSpinner: boolean = true;
   totalLength: any;
   strikeCheckout:any = null;
+  showContent: boolean = false;
+  showBtn: boolean = false;
+  user: any;
+  fullName: string;
+  emailId: string;
+  phoneNum: string;
+  address: string;
 
   constructor( private router: Router, private cartService: CartService,  public notificationService: NotificationService) {
 
     this.cartService.getProduct().subscribe(res=>{
-    console.log(res.discount);
     this.discountItem = res.discount;
-    console.log(this.discountItem);
     this.totalLength = res.length;
     this.totalSum = this.cartService.getTotalPrice();
   });
 }
 
   ngOnInit(): void {
-
     setTimeout(() =>{
       this.showFlagSpinner = false;
     }, 3000)
+    this.showBtn = false;
     this.showFlagSpinner = true;
+    this.userDetails();
     this.stripePaymentGateway();
   }
 
-  navigateToMyOrders(){
-    this.router.navigate(['myOrder']) 
+  userDetails(){
+
+    if(sessionStorage.getItem('ORDER_DETAILS')){
+      let user= JSON.parse(sessionStorage.getItem('ORDER_DETAILS') as string);
+      this.emailId = user.email;
+      this.fullName = user.name;
+      this.address = user.address;
+      this.phoneNum = user.phoneNumber;
+    }
   }
 
 
+  toggleHide(event: string){
+
+    if(event === 'login'){
+      this.showContent = true;
+      this.showBtn = true;
+    }
+    else if(event === 'payment'){
+      this.showContent = true;
+      this.showBtn = true;
+    }
+    else if(event === 'Address'){
+      this.showContent = true;
+      this.showBtn = true;
+    }
+    // else{
+    //   this.showContent = false;
+    //   this.showBtn = false;
+    // }
+  }
+
+  navigateToMyOrders(){
+    this.router.navigate(['myOrder'])
+  }
+
+  redirectMainPage(){
+    this.notificationService.showNotification('You Just Redirect To the Main Page', 'Close');
+    this.router.navigate(['mainPage']);
+   }
 
   checkout(amount: any) {
-    
+
     if(amount > 0){
       const strikeCheckout = (<any>window).StripeCheckout.configure({
       key: 'pk_test_sLUqHXtqXOkwSdPosC8ZikQ800snMatYMb',
@@ -53,7 +95,7 @@ export class PaymentCheckoutComponent implements OnInit {
         this.notificationService.showNotification('Successfully Placed  ! Go To My Orders', 'Close');
       }
   });
-  
+
     strikeCheckout.open({
       name: 'RemoteStack',
       description: 'Payment widgets',

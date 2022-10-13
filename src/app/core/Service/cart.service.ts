@@ -2,66 +2,63 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-
-  public cartItemList: any =[];
+  public cartItemList: any = [];
   //It is act as observable and Subscriber
   public productList = new BehaviorSubject<any>([]);
 
-  constructor() { }
+  constructor() {}
 
-  getProduct()
-  {
+  getProduct() {
     return this.productList.asObservable();
   }
 
-  setProduct(product: any)
-  {
-   this.cartItemList.push(...product);
-   this.productList.next(product);
+  setProduct(product: any) {
+    this.cartItemList.push(...product);
+    this.productList.next(product);
   }
 
-  addToCart(product: any, index:any){
-
+  addToCart(product: any, index: any) {
     this.cartItemList.push(product);
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
   }
 
-  getTotalPrice():number
-  {
+  getTotalPrice(): number {
     let grantTotal = 0;
-    this.cartItemList.map((value:any)=>{
+    this.cartItemList.map((value: any) => {
       grantTotal += value.total;
     });
 
     return grantTotal;
   }
 
-  removeCartItem(product: any, index:any)
-  {
+  favoriteItem(product: any, index: any) {
+    console.log('====================================');
+    console.log(product, index);
+    console.log('====================================');
+  }
+
+  removeCartItem(product: any, index: any) {
     console.log(product, index);
     this.cartItemList.splice(product, 1);
     this.productList.next(this.cartItemList);
   }
 
-  uploadCartItem(product: any)
-  {
+  uploadCartItem(product: any) {
     this.cartItemList.push(product);
     localStorage.setItem('ITEM_ADDED', JSON.stringify(this.cartItemList));
     this.productList.next(this.cartItemList);
   }
 
-  removeUploadCartItem(product: any)
-  {
+  removeUploadCartItem(product: any) {
     this.cartItemList.splice(product, 1);
     this.productList.next(this.cartItemList);
   }
 
-  removeAllCart()
-  {
+  removeAllCart() {
     this.cartItemList = [];
     this.productList.next(this.cartItemList);
   }
