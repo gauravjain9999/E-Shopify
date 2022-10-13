@@ -7,7 +7,6 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import {
   Form,
   UntypedFormGroup,
-  NgForm,
   UntypedFormControl,
   Validators,
 } from '@angular/forms';
