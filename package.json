@@ -23,6 +23,7 @@
     "@angular/platform-browser": "~14.0.6",
     "@angular/platform-browser-dynamic": "~14.0.6",
     "@angular/router": "~14.0.6",
+    "@microsoft/eslint-formatter-sarif": "^2.1.7",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "angular-highcharts": "^13.0.1",
