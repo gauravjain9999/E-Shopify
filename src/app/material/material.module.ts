@@ -23,6 +23,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
+import {MatRadioModule} from '@angular/material/radio';
 import {MatRippleModule} from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -39,6 +40,7 @@ const materialTheme = [
     MatDialogModule,
     MatInputModule,
     MatListModule,
+    MatRadioModule,
     MatMenuModule,
     MatGridListModule,
     MatToolbarModule,

@@ -92,8 +92,7 @@ export class DialogDataComponent implements OnInit{
     }
   }
 
-  submit()
-  {
+  submit(){
     console.log(this.profileForm.value);
   }
 
@@ -121,11 +120,12 @@ export class DialogDataComponent implements OnInit{
     {
       this.flag = true;
       this.dialogRef.close();
-      this.paymentDialog.open(PaymentCheckoutComponent, {
-        height: '800px',
-        width: '800px'
-      })
-      // this.router.navigate(['payment'])
+      sessionStorage.setItem('ORDER_DETAILS', JSON.stringify(this.profileForm.value));
+      this.router.navigate(['payment']);
+      // this.paymentDialog.open(PaymentCheckoutComponent, {
+      //   height: '800px',
+      //   width: '800px'
+      // })
     }
     else{
       this.notificationService.showNotification('Please fill your details', 'close');

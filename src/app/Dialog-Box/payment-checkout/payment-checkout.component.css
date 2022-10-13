@@ -1,19 +1,54 @@
 .stripe-checkout{
- justify-content: center;
- align-items: center;
+ justify-content: flex-start;
+ align-items: flex-start;
  display: flex;
 }
 
 .stripe-text{
-
-  padding: 20px;
-  font-size: 30px;
-  font-weight: 600;
-
+  padding: 10px;
+  font-size: 22px;
 }
 
-.payment-btn{
 
+.column1{
+  float: left;
+  width: 60%;
+  padding: 10px;
+}
+
+.column2{
+  float: left;
+  width: 40%;
+  margin-top: 15px;
+  padding: 10px;
+  margin-left: -20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+.mat-card:hover{
+  /* background-color: #f1f1f1; */
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  width: 100px;
+}
+
+
+
+/* .payment-btn{
   justify-content: center;
   align-items: center;
   display: flex;
@@ -26,18 +61,18 @@
   padding: 20px;
   color: white;
   font-weight: 700;
-}
+} */
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 55%;
-  height: 500px;
+  /* width: 55%;
+  height: 500px; */
   vertical-align: middle;
   box-sizing: border-box;
-  margin-left: 25%;
-  margin-top: 50px;
- /* display: table-cell; */
+  /* margin-left: 25%;
+  margin-top: 50px; */
+  width: 95%;
 }
 
 .card:hover {
@@ -46,7 +81,7 @@
 
 .container {
   padding: 10px 16px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 
 }
 

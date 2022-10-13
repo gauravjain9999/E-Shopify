@@ -35,6 +35,7 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<any>();
   applicationData: any = [];
   user:any;
+  updateOrderCount:any;
   fullName:any;
 
   constructor(@Inject(NgZone) private zone: NgZone, private mediaObserver: MediaObserver, private notificationService: NotificationService,
@@ -48,7 +49,6 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-
     this.zone.runOutsideAngular(() =>{
     })
 
@@ -60,7 +60,7 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
     this.showFlagSpinner = true;
     this.cartService.getProduct().subscribe(res=>{
     this.products = res;
-    console.log(this.products);
+    this.updateOrderCount = this.products.length;
     this.totalSum = this.cartService.getTotalPrice();
     this.dataSource =  new MatTableDataSource<any>(this.products);
     console.log(this.dataSource.filteredData);

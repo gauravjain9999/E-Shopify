@@ -125,7 +125,7 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
         // sessionStorage.setItem('CONFIRM', JSON.stringify(confirmDialog));
         this.dialog.open(DialogDataComponent, {
           height: '600px',
-          width: '800px',
+          width: '600px',
         });
       }
       else

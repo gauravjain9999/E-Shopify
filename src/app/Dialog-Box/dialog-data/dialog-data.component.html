@@ -7,7 +7,7 @@
 <form class="form-group" [formGroup]="profileForm" (ngSubmit)="submit()">
 
   <div class="form-group-class">
-    <mat-form-field  class="w-100" formLabel="auto" hideRequiredMarker>
+    <mat-form-field  class="w-250" formLabel="auto" hideRequiredMarker>
       <mat-label>Name</mat-label>
       <input matInput type="text" id="search" autocomplete="off" formControlName="name"  [errorStateMatcher]="customErrorStateMatcher" placeholder="Enter your name">
       <mat-icon matSuffix>person</mat-icon>
@@ -25,7 +25,7 @@
     <br> <br>
     <!-- <mat-icon tabindex="-1" class="float-right hand-icon" matRipple>close</mat-icon> -->
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker>
+    <mat-form-field class="w-250" formLabel="auto" hideRequiredMarker>
       <mat-label>Email</mat-label>
       <input matInput type="text" autocomplete="off" [errorStateMatcher]="customErrorStateMatcher"  formControlName="email" email placeholder="Enter your email">
       <mat-icon matSuffix>email</mat-icon>
@@ -39,7 +39,7 @@
     </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
+    <mat-form-field class="w-250" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Phone Number</mat-label>
       <input matInput type="text"  autocomplete="off" [errorStateMatcher]="customErrorStateMatcher" formControlName="phoneNumber" (keypress)="keyPressNumbers($event)"
       minlength=10  maxlength="10" placeholder="Enter PhoneNo"
@@ -60,7 +60,7 @@
     </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
+    <mat-form-field class="w-250" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Address</mat-label>
       <input matInput type="text" autocomplete="off" [errorStateMatcher]="customErrorStateMatcher" formControlName="address" placeholder="Enter your address" name="address" required>
       <mat-icon matSuffix>home</mat-icon>
@@ -72,7 +72,7 @@
     </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
+    <mat-form-field class="w-250" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Near By Location</mat-label>
       <input matInput type="text" autocomplete="off" [errorStateMatcher]="customErrorStateMatcher" formControlName="location" placeholder="Enter your location" required>
       <mat-icon matSuffix>place</mat-icon>
@@ -84,7 +84,7 @@
     </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
+    <mat-form-field class="w-250" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>City</mat-label>
       <input matInput autocomplete="off" (keypress)="keyPressAlphanumeric($event)"  [errorStateMatcher]="customErrorStateMatcher" type="text" formControlName="city" placeholder="Enter your city" required>
       <mat-error style="font-size: small; margin-top: 2px;"  *ngIf="getFormControlName('city').hasError('required')" [innerHTML]="getErrorMessage('city', 'required')">
@@ -99,7 +99,7 @@
     <!-- touchUi is also feature in date to popup date in center of UI  -->
     <!-- [startView]="year" or multi-year and month if user want to start calender or view calender as month so added month in mat date picker -->
     <!-- Here [startAt]="startDate" and startDate= new Date('1-01-2001') in matDatepicker is added so it start with this date  -->
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
+    <mat-form-field class="w-250" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Date</mat-label>
       <input matInput autocomplete="off" [min]="minDate" (dateChange)="onDateChange()" [max]="maxDate" [(ngModel)]="currentDate" [errorStateMatcher]="customErrorStateMatcher" [matDatepicker]="picker" formControlName="date" type="text" required>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -114,7 +114,7 @@
     </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
+    <mat-form-field class="w-250" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>State</mat-label>
        <mat-hint align="end">Choose your State</mat-hint>
        <mat-select  panelClass="my-panel" formControlName="state" [(ngModel)]="states">
@@ -130,7 +130,7 @@
     </ng-container> -->
     <br>
 
-    <mat-form-field class="w-100" formLabel="auto" hideRequiredMarker appearance="standard">
+    <mat-form-field class="w-250" formLabel="auto" hideRequiredMarker appearance="standard">
       <mat-label>Payment</mat-label>
       <mat-hint align="end">Choose payment type</mat-hint>
       <mat-select panelClass="my-panel"  formControlName="payment"  aria-placeholder="Choose your payment"  [(ngModel)]="defaultValuePayment">

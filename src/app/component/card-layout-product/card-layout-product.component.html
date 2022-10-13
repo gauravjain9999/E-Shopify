@@ -1,6 +1,6 @@
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%"  *ngFor="let item of listOfCardsItem; let i = index">
+    <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let item of listOfCardsItem; let i = index">
       <mat-card class="mat-card" (click)="goToClothPage(item , i)" class="mat-elevation-z4">
         <img  mat-card-image src="{{item.src}}">
         <mat-card-actions>

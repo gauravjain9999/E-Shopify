@@ -9,11 +9,11 @@
         <!-- <mat-card-header>
         </mat-card-header> -->
         <img mat-card-image src="{{itemCloth.path}}" (click)="itemClothDetails(itemCloth, i)">
+
         <mat-card-content>
-          <span>
-            {{itemCloth.title}}
-          </span>
+          <span>{{itemCloth.title}}</span>
         </mat-card-content>
+
         <mat-card-actions>
           <button mat-raised-button [matMenuTriggerFor]="menu" matSuffix>Share</button>
           <mat-menu #menu="matMenu" class="myMenu">
@@ -25,11 +25,13 @@
             </button>
           </mat-menu>
 
-          <button mat-raised-button matPrefix  matTooltip="favorite" (click)="favoriteItem(itemCloth, i)">
-            <mat-icon  *ngIf="colorHeartBlack" class="material-symbols-outlined" matSuffix>favorite</mat-icon>
-            <i class="fa fa-heart" *ngIf="colorHeartRed" style="font-size: large; color:red"></i>
-          </button>
-        </mat-card-actions>
+          <span>
+            <button mat-raised-button matPrefix  matTooltip="favorite">
+              <mat-icon *ngIf="colorHeartBlack" (click)="favoriteItem(itemCloth, i+1)" class="material-symbols-outlined" matSuffix>favorite</mat-icon>
+              <i *ngIf="colorHeartRed" class="fa fa-heart" style="font-size: large; color:red"></i>
+            </button>
+          </span>
+          </mat-card-actions>
       </mat-card>
     </div>
   </div>
