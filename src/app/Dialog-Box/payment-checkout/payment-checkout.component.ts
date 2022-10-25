@@ -16,13 +16,21 @@ export class PaymentCheckoutComponent implements OnInit {
   showFlagSpinner: boolean = true;
   totalLength: any;
   strikeCheckout:any = null;
-  showContent: boolean = false;
-  showBtn: boolean = false;
   user: any;
   fullName: string;
   emailId: string;
   phoneNum: string;
   address: string;
+
+  showBtn1: boolean = false;
+  showContent1: boolean = false;
+
+
+  showBtn2: boolean = false;
+  showContent2: boolean = false;
+
+  showBtn3: boolean = false;
+  showContent3: boolean = false;
 
   constructor( private router: Router, private cartService: CartService,  public notificationService: NotificationService) {
 
@@ -37,7 +45,6 @@ export class PaymentCheckoutComponent implements OnInit {
     setTimeout(() =>{
       this.showFlagSpinner = false;
     }, 3000)
-    this.showBtn = false;
     this.showFlagSpinner = true;
     this.userDetails();
     this.stripePaymentGateway();
@@ -57,22 +64,21 @@ export class PaymentCheckoutComponent implements OnInit {
 
   toggleHide(event: string){
 
-    if(event === 'login'){
-      this.showContent = true;
-      this.showBtn = true;
+    if(event == 'login'){
+      this.showContent1 = true;
+      this.showBtn1 = true;
     }
-    else if(event === 'payment'){
-      this.showContent = true;
-      this.showBtn = true;
+    else if(event === 'continueCheckout'){
+      this.showContent2 = true;
+      this.showContent1 = false;
+      this.showBtn2 = true;
     }
-    else if(event === 'Address'){
-      this.showContent = true;
-      this.showBtn = true;
+
+    else if(event === 'Delivery'){
+      this.showContent3 = true;
+      this.showContent2 = false;
+      this.showBtn3 = true;
     }
-    // else{
-    //   this.showContent = false;
-    //   this.showBtn = false;
-    // }
   }
 
   navigateToMyOrders(){
@@ -91,7 +97,7 @@ export class PaymentCheckoutComponent implements OnInit {
       key: 'pk_test_sLUqHXtqXOkwSdPosC8ZikQ800snMatYMb',
       locale: 'auto',
       token: function (stripeToken: any) {
-        console.log(stripeToken);
+        this.navigateToMyOrders();
         this.notificationService.showNotification('Successfully Placed  ! Go To My Orders', 'Close');
       }
   });

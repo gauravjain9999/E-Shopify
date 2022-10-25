@@ -19,7 +19,7 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",
-    "module": "es2020",
+    "module": "es2015",
     // Adding Paths will remove kind of error in lines that occur due to tslib
     "paths": {
       "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"]

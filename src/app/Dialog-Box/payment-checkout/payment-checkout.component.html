@@ -9,7 +9,7 @@
 </div>
 
 
- <div class="row">
+ <div class="row" *ngIf="!showFlagSpinner">
     <div class="column1">
       <div class="content">
         <div fxLayout="row" fxLayoutGap="16px">
@@ -19,24 +19,23 @@
               <mat-card-header>
                 <mat-card-title>
                  1. <span>LOGIN</span>
-                 <span [hidden]="showBtn">
-                    <button (click)="toggleHide('login')" style="position:absolute; top:0; right: 0; margin-right: 10px; margin-top: 10px;" mat-button class="primary">
-                      EDIT
+                 <span [hidden]="showBtn1">
+                    <button mat-raised-button (click)="toggleHide('login')" style="position:absolute; top:0; right: 0; margin-right: 10px; margin-top: 10px; background-color: #fb641b; color: white" mat-button>
+                      Check
                     </button>
                   </span>
                 </mat-card-title>
                 <mat-card-subtitle>
-                  <span style="margin-left: 20px;">{{fullName}}</span>&nbsp; {{emailId}}
+                  <!-- <span style="margin-left: 20px;">{{fullName}}</span>&nbsp; {{emailId}} -->
                 </mat-card-subtitle>
               </mat-card-header>
-              <mat-card-actions>
-
-              <div *ngIf="showContent" style="margin-left: 45px">
+              <mat-card-actions *ngIf="showContent1">
+              <div style="margin-left: 45px">
                 <span><b>Name</b></span> &nbsp; {{fullName}}<br><br>
                 <span><b>Email</b></span> &nbsp; {{emailId}}<br><br>
                 <div style="color:blue">Logout & Sign in to another Account</div>
                 <div style="margin-top: 15px">
-                  <button mat-button style="height: 48px; text-transform: uppercase; background-color: #fb641b; color:#fff">
+                  <button  (click)="toggleHide('continueCheckout')" mat-button style="height: 48px; text-transform: uppercase; background-color: #fb641b; color:#fff">
                     Continue Checkout
                   </button>
                 </div>
@@ -49,24 +48,23 @@
               <mat-card-header>
                 <mat-card-title>
                  2. <span>DELIVERY ADDRESS</span>
-                 <span [hidden]="showBtn">
-                   <button (click)="toggleHide('Address')" style="position:absolute; top:0; right: 0; margin-right: 10px; margin-top: 10px;" mat-button class="primary">
-                    EDIT
-                  </button>
+                  <span>
+                    <!-- <button style="position:absolute; top:0; right: 0; margin-right: 10px; margin-top: 10px;" mat-button class="primary">
+                     EDIT
+                    </button> -->
                   </span>
                 </mat-card-title>
                 <mat-card-subtitle>
-                  <span style="margin-left: 20px;"> {{fullName}}</span>&nbsp; {{address}}
+                  <!-- <span style="margin-left: 20px;"> {{fullName}}</span>&nbsp; {{address}} -->
                 </mat-card-subtitle>
               </mat-card-header>
               <mat-card-actions>
-
-              <div *ngIf="showContent" style="margin-left: 45px">
-                <mat-radio-button value="1" [checked]="true">{{fullName}}</mat-radio-button>&nbsp; {{phoneNum}}
-                <br><br>
+              <div style="margin-left: 45px" *ngIf="showContent2">
+                <!-- <mat-radio-button value="1"  [checked]="true">{{fullName}}</mat-radio-button>&nbsp; {{phoneNum}} -->
+                <!-- <br><br>4 -->
                 <span><b>Confirm Address :- &nbsp;</b>{{address}}</span>
                 <div style="margin-top: 15px">
-                  <button mat-button style="height: 48px; text-transform: uppercase; background-color: #fb641b; color: white">
+                  <button  (click)="toggleHide('Delivery')" mat-button style="height: 48px; text-transform: uppercase; background-color: #fb641b; color: white">
                     Delivery Here
                   </button>
                 </div>
@@ -79,9 +77,9 @@
                 <mat-card-header>
                   <mat-card-title>
                    3. <span>PAYMENT OPTION</span>
-                   <span [hidden]="showBtn">
-                     <button (click)="toggleHide('payment')" style="position:absolute; top:0; right: 0; margin-right: 10px; margin-top: 10px;"
-                     mat-button class="primary">EDIT</button>
+                   <span>
+                     <!-- <button style="position:absolute; top:0; right: 0; margin-right: 10px; margin-top: 10px;"
+                     mat-button class="primary">EDIT</button> -->
                     </span>
                   </mat-card-title>
                   <mat-card-subtitle>
@@ -90,8 +88,8 @@
                 </mat-card-header>
                 <mat-card-actions>
 
-              <div *ngIf="showContent" style="margin-left: 45px">
-                <mat-radio-button value="1" [checked]="true">&nbsp;
+              <div style="margin-left: 45px" *ngIf="showContent3">
+                <mat-radio-button value="2" [checked]="true">&nbsp;
                   <img src="../../../assets/Icons/paymentLogo/gPay.png" style="height:25px; width: 25px;"  alt="Loading"> &nbsp;
                 </mat-radio-button>&nbsp; UPI
                 <br><br>
