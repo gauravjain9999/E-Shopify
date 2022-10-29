@@ -41,6 +41,13 @@
       "password": "12345678",
       "phoneNumber": "9878987654",
       "id": 7
+    },
+    {
+      "name": "Dhanajay Sharma ",
+      "email": "dj12@gmail.com",
+      "password": "12345678",
+      "phoneNumber": "7441258962",
+      "id": 8
     }
   ]
 }

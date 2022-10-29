@@ -62,15 +62,21 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 
 
   redirectMainPage(){
-   this.notificationService.showNotification('You Just Redirect To the Main Page', 'Close');
-   this.router.navigate(['mainPage']);
+
+  if(this.router.url === '/mainPage'){
+    this.notificationService.showNotification('You are on the Main Dashboard', 'Close');
+   }
+   else{
+    this.notificationService.showNotification('Redirected To the Dashboard', 'Close');
+    this.router.navigate(['mainPage']);
+   }
   }
 
   ngOnChanges(changes: SimpleChanges){
 
     if(changes['userName']){
       this.fullName = changes['userName'].currentValue;
-      this.name = this.fullName.shift().charAt(0) + this.fullName.pop().charAt(0);
+      this.name = this.fullName.shift().charAt(0) +  this.fullName.shift().charAt(0)
       this.loginUserName = this.name.toUpperCase();
     }
 

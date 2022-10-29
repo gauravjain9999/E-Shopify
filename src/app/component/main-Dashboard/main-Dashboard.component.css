@@ -40,73 +40,30 @@
   height: max-content;
 }
 
-.icon-image1
-{
-  cursor: pointer;
-  margin-top: 10px;
-  height: 50px;
-  width: 50px;
+.icon-size{
+  width: 40px;
+  height: 40px;
 }
 
-.icon-image1:hover{
-  transform: scale(1.30);
+.icon-size:hover{
+  transform: scale(1.10);
   transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
 }
 
-
-.icon-image2:hover{
-  transform: scale(1.30);
-  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+.img-style{
+  padding: 2px;
+  border-radius: 5px;
+  /* border: 3px solid black */
 }
 
-
-.icon-image3:hover{
-  transform: scale(1.30);
-  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-}
-
-.icon-image4:hover{
-  transform: scale(1.30);
-  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-}
-.icon-image5:hover{
-  transform: scale(1.30);
-  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-}
-
-.icon-image2
-{
-  cursor: pointer;
-  margin-top: 10px;
+.textImg-position{
+  word-break:break-all;
+  width: 60px;
   height: 50px;
-  width: 50px;
-}
-
-.icon-image3
-{
-  cursor: pointer;
   margin-top: 10px;
-  height: 50px;
-  width: 50px;
 }
 
-.icon-image4
-{
-  cursor: pointer;
-  margin-top: 10px;
-  height: 50px;
-  width: 50px;
-}
-
-.icon-image5
-{
-  cursor: pointer;
-  margin-top: 10px;
-  height: 50px;
-  width: 50px;
-}
-
-.content div{
+/* .content div{
   position: absolute;
   bottom: 0;
   right: 0;
@@ -118,4 +75,21 @@
   visibility: hidden;
   -webkit-transition: visibility 0s, opacity 0.5s linear;
   transition: visibility 0s, opacity 0.5s linear;
- }
+ } */
+
+
+ .column {
+  width: 20%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 100px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

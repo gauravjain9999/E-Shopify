@@ -14,7 +14,7 @@ export class MainPageComponent implements OnInit {
   @ViewChild('mapanel', {static: false}) mPanel!: MatExpansionPanel;
 
   panelOpenState = false;
-  user: any[]=[];
+  user: any[] = [];
   userName: string;
   fullName:any;
   iconsList : any[] = [];

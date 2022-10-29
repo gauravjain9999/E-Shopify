@@ -42,12 +42,21 @@ export class PaymentCheckoutComponent implements OnInit {
 }
 
   ngOnInit(): void {
+
+    this.userDetails();
+    this.isCheckDetails();
     setTimeout(() =>{
       this.showFlagSpinner = false;
     }, 3000)
     this.showFlagSpinner = true;
-    this.userDetails();
     this.stripePaymentGateway();
+  }
+
+  isCheckDetails(){
+
+    console.log('====================================');
+    console.log(this.fullName, this.emailId);
+    console.log('====================================');
   }
 
   userDetails(){
@@ -69,9 +78,14 @@ export class PaymentCheckoutComponent implements OnInit {
       this.showBtn1 = true;
     }
     else if(event === 'continueCheckout'){
-      this.showContent2 = true;
-      this.showContent1 = false;
-      this.showBtn2 = true;
+      if(this.fullName === undefined || this.emailId === undefined){
+        this.notificationService.showNotification('Please Provide Valid Information to proceed further', 'close');
+      }
+      else{
+        this.showContent2 = true;
+        this.showContent1 = false;
+        this.showBtn2 = true;
+      }
     }
 
     else if(event === 'Delivery'){

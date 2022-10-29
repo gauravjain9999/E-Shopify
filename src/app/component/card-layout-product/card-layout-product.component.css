@@ -16,3 +16,7 @@
   width: 200px;
 
 }
+
+.clickText:hover{
+  color: red;
+}

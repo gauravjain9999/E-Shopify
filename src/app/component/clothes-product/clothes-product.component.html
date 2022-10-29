@@ -25,9 +25,9 @@
             </button>
           </mat-menu>
 
-          <span>
+          <span style="float:right;">
             <button mat-raised-button matPrefix  matTooltip="favorite">
-              <mat-icon *ngIf="colorHeartBlack" (click)="favoriteItem(itemCloth, i+1)" class="material-symbols-outlined" matSuffix>favorite</mat-icon>
+              <mat-icon *ngIf="colorHeartBlack"  (click)="favoriteItem(itemCloth, i+1)" class="material-symbols-outlined" matSuffix>favorite</mat-icon>
               <i *ngIf="colorHeartRed" class="fa fa-heart" style="font-size: large; color:red"></i>
             </button>
           </span>
