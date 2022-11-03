@@ -1,4 +1,4 @@
-import { UserDataStorageService } from 'src/app/core/Service/userDataStore.service';
+import { ApplicationService } from './../../core/Service/applicationService.service';
 import { NewLoginComponent } from './../new-login/new-login.component';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -11,7 +11,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { NotificationService } from 'src/app/core/Service/notification.service';
-import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
 import { CustomErrorStateMatcherService } from 'src/app/core/Service/custom-error-state-matcher.service';
 
 @Component({
@@ -38,9 +37,8 @@ export class NewRegisterComponent implements OnInit {
     private notificationService: NotificationService,
     private router: Router,
     public dialogRef: MatDialogRef<NewRegisterComponent>,
-    private applicationService: ApplicationServiceService,
+    private applicationService: ApplicationService,
     private spinner: NgxSpinnerService,
-    private userDataStore: UserDataStorageService
   ) {
     this.email = '';
     this.pass = '';
@@ -102,7 +100,7 @@ export class NewRegisterComponent implements OnInit {
 
     sessionStorage.setItem('USER_DETAILS', JSON.stringify(this.formStatus));
     if (this.registerUser.valid) {
-      this.userDataStore.signUpUser(this.formStatus).subscribe((res) => {
+      this.applicationService.signUpUser(this.formStatus).subscribe((res) => {
         if (res) {
           this.notificationService.showNotification(
             'New User Register',

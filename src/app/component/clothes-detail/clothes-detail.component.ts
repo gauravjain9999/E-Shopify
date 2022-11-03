@@ -1,10 +1,10 @@
+import { ApplicationService } from './../../core/Service/applicationService.service';
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import {Chart} from "angular-highcharts";
 import { columnChartOptions } from 'src/app/dataChart/columnChart';
 import { CartService } from 'src/app/core/Service/cart.service';
 import { ClothService } from 'src/app/core/Service/cloth.service';
-import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
 import { NotificationService } from 'src/app/core/Service/notification.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { NotificationService } from 'src/app/core/Service/notification.service';
 export class ClothesDetailComponent implements OnInit{
 
   listOfItems: any[]=[];
-  dataItem: any;
+  dataItem: any = {};
   star:any;
   starData: any[] = [];
   allDetails: boolean = true;
@@ -27,7 +27,8 @@ export class ClothesDetailComponent implements OnInit{
   customerReview: boolean = false;
   columnChart: Chart = new Chart(columnChartOptions);
 
-  constructor(private notificationService: NotificationService,  private cartService: CartService,  private clothService: ClothService, private applicationService: ApplicationServiceService) {
+  constructor(private notificationService: NotificationService,  private cartService: CartService,  private clothService: ClothService,
+    public applicationService: ApplicationService) {
 
     setTimeout(() =>{
       this.showFlagSpinner = false;
@@ -57,6 +58,10 @@ export class ClothesDetailComponent implements OnInit{
 
   addToCart(item: any){
     this.updateCount = this.updateCount + 1;
+
+    this.applicationService.getCartItemAdded(item.id).subscribe(data =>{
+      console.log(data);
+    });
     this.cartService.uploadCartItem(item);
     this.notificationService.showNotification('Item Added In Cart', 'Close');
   }

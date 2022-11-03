@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -9,7 +10,8 @@ export class CartService {
   //It is act as observable and Subscriber
   public productList = new BehaviorSubject<any>([]);
 
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
+
 
   getProduct() {
     return this.productList.asObservable();

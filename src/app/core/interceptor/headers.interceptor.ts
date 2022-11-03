@@ -17,8 +17,8 @@ export class HeadersInterceptor implements HttpInterceptor {
 
    const API_KEY = 'Test-123';
    const req = request.clone({
-    setHeaders: {API_KEY}
-   })
+    setHeaders: {API_KEY, responseType: 'blob'},
+  })
     return next.handle(req);
   }
 }

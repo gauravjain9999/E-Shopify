@@ -1,7 +1,5 @@
-import { UserDataStorageService } from 'src/app/core/Service/userDataStore.service';
-import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
-import { NewRegisterComponent } from './../new-register/new-register.component';
-import { NgForm, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import { ApplicationService } from './../../core/Service/applicationService.service';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -36,8 +34,7 @@ export class NewLoginComponent implements OnInit {
     private dialogRef: MatDialogRef<NewLoginComponent>,
     private spinner: NgxSpinnerService,
     private dialog: MatDialog,
-    private loginService: UserDataStorageService,
-    private applicationService: ApplicationServiceService,
+    private applicationService: ApplicationService,
     private notificationService: NotificationService,
   ) {}
 
@@ -103,7 +100,7 @@ export class NewLoginComponent implements OnInit {
 
     if(this.login.valid)
     {
-      this.loginService.loginUser(this.login.value).subscribe((data:any) =>{
+      this.applicationService.loginUser(this.login.value).subscribe((data:any) =>{
         console.log(data);
         if(data && data.length > 0){
           this.dialogRef.close();

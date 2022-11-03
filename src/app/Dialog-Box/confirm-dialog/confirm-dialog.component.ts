@@ -1,8 +1,7 @@
-import { ApplicationServiceService } from '../../core/Service/application-service.service';
+import { ApplicationService } from './../../core/Service/applicationService.service';
 import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DialogData } from '../dialog-data/dialog-data.component';
 
 
 @Component({
@@ -16,7 +15,7 @@ export class ConfirmDialogComponent implements OnInit {
   dataCheck: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ConfirmDialogComponent>,
-  private router:Router, private applicationService: ApplicationServiceService){
+  private router:Router, private applicationService: ApplicationService){
 
     this.dataCheck = data;
     console.log(data);

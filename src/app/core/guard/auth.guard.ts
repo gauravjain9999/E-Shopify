@@ -1,4 +1,4 @@
-import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
+import { ApplicationService } from './../Service/applicationService.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private applicationService: ApplicationServiceService){}
+  constructor(private applicationService: ApplicationService){}
 
   canActivate(
     route: ActivatedRouteSnapshot,

@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { ApplicationServiceService } from '../../core/Service/application-service.service';
 import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
@@ -14,7 +13,7 @@ export class MyAccountComponent implements OnInit, OnChanges{
   accountHolder: any;
   name:any;
   url = '../../assets/Icons/user.png';
-  constructor(private router:Router,  private applicationService: ApplicationServiceService) { }
+  constructor(private router:Router,) { }
 
   ngOnInit(): void {
 

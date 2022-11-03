@@ -1,9 +1,10 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { ApplicationService } from './../../core/Service/applicationService.service';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { DomSanitizer } from "@angular/platform-browser";
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
 import { CartService } from 'src/app/core/Service/cart.service';
 import { ClothService } from 'src/app/core/Service/cloth.service';
 
@@ -13,9 +14,9 @@ import { ClothService } from 'src/app/core/Service/cloth.service';
   templateUrl: './clothes-product.component.html',
   styleUrls: ['./clothes-product.component.css']
 })
-export class ClothesProductComponent implements OnInit {
+export class ClothesProductComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild('focus', {static: false}) input: ElementRef;
   @Output() searchData = new EventEmitter();
   listOfClothesItem: any;
@@ -39,13 +40,15 @@ export class ClothesProductComponent implements OnInit {
   colorHeartRed: boolean = false;
   colorHeartBlack: boolean = true;
   menuButtonItems: any[] =[];
+  thumbnail: any;
 
   // MatPaginator Output
   pageEvent: PageEvent;
   show: {[key: number]: boolean} = {};
 
-  constructor(private applicationService: ApplicationServiceService,  private spinner: NgxSpinnerService,
-    private clothesService: ClothService, private cartService: CartService, public router: Router) {
+  constructor(public applicationService: ApplicationService,  private spinner: NgxSpinnerService,
+    public clothesService: ClothService, private cartService: CartService, public router: Router,
+    private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) {
 
       if(localStorage.getItem('loginUser')){
         this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
@@ -57,14 +60,15 @@ export class ClothesProductComponent implements OnInit {
         { bgColor: 'blue',    iconsName: 'FaceBook', icon: 'fa fa-facebook', marginLeft: '30px' },
         { bgColor: 'skyBlue', iconsName: 'Telegram', icon: 'fa fa-telegram', marginLeft: '20px'  },
       ]
-
     }
-
 
   ngAfterViewInit(): void {
 
-    this.dataSource.paginator = this.paginator;
-    this.pageLength = this.dataSource.filteredData.length;
+    if(this.dataSource !== undefined){
+      this.dataSource.paginator = this.paginator;
+      this.pageLength = this.dataSource.filteredData.length;
+      this.cdr.detectChanges();
+    }
   }
 
   ngOnInit(): void {
@@ -73,13 +77,18 @@ export class ClothesProductComponent implements OnInit {
       this.showFlagSpinner = false;
     }, 3000)
 
+    this.applicationService.getClothesData().subscribe((data: any) =>{
+    // let objectURL = 'data:image/jpeg;base64,' + data.Image;
+    // this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+
+    this.listOfClothesItem = data;
     this.showFlagSpinner = true;
-    this.listOfClothesItem = this.clothesService.getListOfCloth();
     this.dataSource = new MatTableDataSource<any>(this.listOfClothesItem);
     this.totalLength = this.listOfClothesItem.length;
     this.listOfClothesItem.forEach((element:any) => {
-       Object.assign(element, {quantity:1, total:element.price})
+      Object.assign(element, {quantity:1, total:element.price})
     });
+  });
     // this.showFlagSpinner = false;
   }
 
@@ -87,7 +96,6 @@ export class ClothesProductComponent implements OnInit {
   favoriteItem(item: any, index: any){
 
     console.log(item,index);
-
     this.cartService.favoriteItem(item, index);
 
     // if(index === 4){
@@ -102,8 +110,11 @@ export class ClothesProductComponent implements OnInit {
 
 
   itemClothDetails(item: any, index: any){
-    localStorage.setItem('SELECTED_DATA', JSON.stringify(item));
-    this.router.navigate(['clothesDetails'])
+    this.applicationService.getItemClothesData(index).subscribe((data:any) =>{
+      let obj = Object.assign({}, ...data);
+      localStorage.setItem('SELECTED_DATA', JSON.stringify(obj));
+      this.router.navigate(['clothesDetails'])
+    });
   }
 
   addToCart(item: any)

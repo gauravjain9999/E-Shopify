@@ -1,7 +1,6 @@
-
+import { ApplicationService } from './../../core/Service/applicationService.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
-import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
 import { CartLayoutService } from 'src/app/core/Service/cart-layout.service';
 
 @Component({
@@ -44,7 +43,7 @@ export class MainPageComponent implements OnInit {
 
   ]
 
-  constructor(private cardLayout: CartLayoutService, private applicationService: ApplicationServiceService) {
+  constructor(private cardLayout: CartLayoutService, private applicationService: ApplicationService) {
     this.iconsList = this.cardLayout.getIcons();
     if(localStorage.getItem('loginUser')){
       this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);

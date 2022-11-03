@@ -1,10 +1,10 @@
+import { ApplicationService } from './../../core/Service/applicationService.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, TemplateRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
 import { CartService } from 'src/app/core/Service/cart.service';
 import { ConfirmDialogComponent } from 'src/app/Dialog-Box/confirm-dialog/confirm-dialog.component';
 import { DialogDataComponent } from 'src/app/Dialog-Box/dialog-data/dialog-data.component';
@@ -36,7 +36,7 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   showFlagSpinner: boolean = true;
   displayedColumns: any = ['title', 'productImage', 'description', 'price', 'quantity', 'total', 'remove'];
 
-  constructor(private applicationService: ApplicationServiceService, private cd: ChangeDetectorRef,
+  constructor(private applicationService: ApplicationService, private cd: ChangeDetectorRef,
     private dialog: MatDialog, private cartService: CartService, private router: Router) {
 
       // setTimeout(() =>{
@@ -99,6 +99,9 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   {
     console.log(item);
     this.updateCount = this.updateCount - 1;
+    this.applicationService.getCartItemDeleted(index).subscribe(data =>{
+      console.log(data);
+    })
     this.cartService.removeCartItem(item, index);
   }
 

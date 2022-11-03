@@ -1,11 +1,46 @@
+import { Observable } from 'rxjs';
 import { EventEmitter, Injectable } from '@angular/core';
+import { DomSanitizer } from "@angular/platform-browser";
+import { Subscriber } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClothService {
 
-  constructor() { }
+  fileReader =  new FileReader();
+
+  constructor( private sanitizer : DomSanitizer) {}
+
+
+  getImageBase64(fileData: any){
+
+  const observable = new Observable((subscriber: Subscriber<any>) =>{
+
+    this.readFile(fileData, subscriber);
+
+    observable.subscribe((d) =>{
+      console.log(d);
+    })
+  });
+  }
+
+  readFile(file: any,  subscriber: Subscriber<any>){
+
+    const fileReader = new FileReader();
+     fileReader.readAsDataURL(file);
+
+     fileReader.onload = () =>{
+      subscriber.next(fileReader.result);
+      subscriber.complete();
+    };
+
+     fileReader.onerror = (error) =>{
+      subscriber.error(error);
+      subscriber.complete();
+    }
+  }
+
 
   getListOfCloth()
   {

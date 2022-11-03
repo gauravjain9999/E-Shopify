@@ -1,3 +1,4 @@
+import { ApplicationService } from './../../core/Service/applicationService.service';
 import { Router } from '@angular/router';
 import { DialogNotifyComponent } from '../../Dialog-Box/dialog-notify/dialog-notify.component';
 import { DialogDataComponent } from '../../Dialog-Box/dialog-data/dialog-data.component';
@@ -6,7 +7,6 @@ import { CartService } from '../../core/Service/cart.service';
 import { Component, Input, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { NotificationService } from '../../core/Service/notification.service';
 import { MatSidenav } from '@angular/material/sidenav';
-import { ApplicationServiceService } from 'src/app/core/Service/application-service.service';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/Service/lang.service';
 
@@ -40,7 +40,7 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 
   constructor(
   public translate: TranslateService, private router: Router,public langService: LanguageService,
-  private dialog: MatDialog, private applicationService: ApplicationServiceService,
+  private dialog: MatDialog, private applicationService: ApplicationService,
   private cartService: CartService, private notificationService: NotificationService) {
 
    this.isCartItemPresent();

@@ -4,7 +4,6 @@ import { Component, Inject, OnChanges, OnInit, SimpleChanges } from '@angular/co
 import { UntypedFormControl, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
-import { PaymentCheckoutComponent } from 'src/app/Dialog-Box/payment-checkout/payment-checkout.component';
 import { NotificationService } from 'src/app/core/Service/notification.service';
 
 export class DialogData{

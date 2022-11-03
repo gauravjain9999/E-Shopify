@@ -1,4 +1,4 @@
-import { ApplicationServiceService } from '../../core/Service/application-service.service';
+import { ApplicationService } from './../../core/Service/applicationService.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
@@ -18,7 +18,8 @@ export class DialogNotifyComponent implements OnInit {
   requestData: any;
   successData: any;
 
-  constructor( private notificationService: NotificationService,  private spinner:NgxSpinnerService,  private applicationService: ApplicationServiceService,  private dialogRef: MatDialogRef<DialogNotifyComponent>)
+  constructor( private notificationService: NotificationService,  private spinner:NgxSpinnerService,
+    private applicationService: ApplicationService,  private dialogRef: MatDialogRef<DialogNotifyComponent>)
   {}
 
   ngOnInit(): void {
