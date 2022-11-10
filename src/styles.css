@@ -2,6 +2,7 @@
 @import './app/styleGlobalOverride/_margin.scss';
 @import './app/styleGlobalOverride/_allComponents.scss';
 @import './app/styleGlobalOverride/_colors.scss';
+@import './app/styleGlobalOverride/_fontSize.scss';
 
 html, body {
   height: 100%;

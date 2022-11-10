@@ -1,3 +1,4 @@
+import { ApplicationService } from './../../core/Service/applicationService.service';
 import { CustomErrorStateMatcherService } from '../../core/Service/custom-error-state-matcher.service';
 import { Router } from '@angular/router';
 import { Component, Inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
@@ -45,11 +46,13 @@ export class DialogDataComponent implements OnInit{
   customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public dialogRef: MatDialogRef<DialogDataComponent>,
-  private router:Router, private paymentDialog: MatDialog,  public notificationService: NotificationService) {}
+  private router:Router, private paymentDialog: MatDialog,  public notificationService: NotificationService,
+  private applicationService: ApplicationService) {}
 
   ngOnInit(): void {
     //comment date
     this.currentDate = moment().format('YYYY-MM-DD');
+    console.log(this.data);
   }
 
   // dateFilter(date:any)
@@ -64,14 +67,13 @@ export class DialogDataComponent implements OnInit{
     email:       new UntypedFormControl(null,  [Validators.required, Validators.email]),
     location:    new UntypedFormControl('' ,   [Validators.required]),
     date:        new UntypedFormControl(null,  Validators.required),
-    payment:     new UntypedFormControl(null,  [Validators.required]),
+    // payment:     new UntypedFormControl(null,  [Validators.required]),
     state:       new UntypedFormControl(null,  Validators.required),
     city:        new UntypedFormControl(null,  Validators.required),
     phoneNumber: new UntypedFormControl(null,  [Validators.required,
     Validators.maxLength(10), Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'), Validators.minLength(10)]),
     address:     new UntypedFormControl(null,  [Validators.required]),
   });
-
 
   onSelectedPayment(payment: any){
     this.defaultValuePayment = payment;
@@ -119,8 +121,10 @@ export class DialogDataComponent implements OnInit{
     {
       this.flag = true;
       this.dialogRef.close();
-      sessionStorage.setItem('ORDER_DETAILS', JSON.stringify(this.profileForm.value));
-      this.router.navigate(['payment']);
+      this.applicationService.postDetailsCartItem(this.profileForm.value).subscribe(data =>{
+        sessionStorage.setItem('ORDER_DETAILS', JSON.stringify(data));
+        this.router.navigate(['payment']);
+      })
       // this.paymentDialog.open(PaymentCheckoutComponent, {
       //   height: '800px',
       //   width: '800px'

@@ -1,5 +1,4 @@
 <!-- <app-main-header></app-main-header> -->
-<!-- <mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner> -->
 
 <div class="stripe-checkout header-bg">
   <span class="stripe-text">
@@ -8,6 +7,7 @@
   </span>
 </div>
 
+<mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner>
 
  <div class="row" *ngIf="!showFlagSpinner">
     <div class="column1">
@@ -95,7 +95,7 @@
                 <br><br>
                 <div style="margin-top: 15px">
                 <button  mat-button style="height: 48px; text-transform: uppercase; background-color: #fb641b; color: white"
-                  (click)="checkout(totalSum)">Payment of {{totalSum | currency : 'Rs '}}
+                  (click)="checkout(totalSum)">Payment of {{ (discountItem) ? (totalSumWithDiscount | currency : 'Rs ') :  (totalSumWithoutDiscount | currency : 'Rs ')}}
                 </button>
                 </div>
               </div>
@@ -117,7 +117,7 @@
   <mat-grid-list cols="2" style="margin-top: 20px;" gutterSize="10px" rowHeight="50px">
     <mat-grid-tile fxLayout="row" fxLayoutAlign="start" fxFlex="1125%">Price ({{totalLength}})</mat-grid-tile>
     <mat-grid-tile>
-      {{totalSum | currency : 'Rs'}}
+      {{totalSum | currency : 'Rs '}}
     </mat-grid-tile>
   </mat-grid-list>
 
@@ -125,7 +125,7 @@
     <mat-grid-tile>
       Discount
     </mat-grid-tile>
-    <mat-grid-tile style="color: green;">-{{'No Discount'}}
+    <mat-grid-tile  style="color: green;">- &nbsp;{{discountItem ? (discountItem):'No Discount'}}
     </mat-grid-tile>
   </mat-grid-list>
 
@@ -145,7 +145,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-      <b>{{totalSum | currency : 'Rs  '}}</b>
+      <b >{{ (discountItem) ? (totalSumWithDiscount | currency : 'Rs  ') : (totalSumWithoutDiscount | currency : 'Rs  ')}}</b>
     </mat-grid-tile>
   </mat-grid-list>
 

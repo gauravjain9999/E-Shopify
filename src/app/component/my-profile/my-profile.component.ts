@@ -3,30 +3,30 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
-  styleUrls: ['./my-profile.component.css']
+  styleUrls: ['./my-profile.component.css'],
 })
 export class MyProfileComponent implements OnInit {
-
-  firstName:string;
-  user:any;
-  fullName:any;
+  firstName: string;
+  user: any;
+  fullName: any;
   lastName: string;
-  editingName=false;
-  flagName: boolean;
-  editingEmail=false;
-  editingNumber=false;
-  flagEmail: boolean;
-  flagNumber: boolean;
+  editingName: boolean = true;
+  editingNumber: boolean = true;
+  editingEmail: boolean = true;
+  flagName: boolean = false;
+  flagEmail: boolean = false;
+  flagNumber: boolean = false;
   email: string;
   module: {};
   showFlagSpinner: boolean = true;
   phoneNumber: number;
   faqList: any = [];
+  reqField: boolean = false;
+  reqEmail: boolean = false;
+  reqNumber: boolean = false;
 
   constructor() {
-
     this.faqList = [
-
       `1) What happens when I update my email address (or mobile number)?
       Your login email id (or mobile number) changes, likewise. You'll receive
       all your account related communication on your updated email address (or mobile number).`,
@@ -39,21 +39,20 @@ export class MyProfileComponent implements OnInit {
       continue seeing your Order history, saved information and personal details.`,
 
       `4) Does my Seller account get affected when I update my email address?
-      Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller account also.`
+      Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller account also.`,
+    ];
 
-    ]
-
-  //   this.module = {
-  //     'emoji-shortname': true,
-  //     'emoji-textarea': true,
-  //     'emoji-toolbar': true,
-  //     toolbar: [
-  //       ['bold', 'italic', 'underline'], // toggled buttons
-  //       [{ header: 1 }, { header: 2 }], // custom button values
-  //       [{ list: 'ordered' }, { list: 'bullet' }],
-  //       [{ header: [1, 2, 3, 4, 5, 6] }],
-  //     ],
-  //   };
+    //   this.module = {
+    //     'emoji-shortname': true,
+    //     'emoji-textarea': true,
+    //     'emoji-toolbar': true,
+    //     toolbar: [
+    //       ['bold', 'italic', 'underline'], // toggled buttons
+    //       [{ header: 1 }, { header: 2 }], // custom button values
+    //       [{ list: 'ordered' }, { list: 'bullet' }],
+    //       [{ header: [1, 2, 3, 4, 5, 6] }],
+    //     ],
+    //   };
   }
 
   // addBindingCreated(editor: any) {
@@ -71,38 +70,73 @@ export class MyProfileComponent implements OnInit {
   // })
   // }
 
-
-
   ngOnInit(): void {
-
-    setTimeout(() =>{
+    setTimeout(() => {
       this.showFlagSpinner = false;
-    }, 3000)
-
+    }, 3000);
     this.showFlagSpinner = true;
 
-    if(localStorage.getItem('loginUser')){
-      this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
+    if (localStorage.getItem('loginUser')) {
+      this.user = JSON.parse(localStorage.getItem('loginUser') as string);
       this.fullName = this.user[0].name.split(' ');
+      this.firstName = this.fullName[0];
+      this.lastName = this.fullName[1];
+      this.email = this.user[0].email;
+      this.phoneNumber = this.user[0].phoneNumber;
     }
-
   }
 
-  nameChange()
-  {
-    this.editingName = !this.editingName;
-    this.flagName = !this.flagName;
-  }
-  emailChange()
-  {
-    this.editingEmail = !this.editingEmail;
-    this.flagEmail = !this.flagEmail;
-  }
-
-  numberChange()
-  {
-    this.editingNumber = !this.editingNumber;
-    this.flagNumber = !this.flagNumber
+  getFormData(event: any, value: any) {
+    if (value === 'firstName' || value === 'lastName') {
+      this.reqField =(event==='') ? true : false;
+    }
+    else if (value === 'email') {
+      this.reqEmail =(event === '') ? true : false;
+    }
+    else if (value === 'phoneNumber') {
+      this.reqNumber =(event === null || event === '') ? true : false;
+    }
   }
 
+  editData(value: any) {
+
+  switch(value){
+
+    case 'name':
+
+      if (this.firstName && this.lastName) {
+        this.editingName = false;
+        this.flagName = true;
+      }
+      else {
+        this.editingName = true;
+        this.flagName = false;
+      }
+       break;
+
+    case 'email':
+      if(this.email){
+        this.editingEmail = false;
+        this.flagEmail = true;
+      }
+      else{
+        this.editingEmail = true;
+        this.flagEmail = false;
+      }
+       break;
+
+    case 'phoneNumber':
+      if(this.phoneNumber){
+        this.editingNumber = false;
+        this.flagNumber = true;
+      }
+      else{
+        this.editingNumber = true;
+        this.flagNumber = false;
+      }
+       break;
+
+    default: break;
+    }
+  }
 }

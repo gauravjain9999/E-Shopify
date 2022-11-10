@@ -10,36 +10,37 @@ export class ClothService {
 
   fileReader =  new FileReader();
 
-  constructor( private sanitizer : DomSanitizer) {}
+  constructor() {}
 
 
-  getImageBase64(fileData: any){
+  // Convert Image to Base64 from File
+  // getImageBase64(fileData: any){
 
-  const observable = new Observable((subscriber: Subscriber<any>) =>{
+  // const observable = new Observable((subscriber: Subscriber<any>) =>{
 
-    this.readFile(fileData, subscriber);
+  //   this.readFile(fileData, subscriber);
 
-    observable.subscribe((d) =>{
-      console.log(d);
-    })
-  });
-  }
+  //   observable.subscribe((d) =>{
+  //     console.log(d);
+  //   })
+  // });
+  // }
 
-  readFile(file: any,  subscriber: Subscriber<any>){
+  // readFile(file: any,  subscriber: Subscriber<any>){
 
-    const fileReader = new FileReader();
-     fileReader.readAsDataURL(file);
+  //   const fileReader = new FileReader();
+  //    fileReader.readAsDataURL(file);
 
-     fileReader.onload = () =>{
-      subscriber.next(fileReader.result);
-      subscriber.complete();
-    };
+  //    fileReader.onload = () =>{
+  //     subscriber.next(fileReader.result);
+  //     subscriber.complete();
+  //   };
 
-     fileReader.onerror = (error) =>{
-      subscriber.error(error);
-      subscriber.complete();
-    }
-  }
+  //    fileReader.onerror = (error) =>{
+  //     subscriber.error(error);
+  //     subscriber.complete();
+  //   }
+  // }
 
 
   getListOfCloth()

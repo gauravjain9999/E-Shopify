@@ -5,54 +5,77 @@
     <h1>Personal Information</h1>
     <mat-divider></mat-divider>
 
-    <div class="text-input" style="margin-top: 15px;">
-      <input style=" margin: 0px; width: 250px; height: 40px;"  [readonly]="flagName" autocomplete="true" [(ngModel)]="firstName" #input placeholder="First Name" type="text">&nbsp;&nbsp;&nbsp;
-      <input style="width: 150px; height: 40px;" placeholder="Last Name" [readonly]="flagName" [(ngModel)]="lastName" type="text">&nbsp;&nbsp;&nbsp;
-      <button mat-stroked-button color="primary" (click)="nameChange()">{{editingName === true ? "Save": "Edit"}}</button>
-    </div>
-    <div style="margin-top: 25px;">
-      <h1> Your Gender</h1>
-      <mat-divider></mat-divider>
-      <div style="margin-top: 15px;">
-        <span class="checkBoxedMale"><input type="radio" >Male</span> &nbsp; &nbsp; &nbsp;
-        <span class="checkBoxedMale"><input type="radio" >Female</span>
+    <div class="text-input mt-15">
+      <input style=" margin: 0px; width: 250px; height: 40px;" autofocus (ngModelChange)="getFormData($event, 'firstName')"
+      [readonly]="flagName" autocomplete="true" [(ngModel)]="firstName" #input placeholder="First Name" type="text">
+      <input class="ml-15" style="width: 150px; height: 40px;" autofocus placeholder="Last Name" (ngModelChange)="getFormData($event, 'lastName')"
+      [readonly]="flagName" [(ngModel)]="lastName" type="text">
+      <button class="ml-15" mat-stroked-button color="primary" (click)="editData('name')">{{editingName ? "Edit": "Save"}}</button>
+
+      <div class="red-clr" *ngIf="reqField">
+        <mat-icon matPrefix>error</mat-icon>
+        <div class="top-26 ml-26 position-Abs">{{'Please provide your Name complete'}}</div>
       </div>
     </div>
 
-    <div class="text-input" style="margin-top: 30px;">
+    <div class="mt-25">
+      <h1>Your Gender</h1>
+      <mat-divider></mat-divider>
+      <div class="mt-15">
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1">Male</mat-radio-button> &nbsp; &nbsp;
+          <mat-radio-button value="2">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="text-input mt-30">
       <h1>Email Address</h1>
       <mat-divider></mat-divider>
-      <div style="margin-top: 15px;">
-        <input style="width: 250px; height: 40px;" [(ngModel)]="email"  [readOnly]="flagEmail" placeholder="Your Email Address" type="text" email>&nbsp;&nbsp;&nbsp;
-        <button mat-stroked-button color="primary"  (click)="emailChange()">{{editingEmail === true ? "Save": "Edit"}}</button> &nbsp; &nbsp; &nbsp;
-        <button mat-stroked-button color="primary">Change Password</button>
+      <div class="mt-15">
+        <input style="width: 250px; height: 40px;" autofocus (ngModelChange)="getFormData($event, 'email')" [(ngModel)]="email"
+          [readOnly]="flagEmail" placeholder="Your Email Address" type="text" email>
+         <button class="ml-15" mat-stroked-button color="primary"  (click)="editData('email')">{{editingEmail ? "Edit": "Save"}}</button>
+         <button class="ml-15" mat-stroked-button color="primary">Change Password</button>
+
+        <div class="red-clr" *ngIf="reqEmail">
+          <mat-icon matPrefix>error</mat-icon>
+          <div class="top-26 ml-26 position-Abs">{{'Please provide your Email'}}</div>
+        </div>
       </div>
     </div>
 
-    <div class="text-input" style="margin-top: 30px;">
+    <div class="text-input mt-30">
       <h1>Mobile Number</h1>
       <mat-divider></mat-divider>
-      <div style="margin-top: 15px;">
-        <input style="width: 250px; height: 40px;"  [(ngModel)]="phoneNumber" [readOnly]="flagNumber" placeholder="Your Mobile Number" type="number">&nbsp;&nbsp;&nbsp;
-        <button mat-stroked-button color="primary"   (click)="numberChange()">{{editingNumber === true ? "Save": "Edit"}}</button>
+      <div class="mt-15">
+        <input style="width: 250px; height: 40px;" (ngModelChange)="getFormData($event, 'phoneNumber')" [(ngModel)]="phoneNumber"
+          [readOnly]="flagNumber" minlength="10" maxlength="10"  placeholder="123-4567-8901" type="tel">
+        <button class="ml-15" mat-stroked-button color="primary"  (click)="editData('phoneNumber')">{{editingNumber ? "Edit": "Save"}}</button>
+
+        <div class="red-clr" *ngIf="reqNumber">
+          <mat-icon matPrefix>error</mat-icon>
+          <div class="top-26 ml-26 position-Abs">{{'Please provide your Number'}}</div>
+        </div>
       </div>
     </div>
 
-  <div style="margin-top: 40px;">
-      <h1 style="font-size: x-large; font-weight: 500;">FAQs</h1>
-    <div style="margin-top: 20px; font-weight: 400; word-wrap: break-word;">
-      <span *ngFor="let item of faqList">
-       {{item}}<br><br>
-      </span>
+    <div class="mt-40">
+      <h1  class="font-xLarge font-500">FAQs</h1>
+      <div class="mt-20 font-400 word-wrap">
+        <span *ngFor="let item of faqList">
+         {{item}}<br><br>
+        </span>
+      </div>
     </div>
-  </div>
 
-   <div style="margin-top: 15px;">
-    <h1 style="font-weight: 500;">Comment</h1>
-    <textarea matInput rows="20" cols="90" cdkTextareaAutosize  cdkAutosizeMinRows="5"  cdkAutosizeMaxRows="10"
-      placeholder="Type Your Comment..."></textarea>
-      <!-- <quill-editor  style="font-family:Roboto;" data-font-fetch="Roboto" placeholder="Insert Your Text Here..."
-      aria-placeholder="Insert Your Text..."  (onEditorCreated)="addBindingCreated($event)" [modules]="module" trackChanges="all" [style]="{height: '80px'}"></quill-editor> -->
+    <div class="mt-15">
+      <h1 class="font-500">Comment</h1>
+      <!-- cdkAutosizeMinRows="10" -->
+      <textarea matInput rows="100" cols="90" cdkTextareaAutosize cdkAutosizeMaxRows="8"
+       placeholder="Type Your Comment..."></textarea>
+       <!-- <quill-editor  style="font-family:Roboto;" data-font-fetch="Roboto" placeholder="Insert Your Text Here..."
+       aria-placeholder="Insert Your Text..."  (onEditorCreated)="addBindingCreated($event)" [modules]="module" trackChanges="all" [style]="{height: '80px'}"></quill-editor> -->
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { UrlEndPoint } from './../../constant/urlEndPoint';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Environment } from "src/environments/environment.prod";
@@ -23,20 +23,24 @@ export class ApplicationService {
     return this.http.post(Environment.notify, requestData);
   }
 
-  getClothesData(){
+  getClothesData():Observable<any> {
     return this.http.get(Environment.mockUrl + UrlEndPoint.clothes);
   }
 
   getItemClothesData(id: any){
-    return this.http.get(Environment.mockUrl + UrlEndPoint.clothes + `?id=${id}`)
+    return this.http.get(Environment.mockUrl + UrlEndPoint.clothes);
   }
 
-  getCartItemAdded(id: any){
-    return this.http.get(Environment.mockUrl + UrlEndPoint.addToCart + `?id=${id}`);
-  }
+  // getCartItemAdded(data: any){
+  //   return this.http.post(Environment.mockUrl + UrlEndPoint.addToCart, data);
+  // }
 
   getCartItemDeleted(id: any){
-    return this.http.delete(Environment.mockUrl + UrlEndPoint.clothes + `?id=${id}`)
+    return this.http.delete(Environment.mockUrl + UrlEndPoint.clothes + `?id=${id}`);
+  }
+
+  postDetailsCartItem(data: any){
+    return this.http.post(Environment.mockUrl + UrlEndPoint.userItemDetails, data);
   }
 
 

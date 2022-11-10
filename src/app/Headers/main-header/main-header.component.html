@@ -4,7 +4,7 @@
      <mat-icon>menu</mat-icon>
     <mat-sidenav-container  (backdropClick)="close('backdrop')" class="example-sidenav-container">
       <mat-sidenav mode="push" #drawer disableClose class="mat-sidenav-overlay">
-        <app-my-account></app-my-account>
+        <app-my-account [firstName]="firstName"></app-my-account>
       </mat-sidenav>
     </mat-sidenav-container>
   </button>
@@ -31,7 +31,8 @@
       <mat-icon style="height: 20px; width: 20px;">shopping_cart</mat-icon>
     </button>
 
-    <span style="font-size:18px; margin-top: 5px;" fxLayoutAlign="center" class=" cart pointer" matTooltip="Cart" (click)="showNotify()" routerLinkActive="active"
+    <span style="font-size:18px; margin-top: 5px;" fxLayoutAlign="center" class=" cart pointer" matTooltip="Cart"
+    (click)="showNotify()" routerLinkActive="active"
       routerLink="/addToCart">{{'CART' | translate}}
     </span> &nbsp;
     <span class="badge bg-danger mb-20 pointer" style="font-size: 12px" *ngIf="(totalItem > 0)" matBadgeColor="accent">{{totalItem}}</span>

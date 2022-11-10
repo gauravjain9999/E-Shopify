@@ -1,8 +1,9 @@
+import { forEach } from 'lodash';
 import { ApplicationService } from './../../core/Service/applicationService.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Component, OnInit, ViewChild, ElementRef, TemplateRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild,AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { CartService } from 'src/app/core/Service/cart.service';
@@ -30,11 +31,16 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   found: any;
   user:any;
   fullName:any;
+  quantityItems: number = 1;
   updateCount:number;
+
+  obj: never;
   matFlag: boolean = false;
   dataSource : MatTableDataSource<any>;
   showFlagSpinner: boolean = true;
   displayedColumns: any = ['title', 'productImage', 'description', 'price', 'quantity', 'total', 'remove'];
+
+  originalPrice: number = 0;
 
   constructor(private applicationService: ApplicationService, private cd: ChangeDetectorRef,
     private dialog: MatDialog, private cartService: CartService, private router: Router) {
@@ -44,17 +50,27 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
       // },3000);
       // this.cartItemPresent()
       this.showFlagSpinner = true;
-      this.cartService.getProduct().subscribe(res=>{
-      this.products = res;
+      this.getItemClothes();
+  }
+
+  getItemClothes(){
+
+    if(localStorage.getItem('cartItem')){
+      let data = JSON.parse(localStorage.getItem("cartItem") as any);
+      this.products = data;
+      console.log(this.products);
       this.updateCount = this.products.length;
+      localStorage.setItem('NOTIFY_COUNT', JSON.stringify(this.updateCount));
       this.dataSource = new MatTableDataSource<any>(this.products);
       sessionStorage.setItem('DATA_SOURCE',  JSON.stringify(this.products));
       this.totalSum = this.cartService.getTotalPrice();
       if(this.products.length === 0){
         sessionStorage.clear();
       }
-    })
+   }
+
   }
+
 
   cartItemPresent(){
     if(localStorage.getItem('ITEM_ADDED')){
@@ -79,6 +95,64 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
     }
   }
 
+  getMyItemDetails(id: any){
+    this.cartService.getProduct().subscribe((data:any) =>{
+      console.log(data);
+      data.forEach((element:any) => {
+        if(element.id === id){
+          this.originalPrice = element.price;
+        }
+      });
+    });
+  }
+
+  onAdd(item: any, index: any){
+
+  this.getMyItemDetails(index);
+  const objectData: any[]=[];
+  let loggedInUser = JSON.parse(localStorage.getItem('cartItem') as string);
+  loggedInUser.forEach((element:any) => {
+    if(element.id === index){
+      let tmpObject = element;
+      if(tmpObject.price > 0){
+        tmpObject.quantity = tmpObject.quantity + 1;
+        tmpObject.price += this.originalPrice;
+        tmpObject.total += this.originalPrice;
+        objectData.push(tmpObject);
+      }
+    }
+    else{
+      objectData.push(element);
+    }
+  });
+  localStorage.setItem('cartItem', JSON.stringify(objectData));
+  this.getItemClothes();
+}
+
+onSubtract(item: any, index: any){
+
+  this.getMyItemDetails(index);
+  const objectData: any[] = [];
+  let loggedInUser = JSON.parse(localStorage.getItem('cartItem') as string);
+  loggedInUser.forEach((element:any) => {
+    if(element.id === index){
+      let tmpObject = element;
+      if(tmpObject.quantity >= 2){
+        tmpObject.quantity = tmpObject.quantity - 1;
+        tmpObject.price -= this.originalPrice;
+        tmpObject.total -= this.originalPrice;
+      }
+      objectData.push(tmpObject);
+    }
+    else{
+      objectData.push(element);
+    }
+  });
+  localStorage.setItem('cartItem', JSON.stringify(objectData));
+  this.getItemClothes();
+ }
+
+
   sortChange(event: any){
     this.dataSource.sort = this.sort;
     this.sortColumn = event.active;
@@ -95,18 +169,23 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   }
 
 
-  removeItem(item: any, index: any)
-  {
-    console.log(item);
+  removeItem(item: any, index: any){
+
     this.updateCount = this.updateCount - 1;
-    this.applicationService.getCartItemDeleted(index).subscribe(data =>{
-      console.log(data);
-    })
-    this.cartService.removeCartItem(item, index);
+    const data  =  JSON.parse(localStorage.getItem('cartItem')as string);
+    console.log((data), item.id);
+    const filtered = data.filter((itemId:any) => itemId.id !== item.id);
+    // console.log(filtered);
+    localStorage.setItem('cartItem', JSON.stringify(filtered));
+    localStorage.setItem('NOTIFY_COUNT', JSON.stringify(this.updateCount));
+    this.getItemClothes();
+    // this.applicationService.getCartItemDeleted(index).subscribe(data =>{
+    // });
+      // console.log(data);
+    // this.cartService.removeCartItem(item, index);
   }
 
-  onMainPage()
-  {
+  onMainPage(){
    this.router.navigate(['mainPage'])
   }
 
@@ -115,7 +194,7 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
      this.dialog.open(ConfirmDialogComponent, {
       data :{
         isChecked: 'true',
-        isUnChecked: 'false'
+        isUnChecked: 'false',
       },
       height: '220px',
       width: '480px',
@@ -123,17 +202,26 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
 
     this.applicationService.checked.subscribe(event =>{
       this.isChecked = event;
+      const totalItemPrice = JSON.parse(localStorage.getItem('cartItem') as string);
+      let price = 0;
+      totalItemPrice.forEach((element:any) => {
+        price += element.price;
+      });
+      console.log(price);
       if(this.isChecked)
       {
         // sessionStorage.setItem('CONFIRM', JSON.stringify(confirmDialog));
         this.dialog.open(DialogDataComponent, {
+
+          data: {
+            itemPrice: price
+          },
           height: '600px',
           width: '600px',
         });
       }
       else
       {sessionStorage.removeItem('CONFIRM');}
-    })
-
+    });
   }
 }

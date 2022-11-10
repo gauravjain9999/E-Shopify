@@ -63,7 +63,6 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
     this.updateOrderCount = this.products.length;
     this.totalSum = this.cartService.getTotalPrice();
     this.dataSource =  new MatTableDataSource<any>(this.products);
-    console.log(this.dataSource.filteredData);
     this.cdr.detectChanges();
   });
 
@@ -79,10 +78,11 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    console.log(this.dataSource.sort);
-    this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource.paginator);
+    if(this.dataSource.paginator !== undefined){
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.cdr.detectChanges();
+    }
   }
 
   sortChange(event: any){
@@ -103,7 +103,8 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
     this.defaultFlag = false;
     this.myWhishList = false;
     if(this.products.length ==0){
-      this.notificationService.showNotification('No Data Found', 'Close');
+      this.router.navigate(['mainPage']);
+      this.notificationService.showNotification('Redirected To Main Dashboard', 'Close');
     }
   }
 
