@@ -17,6 +17,31 @@ export class CartService {
     return this.productList.asObservable();
   }
 
+  getCheckoutCartItem(itemData: any): Array<any>{
+
+    const checkOutCartItem: any[] = [];
+    let totalPrice: any = 0;
+    let totalDiscount: any = 0;
+    let totalLength: any = 0;
+
+    if(itemData === null){
+      totalDiscount = 0;
+      totalLength = 0;
+      totalPrice = 0;
+    }
+    else{
+      itemData.forEach((element:any) => {
+      totalPrice += element.price;
+      totalDiscount += element.discount;
+      totalLength = itemData.length;
+     });
+    }
+
+    checkOutCartItem.push({'totalPrice': totalPrice, 'totalDiscount': totalDiscount, 'totalLength': totalLength});
+    return checkOutCartItem;
+  }
+
+
   setProduct(product: any) {
     this.cartItemList.push(...product);
     this.productList.next(product);
@@ -38,9 +63,7 @@ export class CartService {
   }
 
   favoriteItem(product: any, index: any) {
-    console.log('====================================');
     console.log(product, index);
-    console.log('====================================');
   }
 
   removeCartItem(product: any, index: any) {
@@ -49,9 +72,20 @@ export class CartService {
     this.productList.next(this.cartItemList);
   }
 
-  uploadCartItem(product: any) {
+  uploadCartItem(product: any, productId: any) {
+
     this.cartItemList.push(product);
+    // if(this.cartItemList.length === 0){
+    // }
+
+    // if(this.cartItemList.length > 0){
+    //   for(let i=0; i < this.cartItemList.length; i++){
+    //     console.log(this.cartItemList[0]);
+    //   }
+    // }
+    console.log(this.cartItemList);
     localStorage.setItem('ITEM_ADDED', JSON.stringify(this.cartItemList));
+
     this.productList.next(this.cartItemList);
   }
 

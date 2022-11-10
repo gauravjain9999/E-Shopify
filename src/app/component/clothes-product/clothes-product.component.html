@@ -1,4 +1,4 @@
-<app-main-header [userName]="fullName"></app-main-header>
+<app-main-header [userName]="fullName" [notifyUpdate]="updateCount"></app-main-header>
 <mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner>
 
 <div class="content" *ngIf="!showFlagSpinner">

@@ -11,9 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ConfirmDialogComponent implements OnInit {
 
-
   dataCheck: any;
-
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ConfirmDialogComponent>,
   private router:Router, private applicationService: ApplicationService){
 

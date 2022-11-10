@@ -6,3 +6,11 @@ export interface AuthResponse {
   localId: string;
   registered?:boolean
 }
+
+export class ShopifyClothesModel{
+  apiResponseStatus: boolean;
+  status?: number;
+  clothesList?: ClothesData;
+}
+
+export class ClothesData{}

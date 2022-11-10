@@ -4,11 +4,12 @@ import { DialogNotifyComponent } from '../../Dialog-Box/dialog-notify/dialog-not
 import { DialogDataComponent } from '../../Dialog-Box/dialog-data/dialog-data.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CartService } from '../../core/Service/cart.service';
-import { Component, Input, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { NotificationService } from '../../core/Service/notification.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/Service/lang.service';
+import { Output } from "@angular/core";
 
 @Component({
   selector: 'app-main-header',
@@ -19,6 +20,7 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
   @Input() userName: any;
+  @Output() updateNotifyCount = new EventEmitter();
   @Input() notifyUpdate: any;
 
   languages = [
@@ -36,6 +38,7 @@ export class MainHeaderComponent implements OnInit, OnChanges {
   public totalItem: number = 0;
   items: any[] = [];
   supportLanguages = ['en', 'fr'];
+  firstName: any;
   selectedOption =  this.languages.filter(item => item.value === 'en')[0].viewValue;
 
   constructor(
@@ -76,12 +79,14 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 
     if(changes['userName']){
       this.fullName = changes['userName'].currentValue;
-      this.name = this.fullName.shift().charAt(0) +  this.fullName.shift().charAt(0)
+      this.firstName = this.fullName[0];
+      this.name = this.fullName.shift().charAt(0) +  this.fullName.shift().charAt(0);
       this.loginUserName = this.name.toUpperCase();
     }
 
     if(changes['notifyUpdate']){
       this.totalItem = changes['notifyUpdate'].currentValue;
+      this.updateNotifyCount.emit(this.totalItem);
       console.log(this.totalItem);
     }
   }
@@ -135,7 +140,7 @@ export class MainHeaderComponent implements OnInit, OnChanges {
   showNotify()
   {
     console.log(this.totalItem);
-    this.totalItem === 0 ? this.notificationService.showNotification('No Items Added', 'close'): this.notificationService.showNotification('Item Added', 'close');
+    this.totalItem === 0 ? this.notificationService.showNotification('Item Added in cart', 'close'): '';
   }
 
   notification()

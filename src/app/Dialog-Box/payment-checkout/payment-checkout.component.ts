@@ -22,6 +22,9 @@ export class PaymentCheckoutComponent implements OnInit {
   phoneNum: string;
   address: string;
 
+  totalSumWithDiscount: any;
+  totalSumWithoutDiscount: any;
+
   showBtn1: boolean = false;
   showContent1: boolean = false;
 
@@ -34,16 +37,27 @@ export class PaymentCheckoutComponent implements OnInit {
 
   constructor( private router: Router, private cartService: CartService,  public notificationService: NotificationService) {
 
-    this.cartService.getProduct().subscribe(res=>{
-    this.discountItem = res.discount;
-    this.totalLength = res.length;
-    this.totalSum = this.cartService.getTotalPrice();
-  });
+    if(sessionStorage.getItem('DATA_SOURCE') !== '[]'){
+
+      const cartItem = JSON.parse(sessionStorage.getItem('DATA_SOURCE') as any);
+      const checkoutCartItem: any =  this.cartService.getCheckoutCartItem(cartItem);
+      this.discountItem = checkoutCartItem[0].totalDiscount;
+      this.totalLength =  checkoutCartItem[0].totalLength;
+      this.totalSumWithDiscount = checkoutCartItem[0].totalPrice - this.discountItem;
+      this.totalSumWithoutDiscount = checkoutCartItem[0].totalPrice;
+      this.totalSum = (this.discountItem) ? (checkoutCartItem[0].totalPrice) : (checkoutCartItem[0].totalPrice - this.discountItem) ;
+
+      // this.cartService.getProduct().subscribe(res=>{
+      //   console.log(res);
+      //   this.discountItem = res.discount;
+      //   this.totalLength = res.length;
+      //   this.totalSum = this.cartService.getTotalPrice();
+      // });
+    }
 }
 
   ngOnInit(): void {
 
-    this.userDetails();
     this.isCheckDetails();
     setTimeout(() =>{
       this.showFlagSpinner = false;
@@ -54,19 +68,18 @@ export class PaymentCheckoutComponent implements OnInit {
 
   isCheckDetails(){
 
-    console.log('====================================');
-    console.log(this.fullName, this.emailId);
-    console.log('====================================');
-  }
-
-  userDetails(){
-
     if(sessionStorage.getItem('ORDER_DETAILS')){
       let user= JSON.parse(sessionStorage.getItem('ORDER_DETAILS') as string);
       this.emailId = user.email;
       this.fullName = user.name;
       this.address = user.address;
       this.phoneNum = user.phoneNumber;
+    }
+    else{
+      let existingUser = JSON.parse(localStorage.getItem('loginUser') as string);
+      this.emailId = existingUser[0].email;
+      this.fullName = existingUser[0].name;
+      this.phoneNum = existingUser[0].phoneNumber;
     }
   }
 
@@ -106,6 +119,7 @@ export class PaymentCheckoutComponent implements OnInit {
 
   checkout(amount: any) {
 
+    amount = (this.discountItem) ? this.totalSumWithDiscount : amount;
     if(amount > 0){
       const strikeCheckout = (<any>window).StripeCheckout.configure({
       key: 'pk_test_sLUqHXtqXOkwSdPosC8ZikQ800snMatYMb',

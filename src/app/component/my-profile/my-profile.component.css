@@ -1,9 +1,9 @@
 .card{
-  height: 150vh;
+  height: max-content;
   margin: 25px;
   border: 1px solid black;
   padding: 25px;
-  border-radius: 2px;
+  /* border-radius: 2px; */
 }
 
 .checkBoxedMale input[type="radio"]{
@@ -11,6 +11,7 @@
 }
 
 textarea {
-  resize: none;
-  text-decoration: dashed;
+  /* resize: none; */
+  text-decoration: dotted;
+  border: 1px solid black;
 }

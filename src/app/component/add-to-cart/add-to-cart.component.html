@@ -29,13 +29,19 @@
     <!-- Price Column -->
      <ng-container matColumnDef="price">
        <th mat-header-cell mat-sort-header *matHeaderCellDef  class="text-row"> Price </th>
-       <td mat-cell *matCellDef="let item"> {{item.price}} </td>
+       <td mat-cell *matCellDef="let item">{{item.price}}</td>
      </ng-container>
 
       <!-- Quantity -->
       <ng-container matColumnDef="quantity">
         <th mat-header-cell mat-sort-header class="text-row" *matHeaderCellDef [ngClass]="'customWidthClass'">Quantity</th>
-        <td mat-cell *matCellDef="let item" [ngClass]="'customWidthClass'"> {{item.quantity}} </td>
+        <td mat-cell *matCellDef="let item" [ngClass]="'customWidthClass'">
+          <span class="example-button-container" >
+            <button color="accent" (click)="onAdd(item, item.id)" aria-label="Example icon button with a plus icon">+</button>&nbsp;&nbsp;
+            <span>{{item.quantity}}</span>&nbsp;&nbsp;
+            <button color="accent" (click)="onSubtract(item, item.id)"aria-label="Example icon button with a minus icon">-</button>
+          </span>
+        </td>
       </ng-container>
 
 

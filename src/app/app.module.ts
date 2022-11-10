@@ -38,7 +38,6 @@ import { NewLoginComponent } from './component/new-login/new-login.component';
 import { NewRegisterComponent } from './component/new-register/new-register.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
-import { ImageToBase64Pipe } from './core/Pipe/image-to-base64.pipe';
 // import { SocialLoginModule, SocialAuthServiceConfig } from 'angular-social-login';
 
 export const httpTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http);
@@ -75,7 +74,6 @@ export const MY_FORMATS ={
     ConfirmDialogComponent,
     ClothesDetailComponent,
     MyOrderComponent,
-    ImageToBase64Pipe
   ],
   imports: [
     BrowserModule,

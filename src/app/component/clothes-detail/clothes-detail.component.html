@@ -1,4 +1,4 @@
-<app-main-header [userName]="fullName" [notifyUpdate]="updateCount"></app-main-header>
+<app-main-header [userName]="fullName" [notifyUpdate]="updateCount" (updateNotifyCount)="updateNotifyCount($event)"></app-main-header>
 <mat-spinner class="spinner" *ngIf="showFlagSpinner"></mat-spinner>
 <div *ngIf="!showFlagSpinner">
   <mat-grid-list cols="2" gutterSize="10px" rowHeight="840px" style="margin:auto; width:95%; margin-top: 50px">
@@ -16,26 +16,26 @@
        <star-rating-comp></star-rating-comp>
 
         <div class="chips-pos">
-            <mat-chip-list>
-              <mat-chip color="accent"  (click)="details()"  [selected]="allDetails"  selectable> All Detail</mat-chip>
-              <mat-chip color="accent"  (click)="review()"   [selected]="customerReview" selectable> Customer Review</mat-chip>
-              <mat-chip color="accent"  (click)="brand()"    [selected]="aboutBrand"  selectable> About Brand </mat-chip>
-            </mat-chip-list>
-            <div class="margin-top-20"  *ngIf="aboutBrand">
-                <li> <b class="ml-10">Founded In : </b> &nbsp; {{dataItem.Founded}}</li>
-                <li> <b class="ml-10">Founders :</b> &nbsp;{{dataItem.Founders}}</li>
-                <li> <b class="ml-10">No. Of Location :</b> &nbsp;{{dataItem.numberOfLocations}}</li>
-                <li> <b class="ml-10">Area Served :</b> &nbsp; {{dataItem.areaServed}}</li>
-            </div>
-            <div *ngIf="allDetails" class="item-desc mt-3">
-              <b>1. Category:</b> {{dataItem.category}}<br>
-              <b>2. Description: </b> {{dataItem.description}}
-            </div>
-            <div *ngIf="customerReview">
-              <div style="width: 95%; height:300px; margin-top: 10px"[chart]="columnChart"></div>
-            </div>
+          <mat-chip-list>
+            <mat-chip color="accent"  (click)="details()"  [selected]="allDetails"  selectable> All Detail</mat-chip>
+            <mat-chip color="accent"  (click)="review()"   [selected]="customerReview" selectable> Customer Review</mat-chip>
+            <mat-chip color="accent"  (click)="brand()"    [selected]="aboutBrand"  selectable> About Brand </mat-chip>
+          </mat-chip-list>
+          <div class="margin-top-20"  *ngIf="aboutBrand">
+            <li> <b class="ml-10">Founded In : </b> &nbsp; {{dataItem.Founded}}</li>
+            <li> <b class="ml-10">Founders :</b> &nbsp;{{dataItem.Founders}}</li>
+            <li> <b class="ml-10">No. Of Location :</b> &nbsp;{{dataItem.numberOfLocations}}</li>
+            <li> <b class="ml-10">Area Served :</b> &nbsp; {{dataItem.areaServed}}</li>
+          </div>
+          <div *ngIf="allDetails" class="item-desc mt-3">
+            <b>1. Category:</b> {{dataItem.category}}<br>
+            <b>2. Description: </b> {{dataItem.description}}
+          </div>
+          <div *ngIf="customerReview">
+            <div style="width: 95%; height:300px; margin-top: 10px"[chart]="columnChart"></div>
           </div>
         </div>
+    </div>
   </mat-grid-tile>
 
   <mat-grid-tile fxLayout="column" fxLayoutAlign="end end">
@@ -43,74 +43,27 @@
       <mat-card class="mat-elevation-z4 mat-card">
         <img src="{{dataItem.path}}" class="img-src" alt="source_img"><br>
         <mat-card-actions>
-          <mat-chip matRipple color="primary" style="justify-content: center; align-items: center; display: flex;"
+          <mat-chip *ngIf="isItemPresent; else elseBlock" matRipple color="primary" style="justify-content: center; align-items: center; display: flex;"
           (click)="addToCart(dataItem)"selected>
-            <span style="font-size: medium;">
-              Add To Cart
+          <mat-icon matSuffix>shopping_cart</mat-icon>&nbsp;&nbsp;
+            <span style="font-size: 16px;">
+              {{isItemPresent ? 'Add To Cart' : 'Go To Cart'}}
             </span>
-            <!-- <mat-icon matSuffix>shopping_cart</mat-icon> -->
           </mat-chip>
+
+          <ng-template #elseBlock>
+            <mat-chip matRipple style="background-color:orange; color:white; justify-content: center; align-items: center; display: flex;"
+            (click)="goToCart(dataItem)"selected>
+            <mat-icon matSuffix>shopping_cart</mat-icon>&nbsp;&nbsp;
+              <span style="font-size: 16px;">
+                Go To Cart
+              </span>
+            </mat-chip>
+          </ng-template>
+
         </mat-card-actions>
       </mat-card>
     </div>
   </mat-grid-tile>
 </mat-grid-list>
 </div>
-
-<!--
-<div class="row" *ngIf="!showFlagSpinner">
-  <div class="column">
-    <div class="card">
-      <div>
-        <h3 style="color: grey;">{{dataItem.brand}}</h3>
-        <h2 style="font-weight: 700;">{{dataItem.title}}</h2>
-        <h1 style="margin-top: 10px;" >{{dataItem.price  | currency: 'Rs '}}</h1>
-        <p>
-         <span>Rating is {{dataItem.rating}}</span>
-        </p>
-        <span *ngFor="let item of starData">
-          <mat-icon>star</mat-icon>
-        </span>
-        <star-rating-comp></star-rating-comp>
-
-        <div>
-          <div class="chips-pos">
-            <mat-chip-list>
-              <mat-chip color="accent"  (click)="details()"  [selected]="allDetails"  selectable> All Detail</mat-chip>
-              <mat-chip color="accent"  (click)="review()"   [selected]="customerReview"  selectable> Customer Review</mat-chip>
-              <mat-chip color="accent"  (click)="brand()"    [selected]="aboutBrand"  selectable> About Brand </mat-chip>
-            </mat-chip-list>
-            <div class="margin-top-20"  *ngIf="aboutBrand">
-                <li> <b class="ml-10">Founded In : </b> &nbsp; {{dataItem.Founded}}</li>
-                <li> <b class="ml-10">Founders :</b> &nbsp;{{dataItem.Founders}}</li>
-                <li> <b class="ml-10">No. Of Location :</b> &nbsp;{{dataItem.numberOfLocations}}</li>
-                <li> <b class="ml-10">Area Served :</b> &nbsp; {{dataItem.areaServed}}</li>
-            </div>
-            <div *ngIf="allDetails" class="item-desc mt-3">
-              <b>1. Category:</b> {{dataItem.category}}<br>
-              <b>2. Description: </b> {{dataItem.description}}
-            </div>
-          </div>
-          <mat-grid-title>
-            <div class="review-margin" *ngIf="customerReview" [chart]="columnChart"></div>
-        </mat-grid-title>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-    <img src="{{dataItem.path}}" class="img-src" alt="source_img"><br>
-  </div>
-  <br>
-  <div>
-    <mat-chip matRipple color="primary" class="myBtn" (click)="addToCart(dataItem)"selected>
-      <span style="margin-left: 170px; font-size: medium;">
-        Add To Cart
-      </span>
-      <mat-icon style="margin-left: 160px"matSuffix>shopping_cart</mat-icon>
-    </mat-chip>
-  </div>
-  </div>
-</div> -->

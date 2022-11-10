@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CartService } from 'src/app/core/Service/cart.service';
 import { ClothService } from 'src/app/core/Service/cloth.service';
+import { ShopifyClothesModel } from "src/app/ModelDataClass/eShopify.model";
 
 
 @Component({
@@ -41,8 +42,7 @@ export class ClothesProductComponent implements OnInit, AfterViewInit {
   colorHeartBlack: boolean = true;
   menuButtonItems: any[] =[];
   thumbnail: any;
-
-  // MatPaginator Output
+  updateCount: number = 0;
   pageEvent: PageEvent;
   show: {[key: number]: boolean} = {};
 
@@ -75,20 +75,27 @@ export class ClothesProductComponent implements OnInit, AfterViewInit {
 
     setTimeout(() =>{
       this.showFlagSpinner = false;
-    }, 3000)
+    }, 3000);
 
-    this.applicationService.getClothesData().subscribe((data: any) =>{
+    if(localStorage.getItem('NOTIFY_COUNT') && localStorage.getItem('NOTIFY_COUNT') !== undefined){
+      this.updateCount = JSON.parse(localStorage.getItem(('NOTIFY_COUNT')) as '')
+    }
+    else{
+      this.updateCount = 0;
+    }
+
+    this.applicationService.getClothesData().subscribe((requestData: ShopifyClothesModel) =>{
     // let objectURL = 'data:image/jpeg;base64,' + data.Image;
     // this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-
-    this.listOfClothesItem = data;
-    this.showFlagSpinner = true;
-    this.dataSource = new MatTableDataSource<any>(this.listOfClothesItem);
-    this.totalLength = this.listOfClothesItem.length;
-    this.listOfClothesItem.forEach((element:any) => {
-      Object.assign(element, {quantity:1, total:element.price})
-    });
-  });
+    if(requestData.apiResponseStatus){
+      this.listOfClothesItem = requestData.clothesList;
+      this.showFlagSpinner = true;
+      this.dataSource = new MatTableDataSource<any>(this.listOfClothesItem);
+      this.totalLength = this.listOfClothesItem.length;
+      this.listOfClothesItem.forEach((element:any) => {
+        Object.assign(element, {quantity:1, total:element.price})
+      });
+    }});
     // this.showFlagSpinner = false;
   }
 
@@ -110,35 +117,36 @@ export class ClothesProductComponent implements OnInit, AfterViewInit {
 
 
   itemClothDetails(item: any, index: any){
-    this.applicationService.getItemClothesData(index).subscribe((data:any) =>{
-      let obj = Object.assign({}, ...data);
-      localStorage.setItem('SELECTED_DATA', JSON.stringify(obj));
-      this.router.navigate(['clothesDetails'])
-    });
+    this.router.navigate(['clothesDetails'])
+    localStorage.setItem('SELECTED_DATA', JSON.stringify(item));
+    // this.applicationService.getItemClothesData(index).subscribe((data:any) =>{
+    //   let obj = Object.assign({}, ...data);
+    //   console.log(obj);
+    // });
   }
 
-  addToCart(item: any)
-  {
-    this.flag=false;
-    item.isCartVisible = true;
-    // this.input.nativeElement.focus();
-    // console.log(index);
-    // this.showMe = !this.showMe;
-    // this.show[index] = true;
-    // console.log(this.show[index]);
-  }
+  // addToCart(item: any)
+  // {
+  //   this.flag=false;
+  //   item.isCartVisible = true;
+  //   // this.input.nativeElement.focus();
+  //   // console.log(index);
+  //   // this.showMe = !this.showMe;
+  //   // this.show[index] = true;
+  //   // console.log(this.show[index]);
+  // }
 
-  onAdd(item: any, index: any){
-    this.cartService.addToCart(item, index);
-    item.itemAdd++;
-  }
+  // onAdd(item: any, index: any){
+  //   this.cartService.addToCart(item, index);
+  //   item.itemAdd++;
+  // }
 
-  onSubtract(item: any, index:any)
-  {
-    this.cartService.removeCartItem(item, index)
-    if(item.itemAdd > 0)
-    {
-      item.itemAdd--;
-    }
-  }
+  // onSubtract(item: any, index:any)
+  // {
+  //   this.cartService.removeCartItem(item, index)
+  //   if(item.itemAdd > 0)
+  //   {
+  //     item.itemAdd--;
+  //   }
+  // }
 }

@@ -9,19 +9,27 @@ import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/cor
 export class MyAccountComponent implements OnInit, OnChanges{
 
   @Input() userName: any;
+  @Input() firstName: any;
   accountHolderName: any;
   accountHolder: any;
   name:any;
   url = '../../assets/Icons/user.png';
-  constructor(private router:Router,) { }
+
+   component = [
+    {key: 'My Profile', value: 'This is an Example of Mat Expansion Panel', icon: 'person'},
+    {key: 'My Orders',  value: 'This is an Example of Mat Expansion Panel', icon: 'airport_shuttle'},
+    {key: 'My Wallet',  value: 'This is an Example of Mat Expansion Panel', icon: 'account_balance_wallet'},
+   ]
+
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
 
-    if(localStorage.getItem('loginUser')){
-      this.accountHolder = JSON.parse(localStorage.getItem('loginUser') as string);
-      this.name = this.accountHolder[0].name.split(' ');
-      this.accountHolderName = this.name[0];
-    }
+    // if(localStorage.getItem('loginUser')){
+    //   this.accountHolder = JSON.parse(localStorage.getItem('loginUser') as string);
+    //   this.name = this.accountHolder[0].name.split(' ');
+    //   this.accountHolderName = this.name[0];
+    // }
   }
 
 
@@ -36,31 +44,29 @@ export class MyAccountComponent implements OnInit, OnChanges{
     }
   }
 
-  onProfileData(){
-    this.router.navigate(['myProfile']);
-    console.log('router navigation');
+  navigateComponent(index: number){
+
+    if(index === 0){
+      this.router.navigate(['myProfile']);
+    }
+    else if(index === 1){
+      this.router.navigate(['myOrder']);
+    }
+    else if(index === 2){
+      this.router.navigate(['payment']);
+    }
   }
 
-  setUserName(item: string){
-
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
-  }
 
-  myOrder(){
-    this.router.navigate(['myOrder']);
+    if(changes["firstName"]){
+      this.name = changes["firstName"].currentValue;
+    }
   }
-
-  myPayment()
-  {
-    this.router.navigate(['payment']);
-  }
-
 
   getUserName(item: any){
     console.log(item);
   }
-
 
 }
