@@ -3,7 +3,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.1.
 
-## NOTE:- Before starting Project Please run this command in terminal where your project localted json-server --watch db.json to connect with local server. 
+## Note:
+
+Before starting Project Please run this command in terminal where your project localted json-server --watch db.json to connect with local server. 
 
 ## Development server
 
