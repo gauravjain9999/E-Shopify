@@ -15,6 +15,7 @@ export class ApplicationService {
   checked = new EventEmitter<any>();
   applicationData = new EventEmitter<any>();
   authRedirectData = new EventEmitter<boolean>();
+  userName = new EventEmitter<string>();
   totalDiscount = new BehaviorSubject<any>('');
 
   constructor(private http: HttpClient) { }

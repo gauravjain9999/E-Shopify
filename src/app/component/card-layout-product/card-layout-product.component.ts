@@ -1,7 +1,7 @@
-import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { UserService } from './../../core/Service/user.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartLayoutService } from 'src/app/core/Service/cart-layout.service';
 
 @Component({
   selector: 'app-card-layout-product',
@@ -10,15 +10,12 @@ import { CartLayoutService } from 'src/app/core/Service/cart-layout.service';
 })
 export class CardLayoutProductComponent implements OnInit {
 
-
-  listOfCardsItem :any;
-  constructor(private spinner: NgxSpinnerService,  private cartService: CartLayoutService,  private router: Router) { }
+  listOfCardsItem: Array<any>;
+  constructor(private spinner: NgxSpinnerService, private userService: UserService,  private router: Router) { }
 
   ngOnInit(): void {
-    this.listOfCardsItem = this.cartService.getCartLayoutCards()
-    console.log(this.listOfCardsItem);
+    this.listOfCardsItem = this.userService.getCartLayoutCards()
   }
-
 
   goToClothPage(item: number,  index :number)
   {

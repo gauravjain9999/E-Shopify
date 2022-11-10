@@ -41,7 +41,6 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   constructor(@Inject(NgZone) private zone: NgZone, private mediaObserver: MediaObserver, private notificationService: NotificationService,
   private cdr: ChangeDetectorRef, private cartService: CartService, private router: Router) {
 
-
     if(localStorage.getItem('loginUser')){
       this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
       this.fullName = this.user[0].name.split(' ');
@@ -49,10 +48,9 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.zone.runOutsideAngular(() =>{
-    })
 
-    // sessionStorage.getItem()
+    this.zone.runOutsideAngular(() =>{})
+
     setTimeout(() =>{
       this.showFlagSpinner = false;
     }, 3000)
@@ -89,8 +87,6 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
     this.sortColumn = event.active;
     this.sortDirection = event.direction;
-    console.log(this.sortColumn);
-    console.log(this.sortDirection);
   }
 
   applyFilter(event: Event) {
@@ -102,9 +98,9 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
     this.flag = true;
     this.defaultFlag = false;
     this.myWhishList = false;
-    if(this.products.length ==0){
-      this.router.navigate(['mainPage']);
-      this.notificationService.showNotification('Redirected To Main Dashboard', 'Close');
+
+    if(this.products.length === 0){
+      this.myFav();
     }
   }
 
@@ -115,14 +111,17 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   }
 
   myFav(){
-
     this.myWhishList = true;
     this.flag = false;
     this.defaultFlag = false;
   }
 
+  redirectToDashboard(){
+    this.router.navigate(['mainPage']);
+    this.notificationService.showNotification('Redirected To Main Dashboard', 'Close');
+  }
+
   removeItem(item: any, index: any){
-    console.log(item);
     this.cartService.removeCartItem(item, index);
   }
 }

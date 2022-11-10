@@ -1,7 +1,7 @@
+import { UserService } from './../../core/Service/user.service';
 import { ApplicationService } from './../../core/Service/applicationService.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
-import { CartLayoutService } from 'src/app/core/Service/cart-layout.service';
 
 @Component({
   selector: 'app-main-page',
@@ -17,38 +17,18 @@ export class MainPageComponent implements OnInit {
   userName: string;
   fullName:any;
   iconsList : any[] = [];
-  name : any;
+  name: any;
+  faqList: Array<any>;
+  content: Array<any>;
 
-  faqList = [
-    {key: 'What is Shopify and how does it work?',                  value: 'This is an Example of Mat Expansion Panel'},
-    {key: 'How much does Shopify cost?',                            value: 'This is an Example of Mat Expansion Panel'},
-    {key: 'Can I use my own domain name with Shopify?',             value: 'This is an Example of Mat Expansion Panel'},
-    {key: 'Do I need to be a designer or developer to use Shopify?',value: 'This is an Example of Mat Expansion Panel'}];
-
-  content = [
-
-    { icon: 'mood', text: 'Good Mood',
-      value:`Shopify Take care of all Good things that you want. Here you will find multiple varieties of things and
-      makes your mood Happy.Go and Search your favorite product in just one click.`
-    },
-    { icon: 'people_outline', text: 'A safe platform',
-      value: ` Millions of users trust Shopify to manage their online stores.Trust me you will never go any other website.
-      We give best qualities of product of our customers`
-    },
-    {
-      icon: 'place', text: 'Location Service',
-      value: `Our location is all across the world. More than 70+ service center across the world.
-      You can check here in your service area. We have the best service in the world`
-    }
-
-  ]
-
-  constructor(private cardLayout: CartLayoutService, private applicationService: ApplicationService) {
-    this.iconsList = this.cardLayout.getIcons();
+  constructor(private applicationService: ApplicationService, private userService: UserService) {
+    this.iconsList = this.userService.getIcons();
     if(localStorage.getItem('loginUser')){
       this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
       this.fullName = this.user[0].name.split(' ');
     }
+    this.faqList = this.userService.getFaQList();
+    this.content = this.userService.getContentList();
   }
 
   ngOnInit(): void {

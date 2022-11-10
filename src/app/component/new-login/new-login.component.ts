@@ -43,10 +43,8 @@ export class NewLoginComponent implements OnInit {
   }
 
   login = new UntypedFormGroup ({
-
     email: new UntypedFormControl('',    [Validators.required, Validators.email]),
     password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)])
-
   })
 
   customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
@@ -109,7 +107,7 @@ export class NewLoginComponent implements OnInit {
           this.applicationService.authRedirectData.emit(true);
           this.router.navigate(['mainPage']);
           this.isLoading = false;
-          this.notificationService.showNotification('Successfully Login', 'Close');
+          this.notificationService.showNotification('Welcome Ritik', 'Close');
         }
         else{
           this.notificationService.showNotification('Please Create Your Account First ', 'close');

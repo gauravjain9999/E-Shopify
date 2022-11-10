@@ -15,7 +15,9 @@
         </mat-card-content>
 
         <mat-card-actions>
-          <button mat-raised-button [matMenuTriggerFor]="menu" matSuffix>Share</button>
+          <button mat-raised-button [matMenuTriggerFor]="menu" style="margin: 0px; width: 80px; padding: 1px;" matSuffix>Share
+            <mat-icon class="material-symbols-outlined red-clr" matSuffix>favorite</mat-icon>
+          </button>
           <mat-menu #menu="matMenu" class="myMenu">
             <button mat-menu-item *ngFor="let item of menuButtonItems">
               <i [class]="item.icon" style="font-size: 24px" [style.color]="item.bgColor"aria-hidden="true"></i>
@@ -25,11 +27,10 @@
             </button>
           </mat-menu>
 
-          <span style="float:right;">
-            <button mat-raised-button matPrefix  matTooltip="favorite">
-              <mat-icon *ngIf="colorHeartBlack"  (click)="favoriteItem(itemCloth, i+1)" class="material-symbols-outlined" matSuffix>favorite</mat-icon>
-              <i *ngIf="colorHeartRed" class="fa fa-heart" style="font-size: large; color:red"></i>
-            </button>
+          <span style="float: right;">
+            <button mat-raised-button color="primary" matTooltip="View More" (click)="itemClothDetails(itemCloth, i)">View</button>
+              <!-- <mat-icon *ngIf="colorHeartBlack"  (click)="favoriteItem(itemCloth, i+1)" class="material-symbols-outlined" matSuffix>favorite</mat-icon> -->
+              <!-- <i *ngIf="colorHeartRed" class="fa fa-heart" style="font-size: large; color:red"></i> -->
           </span>
           </mat-card-actions>
       </mat-card>

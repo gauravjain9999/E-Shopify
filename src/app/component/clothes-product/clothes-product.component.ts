@@ -1,3 +1,4 @@
+import { UserService } from './../../core/Service/user.service';
 import { ApplicationService } from './../../core/Service/applicationService.service';
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -48,18 +49,13 @@ export class ClothesProductComponent implements OnInit, AfterViewInit {
 
   constructor(public applicationService: ApplicationService,  private spinner: NgxSpinnerService,
     public clothesService: ClothService, private cartService: CartService, public router: Router,
-    private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) {
+    private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private userService: UserService) {
 
       if(localStorage.getItem('loginUser')){
         this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
         this.fullName = this.user[0].name.split(' ');
       }
-
-      this.menuButtonItems = [
-        { bgColor: 'green',   iconsName: 'WhatsApp', icon: 'fa fa-whatsapp', marginLeft: '22px' },
-        { bgColor: 'blue',    iconsName: 'FaceBook', icon: 'fa fa-facebook', marginLeft: '30px' },
-        { bgColor: 'skyBlue', iconsName: 'Telegram', icon: 'fa fa-telegram', marginLeft: '20px'  },
-      ]
+      this.menuButtonItems =  this.userService.itemMenuButtons();
     }
 
   ngAfterViewInit(): void {

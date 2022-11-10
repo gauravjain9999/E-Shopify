@@ -1,6 +1,6 @@
+import { UserService } from './../../core/Service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CartLayoutService } from 'src/app/core/Service/cart-layout.service';
 import { NotificationService } from 'src/app/core/Service/notification.service';
 
 @Component({
@@ -41,11 +41,11 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private notificationService: NotificationService,
-    private cartLayoutService: CartLayoutService
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
-    this.showSliderCart = this.cartLayoutService.getCartLayoutDesgin();
+    this.showSliderCart = this.userService.getCartLayoutDesign();
     this.index = this.showSliderCart.findIndex(
       (x: any) => x.title === 'Top Clothes Here ! Shop Now'
     );
