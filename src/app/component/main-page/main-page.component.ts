@@ -49,11 +49,11 @@ export class MainPageComponent implements OnInit {
 
   afterPanelClosed(event:any){
     console.log(this.mPanel);
-    console.log("Panel closed!");
+    console.log('Panel closed!');
   }
 
   afterPanelOpened(event:any){
-    console.log("Panel opened!");
+    console.log('Panel opened!');
   }
 
 }

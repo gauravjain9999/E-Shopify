@@ -1,4 +1,4 @@
-import { UrlEndPoint } from './../../constant/urlEndPoint';
+import { UrlEndPoint } from '../constant/urlEndPoint';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';

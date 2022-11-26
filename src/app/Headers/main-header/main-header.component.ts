@@ -1,7 +1,6 @@
 import { ApplicationService } from './../../core/Service/applicationService.service';
 import { Router } from '@angular/router';
 import { DialogNotifyComponent } from '../../Dialog-Box/dialog-notify/dialog-notify.component';
-import { DialogDataComponent } from '../../Dialog-Box/dialog-data/dialog-data.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CartService } from '../../core/Service/cart.service';
 import { Component, Input, OnInit, ViewChild, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
@@ -9,7 +8,8 @@ import { NotificationService } from '../../core/Service/notification.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/Service/lang.service';
-import { Output } from "@angular/core";
+import { Output } from '@angular/core';
+import { GlobalConstant } from 'src/app/core/constant/globalConstant';
 
 @Component({
   selector: 'app-main-header',
@@ -32,21 +32,29 @@ export class MainHeaderComponent implements OnInit, OnChanges {
   loginUserName:any;
   opened = false;
   selectedLang: any;
+  globalConstant= GlobalConstant;
   name:any;
   email: string;
   dataSource: any[]= [];
-  public totalItem: number = 0;
-  items: any[] = [];
+  totalItem = 0;
+  items: unknown[] = [];
   supportLanguages = ['en', 'fr'];
   firstName: any;
+  selectLang = 'ENGLISH';
   selectedOption =  this.languages.filter(item => item.value === 'en')[0].viewValue;
 
   constructor(
-  public translate: TranslateService, private router: Router,public langService: LanguageService,
+  public translate: TranslateService, private router: Router, public langService: LanguageService,
   private dialog: MatDialog, private applicationService: ApplicationService,
   private cartService: CartService, private notificationService: NotificationService) {
+  
+  this.translate.addLangs(this.supportLanguages);
+  this.selectLang =  this.langService.languages.filter(item => item.value === translate.getBrowserLang())[0].viewValue;
+  translate.setDefaultLang(translate.getBrowserLang());
+  console.log(this.selectLang);
+  
 
-   this.isCartItemPresent();
+  this.isCartItemPresent();
   //  this.cartService.getProduct().subscribe(res =>{
   //  this.dataSource = res;
   //  this.totalItem = res.length;
@@ -93,16 +101,49 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
 
-    this.translate.addLangs(this.supportLanguages);
-    this.translate.setDefaultLang('en');
     this.items = ['My Profile', 'My Orders', 'My Wallet'];
+
+    if(window.localStorage.getItem('selectedLanguage')){
+      switch(window.localStorage.getItem('selectedLanguage')){
+        
+         case this.globalConstant.en:
+             this.selectLang = this.globalConstant.enLang;
+             break;
+
+        case this.globalConstant.fr:
+             this.selectLang = this.globalConstant.frLang;
+             break;
+
+        // case this.globalConstant.ja:
+        //      this.selectLang = this.globalConstant.jaLang;
+        //      break;
+
+        // case this.globalConstant.es:
+        //      this.selectLang = this.globalConstant.esLang;
+        //      break;
+
+        // case this.globalConstant.de:
+        //      this.selectLang = this.globalConstant.deLang;
+        //      break;
+
+        // case this.globalConstant.vi:
+        //      this.selectLang = this.globalConstant.viLang;
+        //      break;
+        default:
+             this.selectLang = this.globalConstant.enLang;
+             break;
+      }
+    }
+    this.changeLanguage(window.localStorage.getItem('selectedLanguage'));
   }
 
 
   onChange(langValue: any){
-    this.selectedLang = langValue.target.value;
-    for(const langVal of this.languages){
-      if(langVal.viewValue === this.selectedLang){
+    this.selectLang = langValue;
+    console.log(this.selectedLang);
+    for(const langVal of this.langService.languages){
+      if(langVal.viewValue === langValue){
+        localStorage.setItem('selectedLanguage', langVal.value);
         this.changeLanguage(langVal.value);
       }
     }
@@ -111,7 +152,6 @@ export class MainHeaderComponent implements OnInit, OnChanges {
    changeLanguage(val: any) {
     this.translate.use(val);
     this.translate.setDefaultLang(val);
-    this.langService.selectedLanguage = val;
   }
 
   close(event: any) {
@@ -120,15 +160,15 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 
   openComponent(component: any){
 
-    let openComponent = component;
+    const openComponent = component;
     if(openComponent === 'My Profile'){
-      this.router.navigate(['myProfile'])
+      this.router.navigate(['myProfile']);
     }
     else if(openComponent === 'My Orders'){
-      this.router.navigate(['myOrder'])
+      this.router.navigate(['myOrder']);
     }
     else if (openComponent === 'My Wallet'){
-      this.router.navigate(['payment'])
+      this.router.navigate(['payment']);
     }
   }
 

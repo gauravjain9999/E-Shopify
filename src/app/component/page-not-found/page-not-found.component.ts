@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, of, retry, take } from 'rxjs';
+import { interval, take } from 'rxjs';
 
 @Component({
   selector: 'app-page-not-found',
@@ -8,21 +8,23 @@ import { interval, of, retry, take } from 'rxjs';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  status: boolean = false;
-  textData: any;
+  status = false;
+  textData: string;
   flag = false;
-  constructor() { }
+  constructor() {
+    // This is intentional
+  }
 
   ngOnInit(): void {
 
   if (navigator.onLine) {
     this.status = false;
     // Handle offline error
-    this.textData = 'Connected with Internet'
+    this.textData = 'Connected with Internet';
   }
   else {
     this.status = false;
-    this.textData = 'No Internet Connection'
+    this.textData = 'No Internet Connection';
   }
 }
 
@@ -32,7 +34,7 @@ export class PageNotFoundComponent implements OnInit {
     this.status = true;
     if (navigator.onLine) {
       this.status = true;
-      this.textData = 'Connected with Internet'
+      this.textData = 'Connected with Internet';
       this.status = false;
     }
     else {
@@ -41,18 +43,18 @@ export class PageNotFoundComponent implements OnInit {
           console.log(value);
           if(navigator.onLine){
             this.status = false;
-            this.textData = 'Connected with Internet'
+            this.textData = 'Connected with Internet';
           }
           else{
-            this.textData = `Attempting to retry - #${value}`
+            this.textData = `Attempting to retry - #${value}`;
             this.status = true;
           }
         }
         else{
-          this.textData = 'No Internet Connection'
+          this.textData = 'No Internet Connection';
         }
-      })
-      console.log("Not Work");
+      });
+      console.log('Not Work');
     }
   }
 }

@@ -39,8 +39,8 @@ export class DialogDataComponent implements OnInit{
   selectedUser: any;
   flag = false;
   dateHint= 'Choose date from Here';
-  minDate: Date = new Date("1950-01-01");
-  maxDate: Date = new Date("2030-01-01");
+  minDate: Date = new Date('1950-01-01');
+  maxDate: Date = new Date('2030-01-01');
 
 
   customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
@@ -83,13 +83,13 @@ export class DialogDataComponent implements OnInit{
   onDateChange()
   {
     if(this.profileForm.value.date){
-      let date = new Date(this.profileForm.value.date);
-      this.dateHint = `You Selected your Delivery on ${date.toLocaleDateString()}`
+      const date = new Date(this.profileForm.value.date);
+      this.dateHint = `You Selected your Delivery on ${date.toLocaleDateString()}`;
       //getting or return First Word of the Day
       //this.dateHint = `You Selected your Delivery on ${date.toString().substr(0, date.toString().indexOf(" "))}`
     }
     else{
-      this.dateHint = "Choose date from Here"
+      this.dateHint = 'Choose date from Here';
     }
   }
 
@@ -98,7 +98,7 @@ export class DialogDataComponent implements OnInit{
   }
 
   keyPressAlphanumeric(event: any) {
-    var inp = String.fromCharCode(event.keyCode);
+    const inp = String.fromCharCode(event.keyCode);
     if (/[a-zA-Z]/.test(inp)) {
       return true;
     } else {
@@ -124,7 +124,7 @@ export class DialogDataComponent implements OnInit{
       this.applicationService.postDetailsCartItem(this.profileForm.value).subscribe(data =>{
         sessionStorage.setItem('ORDER_DETAILS', JSON.stringify(data));
         this.router.navigate(['payment']);
-      })
+      });
       // this.paymentDialog.open(PaymentCheckoutComponent, {
       //   height: '800px',
       //   width: '800px'
@@ -137,7 +137,7 @@ export class DialogDataComponent implements OnInit{
   }
 
   keyPressNumbers(event: any) {
-    var charCode = event.which ? event.which : event.keyCode;
+    const charCode = event.which ? event.which : event.keyCode;
     if (charCode < 48 || charCode > 57) {
       event.preventDefault();
       return false;
@@ -146,103 +146,136 @@ export class DialogDataComponent implements OnInit{
     }
   }
 
+  getNameError(errorType: string){
+
+    if(errorType === 'required'){
+      return '*Name is required';
+    }
+    else if(errorType ==='maxlength'){
+      return '*Name can contain up to 30 characters only';
+    }
+    // else if(errorType === "pattern")
+    // {
+    //   return "*Name can contain alphabets or dot(.) or space only"
+    // }
+    else{
+      return '';
+    }
+  }
+
+
   getFormControlName(controlName: string): UntypedFormControl{
     return this.profileForm.get(controlName) as UntypedFormControl;
   }
 
+  containError(errorType: string, controlName: string): any{
 
-  getErrorMessage(controlName: string, errorType: string)
-  {
-    switch(controlName)
-  {
-    case "name":
-      if(errorType === "required"){
-        return "*Name is required";
+    if(controlName === 'name'){
+      this.getNameError(errorType);
+    }
+    else if(controlName === 'email'){
+      if(errorType === 'required'){
+        return ' *Email is required';
       }
-      else if(errorType ==="maxlength"){
-        return "*Name can contain up to 30 characters only"
-      }
-      // else if(errorType === "pattern")
-      // {
-      //   return "*Name can contain alphabets or dot(.) or space only"
-      // }
-      else{
-        return "";
-      }
-
-    case "email":
-      if(errorType === "required"){
-        return " *Email is required"
-      }
-      else if(errorType ==="email"){
-        return "*Email should be in Correct Format.Eg: someone@example.com"
-      }
-
-      else{
-        return "";
-      }
-
-    case "location":
-      if(errorType === "required"){
-        return "*Location is required"
+      else if(errorType ==='email'){
+        return '*Email should be in Correct Format.Eg: someone@example.com';
       }
       else{
-        return "";
+        return '';
       }
+    }
+    else if(controlName === 'location'){
+      if(errorType === 'required'){
+        return '*Location is required';
+      }
+      else{
+        return '';
+      }
+    }
+    else if(controlName === 'date'){
+      if(errorType === 'required'){
+        return '*Date is required';
+      }
+      else{
+        return '';
+      }
+    }
+    else if(controlName === 'state'){
+      if(errorType === 'required'){
+        return '*State is required';
+      }
+      else{
+        return '';
+      }
+    }
+    else if(controlName === 'city'){
+      if(errorType === 'required')
+      {
+        return '*City is required';
+      }
+      else{
+        return '';
+      }
+    }
+    else if(controlName === 'phoneNumber'){
+      if(errorType === 'required'){
+        return '*PhoneNumber is required';
+      }
+      else if(errorType === 'minlength'|| errorType === 'maxlength'){
+        return '*Length should be less than or equal to 10';
+      }
+      else{
+        return '';
+      }
+    }
 
-      case "payment":
-        if(errorType === "required"){
-          return "*Payment is required"
-        }
-        else{
-          return "";
-        }
+    else if(controlName === 'address'){
+      if(errorType === 'required')
+      {
+        return '*Address is required';
+      }
+      else{
+        return '';
+      }
+    }
+  }
 
-      case "date":
-        if(errorType === "required"){
-          return "*Date is required"
-        }
-        else{
-          return "";
-        }
 
-      case "state":
-        if(errorType === "required"){
-          return "*State is required"
-        }
-        else{
-          return "";
-        }
+  getErrorMessage(controlName: string, errorType: string){
 
-      case "city":
-        if(errorType === "required")
-        {
-          return "*City is required"
-        }
-        else{
-          return "";
-        }
+  switch(controlName){
+    
+    case 'name':
+      return this.containError(errorType, 'name');
 
-     case "phoneNumber":
-        if(errorType === "required"){
-          return "*PhoneNumber is required"
-        }
-        else if(errorType === "minlength"|| errorType === "maxlength"){
-          return "*Length should be less than or equal to 10"
-        }
-        else{
-          return "";
-        }
+    case 'email':
+      return this.containError(errorType, 'email');
 
-      case "address":
-        if(errorType === "required")
-        {
-          return "*Address is required"
-        }
-        else{
-          return "";
-        }
-        default: return "";
+    case 'location':
+      return this.containError(errorType, 'location');
+     
+    // case 'payment':
+    //   if(errorType === 'required'){
+    //     return '*Payment is required';
+    //   }
+    //   else{
+    //     return '';
+    //   }
+
+    case 'date':
+      return this.containError(errorType, 'date');
+      
+    case 'state':
+      return this.containError(errorType, 'state');
+
+    case 'city':
+      return this.containError(errorType, 'city');
+       
+    case 'phoneNumber':
+      return this.containError(errorType, 'phoneNumber');
+      
+    case 'address':
+      return this.containError(errorType, 'address');
     }
   }
 }

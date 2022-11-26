@@ -1,5 +1,4 @@
 import { UserService } from './../../core/Service/user.service';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
 export class CardLayoutProductComponent implements OnInit {
 
   listOfCardsItem: Array<any>;
-  constructor(private spinner: NgxSpinnerService, private userService: UserService,  private router: Router) { }
+  constructor(private userService: UserService,  private router: Router) { }
 
   ngOnInit(): void {
     this.listOfCardsItem = this.userService.getCartLayoutCards()

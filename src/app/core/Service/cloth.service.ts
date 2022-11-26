@@ -1,7 +1,4 @@
-import { Observable } from 'rxjs';
-import { EventEmitter, Injectable } from '@angular/core';
-import { DomSanitizer } from "@angular/platform-browser";
-import { Subscriber } from "rxjs";
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +7,9 @@ export class ClothService {
 
   fileReader =  new FileReader();
 
-  constructor() {}
+  constructor() {
+    // This is intentional
+  }
 
 
   // Convert Image to Base64 from File
@@ -45,7 +44,7 @@ export class ClothService {
 
   getListOfCloth()
   {
-    var clothesList = [
+    const clothesList = [
       {
         id: 1,
         brand:   'London Hills',
@@ -55,8 +54,8 @@ export class ClothService {
         discount: '100',
         seller: 'Atyantah',
         color: 'Black and White',
-        description: "Best Fabric and Best cotton Product",
-        category: "Men's Clothing",
+        description: 'Best Fabric and Best cotton Product',
+        category: 'Men\'s Clothing',
         path:     '../../../assets/ImageCloth/shirt1.jpg',
         addToCloth: 'Add To Cart',
         rating: 4,
@@ -78,8 +77,8 @@ export class ClothService {
         price: 2500,
         seller: 'ALI GARMENTS',
         color: 'Black and NavyBlue',
-        category: "Men's Clothing",
-        description: "Blend Cotton and best product",
+        category: 'Men\'s Clothing',
+        description: 'Blend Cotton and best product',
         path:  '../../../assets/ImageCloth/shirt2.jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -100,8 +99,8 @@ export class ClothService {
         rating:    5,
         seller: 'Gkcreative',
         color: 'Black, OffWhite, Grey',
-        category: "Men's Clothing",
-        description:  "Nice Cotton this will be the best cotton",
+        category: 'Men\'s Clothing',
+        description:  'Nice Cotton this will be the best cotton',
         path:  '../../../assets/ImageCloth/shirt3.jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -121,8 +120,8 @@ export class ClothService {
         discount: '400',
         seller: 'Chill Winston',
         color: 'navyBlue',
-        category: "Men's Clothing",
-        description: "Good Cotton Fabric",
+        category: 'Men\'s Clothing',
+        description: 'Good Cotton Fabric',
         path:  '../../../assets/ImageCloth/shirt4.jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -142,8 +141,8 @@ export class ClothService {
         discount: '100',
         seller: 'HYPERNATION',
         color: 'Black and White',
-        category: "Men's Clothing",
-        description: "Mixture Cotton and Nylon",
+        category: 'Men\'s Clothing',
+        description: 'Mixture Cotton and Nylon',
         path: '../../../assets/ImageCloth/shirt5.jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -163,8 +162,8 @@ export class ClothService {
         discount: '300',
         seller: 'shoppers point',
         color: 'Black and White',
-        category: "Men's Clothing",
-        description: "Perfect Slim Trim, Good Cotton Fabric",
+        category: 'Men\'s Clothing',
+        description: 'Perfect Slim Trim, Good Cotton Fabric',
         path:  '../../../assets/ImageCloth/shirt6.jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -184,8 +183,8 @@ export class ClothService {
         discount: '240',
         color: 'Blue',
         seller: 'ELLAZY',
-        category: "Men's Clothing",
-        description: "Slim Trim Perfect Style Cotton",
+        category: 'Men\'s Clothing',
+        description: 'Slim Trim Perfect Style Cotton',
         path:  '../../../assets/ImageCloth/shirt7.jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -205,8 +204,8 @@ export class ClothService {
         discount: '300',
         color: 'offBlue',
         seller: 'Aseenaa',
-        category: "Men's Clothing",
-        description: "Your perfect pack for everyday",
+        category: 'Men\'s Clothing',
+        description: 'Your perfect pack for everyday',
         path:  '../../../assets/ImageCloth/shirt8.jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -226,8 +225,8 @@ export class ClothService {
         discount: '140',
         seller: 'AMAN FASHION',
         color: 'Black',
-        category: "Men's Clothing",
-        description: "fitting style, contrast long sleeve",
+        category: 'Men\'s Clothing',
+        description: 'fitting style, contrast long sleeve',
         path: '../../../assets/ImageCloth/shirt9.jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -244,8 +243,8 @@ export class ClothService {
         title: 'Shirt Black Solid Black',
         path:  '../../../assets/ImageCloth/shirt10.jpg',
         addToCloth: 'Add To Cart',
-        category: "Men's Clothing",
-        description: "Causal Fitting T-shirt",
+        category: 'Men\'s Clothing',
+        description: 'Causal Fitting T-shirt',
         price: 1900,
         discount: '200',
         seller: 'Royalty Retail And Export',
@@ -268,8 +267,8 @@ export class ClothService {
         rating: 5,
         discount: '300',
         seller: 'Kla Irs',
-        category: "Men's Clothing",
-        description: "Blend Cotton",
+        category: 'Men\'s Clothing',
+        description: 'Blend Cotton',
         path:  '../../../assets/ImageCloth/shirt11.jpeg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -289,8 +288,8 @@ export class ClothService {
         discount: '200',
         color: 'navyBlue',
         seller: 'VASANTIKA',
-        category: "Men's Clothing",
-        description: "Fancy Jacket, Pure Cotton",
+        category: 'Men\'s Clothing',
+        description: 'Fancy Jacket, Pure Cotton',
         path:  '../../../assets/ImageCloth/shirt12.jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -310,8 +309,8 @@ export class ClothService {
         rating: 5,
         discount: '200',
         seller: 'Gaurav Fashion',
-        category: "Men's Clothing",
-        description:"Cotton Jacket",
+        category: 'Men\'s Clothing',
+        description:'Cotton Jacket',
         path:'../../../assets/ImageCloth/shirt13.jpeg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,
@@ -331,8 +330,8 @@ export class ClothService {
         discount: '200',
         color: 'White',
         seller: 'Megumi',
-        category: "Men's Clothing",
-        description: "Men's Casual Premium Slim Fit T-shirt",
+        category: 'Men\'s Clothing',
+        description: 'Men\'s Casual Premium Slim Fit T-shirt',
         path: '../../../assets/ImageCloth/shirt14.jpg',
         addToCloth: 'Add To Cart',
         isCartVisible: false,

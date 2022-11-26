@@ -16,8 +16,11 @@
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <mat-icon class="lang-select head-icn-align">language</mat-icon>
     <span class="ml-5" style="font-size: 14px;">
-      <select class="select-lang" [(ngModel)]="selectedOption" (change)="onChange($event)">
-        <option style="color: black;" *ngFor="let lang of languages">{{ lang.viewValue}}</option>
+      <select class="outline-dropDown-btn header-bg" [(ngModel)]="selectedLang"(change)="onChange($event)">        
+        <!-- <option *ngIf="selectedLang === 'ENGLISH'">ENGLISH</option> -->
+        <option style="color: black;" [value]="lang.viewValue" *ngFor="let lang of languages" >
+          {{lang.viewValue}}
+        </option>
       </select>
     </span>
   </div>

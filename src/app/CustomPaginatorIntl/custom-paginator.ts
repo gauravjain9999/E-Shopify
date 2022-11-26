@@ -1,6 +1,6 @@
-import {Component, Injectable, NgModule} from '@angular/core';
-import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
-import { TranslateService } from "@ngx-translate/core";
+import {Injectable} from '@angular/core';
+import {MatPaginatorIntl} from '@angular/material/paginator';
+import { TranslateService } from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 
 @Injectable({
@@ -25,14 +25,14 @@ export class CustomPaginatorIntl implements MatPaginatorIntl {
     this.currentLang =  translateService.getBrowserLang();
     // this.onTranslateChange();
     // this.getDefaultTranslateChange();
-    this.itemsPerPageLabel =   `Items per page:`
-    this.lastPageLabel     =    `Last Page`,
-    this.firstPageLabel    =    `First Page`,
-    this.nextPageLabel     =    `Next Page`,
-    this.of                =    `of`,
-    this.previousPageLabel =    `Previous Page`
+    this.itemsPerPageLabel =   'Items per page:';
+    this.lastPageLabel     =    'Last Page',
+    this.firstPageLabel    =    'First Page',
+    this.nextPageLabel     =    'Next Page',
+    this.of                =    'of',
+    this.previousPageLabel =    'Previous Page';
 
-  };
+  }
 
   onTranslateChange(){
     this.translateService.onLangChange.subscribe((translation) => {
@@ -67,9 +67,9 @@ export class CustomPaginatorIntl implements MatPaginatorIntl {
   getRangeLabel(page: number, pageSize: number, length: number): string {
 
       if(length === 0) {
-          return `Page 0 of 0`;
+          return 'Page 0 of 0';
     }
     const totalPages = Math.ceil(length / pageSize);
     return `Page ${page + 1} of ${totalPages}`;
   }
-};
+}

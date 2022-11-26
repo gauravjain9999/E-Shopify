@@ -7,7 +7,6 @@ import { CartService } from 'src/app/core/Service/cart.service';
 import { ClothService } from 'src/app/core/Service/cloth.service';
 import { NotificationService } from 'src/app/core/Service/notification.service';
 import { Router } from '@angular/router';
-import { update } from "lodash";
 
 @Component({
   selector: 'app-clothes-detail',
@@ -19,15 +18,15 @@ export class ClothesDetailComponent implements OnInit {
   dataItem: any = {};
   star: any;
   starData: any[] = [];
-  allDetails: boolean = true;
-  showFlagSpinner: boolean = true;
-  aboutBrand: boolean = false;
+  allDetails = true;
+  showFlagSpinner = true;
+  aboutBrand = false;
   user: any;
   fullName: any;
-  updateCount: number = 0;
-  customerReview: boolean = false;
+  updateCount = 0;
+  customerReview = false;
   addToCartItem: any[] = [];
-  isItemPresent: boolean = true;
+  isItemPresent = true;
   columnChart: Chart = new Chart(columnChartOptions);
 
   constructor(
@@ -54,7 +53,7 @@ export class ClothesDetailComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('SELECTED_DATA')) {
-      let data = JSON.parse(localStorage.getItem('SELECTED_DATA') as string);
+      const data = JSON.parse(localStorage.getItem('SELECTED_DATA') as string);
       this.dataItem = data;
       this.listOfItems.push(data);
       console.log(this.listOfItems);
@@ -77,7 +76,7 @@ export class ClothesDetailComponent implements OnInit {
         return true;
       });
     }
-    return false
+    return false;
   }
   updateNotifyCount(count: any) {
     // console.log(count);
@@ -109,7 +108,7 @@ export class ClothesDetailComponent implements OnInit {
     }
     else{
       this.updateCartItems();
-      this.getMyProductItem(item, item.id)
+      this.getMyProductItem(item, item.id);
     }
     // if(localStorage.getItem('cartItem')){
     //   const dataLength = JSON.parse(localStorage.getItem('cartItem')as string);

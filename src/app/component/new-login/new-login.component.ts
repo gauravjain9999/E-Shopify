@@ -45,7 +45,7 @@ export class NewLoginComponent implements OnInit {
   login = new UntypedFormGroup ({
     email: new UntypedFormControl('',    [Validators.required, Validators.email]),
     password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)])
-  })
+  });
 
   customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
 
@@ -113,7 +113,7 @@ export class NewLoginComponent implements OnInit {
           this.notificationService.showNotification('Please Create Your Account First ', 'close');
           this.dialogRef.close();
         }
-      })
+      });
     }
     else{
       this.notificationService.showNotification('Please Fill your Details', 'close');
@@ -136,26 +136,26 @@ export class NewLoginComponent implements OnInit {
   getErrorMessage(controlName: string, errorType: string){
     switch(controlName)
   {
-    case "email":
-      if(errorType === "required"){
-        return " *Email is required"
+    case 'email':
+      if(errorType === 'required'){
+        return ' *Email is required';
       }
-      else if(errorType ==="email"){
-        return "*Email should be in Correct Format.Eg: someone@example.com"
+      else if(errorType ==='email'){
+        return '*Email should be in Correct Format.Eg: someone@example.com';
       }
       else{
-        return "";
+        return '';
       }
 
-      case "password":
-        if(errorType === "required")
+      case 'password':
+        if(errorType === 'required')
         {
-          return "*Password is required"
+          return '*Password is required';
         }
         else{
-          return "";
+          return '';
         }
-        default: return "";
+        default: return '';
     }
   }
 

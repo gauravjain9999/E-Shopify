@@ -5,5 +5,13 @@
   "LOGOUT": "Se déconnecter",
   "SHOPIFY_APP": "Application Shopify",
   "SEARCH" : "Recherche",
-  "CART": "Chariot"
+  "CART": "Chariot",
+
+  
+  "__________PAGE NOT FOUND_________" : "______________PAGE NON TROUVÉE____________",
+
+  "404":  "404",
+  "THATS_AN_ERROR":  "Erreur",
+  "POWERED_BY_ANGULAR": "Propulsé par angulaire",
+  "REQUEST_URL_NOT_FOUND":"L’URL ou le site Web demandé n’a pas été trouvé sur ce serveur.  C’est tout ce que nous savons,"
 }

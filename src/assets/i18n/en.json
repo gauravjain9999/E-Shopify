@@ -5,8 +5,14 @@
   "LOGOUT": "Logout",
   "SHOPIFY_APP":  "Shopify App",
   "SEARCH": "Search",
-  "CART": "Cart"
+  "CART": "Cart",
 
+  "__________PAGE NOT FOUND__________" : "___________PAGE NOT FOUND___________",
+
+  "404":  "404",
+  "THATS_AN_ERROR":  "That's an Error",
+  "POWERED_BY_ANGULAR": "Powered by Angular",
+  "REQUEST_URL_NOT_FOUND":"The Request URL/website was not Found in this server.That's all we know"
 
 
 }

@@ -1,25 +1,46 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { Language } from '../../ModelDataClass/lang.model';
+import { GlobalConstant } from '../constant/globalConstant';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
-    lang = Object.keys(Language);
-    selectedLanguage = this.lang[0];
-    languageName = Object.values(Language)[0];
-    onTranslationChange = new EventEmitter();
+  onTranslationChange = new EventEmitter();
+  globalConstant = GlobalConstant;
+
+  supportLanguages = [
+    this.globalConstant.en,
+    this.globalConstant.fr,
+    this.globalConstant.es,
+    this.globalConstant.de,
+    this.globalConstant.ja,
+    this.globalConstant.vi,
+  ];
+
+  languages = [
+    {value : this.globalConstant.en, viewValue:  this.globalConstant.enLang},
+    {value : this.globalConstant.fr, viewValue:  this.globalConstant.frLang},
+    {value : this.globalConstant.es, viewValue:  this.globalConstant.esLang},
+    {value : this.globalConstant.de, viewValue:  this.globalConstant.deLang},
+    {value : this.globalConstant.ja, viewValue:  this.globalConstant.jaLang},
+    {value : this.globalConstant.vi, viewValue:  this.globalConstant.viLang},
+  ];
 
   constructor(private translateService: TranslateService ) {
+    this.getTranslationLanguage();
+    this.translationChange();
+  }
+
+  getTranslationLanguage() {
     this.translateService.getTranslation(this.translateService.defaultLang).subscribe((event: LangChangeEvent) => {
     this.onTranslationChange.emit(event);
   });
+ }
 
+  translationChange(){
    this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-        if(event.translations) {
-          this.onTranslationChange.emit(event.translations);
-        }
-      });
+      if(event.translations) {
+        this.onTranslationChange.emit(event.translations);
+      }
+    });
   }
-
-
 }

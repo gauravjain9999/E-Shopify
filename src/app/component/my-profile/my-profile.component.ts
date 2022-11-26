@@ -10,20 +10,19 @@ export class MyProfileComponent implements OnInit {
   user: any;
   fullName: any;
   lastName: string;
-  editingName: boolean = true;
-  editingNumber: boolean = true;
-  editingEmail: boolean = true;
-  flagName: boolean = false;
-  flagEmail: boolean = false;
-  flagNumber: boolean = false;
+  editingName = true;
+  editingNumber = true;
+  editingEmail = true;
+  flagName = false;
+  flagEmail = false;
+  flagNumber = false;
   email: string;
-  module: {};
-  showFlagSpinner: boolean = true;
+  showFlagSpinner = true;
   phoneNumber: number;
   faqList: any = [];
-  reqField: boolean = false;
-  reqEmail: boolean = false;
-  reqNumber: boolean = false;
+  reqField = false;
+  reqEmail = false;
+  reqNumber = false;
 
   constructor() {
     this.faqList = [

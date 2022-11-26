@@ -3,12 +3,12 @@ import { ApplicationService } from './../../core/Service/applicationService.serv
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { DomSanitizer } from "@angular/platform-browser";
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CartService } from 'src/app/core/Service/cart.service';
 import { ClothService } from 'src/app/core/Service/cloth.service';
-import { ShopifyClothesModel } from "src/app/ModelDataClass/eShopify.model";
+import { ShopifyClothesModel } from 'src/app/ModelDataClass/eShopify.model';
 
 
 @Component({
@@ -25,10 +25,10 @@ export class ClothesProductComponent implements OnInit, AfterViewInit {
   SearchText: any;
   filtered: any;
   totalLength: any;
-  page: number = 1;
+  page = 1;
   myIndex=0;
   count = 0;
-  showMe: boolean = true;
+  showMe = true;
   length = 100;
   value = 50;
   pageSize = 10;
@@ -36,14 +36,14 @@ export class ClothesProductComponent implements OnInit, AfterViewInit {
   dataSource : MatTableDataSource<any>;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   flag= true;
-  showFlagSpinner: boolean = true;
+  showFlagSpinner = true;
   user:any;
   fullName:any;
-  colorHeartRed: boolean = false;
-  colorHeartBlack: boolean = true;
+  colorHeartRed = false;
+  colorHeartBlack = true;
   menuButtonItems: any[] =[];
   thumbnail: any;
-  updateCount: number = 0;
+  updateCount = 0;
   pageEvent: PageEvent;
   show: {[key: number]: boolean} = {};
 
@@ -74,7 +74,7 @@ export class ClothesProductComponent implements OnInit, AfterViewInit {
     }, 3000);
 
     if(localStorage.getItem('NOTIFY_COUNT') && localStorage.getItem('NOTIFY_COUNT') !== undefined){
-      this.updateCount = JSON.parse(localStorage.getItem(('NOTIFY_COUNT')) as '')
+      this.updateCount = JSON.parse(localStorage.getItem(('NOTIFY_COUNT')) as '');
     }
     else{
       this.updateCount = 0;
@@ -89,7 +89,7 @@ export class ClothesProductComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource<any>(this.listOfClothesItem);
       this.totalLength = this.listOfClothesItem.length;
       this.listOfClothesItem.forEach((element:any) => {
-        Object.assign(element, {quantity:1, total:element.price})
+        Object.assign(element, {quantity:1, total:element.price});
       });
     }});
     // this.showFlagSpinner = false;
@@ -113,7 +113,7 @@ export class ClothesProductComponent implements OnInit, AfterViewInit {
 
 
   itemClothDetails(item: any, index: any){
-    this.router.navigate(['clothesDetails'])
+    this.router.navigate(['clothesDetails']);
     localStorage.setItem('SELECTED_DATA', JSON.stringify(item));
     // this.applicationService.getItemClothesData(index).subscribe((data:any) =>{
     //   let obj = Object.assign({}, ...data);

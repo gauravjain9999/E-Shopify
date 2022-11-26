@@ -13,24 +13,24 @@ export class LoginFormComponent implements OnInit {
   index: number;
   itemsGroup = [
     {
-      src: "../../../assets/Icons/deal.png",
-      altAttr: "Hot deals",
-      Tooltip: "Hot Deals",
+      src: '../../../assets/Icons/deal.png',
+      altAttr: 'Hot deals',
+      Tooltip: 'Hot Deals',
     },
     {
-      src: "../../../assets/Icons/home-appliance.png",
-      altAttr: "Home Appliances",
-      Tooltip: "Home Appliances",
+      src: '../../../assets/Icons/home-appliance.png',
+      altAttr: 'Home Appliances',
+      Tooltip: 'Home Appliances',
     },
     {
-      src: "../../../assets/Icons/fashion.png",
-      altAttr: "Fashion",
-      Tooltip: "Fashion & Styles",
+      src: '../../../assets/Icons/fashion.png',
+      altAttr: 'Fashion',
+      Tooltip: 'Fashion & Styles',
     },
     {
-      src: "../../../assets/Icons/responsive.png",
-      altAttr: "Mobiles and Tablets",
-      Tooltip: "Mobiles and Gadgets",
+      src: '../../../assets/Icons/responsive.png',
+      altAttr: 'Mobiles and Tablets',
+      Tooltip: 'Mobiles and Gadgets',
     },
     {
       src: '../../../assets/Icons/toys.png',

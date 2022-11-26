@@ -13,7 +13,7 @@ export class PaymentCheckoutComponent implements OnInit {
 
   totalSum: any;
   discountItem: any;
-  showFlagSpinner: boolean = true;
+  showFlagSpinner = true;
   totalLength: any;
   strikeCheckout:any = null;
   user: any;
@@ -25,15 +25,15 @@ export class PaymentCheckoutComponent implements OnInit {
   totalSumWithDiscount: any;
   totalSumWithoutDiscount: any;
 
-  showBtn1: boolean = false;
-  showContent1: boolean = false;
+  showBtn1 = false;
+  showContent1 = false;
 
 
-  showBtn2: boolean = false;
-  showContent2: boolean = false;
+  showBtn2 = false;
+  showContent2 = false;
 
-  showBtn3: boolean = false;
-  showContent3: boolean = false;
+  showBtn3 = false;
+  showContent3 = false;
 
   constructor( private router: Router, private cartService: CartService,  public notificationService: NotificationService) {
 
@@ -45,7 +45,7 @@ export class PaymentCheckoutComponent implements OnInit {
       this.totalLength =  checkoutCartItem[0].totalLength;
       this.totalSumWithDiscount = checkoutCartItem[0].totalPrice - this.discountItem;
       this.totalSumWithoutDiscount = checkoutCartItem[0].totalPrice;
-      this.totalSum = (this.discountItem) ? (checkoutCartItem[0].totalPrice) : (checkoutCartItem[0].totalPrice - this.discountItem) ;
+      this.totalSum = (this.discountItem) ? (checkoutCartItem[0].totalPrice) : (checkoutCartItem[0].totalPrice - this.discountItem);
 
       // this.cartService.getProduct().subscribe(res=>{
       //   console.log(res);
@@ -61,7 +61,7 @@ export class PaymentCheckoutComponent implements OnInit {
     this.isCheckDetails();
     setTimeout(() =>{
       this.showFlagSpinner = false;
-    }, 3000)
+    }, 3000);
     this.showFlagSpinner = true;
     this.stripePaymentGateway();
   }
@@ -69,14 +69,14 @@ export class PaymentCheckoutComponent implements OnInit {
   isCheckDetails(){
 
     if(sessionStorage.getItem('ORDER_DETAILS')){
-      let user= JSON.parse(sessionStorage.getItem('ORDER_DETAILS') as string);
+      const user= JSON.parse(sessionStorage.getItem('ORDER_DETAILS') as string);
       this.emailId = user.email;
       this.fullName = user.name;
       this.address = user.address;
       this.phoneNum = user.phoneNumber;
     }
     else{
-      let existingUser = JSON.parse(localStorage.getItem('loginUser') as string);
+      const existingUser = JSON.parse(localStorage.getItem('loginUser') as string);
       this.emailId = existingUser[0].email;
       this.fullName = existingUser[0].name;
       this.phoneNum = existingUser[0].phoneNumber;
@@ -109,7 +109,7 @@ export class PaymentCheckoutComponent implements OnInit {
   }
 
   navigateToMyOrders(){
-    this.router.navigate(['myOrder'])
+    this.router.navigate(['myOrder']);
   }
 
   redirectMainPage(){
@@ -143,21 +143,21 @@ export class PaymentCheckoutComponent implements OnInit {
 
   stripePaymentGateway() {
     if(!window.document.getElementById('stripe-script')) {
-      const scr = window.document.createElement("script");
-      scr.id = "stripe-script";
-      scr.type = "text/javascript";
-      scr.src = "https://checkout.stripe.com/checkout.js";
+      const scr = window.document.createElement('script');
+      scr.id = 'stripe-script';
+      scr.type = 'text/javascript';
+      scr.src = 'https://checkout.stripe.com/checkout.js';
 
       scr.onload = () => {
         this.strikeCheckout = (<any>window).StripeCheckout.configure({
           key: 'pk_test_sLUqHXtqXOkwSdPosC8ZikQ800snMatYMb',
           locale: 'auto',
           token: function (token: any) {
-            console.log(token)
+            console.log(token);
             this.notificationService.showNotification('Payment via stripe successfully Done', 'Close');
           }
         });
-      }
+      };
       window.document.body.appendChild(scr);
     }
   }

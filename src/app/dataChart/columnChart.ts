@@ -1,11 +1,11 @@
 export const columnChartOptions: any ={
 
   chart:{
-    type: "column"
+    type: 'column'
   },
 
   title: {
-    text: "Review"
+    text: 'Review'
   },
 
   plotOptions:{
@@ -21,7 +21,7 @@ export const columnChartOptions: any ={
   },
   xAxis: {
     categories: [
-      "poor", "Bad", "Average", "Very Nice", "Great", "Excellent", "Superb", "Awsmmm", "Killer", "No Words"
+      'poor', 'Bad', 'Average', 'Very Nice', 'Great', 'Excellent', 'Superb', 'Awsmmm', 'Killer', 'No Words'
     ],
     title:{
       text: 'Quality'
@@ -32,4 +32,4 @@ export const columnChartOptions: any ={
     name: 'Customer Review (in %)',
     data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
   }]
-}
+};

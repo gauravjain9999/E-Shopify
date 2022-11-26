@@ -5,30 +5,32 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  constructor() { }
+  constructor() { 
+    // This is intentional
+  }
 
   getClothes()
   {
-     var clothes = [
-      "Clothes", "Top Clothes", "Branded Clothes"
+     const clothes = [
+      'Clothes', 'Top Clothes', 'Branded Clothes'
      ];
      return clothes;
   }
 
   topBrandClothes()
   {
-     var topBrandCloth = [
-      "House Of Versace", "Burberry","Ralph Lauren", "Chanel","Prada",
-      "Hermes","Gucci","Louis Vuitton", "Blueberry", "Peter England"
+     const topBrandCloth = [
+      'House Of Versace', 'Burberry','Ralph Lauren', 'Chanel','Prada',
+      'Hermes','Gucci','Louis Vuitton', 'Blueberry', 'Peter England'
      ];
      return topBrandCloth;
   }
 
   customerRating()
   {
-    var rating = [
-      "4 star & above", "3 star & above", "2 star & above", "1 star & above"
-    ]
+    const rating = [
+      '4 star & above', '3 star & above', '2 star & above', '1 star & above'
+    ];
     return rating;
   }
 
@@ -103,7 +105,7 @@ export class UserService {
       //   id: 6,
       //   src : 'https://cdn.shopify.com/shopifycloud/brochure/assets/logo-soup/tokyo-bike-small-2295b7e1d183bae07eb36ad83451ec624cfe61bbec39e85877d40600f22115b2.png'
       // }
-    ]
+    ];
     return icons;
   }
 
@@ -140,7 +142,7 @@ export class UserService {
         src: '../../assets/images/book4.jpeg',
         title: 'Top Selling Books',
         clickItem: 'Click Here',
-      }]
+      }];
     return cardsLayout;
   }
 
@@ -186,7 +188,7 @@ export class UserService {
       },
 
     ];
-    return cartLayout
+    return cartLayout;
   }
 
 

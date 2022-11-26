@@ -19,7 +19,7 @@ export class MyAccountComponent implements OnInit, OnChanges{
     {key: 'My Profile', value: 'This is an Example of Mat Expansion Panel', icon: 'person'},
     {key: 'My Orders',  value: 'This is an Example of Mat Expansion Panel', icon: 'airport_shuttle'},
     {key: 'My Wallet',  value: 'This is an Example of Mat Expansion Panel', icon: 'account_balance_wallet'},
-   ]
+   ];
 
   constructor(private router:Router) { }
 
@@ -30,17 +30,24 @@ export class MyAccountComponent implements OnInit, OnChanges{
     //   this.name = this.accountHolder[0].name.split(' ');
     //   this.accountHolderName = this.name[0];
     // }
+
+    if(localStorage.getItem('myImage')){
+      this.url = JSON.parse(window.localStorage.getItem('myImage') as string);
+    }
   }
 
 
   onSelectFile(event: any) {
 
     if(event.target.files){
-     var reader = new FileReader();
+     const reader = new FileReader();
      reader.readAsDataURL(event.target.files[0]);
      reader.onload = (e:any) =>{
       this.url = e.target.result;
-     }
+      if(this.url){
+        window.localStorage.setItem('myImage', JSON.stringify(this.url));
+      }
+     };
     }
   }
 
@@ -60,8 +67,8 @@ export class MyAccountComponent implements OnInit, OnChanges{
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if(changes["firstName"]){
-      this.name = changes["firstName"].currentValue;
+    if(changes['firstName']){
+      this.name = changes['firstName'].currentValue;
     }
   }
 
