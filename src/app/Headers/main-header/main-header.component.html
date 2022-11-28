@@ -14,14 +14,23 @@
   </div>
 
   <div fxLayout="row" fxLayoutAlign="space-between center">
-    <mat-icon class="lang-select head-icn-align">language</mat-icon>
+    <!-- <mat-icon class="lang-select head-icn-align">language</mat-icon> -->
+    <mat-icon class="lang-select" style="margin-top: -10px;">language</mat-icon>
     <span class="ml-5" style="font-size: 14px;">
-      <select class="outline-dropDown-btn header-bg" [(ngModel)]="selectedLang"(change)="onChange($event)">        
-        <!-- <option *ngIf="selectedLang === 'ENGLISH'">ENGLISH</option> -->
+      <span class="lang-default" *ngIf="selectedOption ==='English'">{{selectedOption}}</span>
+        <mat-form-field>
+          <mat-select class="lang-dropdown" style="font-size: 14px;" disableOptionCentering  panelClass="myPanelClass" [(ngModel)]="selectedOption">
+            <mat-option  style="font-size: 14px;" (click)="changeLanguage(lang.value)" *ngFor="let lang of languages" [value]="lang.value">
+              {{ lang.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+<!--
+      <select class="outline-dropDown-btn header-bg" [(ngModel)]="selectLang"(change)="onChange($event)">
         <option style="color: black;" [value]="lang.viewValue" *ngFor="let lang of languages" >
           {{lang.viewValue}}
         </option>
-      </select>
+      </select> -->
     </span>
   </div>
 

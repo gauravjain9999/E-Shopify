@@ -10,7 +10,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/Service/lang.service';
 import { Output } from '@angular/core';
 import { GlobalConstant } from 'src/app/core/constant/globalConstant';
-
 @Component({
   selector: 'app-main-header',
   templateUrl: './main-header.component.html',
@@ -23,36 +22,37 @@ export class MainHeaderComponent implements OnInit, OnChanges {
   @Output() updateNotifyCount = new EventEmitter();
   @Input() notifyUpdate: any;
 
+  supportLanguages = ['en', 'fr', 'jp', 'vn'];
   languages = [
-    {value: 'en', viewValue: 'English'},
-    {value: 'fr', viewValue: 'Français'}
+    {value : 'en', viewValue : 'English'},
+    {value : 'fr', viewValue: 'Francis '},
+    {value : 'jp', viewValue: 'Japanese'},
+    {value : 'vn', viewValue: 'Vietnamese'}
   ];
   fullName: any;
   searchText: any;
   loginUserName:any;
   opened = false;
-  selectedLang: any;
   globalConstant= GlobalConstant;
   name:any;
   email: string;
   dataSource: any[]= [];
   totalItem = 0;
   items: unknown[] = [];
-  supportLanguages = ['en', 'fr'];
   firstName: any;
-  selectLang = 'ENGLISH';
-  selectedOption =  this.languages.filter(item => item.value === 'en')[0].viewValue;
+  selectLang: any;
+  selectedOption: any;
 
   constructor(
   public translate: TranslateService, private router: Router, public langService: LanguageService,
-  private dialog: MatDialog, private applicationService: ApplicationService,
-  private cartService: CartService, private notificationService: NotificationService) {
-  
-  this.translate.addLangs(this.supportLanguages);
-  this.selectLang =  this.langService.languages.filter(item => item.value === translate.getBrowserLang())[0].viewValue;
+  private dialog: MatDialog, private notificationService: NotificationService) {
+
+  translate.addLangs(this.langService.supportLanguages);
+  this.selectedOption =  this.languages.filter(item => item.value === 'en')[0].viewValue;
   translate.setDefaultLang(translate.getBrowserLang());
-  console.log(this.selectLang);
-  
+
+  // this.selectLang =  this.langService.languages.filter(item => item.value === translate.getBrowserLang())[0].viewValue;
+  // console.log(this.selectLang);
 
   this.isCartItemPresent();
   //  this.cartService.getProduct().subscribe(res =>{
@@ -74,10 +74,10 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 
   redirectMainPage(){
 
-  if(this.router.url === '/mainPage'){
+   if(this.router.url === '/mainPage'){
     this.notificationService.showNotification('You are on the Main Dashboard', 'Close');
-   }
-   else{
+  }
+  else {
     this.notificationService.showNotification('Redirected To the Dashboard', 'Close');
     this.router.navigate(['mainPage']);
    }
@@ -105,53 +105,53 @@ export class MainHeaderComponent implements OnInit, OnChanges {
 
     if(window.localStorage.getItem('selectedLanguage')){
       switch(window.localStorage.getItem('selectedLanguage')){
-        
-         case this.globalConstant.en:
-             this.selectLang = this.globalConstant.enLang;
-             break;
 
-        case this.globalConstant.fr:
-             this.selectLang = this.globalConstant.frLang;
-             break;
+        case this.globalConstant.en:
+           this.selectLang = this.globalConstant.enLang;
+           console.log(this.selectLang);
+           break;
 
-        // case this.globalConstant.ja:
-        //      this.selectLang = this.globalConstant.jaLang;
-        //      break;
+        case this.globalConstant.ja:
+            this.selectedOption = this.globalConstant.jaLang;
+            break;
 
-        // case this.globalConstant.es:
-        //      this.selectLang = this.globalConstant.esLang;
-        //      break;
+        case this.globalConstant.es:
+            this.selectLang = this.globalConstant.esLang;
+            break;
 
-        // case this.globalConstant.de:
-        //      this.selectLang = this.globalConstant.deLang;
-        //      break;
+        case this.globalConstant.de:
+            this.selectLang = this.globalConstant.deLang;
+            break;
 
-        // case this.globalConstant.vi:
-        //      this.selectLang = this.globalConstant.viLang;
-        //      break;
+        case this.globalConstant.vi:
+            this.selectLang = this.globalConstant.viLang;
+            break;
+
         default:
-             this.selectLang = this.globalConstant.enLang;
-             break;
+            this.selectLang = this.globalConstant.enLang;
+            break;
+        }
       }
-    }
     this.changeLanguage(window.localStorage.getItem('selectedLanguage'));
   }
 
-
   onChange(langValue: any){
-    this.selectLang = langValue;
-    console.log(this.selectedLang);
+
+    this.selectLang = langValue.target.value;
     for(const langVal of this.langService.languages){
-      if(langVal.viewValue === langValue){
+
+      if(langVal.viewValue ===  this.selectLang){
         localStorage.setItem('selectedLanguage', langVal.value);
         this.changeLanguage(langVal.value);
       }
     }
   }
 
-   changeLanguage(val: any) {
+  changeLanguage(val: any) {
+    console.log(val);
     this.translate.use(val);
     this.translate.setDefaultLang(val);
+    localStorage.setItem('selectedLanguage', val);
   }
 
   close(event: any) {
