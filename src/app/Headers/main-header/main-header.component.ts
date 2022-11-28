@@ -21,26 +21,18 @@ export class MainHeaderComponent implements OnInit, OnChanges {
   @Input() userName: any;
   @Output() updateNotifyCount = new EventEmitter();
   @Input() notifyUpdate: any;
+  globalConstant = GlobalConstant;
 
-  supportLanguages = ['en', 'fr', 'jp', 'vn'];
-  languages = [
-    {value : 'en', viewValue : 'English'},
-    {value : 'fr', viewValue: 'Francis '},
-    {value : 'jp', viewValue: 'Japanese'},
-    {value : 'vn', viewValue: 'Vietnamese'}
-  ];
   fullName: any;
   searchText: any;
   loginUserName:any;
   opened = false;
-  globalConstant= GlobalConstant;
   name:any;
   email: string;
   dataSource: any[]= [];
   totalItem = 0;
   items: unknown[] = [];
   firstName: any;
-  selectLang: any;
   selectedOption: any;
 
   constructor(
@@ -48,18 +40,29 @@ export class MainHeaderComponent implements OnInit, OnChanges {
   private dialog: MatDialog, private notificationService: NotificationService) {
 
   translate.addLangs(this.langService.supportLanguages);
-  this.selectedOption =  this.languages.filter(item => item.value === 'en')[0].viewValue;
-  translate.setDefaultLang(translate.getBrowserLang());
-
-  // this.selectLang =  this.langService.languages.filter(item => item.value === translate.getBrowserLang())[0].viewValue;
-  // console.log(this.selectLang);
-
+  if(window.localStorage.getItem('selectedLanguage')){
+    this.getDefaultLang();
+  }
+  else{
+    this.selectedOption =  this.langService.languages.filter(item => item.value === 'en')[0].viewValue;
+    translate.setDefaultLang(translate.getBrowserLang());
+  }
   this.isCartItemPresent();
   //  this.cartService.getProduct().subscribe(res =>{
   //  this.dataSource = res;
   //  this.totalItem = res.length;
   // })
 }
+
+getSelectedDefaultOption(selectedOption: any){
+
+  if(selectedOption === 'ENGLISH' || selectedOption === 'FRANÇAIS' || selectedOption === 'TIẾNG VIỆT'
+  || selectedOption === '日本語'){
+    return true;
+  }
+  return false;
+}
+
 
   isCartItemPresent(){
 
@@ -102,53 +105,39 @@ export class MainHeaderComponent implements OnInit, OnChanges {
   ngOnInit(): void {
 
     this.items = ['My Profile', 'My Orders', 'My Wallet'];
+    this.getDefaultLang();
+  }
 
+  getDefaultLang(){
     if(window.localStorage.getItem('selectedLanguage')){
       switch(window.localStorage.getItem('selectedLanguage')){
 
         case this.globalConstant.en:
-           this.selectLang = this.globalConstant.enLang;
-           console.log(this.selectLang);
-           break;
+            this.selectedOption = this.globalConstant.enLang;
+            break;
 
         case this.globalConstant.ja:
             this.selectedOption = this.globalConstant.jaLang;
             break;
 
-        case this.globalConstant.es:
-            this.selectLang = this.globalConstant.esLang;
-            break;
-
-        case this.globalConstant.de:
-            this.selectLang = this.globalConstant.deLang;
+        case this.globalConstant.fr:
+            console.log(this.selectedOption);
+            this.selectedOption = this.globalConstant.frLang;
             break;
 
         case this.globalConstant.vi:
-            this.selectLang = this.globalConstant.viLang;
+            this.selectedOption = this.globalConstant.viLang;
             break;
 
         default:
-            this.selectLang = this.globalConstant.enLang;
+            this.selectedOption = this.globalConstant.enLang;
             break;
         }
-      }
-    this.changeLanguage(window.localStorage.getItem('selectedLanguage'));
-  }
-
-  onChange(langValue: any){
-
-    this.selectLang = langValue.target.value;
-    for(const langVal of this.langService.languages){
-
-      if(langVal.viewValue ===  this.selectLang){
-        localStorage.setItem('selectedLanguage', langVal.value);
-        this.changeLanguage(langVal.value);
-      }
+      this.changeLanguage(window.localStorage.getItem('selectedLanguage'));
     }
   }
 
   changeLanguage(val: any) {
-    console.log(val);
     this.translate.use(val);
     this.translate.setDefaultLang(val);
     localStorage.setItem('selectedLanguage', val);

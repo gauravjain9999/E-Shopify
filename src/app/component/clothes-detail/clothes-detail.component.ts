@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ApplicationService } from './../../core/Service/applicationService.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';

@@ -19,16 +19,17 @@
     ],
     "rules": {
       "camelcase": "warn",
-      "dot-notation":"off",
+      "dot-notation":"warn",
       "comma-style":"warn",
-      "semi":"warn",
-      "complexity":"warn",
-      "semi-spacing":"warn",
+      "semi":"off",
+      "complexity":"off",
+      "semi-spacing":"off",
       "no-unused-vars":"off",
+      "no-explicitly": "off",
       "no-console":"off",
       "no-process-exit": "off",
       "quotes":["error", "single"],
       "object-shorthand": "off",
-      "curly":"warn"
+      "curly":"off"
     }
 }

@@ -1,0 +1,30 @@
+{
+
+  "____________LABELS___________": "__________LABELS__________",
+
+  "MORE": "Hơn",
+  "LOGOUT": "đăng xuất",
+  "SHOPIFY_APP": "Ứng dụng Shopify",
+  "SEARCH" : "Tìm kiếm",
+  "CART": "xe đẩy",
+
+
+  "_________CUSTOM PAGINATION________" : "________PHÂN TÍCH TÙY CHỈNH_________",
+
+  "NEXT_PAGE": "Trang sau",
+  "ITEMS_PER_PAGE": "Các mục trên mỗi trang",
+  "PREVIOUS_PAGE": "Trang trước",
+  "LAST_PAGE": "Trang cuối",
+  "FIRST_PAGE": "Trang đầu",
+  "PAGE": "Trang",
+  "OF": "của",
+
+
+  "__________PAGE NOT FOUND__________" : "__________TRANG KHÔNG TÌM THẤY__________",
+
+  "404":  "404",
+  "THATS_AN_ERROR": "Đó là một lỗi",
+  "POWERED_BY_ANGULAR": "Được cung cấp bởi Angular",
+  "REQUEST_URL_NOT_FOUND":"Không tìm thấy yêu cầu URL/website ở máy chủ này.Đó là tất cả những gì chúng tôi biết,"
+
+}

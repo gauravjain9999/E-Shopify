@@ -17,10 +17,10 @@
     <!-- <mat-icon class="lang-select head-icn-align">language</mat-icon> -->
     <mat-icon class="lang-select" style="margin-top: -10px;">language</mat-icon>
     <span class="ml-5" style="font-size: 14px;">
-      <span class="lang-default" *ngIf="selectedOption ==='English'">{{selectedOption}}</span>
+      <span class="lang-default" *ngIf="getSelectedDefaultOption(selectedOption)">{{selectedOption}}</span>
         <mat-form-field>
           <mat-select class="lang-dropdown" style="font-size: 14px;" disableOptionCentering  panelClass="myPanelClass" [(ngModel)]="selectedOption">
-            <mat-option  style="font-size: 14px;" (click)="changeLanguage(lang.value)" *ngFor="let lang of languages" [value]="lang.value">
+            <mat-option  style="font-size: 14px;" (click)="changeLanguage(lang.value)" *ngFor="let lang of langService.languages" [value]="lang.value">
               {{ lang.viewValue }}
             </mat-option>
           </mat-select>

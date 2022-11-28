@@ -1,4 +1,4 @@
-import { forEach } from 'lodash';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ApplicationService } from './../../core/Service/applicationService.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,23 +24,23 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
 
   public products: any = [];
   pageLength:any;
-  public totalSum: number = 0;
+  public totalSum = 0;
   isChecked : boolean;
   sortColumn: string;
   sortDirection: 'asc' | 'desc';
   found: any;
   user:any;
   fullName:any;
-  quantityItems: number = 1;
+  quantityItems = 1;
   updateCount:number;
 
   obj: never;
-  matFlag: boolean = false;
+  matFlag = false;
   dataSource : MatTableDataSource<any>;
-  showFlagSpinner: boolean = true;
+  showFlagSpinner = true;
   displayedColumns: any = ['title', 'productImage', 'description', 'price', 'quantity', 'total', 'remove'];
 
-  originalPrice: number = 0;
+  originalPrice = 0;
 
   constructor(private applicationService: ApplicationService, private cd: ChangeDetectorRef,
     private dialog: MatDialog, private cartService: CartService, private router: Router) {
@@ -56,7 +56,7 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   getItemClothes(){
 
     if(localStorage.getItem('cartItem')){
-      let data = JSON.parse(localStorage.getItem("cartItem") as any);
+      const data = JSON.parse(localStorage.getItem('cartItem') as any);
       this.products = data;
       console.log(this.products);
       this.updateCount = this.products.length;
@@ -74,7 +74,7 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
 
   cartItemPresent(){
     if(localStorage.getItem('ITEM_ADDED')){
-      let data = JSON.parse(localStorage.getItem('ITEM_ADDED') as any);
+      const data = JSON.parse(localStorage.getItem('ITEM_ADDED') as any);
       this.products = data;
       this.dataSource = new MatTableDataSource<any>(this.products);
     }
@@ -110,10 +110,10 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
 
   this.getMyItemDetails(index);
   const objectData: any[]=[];
-  let loggedInUser = JSON.parse(localStorage.getItem('cartItem') as string);
+  const loggedInUser = JSON.parse(localStorage.getItem('cartItem') as string);
   loggedInUser.forEach((element:any) => {
     if(element.id === index){
-      let tmpObject = element;
+      const tmpObject = element;
       if(tmpObject.price > 0){
         tmpObject.quantity = tmpObject.quantity + 1;
         tmpObject.price += this.originalPrice;
@@ -133,10 +133,10 @@ onSubtract(item: any, index: any){
 
   this.getMyItemDetails(index);
   const objectData: any[] = [];
-  let loggedInUser = JSON.parse(localStorage.getItem('cartItem') as string);
+  const loggedInUser = JSON.parse(localStorage.getItem('cartItem') as string);
   loggedInUser.forEach((element:any) => {
     if(element.id === index){
-      let tmpObject = element;
+      const tmpObject = element;
       if(tmpObject.quantity >= 2){
         tmpObject.quantity = tmpObject.quantity - 1;
         tmpObject.price -= this.originalPrice;
@@ -186,7 +186,7 @@ onSubtract(item: any, index: any){
   }
 
   onMainPage(){
-   this.router.navigate(['mainPage'])
+   this.router.navigate(['mainPage']);
   }
 
   onEditDetail()
@@ -198,7 +198,7 @@ onSubtract(item: any, index: any){
       },
       height: '220px',
       width: '480px',
-    })
+    });
 
     this.applicationService.checked.subscribe(event =>{
       this.isChecked = event;
