@@ -1,5 +1,14 @@
 {
-  "____________LABELS___________": "__________LABELS__________",
+
+
+  "__________CONSTANT_LABELS__________" : "__________CONSTANT_LABELS__________",
+
+  "REFRESH": "Rafraîchir",
+
+
+
+
+  "____________HEADERS_LABELS___________": "__________HEADERS_LABELS__________",
 
   "MORE": "Suite",
   "LOGOUT": "Se déconnecter",
@@ -7,7 +16,7 @@
   "SEARCH" : "Recherche",
   "CART": "Chariot",
 
-  
+
   "__________PAGE NOT FOUND_________" : "______________PAGE NON TROUVÉE____________",
 
   "404":  "404",

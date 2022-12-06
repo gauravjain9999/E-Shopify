@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { interval, take } from 'rxjs';
 
 @Component({
@@ -11,8 +12,14 @@ export class PageNotFoundComponent implements OnInit {
   status = false;
   textData: string;
   flag = false;
-  constructor() {
-    // This is intentional
+  constructor(public translate: TranslateService) {
+    if(localStorage.getItem('selectedLanguage')){
+      const lang: any = localStorage.getItem('selectedLanguage');
+      translate.use(lang);
+    }
+    else{
+      translate.getBrowserLang();
+    }
   }
 
   ngOnInit(): void {

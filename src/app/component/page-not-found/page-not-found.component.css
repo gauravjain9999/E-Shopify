@@ -7,19 +7,20 @@
   position: absolute;
   top: 42%;
   left: 50%;
+  width: max-content;
   transform: translate(-50%, -50%);
 }
 
 .text-size{
 
-  font-size: xx-large;
+  font-size: x-large;
   font-style: bold;
 }
 
 .status{
 
   position: absolute;
-  top: 68%;
+  top: 74%;
   font-weight: 700;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -29,14 +30,21 @@
 .set{
 
   position: absolute;
-  top: 50%;
+  top: 57%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .btn-raised{
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.top50{
+  top: 50%
+}
+
+.top82{
+  top:82% !important;
 }

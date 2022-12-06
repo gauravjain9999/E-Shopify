@@ -1,11 +1,20 @@
 {
-  "____________LABELS___________": "__________LABELS__________",
+
+  "__________CONSTANT_LABELS__________" : "__________CONSTANT_LABELS__________",
+
+  "REFRESH": "Refresh",
+
+
+
+
+  "____________HEADERS_LABELS___________": "__________HEADERS_LABELS__________",
 
   "MORE": "More",
   "LOGOUT": "Logout",
   "SHOPIFY_APP":  "Shopify App",
   "SEARCH": "Search",
   "CART": "Cart",
+
 
   "__________PAGE NOT FOUND__________" : "___________PAGE NOT FOUND___________",
 
