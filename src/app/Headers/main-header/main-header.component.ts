@@ -1,3 +1,4 @@
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { ApplicationService } from './../../core/Service/applicationService.service';
 import { Router } from '@angular/router';
 import { DialogNotifyComponent } from '../../Dialog-Box/dialog-notify/dialog-notify.component';
@@ -34,10 +35,13 @@ export class MainHeaderComponent implements OnInit, OnChanges {
   items: unknown[] = [];
   firstName: any;
   selectedOption: any;
+  badgeCount = 0;
+  mediaFlagObserver = false;
+  count = 0;
 
   constructor(
   public translate: TranslateService, private router: Router, public langService: LanguageService,
-  private dialog: MatDialog, private notificationService: NotificationService) {
+  private dialog: MatDialog, private notificationService: NotificationService, public mediaObserver: MediaObserver) {
 
   translate.addLangs(this.langService.supportLanguages);
   if(window.localStorage.getItem('selectedLanguage')){
@@ -92,7 +96,7 @@ getSelectedDefaultOption(selectedOption: any){
       this.fullName = changes['userName'].currentValue;
       this.firstName = this.fullName[0];
       this.name = this.fullName.shift().charAt(0) +  this.fullName.shift().charAt(0);
-      this.loginUserName = this.name.toUpperCase();
+      this.loginUserName = this.firstName;
     }
 
     if(changes['notifyUpdate']){
@@ -103,6 +107,10 @@ getSelectedDefaultOption(selectedOption: any){
   }
 
   ngOnInit(): void {
+    
+    this.mediaObserver.asObservable().subscribe((media: MediaChange[]) =>{
+      this.mediaFlagObserver =(media[1].mqAlias === 'lt-md')? true:false;
+    })
 
     this.items = ['My Profile', 'My Orders', 'My Wallet'];
     this.getDefaultLang();
@@ -150,13 +158,13 @@ getSelectedDefaultOption(selectedOption: any){
   openComponent(component: any){
 
     const openComponent = component;
-    if(openComponent === 'My Profile'){
+    if(openComponent === 'Profile'){
       this.router.navigate(['myProfile']);
     }
-    else if(openComponent === 'My Orders'){
+    else if(openComponent === 'Orders'){
       this.router.navigate(['myOrder']);
     }
-    else if (openComponent === 'My Wallet'){
+    else if (openComponent === 'Wallet'){
       this.router.navigate(['payment']);
     }
   }
