@@ -46,8 +46,8 @@ export class DialogDataComponent implements OnInit{
   customErrorStateMatcher: CustomErrorStateMatcherService = new CustomErrorStateMatcherService();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public dialogRef: MatDialogRef<DialogDataComponent>,
-  private router:Router, private paymentDialog: MatDialog,  public notificationService: NotificationService,
-  private applicationService: ApplicationService) {}
+  public router:Router, public paymentDialog: MatDialog,  public notificationService: NotificationService,
+  public applicationService: ApplicationService) {}
 
   ngOnInit(): void {
     //comment date
@@ -244,7 +244,7 @@ export class DialogDataComponent implements OnInit{
   getErrorMessage(controlName: string, errorType: string){
 
   switch(controlName){
-    
+
     case 'name':
       return this.containError(errorType, 'name');
 
@@ -253,7 +253,7 @@ export class DialogDataComponent implements OnInit{
 
     case 'location':
       return this.containError(errorType, 'location');
-     
+
     // case 'payment':
     //   if(errorType === 'required'){
     //     return '*Payment is required';
@@ -264,16 +264,16 @@ export class DialogDataComponent implements OnInit{
 
     case 'date':
       return this.containError(errorType, 'date');
-      
+
     case 'state':
       return this.containError(errorType, 'state');
 
     case 'city':
       return this.containError(errorType, 'city');
-       
+
     case 'phoneNumber':
       return this.containError(errorType, 'phoneNumber');
-      
+
     case 'address':
       return this.containError(errorType, 'address');
     }

@@ -2,9 +2,9 @@ import { UrlEndPoint } from '../constant/urlEndPoint';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
-import { Environment } from "src/environments/environment.prod";
-import { AuthResponse } from "src/app/ModelDataClass/eShopify.model";
-import { LoginUser } from "src/app/ModelDataClass/customer.model";
+import { Environment } from 'src/environments/environment.prod';
+import { AuthResponse } from 'src/app/ModelDataClass/eShopify.model';
+import { LoginUser } from 'src/app/ModelDataClass/customer.model';
 
 @Injectable({
   providedIn: 'root'

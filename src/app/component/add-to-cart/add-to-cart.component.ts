@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ApplicationService } from './../../core/Service/applicationService.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -33,7 +34,6 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
   fullName:any;
   quantityItems = 1;
   updateCount:number;
-
   obj: never;
   matFlag = false;
   dataSource : MatTableDataSource<any>;
@@ -42,8 +42,8 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
 
   originalPrice = 0;
 
-  constructor(private applicationService: ApplicationService, private cd: ChangeDetectorRef,
-    private dialog: MatDialog, private cartService: CartService, private router: Router) {
+  constructor(public applicationService: ApplicationService, public cd: ChangeDetectorRef,
+    public dialog: MatDialog, public cartService: CartService, public router: Router) {
 
       // setTimeout(() =>{
       //   this.showFlagSpinner = false;
@@ -68,9 +68,7 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
         sessionStorage.clear();
       }
    }
-
   }
-
 
   cartItemPresent(){
     if(localStorage.getItem('ITEM_ADDED')){
@@ -191,7 +189,7 @@ onSubtract(item: any, index: any){
 
   onEditDetail()
   {
-     this.dialog.open(ConfirmDialogComponent, {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data :{
         isChecked: 'true',
         isUnChecked: 'false',
@@ -211,7 +209,7 @@ onSubtract(item: any, index: any){
       if(this.isChecked)
       {
         // sessionStorage.setItem('CONFIRM', JSON.stringify(confirmDialog));
-        this.dialog.open(DialogDataComponent, {
+       const dialogRef = this.dialog.open(DialogDataComponent, {
 
           data: {
             itemPrice: price

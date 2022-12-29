@@ -14,10 +14,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
 
   supportLanguages = ['en'];
-  constructor( public translate: TranslateService, private dialogBox: MatDialog,  private router: Router) { }
+  constructor( public translate: TranslateService, public dialogBox: MatDialog,  private router: Router) { }
 
   ngOnInit(): void {
-
     this.translate.addLangs(this.supportLanguages);
     this.translate.setDefaultLang('en');
   }
@@ -25,13 +24,10 @@ export class HeaderComponent implements OnInit {
   toggleDarkTheme(): void {
     document.body.classList.toggle('dark-theme');
   }
-  loginTo()
-  {
-   this.dialogBox.open(NewLoginComponent, {
-
+  loginTo(){
+   const dialogRef = this.dialogBox.open(NewLoginComponent, {
     height: '650px',
     width: '800px'
-
    })
   //  this.router.navigate(['/new-login']);
   }
