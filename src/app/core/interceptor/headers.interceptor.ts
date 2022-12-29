@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class HeadersInterceptor implements HttpInterceptor {
 
   constructor() {
-    // This is intentional
+  // This is intentional
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
