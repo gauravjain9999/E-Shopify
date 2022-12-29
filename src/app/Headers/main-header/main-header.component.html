@@ -46,7 +46,7 @@
 
   <!-------------- fxHide.lt-lg="true"----------->
   <div fxLayout="row">
-    <div fxLayout="row" fxLayoutAlign="space-between center"  fxHide.lt-md="true">
+    <div fxLayout="row" fxLayoutAlign="space-between center" [matTooltip]="'USER_PROFILE' | translate" fxHide.lt-md="true">
       <button mat-stroked-button class="cart" fxLayoutAlign="space-between center" style="margin-right: 30px;">
         <mat-icon style="height: 24px; width: 24px;">account_circle</mat-icon>
         <span (click)="openComponent('Profile')" style="margin-left: 2px; font-size: 18px;">
