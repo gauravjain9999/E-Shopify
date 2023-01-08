@@ -12,6 +12,8 @@
 
   "MORE": "Suite",
   "LOGOUT": "Se déconnecter",
+  "REGISTER": "Enregistrer",
+  "LOGIN": "Connexion",
   "SHOPIFY_APP": "Application Shopify",
   "SEARCH" : "Recherche",
   "CART": "Chariot",
@@ -24,7 +26,8 @@
   "MAIN_DASHBOARD": "Tableau de bord principal",
   "NOTIFICATION": "Notification",
   "USER_PROFILE": "Profil de l'utilisateur",
-
+  "MORE_INFO": "Plus d'informations",
+  "DARK_THEME": "Thème sombre",
 
 
   "__________PAGE NOT FOUND_________" : "______________PAGE NON TROUVÉE____________",

@@ -94,6 +94,8 @@ getSelectedDefaultOption(selectedOption: any){
 
     if(changes['userName']){
       this.fullName = changes['userName'].currentValue;
+      console.log(this.fullName);
+
       this.firstName = this.fullName[0];
       this.name = this.fullName.shift().charAt(0) +  this.fullName.shift().charAt(0);
       this.loginUserName = this.firstName;
@@ -107,7 +109,7 @@ getSelectedDefaultOption(selectedOption: any){
   }
 
   ngOnInit(): void {
-    
+
     this.mediaObserver.asObservable().subscribe((media: MediaChange[]) =>{
       this.mediaFlagObserver =(media[1].mqAlias === 'lt-md')? true:false;
     })

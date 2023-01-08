@@ -17,10 +17,10 @@ export class NewLoginComponent implements OnInit {
 
   @HostListener('document:keypress', ['$event'])
   keyEvent(event: KeyboardEvent) {
-  if (event.key === 'Enter') {
-        this.onLogin();
+    if (event.key === 'Enter') {
+      this.onLogin();
+    }
   }
-}
   name: string;
   password: string;
   isLoading: boolean;
@@ -96,18 +96,20 @@ export class NewLoginComponent implements OnInit {
   }
   onLogin() {
 
-    if(this.login.valid)
-    {
-      this.applicationService.loginUser(this.login.value).subscribe((data:any) =>{
+    if(this.login.valid){
+      this.applicationService.loginUser(this.login.value).subscribe((data: any) =>{
         console.log(data);
         if(data && data.length > 0){
           this.dialogRef.close();
-          localStorage.setItem('loginUser', JSON.stringify(data));
+          localStorage.setItem('LOGIN_USER', JSON.stringify(data));
           this.isLoading = true;
+          const userData = JSON.parse(localStorage.getItem('LOGIN_USER') as any);
+          console.log(userData);
+        
           this.applicationService.authRedirectData.emit(true);
           this.router.navigate(['mainPage']);
           this.isLoading = false;
-          this.notificationService.showNotification('Welcome Ritik', 'Close');
+          this.notificationService.showNotification(`Welcome ${userData.name}`, 'Close');
         }
         else{
           this.notificationService.showNotification('Please Create Your Account First ', 'close');

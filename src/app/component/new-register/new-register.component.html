@@ -78,7 +78,7 @@
 
     <div class="clearfix">
       <mat-chip-list>
-        <mat-chip color="primary" type="submit" (click)="onSubmit()" selected>Sign Up</mat-chip>
+        <mat-chip color="primary" type="submit" [mat-dialog-close]="registerUser.valid" (click)="onSubmit()" selected>Sign Up</mat-chip>
         <mat-chip color="warn" (click)="onReset(registerUser)" selected >Reset</mat-chip>
       </mat-chip-list>
     </div>

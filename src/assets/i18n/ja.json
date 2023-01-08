@@ -11,6 +11,8 @@
 
   "MORE": "もっと",
   "LOGOUT": "ログアウト",
+  "REGISTER": "登録",
+  "LOGIN": "ログイン",
   "SHOPIFY_APP":  "Shopify アプリ",
   "SEARCH": "探す",
   "CART": "カート",
@@ -21,6 +23,9 @@
   "NOTIFICATION": "通知",
   "MAIN_DASHBOARD": "メイン ダッシュボード",
   "USER_PROFILE": "ユーザープロフィール",
+  "MORE_INFO": "より詳しい情報",
+  "DARK_THEME": "暗いテーマ",
+
 
 
 

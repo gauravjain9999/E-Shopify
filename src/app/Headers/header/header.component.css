@@ -1,5 +1,5 @@
 
-.search-text{
+/* .search-text{
   border: 1px solid #d7d6d6;
   background: #fff;
   border-radius: 20px;
@@ -7,7 +7,7 @@
   outline: none;
   box-shadow: 5px 5px 5px darkgrey;
   text-align: left;
-}
+} */
 
 .btn-login:hover{
   background-color: lightslategray;
@@ -36,4 +36,12 @@
   color: black;
   border: 1px solid black;
   cursor: pointer;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep.mat-select-arrow {
+  display: none;
 }

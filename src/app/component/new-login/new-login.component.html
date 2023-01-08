@@ -32,7 +32,9 @@
 
 
   <div fxLayout="column" fxLayoutAlign="center center">
-    <button mat-raised-button style="margin: auto; width: 200px; background-color: green;" (keydown.enter)="onLogin()" (click)="onLogin()">Login</button>
+    <button mat-raised-button style="margin: auto; width: 200px; background-color: green;" (keydown.enter)="onLogin()" (click)="onLogin()" 
+     [mat-dialog-close]="login.value">Login
+    </button>
     <!-- <mat-chip color="accent" class="myBtn" type="submit" (click)="onSignUp()"selected >Create Your Account</mat-chip> -->
     <div class="psw">Or</div>
     <button mat-raised-button style="margin: auto; width: 200px; background-color: darkgrey;" (click)="onGoogleSignIn()">

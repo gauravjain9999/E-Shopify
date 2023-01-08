@@ -11,6 +11,8 @@
 
   "MORE": "Hơn",
   "LOGOUT": "đăng xuất",
+  "REGISTER": "Đăng ký",
+  "LOGIN": "Đăng nhập",
   "SHOPIFY_APP": "Ứng dụng Shopify",
   "SEARCH" : "Tìm kiếm",
   "CART": "xe đẩy",
@@ -23,6 +25,10 @@
   "NOTIFICATION": "Thông báo",
   "MAIN_DASHBOARD": "Bảng điều khiển chính",
   "USER_PROFILE": "Thông tin người dùng",
+  "MORE_INFO": "Thêm thông tin",
+  "DARK_THEME": "chủ đề tối",
+
+
 
   "_________CUSTOM PAGINATION________" : "________PHÂN TÍCH TÙY CHỈNH_________",
 

@@ -17,10 +17,11 @@ import { AuthGuard } from './core/guard/auth.guard';
 const routes: Routes = [
 
   {path:'', redirectTo: '/shopifyApp', pathMatch: 'full'},
-  {path: 'shopifyApp', component: LoginFormComponent},
-  {path: 'new-login', component:NewLoginComponent },
+  {path: 'shopifyApp', component: LoginFormComponent, children: [
+    {path: 'new-login', component:NewLoginComponent },
+    {path: 'new-register', component: NewRegisterComponent},
+  ]},
   {path: 'footer',    component:FooterComponent},
-  {path: 'new-register', component: NewRegisterComponent},
   {path: 'mainPage', component:MainPageComponent, canActivate: [AuthGuard]},
   {path: 'addToCart', component:AddToCartComponent, canActivate: [AuthGuard] },
   {path: 'myProfile', component: MyProfileComponent, canActivate: [AuthGuard] },

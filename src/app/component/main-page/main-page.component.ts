@@ -23,8 +23,8 @@ export class MainPageComponent implements OnInit {
 
   constructor(private applicationService: ApplicationService, private userService: UserService) {
     this.iconsList = this.userService.getIcons();
-    if(localStorage.getItem('loginUser')){
-      this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
+    if(localStorage.getItem('LOGIN_USER')){
+      this.user = JSON.parse(localStorage.getItem(('LOGIN_USER')) as string);
       this.fullName = this.user[0].name.split(' ');
     }
     this.faqList = this.userService.getFaQList();

@@ -11,6 +11,8 @@
 
   "MORE": "More",
   "LOGOUT": "Logout",
+  "REGISTER": "Register",
+  "LOGIN": "Login",
   "SHOPIFY_APP":  "Shopify App",
   "SEARCH": "Search",
   "CART": "Cart",
@@ -23,6 +25,8 @@
   "MAIN_DASHBOARD": "Main Dashboard",
   "NOTIFICATION": "Notification",
   "USER_PROFILE": "User Profile",
+  "MORE_INFO": "More Info",
+  "DARK_THEME": "Dark Theme",
 
 
 

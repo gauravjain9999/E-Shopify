@@ -48,6 +48,41 @@
       "password": "12345678",
       "phoneNumber": "7441258962",
       "id": 8
+    },
+    {
+      "name": "Aman Jain",
+      "email": "amanjain0908@gmail.com",
+      "password": "12345678",
+      "phoneNumber": "9773754778",
+      "id": 9
+    },
+    {
+      "name": "sarthak",
+      "email": "sarthak0908@gmail.com",
+      "password": "12345678",
+      "phoneNumber": "9776874520",
+      "id": 10
+    },
+    {
+      "name": "girish",
+      "email": "girishjain0908@gmail.com",
+      "password": "12345678",
+      "phoneNumber": "9776855239",
+      "id": 11
+    },
+    {
+      "name": "Vikas",
+      "email": "vikasjain0931@gmail.com",
+      "password": "12345678",
+      "phoneNumber": "9773754778",
+      "id": 12
+    },
+    {
+      "name": "palash",
+      "email": "palashjain0931@gmail.com",
+      "password": "45678963",
+      "phoneNumber": "9773754788",
+      "id": 13
     }
   ],
   "clothes": {
@@ -498,6 +533,17 @@
       "phoneNumber": "9779784102",
       "address": "A - 305 Malviya Nagar Alwar ",
       "id": 8
+    },
+    {
+      "name": "Gaurav Jain",
+      "email": "gauravjain0931@gmail.com",
+      "location": "Alwr",
+      "date": "2023-01-06",
+      "state": "Rajasthan",
+      "city": "Alwar",
+      "phoneNumber": "9777841258",
+      "address": "A - 305 ",
+      "id": 9
     }
   ]
 }

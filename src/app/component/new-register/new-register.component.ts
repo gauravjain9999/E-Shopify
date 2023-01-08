@@ -82,7 +82,7 @@ export class NewRegisterComponent implements OnInit {
   }
 
   keyPressNumbers(event: any) {
-    var charCode = event.which ? event.which : event.keyCode;
+    const charCode = event.which ? event.which : event.keyCode;
     if (charCode < 48 || charCode > 57) {
       event.preventDefault();
       return false;

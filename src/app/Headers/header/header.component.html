@@ -6,7 +6,21 @@
     </span>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="space-between center" style="margin-left: 150px">
+    <mat-icon style="margin-left: -45px">language</mat-icon>
+    <span class="ml-5" style="font-size: 14px;">
+      <span *ngIf="getSelectedDefaultOption(selectedOption)">{{selectedOption}}</span>
+        <mat-form-field style="margin-top: 10px;">
+          <mat-select class="lang-dropdown" style="font-size: 14px;" disableOptionCentering  panelClass="myPanelClass2" [(ngModel)]="selectedOption">
+            <mat-option  style="font-size: 14px;" (click)="changeLanguage(lang.value)" *ngFor="let lang of langService.languages" [value]="lang.value">
+              {{ lang.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    </span>
+  </div>
+
+  <!-- <div fxLayout="row" fxLayoutAlign="space-between center">
     <span class="mr-25">
       <mat-form-field appearance="legacy" [style.width]="50" class="header-bg">
         <span>Search</span>
@@ -14,18 +28,47 @@
         <input matInput type="text" autocomplete="off" name="search">
       </mat-form-field>
     </span>
-  </div>
+  </div> -->
 
-  <div fxLayout="row" fxLayoutAlign="space-between center">
+  <div *ngIf="!mediaFlagObserver" fxLayout="row" fxLayoutAlign="space-between center" [matTooltip]="'DARK_THEME' | translate" >
     <mat-icon class="theme-icon dark-theme-2" (click)="toggleDarkTheme()"aria-hidden="false"
     aria-label="Example home icon">brightness_6</mat-icon>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="space-between center" style="margin-right: 50px">
-    <button mat-stroked-button class="btn-login  header-bg" (click)="loginTo()">Login</button> &nbsp;
-    <button mat-stroked-button class="btn-register header-bg" (click)="newRegister()">Register</button>
+  <div *ngIf="!mediaFlagObserver" fxLayout="row" fxLayoutAlign="space-between center" style="margin-right: 50px">
+    <button [routerLink]="['/new-login']" routerLinkActive="active"mat-stroked-button class="btn-login  header-bg" (click)="loginTo()">
+     Login
+    </button> &nbsp;
+    <button [routerLink]="['/new-register']" routerLinkActive="active" mat-stroked-button class="btn-register header-bg" (click)="newRegister()">
+      Register
+    </button>
   </div>
 
+   
+  <div *ngIf="mediaFlagObserver" fxLayout="row" fxLayoutAlign="space-evenly" [matTooltip]="'MORE_INFO' | translate">
+    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon [matMenuTriggerFor]="threeDotMenu">more_vert</mat-icon>
+    </button>
+  </div>
+
+   <!------------In case of LessThanMediumDevice -------------------->
+   <mat-menu #threeDotMenu="matMenu">
+    <button mat-menu-item  (click)="loginTo()" [routerLink]="['/new-login']" routerLinkActive="active">
+      <mat-icon  matSuffix>login</mat-icon>
+      {{'LOGIN' | translate}}
+    </button>
+
+    <button mat-menu-item (click)="newRegister()" [routerLink]="['/new-register']" routerLinkActive="active">
+      <mat-icon matSuffix>app_registration</mat-icon>
+        {{'REGISTER'| translate}}
+    </button> 
+    
+    <button  mat-menu-item [matTooltip]="'DARK_THEME' | translate" >
+      <mat-icon class="theme-icon dark-theme-2" (click)="toggleDarkTheme()"aria-hidden="false"
+      aria-label="Example home icon">brightness_6</mat-icon>
+      {{"DARK_THEME" | translate}}
+    </button>
+   </mat-menu>
 </mat-toolbar>
 
 
