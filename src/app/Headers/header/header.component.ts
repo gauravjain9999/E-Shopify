@@ -23,22 +23,22 @@ export class HeaderComponent implements OnInit {
   supportLanguages = ['en'];
   mediaFlagObserver = false;
   globalConstant = GlobalConstant;
-  
-  constructor( public translate: TranslateService, public langService: LanguageService,  
+
+  constructor( public translate: TranslateService, public langService: LanguageService,
   public dialogBox: MatDialog,  private router: Router,  public applicationService: ApplicationService,
   public mediaObserver: MediaObserver) {
-   
+
   translate.addLangs(this.langService.supportLanguages);
   if(window.localStorage.getItem('selectedLanguage')){
     this.getDefaultLang();
   }
   else{
     this.selectedOption =  this.langService.languages.filter(item => item.value === 'en')[0].viewValue;
-    translate.setDefaultLang(translate.getBrowserLang());
+    translate.setDefaultLang('en');
   }
  }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.mediaObserver.asObservable().subscribe((media: MediaChange[]) =>{
       console.log(media);
       this.mediaFlagObserver = (media[1].mqAlias === 'lt-md' || media[1].mqAlias === 'lt-sm') ? true : false;
@@ -59,7 +59,7 @@ export class HeaderComponent implements OnInit {
       width: '800px',
     })
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       if(result === undefined){
         this.router.navigateByUrl('/shopifyApp');
       }
@@ -75,7 +75,7 @@ export class HeaderComponent implements OnInit {
       width: '800px'
     })
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       console.log(result);
       if(result){
         this.router.navigateByUrl('/new-login');
@@ -123,7 +123,7 @@ export class HeaderComponent implements OnInit {
     this.translate.setDefaultLang(val);
     localStorage.setItem('selectedLanguage', val);
   }
-  
+
   getSelectedDefaultOption(selectedOption: any){
     if(selectedOption === 'ENGLISH' || selectedOption === 'FRANÇAIS' || selectedOption === 'TIẾNG VIỆT'
     || selectedOption === '日本語'){

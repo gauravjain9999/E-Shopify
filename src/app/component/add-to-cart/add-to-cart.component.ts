@@ -87,8 +87,8 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    if(localStorage.getItem('loginUser')){
-      this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
+    if(localStorage.getItem('LOGIN_USER')){
+      this.user = JSON.parse(localStorage.getItem(('LOGIN_USER')) as string);
       this.fullName = this.user[0].name.split(' ');
     }
   }

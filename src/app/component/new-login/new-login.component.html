@@ -30,9 +30,9 @@
    <h4 style="color: grey;">By creating an account you agree to our <a href="" style="color:dodgerblue">Terms & Privacy</a>.</h4>
   </div>
 
-
+  <!-- (keydown.enter)="onLogin()" -->
   <div fxLayout="column" fxLayoutAlign="center center">
-    <button mat-raised-button style="margin: auto; width: 200px; background-color: green;" (keydown.enter)="onLogin()" (click)="onLogin()" 
+    <button mat-raised-button style="margin: auto; width: 200px; background-color: green;" (click)="onLogin()"
      [mat-dialog-close]="login.value">Login
     </button>
     <!-- <mat-chip color="accent" class="myBtn" type="submit" (click)="onSignUp()"selected >Create Your Account</mat-chip> -->

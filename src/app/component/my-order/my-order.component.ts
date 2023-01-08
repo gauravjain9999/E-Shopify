@@ -38,11 +38,12 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   updateOrderCount:any;
   fullName:any;
 
-  constructor(@Inject(NgZone) private zone: NgZone, private mediaObserver: MediaObserver, private notificationService: NotificationService,
-  private cdr: ChangeDetectorRef, private cartService: CartService, private router: Router) {
+  constructor(@Inject(NgZone) private zone: NgZone, private mediaObserver: MediaObserver,
+  private notificationService: NotificationService, private cdr: ChangeDetectorRef,
+  private cartService: CartService, private router: Router) {
 
-    if(localStorage.getItem('loginUser')){
-      this.user = JSON.parse(localStorage.getItem(('loginUser')) as string);
+    if(localStorage.getItem('LOGIN_USER')){
+      this.user = JSON.parse(localStorage.getItem(('LOGIN_USER')) as string);
       this.fullName = this.user[0].name.split(' ');
     }
   }
@@ -58,7 +59,7 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
     }, 3000);
 
     this.showFlagSpinner = true;
-    this.cartService.getProduct().subscribe(res=>{
+    this.cartService.getProduct().subscribe((res: any)=>{
     this.products = res;
     this.updateOrderCount = this.products.length;
     this.totalSum = this.cartService.getTotalPrice();

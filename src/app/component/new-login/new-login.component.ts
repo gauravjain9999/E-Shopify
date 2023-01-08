@@ -98,18 +98,17 @@ export class NewLoginComponent implements OnInit {
 
     if(this.login.valid){
       this.applicationService.loginUser(this.login.value).subscribe((data: any) =>{
-        console.log(data);
-        if(data && data.length > 0){
+       if(data && data.length > 0){
           this.dialogRef.close();
           localStorage.setItem('LOGIN_USER', JSON.stringify(data));
           this.isLoading = true;
           const userData = JSON.parse(localStorage.getItem('LOGIN_USER') as any);
           console.log(userData);
-        
+
           this.applicationService.authRedirectData.emit(true);
           this.router.navigate(['mainPage']);
           this.isLoading = false;
-          this.notificationService.showNotification(`Welcome ${userData.name}`, 'Close');
+          this.notificationService.showNotification(`Welcome ${userData[0].name}`, 'Close');
         }
         else{
           this.notificationService.showNotification('Please Create Your Account First ', 'close');

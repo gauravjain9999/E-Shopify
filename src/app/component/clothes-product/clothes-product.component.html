@@ -3,8 +3,7 @@
 
 <div class="content" *ngIf="!showFlagSpinner">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%"  *ngFor="let itemCloth of listOfClothesItem
-    | paginate: {itemsPerPage: 10,currentPage: page, totalItems: totalLength }; index as i">
+    <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%"  *ngFor="let itemCloth of listOfClothesItem | paginate: {itemsPerPage: 10,currentPage: page, totalItems: totalLength }; index as i">
       <mat-card  class="mat-elevation-z4 mat-card">
         <!-- <mat-card-header>
         </mat-card-header> -->
@@ -70,5 +69,5 @@ aria-label="Select page">
   screenReaderPaginationLabel="Pagination"
   screenReaderPageLabel="page"
   screenReaderCurrentLabel="You're on page"
-  (pageChange)="page= $event"></pagination-controls>
+  (pageChange)="page=$event"></pagination-controls>
 </div>

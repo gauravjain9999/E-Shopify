@@ -76,7 +76,7 @@ export class PaymentCheckoutComponent implements OnInit {
       this.phoneNum = user.phoneNumber;
     }
     else{
-      const existingUser = JSON.parse(localStorage.getItem('loginUser') as string);
+      const existingUser = JSON.parse(localStorage.getItem('LOGIN_USER') as string);
       this.emailId = existingUser[0].email;
       this.fullName = existingUser[0].name;
       this.phoneNum = existingUser[0].phoneNumber;

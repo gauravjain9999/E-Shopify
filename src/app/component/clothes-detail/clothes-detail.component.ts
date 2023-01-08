@@ -46,8 +46,9 @@ export class ClothesDetailComponent implements OnInit {
       this.updateCount = JSON.parse(localStorage.getItem('NOTIFY_COUNT') as any);
     }
 
-    if (localStorage.getItem('loginUser')) {
-      this.user = JSON.parse(localStorage.getItem('loginUser') as string);
+    if (localStorage.getItem('LOGIN_USER')) {
+      this.user = JSON.parse(localStorage.getItem('LOGIN_USER') as string);
+      console.log(this.user);
       this.fullName = this.user[0].name.split(' ');
     }
   }
@@ -85,7 +86,7 @@ export class ClothesDetailComponent implements OnInit {
 
   getMyProductItem(product:any, productId: any){
     this.cartService.uploadCartItem(product, productId);
-    this.cartService.productList.subscribe((data) => {
+    this.cartService.productList.subscribe((data: any) => {
       this.noDuplicate(data);
     });
   }
