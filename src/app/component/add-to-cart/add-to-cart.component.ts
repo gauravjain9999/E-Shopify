@@ -59,6 +59,7 @@ export class AddToCartComponent implements OnInit, AfterViewInit {
       const data = JSON.parse(localStorage.getItem('cartItem') as any);
       this.products = data;
       console.log(this.products);
+      localStorage.setItem('SELECTED_ITEM', JSON.stringify(this.products));
       this.updateCount = this.products.length;
       localStorage.setItem('NOTIFY_COUNT', JSON.stringify(this.updateCount));
       this.dataSource = new MatTableDataSource<any>(this.products);

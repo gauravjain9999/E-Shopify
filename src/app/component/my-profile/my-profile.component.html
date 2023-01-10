@@ -6,7 +6,7 @@
     <mat-divider></mat-divider>
 
     <div class="text-input mt-15">
-      <input style=" margin: 0px; width: 250px; height: 40px;" autofocus (ngModelChange)="getFormData($event, 'firstName')"
+      <input style="margin: 0px; width: 250px; height: 40px;" autofocus (ngModelChange)="getFormData($event, 'firstName')"
       [readonly]="flagName" autocomplete="true" [(ngModel)]="firstName" #input placeholder="First Name" type="text">
       <input class="ml-15" style="width: 150px; height: 40px;" autofocus placeholder="Last Name" (ngModelChange)="getFormData($event, 'lastName')"
       [readonly]="flagName" [(ngModel)]="lastName" type="text">
@@ -23,7 +23,7 @@
       <mat-divider></mat-divider>
       <div class="mt-15">
         <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1">Male</mat-radio-button> &nbsp; &nbsp;
+          <mat-radio-button checked="true" value="1">Male</mat-radio-button> &nbsp; &nbsp;
           <mat-radio-button value="2">Female</mat-radio-button>
         </mat-radio-group>
       </div>

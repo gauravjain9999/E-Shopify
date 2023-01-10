@@ -62,7 +62,8 @@
 
 <br>
 <div class="example-container mat-elevation-z8" *ngIf="myWhishList && products.length !==0  else elseBlock">
-  <table [matSortDirection]="sortDirection" @fade [matSortActive]="sortColumn" mat-table matSort (matSortChange)="sortChange($event)" [dataSource]="dataSource" tabindex="0">
+  <table [matSortDirection]="sortDirection" @fade [matSortActive]="sortColumn" mat-table matSort (matSortChange)="sortChange($event)"
+  [dataSource]="dataSource" tabindex="0">
     <!-- Title Column-->
     <ng-container matColumnDef="title">
       <th mat-header-cell mat-sort-header *matHeaderCellDef> Title </th>

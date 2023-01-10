@@ -59,13 +59,16 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
     }, 3000);
 
     this.showFlagSpinner = true;
-    this.cartService.getProduct().subscribe((res: any)=>{
-    this.products = res;
+    const selectedData = JSON.parse(localStorage.getItem('SELECTED_ITEM') as any);
+    // this.cartService.getProduct().subscribe((res: any)=>{
+    // });
+    this.products = selectedData;
+    console.log(this.products);
+
     this.updateOrderCount = this.products.length;
     this.totalSum = this.cartService.getTotalPrice();
     this.dataSource =  new MatTableDataSource<any>(this.products);
     this.cdr.detectChanges();
-  });
 
     this.mediaObserver.asObservable().subscribe((media: MediaChange[])=>{
       if(media.some(mediaChange => mediaChange.mqAlias='Gt-m')){
@@ -125,6 +128,7 @@ export class MyOrderComponent implements OnInit, AfterViewInit {
   }
 
   removeItem(item: any, index: any){
-    this.cartService.removeCartItem(item, index);
+    // this.cartService.removeCartItem(item, index);
+    this.dataSource = this.products.splice(index, 1);
   }
 }
